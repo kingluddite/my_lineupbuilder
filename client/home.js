@@ -63,7 +63,7 @@ Template.tHome.helpers({
             }).count();
             // console.log(playerCount);
 
-            if (playerCount > 24) {
+            if (playerCount > 26) {
                 return false;
             } else {
                 return true;
@@ -73,7 +73,7 @@ Template.tHome.helpers({
 });
 
 var counter = 1,
-    limit = 24;
+    limit = 26;
 
 // when the trashcan icon is clicked, the player is deleted
 var removePlayer = function() {
@@ -85,20 +85,26 @@ var removePlayer = function() {
 Template.tHome.events({
     'click .add-player': function(evt, tmpl) {
         evt.preventDefault();
-
-        function addInput() {
-
-            if (counter === limit) {
-                alert("You have reached the limit of adding " + counter + " inputs");
-            } else {
-                var newDiv = document.createElement('div');
-                newDiv.className = 'player-box';
-                newDiv.innerHTML = "<div class='form-group'><label>Player " + (counter + 1) + "</label><input type='text' class='form-control' name='players[]'><span class='remove-box'>X</span></div>";
-                document.querySelector('.team-roster').appendChild(newDiv);
-                counter++;
-            }
+        var myForm = document.getElementById("teamRoster");
+        myFormInputsCount = myForm.getElementsByTagName("input").length;
+        var playerCount = Players.find().count();
+        var currentCount = playerCount + myFormInputsCount;
+        console.log(playerCount);
+        if (currentCount > 26) {
+            // var myForm = document.getElementById("teamRoster");
+            $("#teamRoster").hide();
+            alert("You have reached the limit of adding players.");
+        } else {
+            $("#teamRoster").show();
+            var newDiv = document.createElement('div');
+            newDiv.className = 'player-box';
+            newDiv.innerHTML = "<div class='form-group'><label>Player " +
+                (counter + 1) +
+                "</label><input type='text' class='form-control' " +
+                "name='players[]'><span class='remove-box'>X</span></div>";
+            document.querySelector('.team-roster').appendChild(newDiv);
+            counter++;
         }
-        addInput();
     },
     // when people add player boxes give them the option
     //  to remove them
@@ -111,16 +117,26 @@ Template.tHome.events({
 
     'click .remove': function(evt, tmpl) {
         evt.preventDefault();
+        var playerCount = Players.find().count();
 
         if (confirm("Delete this player?")) {
             Session.set('sPlayerId', this._id);
             removePlayer();
             Session.set('sPlayerId', null);
         }
+        if (playerCount <= 26) {
+            $("#teamRoster").show();
+        }
     },
 
     'submit form': function(evt) {
         evt.preventDefault();
+        var playerCount = Players.find().count();
+        if (playerCount <= 26) {
+            $("#teamRoster").show();
+        } else {
+            $("#teamRoster").hide();
+        }
         var myForm = document.getElementById("teamRoster");
         myFormInputs = myForm.getElementsByTagName("input");
         //Extract Each Element Value
@@ -139,6 +155,7 @@ Template.tHome.events({
                 // Router.go('playerPage', {
                 //     _id: id
                 // });
+
             });
             myForm.elements[i].value = "";
             // }

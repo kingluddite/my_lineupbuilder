@@ -30,7 +30,7 @@
                                 </div>
                             </div>
                             <a class="add-player">Add Another Player</a> {{else}}
-                            <p>You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</p>
+                            <div class="alert alert-danger" role="alert">You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</div>
                             {{/if}}
                             <button type="submit" class="btn btn-large btn-success">Submit Players</button>
                         </form>
