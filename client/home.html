@@ -20,6 +20,8 @@
                         <h1>Create Your Roster</h1>
 
                         <form id="teamRoster">
+                            {{#if maxPlayers}}
+
                             <label>Add Players To Your Roster</label>
                             <div class="team-roster">
                                 <div class="form-group">
@@ -27,7 +29,9 @@
                                     <input type="text" class="form-control" name="players[]" />
                                 </div>
                             </div>
-                            <a class="add-player">Add Another Player</a>
+                            <a class="add-player">Add Another Player</a> {{else}}
+                            <p>You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</p>
+                            {{/if}}
                             <button type="submit" class="btn btn-large btn-success">Submit Players</button>
                         </form>
 

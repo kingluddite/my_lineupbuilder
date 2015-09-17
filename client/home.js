@@ -54,6 +54,21 @@ Template.tHome.helpers({
             this.ready();
         }
 
+    },
+    // show add player box if roster max is not reached
+    maxPlayers: function() {
+        if (Meteor.user()) {
+            var playerCount = Players.find({
+                createdBy: Meteor.user()._id
+            }).count();
+            // console.log(playerCount);
+
+            if (playerCount > 24) {
+                return false;
+            } else {
+                return true;
+            }
+        }
     }
 });
 
