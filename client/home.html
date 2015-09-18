@@ -11,42 +11,23 @@
                     <div class="panel-body">
                         <ol>
                             {{#each cPlayers}}
-                            <li>{{> editableText collection="players" field="fullName"}} <a class="remove" href="#"><i class="fa fa-trash fa-2"></i></a>
+                            <li>{{> editableText collection="players" field="fullName"}}
+                                <a class="remove" href="#"><i class="fa fa-trash fa-2"></i></a>
                             </li>
                             {{/each}}
                         </ol>
                     </div>
+                    <div class="panel-footer">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="roster-complete"> Roster Completed
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
             {{/if}}
-            <div class="col-sm-6 col-md-6">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">My Lineup!</h3>
-
-                    </div>
-                    <div class="panel-body">
-                        {{#if currentUser}}
-                        <h4>Progress</h4>
-                        <p>Roster Created</p>
-                        <p>Formation Chosen</p>
-                        <p>Starting Lineup Created</p>
-                        <p>Substitution List Created</p>
-                        <p>Not Playing List Created</p>
-                        <p>Lineup Ready to Share</p>
-                        {{else}}
-                        <p>How do you create a soccer lineup?</p>
-                        <p>Simple. Just follow these steps.</p>
-                        <ol>
-                            <li>Login/Register</li>
-                            <li>Create Your Roster</li>
-                            <li>Choose Your Formation</li>
-                            <li>Drag Players from Roster to their starting position on the field, the Substitute list or the Not Playing list</li>
-                            <li>Share the link with your team.</li>
-                        </ol>
-                        {{/if}}
-                    </div>
-                </div>
+            <div class="col-sm-5 col-md-5">
                 {{#if currentUser}}
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -56,7 +37,7 @@
                         {{#if currentUser}}
                         <div id="addPlayerStatus" class="alert alert-danger" role="alert"></div>
                         <form id="teamRoster">
-                            {{#if maxPlayers}}
+                            {{maxPlayers}} {{#if maxPlayers}}
 
                             <label>Add Players To Your Roster</label>
                             <div class="team-roster">
@@ -70,10 +51,12 @@
                                     </div>
                                 </div>
                             </div>
-                            <a class="add-player btn btn-default" role="button">Add Another Player</a> {{else}}
+                            <a class="add-player btn btn-default" role="button">Add Another Player</a>
+                            <button type="submit" class="btn btn-large btn-success pull-right">Submit Players</button>
+
+                            {{else}}
                             <div class="alert alert-danger" role="alert">You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</div>
                             {{/if}}
-                            <button type="submit" class="btn btn-large btn-success pull-right">Submit Players</button>
                         </form>
                         {{else}}
                         <p>How do you create a soccer lineup?</p>
@@ -90,7 +73,34 @@
                 </div>
                 {{/if}}
             </div>
-            <div class="col-sm-2 col-md-2">
+            <div class="col-sm-3 col-md-3">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">My Progress</h3>
+
+                    </div>
+                    <div class="panel-body">
+                        {{#if currentUser}}
+                        <h4>Progress</h4>
+                        <p class="roster-created"><span> Roster Created</span></p>
+                        <p class="formation-chosen"><span>Formation Chosen</span></p>
+                        <p class="formation-chosen"><span>Starting Lineup Created</span></p>
+                        <p class="sub-list-created"><span>Substitution List Created</span></p>
+                        <p class="not-playing-list-created"><span>Not Playing List Created</span></p>
+                        <p class="ready-to-share"><span>Lineup Ready to Share</span></p>
+                        {{else}}
+                        <p>How do you create a soccer lineup?</p>
+                        <p>Simple. Just follow these steps.</p>
+                        <ol>
+                            <li>Login/Register</li>
+                            <li>Create Your Roster</li>
+                            <li>Choose Your Formation</li>
+                            <li>Drag Players from Roster to their starting position on the field, the Substitute list or the Not Playing list</li>
+                            <li>Share the link with your team.</li>
+                        </ol>
+                        {{/if}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>
