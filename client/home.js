@@ -1,39 +1,3 @@
-/**
- * Get closest DOM element up the tree that contains a class, ID, or data attribute
- * @param  {Node} elem The base element
- * @param  {String} selector The class, id, data attribute, or tag to look for
- * @return {Node} Null if no match
- */
-var getClosest = function(elem, selector) {
-    var firstChar = selector.charAt(0);
-    // Get closest match
-    for (; elem && elem !== document; elem = elem.parentNode) {
-        // If selector is a class
-        if (firstChar === '.') {
-            if (elem.classList.contains(selector.substr(1))) {
-                return elem;
-            }
-        }
-        // If selector is an ID
-        if (firstChar === '#') {
-            if (elem.id === selector.substr(1)) {
-                return elem;
-            }
-        }
-        // If selector is a data attribute
-        if (firstChar === '[') {
-            if (elem.hasAttribute(selector.substr(1, selector.length - 2))) {
-                return elem;
-            }
-        }
-        // If selector is a tag
-        if (elem.tagName.toLowerCase() === selector) {
-            return elem;
-        }
-    }
-    return false;
-};
-
 // need to set the max number for a roster
 var limit = 26;
 
@@ -71,7 +35,6 @@ Template.tHome.helpers({
             var currentRosterCount = Players.find({
                 createdBy: Meteor.user()._id
             }).count();
-            // console.log(playerCount);
 
             if (currentRosterCount >= 26) {
                 return false;
@@ -113,11 +76,16 @@ Template.tHome.events({
             // populate the box with a UI message
             $('#addPlayerStatus').text('You have reached the limit of adding players');
         } else {
+            // remove the status text
             $('#addPlayerStatus').empty();
+            // make the add player button clickable again
             $('.add-player').removeAttr('disabled');
+            // we need to make a new div
             var newDiv = document.createElement('div');
+            // give it a class name so we can grab it later when
+            //  we want to remove it
             newDiv.className = 'player-box';
-
+            // stick a new nicely formatted text field inside it
             newDiv.innerHTML = '<div class="form-group">' +
                 '<label class="sr-only">Player ' + (totalRosterCount + 1) + '</label>' +
                 '<div class="input-group">' +
@@ -129,10 +97,12 @@ Template.tHome.events({
                 '</div>' +
                 '</div>' +
                 '</div>';
+            // add the text field to the Dom roster element
             document.querySelector('.team-roster').appendChild(newDiv);
         }
     },
     // coach completes his roster and lets us know
+    //  visually we just add a checkbox, muted text and a line-through
     'click .roster-complete': function(evt, tmpl) {
         if (Session.get("sRosterComplete")) {
             $('.roster-created').html('<span> Roster Created</span>');
@@ -140,12 +110,13 @@ Template.tHome.events({
             $('.roster-created').removeClass('text-muted');
             Session.set("sRosterComplete", false);
         } else {
+            // remove all the stuff we add to visually show the item
+            // is not completed
             $('.roster-created').html('<i class="fa fa-check"></i> <span> Roster Created</span>');
             $('.roster-created span').css('text-decoration', 'line-through');
             $('.roster-created').addClass('text-muted');
             Session.set("sRosterComplete", true);
         }
-        console.log(Session.get("sRosterComplete"));
     },
     // when people add player boxes give them the option
     //  to remove them
