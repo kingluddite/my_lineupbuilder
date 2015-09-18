@@ -153,8 +153,16 @@ Template.tHome.events({
 
         // grab the roster form
         var myForm = document.getElementById("teamRoster");
-        // grab just the inputs from that form
-        myFormInputsCount = myForm.getElementsByTagName("input").length;
+        // grab just the inputs
+        var myFormInputs = myForm.getElementsByTagName("input");
+        // grab just the inputs from that form and find their lenght
+        var myFormInputsCount = myForm.getElementsByTagName("input").length;
+        // loop through the inputs and update their placeholder value
+        var curRosterPlusOne = currentRosterCount + 1;
+        for (var i = 0; i < myFormInputsCount; i++) {
+            myFormInputs[i].setAttribute('placeholder', 'Player ' +
+                (curRosterPlusOne++));
+        }
         // add the number of players the coach wants to add
         //   and add that to the current roster count
         var totalRosterCount = currentRosterCount + myFormInputsCount;
