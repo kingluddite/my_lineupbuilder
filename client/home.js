@@ -43,6 +43,21 @@ var getClosest = function(elem, selector) {
 
 };
 
+var counter = 1,
+    limit = 26;
+
+// when the trashcan icon is clicked, the player is deleted
+var removePlayer = function() {
+    Players.remove({
+        _id: Session.get('sPlayerId')
+    });
+};
+
+Template.tHome.rendered = function() {
+    // when page loads hide the player add message box
+    $('#addPlayerStatus').css('display', 'none');
+};
+
 Template.tHome.helpers({
     cPlayers: function() {
         // return Players.find();
@@ -69,39 +84,56 @@ Template.tHome.helpers({
                 return true;
             }
         }
+    },
+    // for first add player form need to add one to roster count
+    rosterCountPlusOne: function() {
+        var playerCount = Players.find({
+            createdBy: Meteor.user()._id
+        }).count();
+        return playerCount + 1;
     }
 });
-
-var counter = 1,
-    limit = 26;
-
-// when the trashcan icon is clicked, the player is deleted
-var removePlayer = function() {
-    Players.remove({
-        _id: Session.get('sPlayerId')
-    });
-};
 
 Template.tHome.events({
     'click .add-player': function(evt, tmpl) {
         evt.preventDefault();
+        // find out the current roster number
+        var currentRosterCount = Players.find({
+            createdBy: Meteor.user()._id
+        }).count();
+
+        // grab the roster form
         var myForm = document.getElementById("teamRoster");
+        // grab just the inputs from that form
         myFormInputsCount = myForm.getElementsByTagName("input").length;
-        var playerCount = Players.find().count();
-        var currentCount = playerCount + myFormInputsCount;
-        console.log(playerCount);
-        if (currentCount > 26) {
-            // var myForm = document.getElementById("teamRoster");
-            $("#teamRoster").hide();
-            alert("You have reached the limit of adding players.");
+        // add the number of players the coach wants to add
+        //   and add that to the current roster count
+        var totalRosterCount = currentRosterCount + myFormInputsCount;
+        // if the total roster count is exceeded, alert the coach
+        if (totalRosterCount >= 26) {
+            // diable the add player button if 26 players are on roster
+            $('.add-player').attr('disabled', 'disabled');
+            // show the alert box
+            $('#addPlayerStatus').css('display', 'block');
+            // populate the box with a UI message
+            $('#addPlayerStatus').text('You have reached the limit of adding players');
         } else {
-            $("#teamRoster").show();
+            $('#addPlayerStatus').empty();
+            $('.add-player').removeAttr('disabled');
             var newDiv = document.createElement('div');
             newDiv.className = 'player-box';
-            newDiv.innerHTML = "<div class='form-group'><label>Player " +
-                (counter + 1) +
-                "</label><input type='text' class='form-control' " +
-                "name='players[]'><span class='remove-box'>X</span></div>";
+
+            newDiv.innerHTML = '<div class="form-group">' +
+                '<label class="sr-only">Player ' + (totalRosterCount + 1) + '</label>' +
+                '<div class="input-group">' +
+                '<input type="text" class="form-control" ' +
+                'placeholder=' + '"Player ' + (totalRosterCount + 1) + '"' + 'name="players[]">' +
+                '<div class="input-group-addon">' +
+                '<button type="button" class="close remove-box" aria-label="Close">' +
+                '<span aria-hidden="true">&times;</span></button>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
             document.querySelector('.team-roster').appendChild(newDiv);
             counter++;
         }
@@ -113,10 +145,35 @@ Template.tHome.events({
 
         var elem = document.querySelector('.player-box');
         elem.remove();
+
+        // find out the current roster number
+        var currentRosterCount = Players.find({
+            createdBy: Meteor.user()._id
+        }).count();
+
+        // grab the roster form
+        var myForm = document.getElementById("teamRoster");
+        // grab just the inputs from that form
+        myFormInputsCount = myForm.getElementsByTagName("input").length;
+        // add the number of players the coach wants to add
+        //   and add that to the current roster count
+        var totalRosterCount = currentRosterCount + myFormInputsCount;
+        console.log(totalRosterCount);
+        // if the total roster count is exceeded, alert the coach
+        if (totalRosterCount < 26) {
+            // remove the UI add player status message
+            $('#addPlayerStatus').css('display', 'none');
+            // empty the UI player status message
+            $('#addPlayerStatus').empty();
+            // make the add player clickable again
+            $('.add-player').removeAttr('disabled');
+        }
+
     },
 
     'click .remove': function(evt, tmpl) {
         evt.preventDefault();
+
         var playerCount = Players.find().count();
 
         if (confirm("Delete this player?")) {

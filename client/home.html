@@ -1,52 +1,42 @@
 <template name="tHome">
     <div class="container">
         <div class="row">
-            <div class="col-sm-2 col-md-2">
+            {{#if currentUser }}
+            <div class="col-sm-4 col-md-4">
 
-            </div>
-            <div class="col-sm-8 col-md-8">
-                <div class="post">
-                    <div class="post-img-content">
-                        <p>
-                            <img src="http://placehold.it/460x250/2980b9/ffffff&text=My Lineup!" class="img-responsive" />
-                        </p>
-                        <p>
-                            <span class="post-title">
-                            <strong>Create Your Starting Lineup</strong></span>
-                        </p>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
                     </div>
-                    <div class="content">
-                        {{#if currentUser}}
-                        <h1>Create Your Roster</h1>
-
-                        <form id="teamRoster">
-                            {{#if maxPlayers}}
-
-                            <label>Add Players To Your Roster</label>
-                            <div class="team-roster">
-                                <div class="form-group">
-                                    <label>Player 1</label>
-                                    <input type="text" class="form-control" name="players[]" />
-                                </div>
-                            </div>
-                            <a class="add-player">Add Another Player</a> {{else}}
-                            <div class="alert alert-danger" role="alert">You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</div>
-                            {{/if}}
-                            <button type="submit" class="btn btn-large btn-success">Submit Players</button>
-                        </form>
-
-                        <h2>Current Roster</h2>
-                        <button class="btn btn-primary" type="button">
-                            Roster Count <span class="badge">{{cPlayers.count}}</span>
-                        </button>
+                    <div class="panel-body">
                         <ol>
                             {{#each cPlayers}}
                             <li>{{> editableText collection="players" field="fullName"}} <a class="remove" href="#"><i class="fa fa-trash fa-2"></i></a>
                             </li>
                             {{/each}}
                         </ol>
+                    </div>
+                </div>
+            </div>
+            {{/if}}
+            <div class="col-sm-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">My Lineup!</h3>
+
+                    </div>
+                    <div class="panel-body">
+                        {{#if currentUser}}
+                        <h4>Progress</h4>
+                        <p>Roster Created</p>
+                        <p>Formation Chosen</p>
+                        <p>Starting Lineup Created</p>
+                        <p>Substitution List Created</p>
+                        <p>Not Playing List Created</p>
+                        <p>Lineup Ready to Share</p>
                         {{else}}
-                        <p>How? Just follow these steps.</p>
+                        <p>How do you create a soccer lineup?</p>
+                        <p>Simple. Just follow these steps.</p>
                         <ol>
                             <li>Login/Register</li>
                             <li>Create Your Roster</li>
@@ -55,9 +45,50 @@
                             <li>Share the link with your team.</li>
                         </ol>
                         {{/if}}
-
                     </div>
                 </div>
+                {{#if currentUser}}
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Add Players To Roster</h3>
+                    </div>
+                    <div class="panel-body">
+                        {{#if currentUser}}
+                        <div id="addPlayerStatus" class="alert alert-danger" role="alert"></div>
+                        <form id="teamRoster">
+                            {{#if maxPlayers}}
+
+                            <label>Add Players To Your Roster</label>
+                            <div class="team-roster">
+                                <div class="form-group">
+                                    <label class="sr-only">Player {{rosterCountPlusOne}}</label>
+                                    <div class="input-group">
+                                        <input type="text" class="form-control" placeholder="Player {{rosterCountPlusOne}}" name="players[]">
+                                        <div class="input-group-addon">
+                                            <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a class="add-player btn btn-default" role="button">Add Another Player</a> {{else}}
+                            <div class="alert alert-danger" role="alert">You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</div>
+                            {{/if}}
+                            <button type="submit" class="btn btn-large btn-success">Submit Players</button>
+                        </form>
+                        {{else}}
+                        <p>How do you create a soccer lineup?</p>
+                        <p>Just follow these steps.</p>
+                        <ol>
+                            <li>Login/Register</li>
+                            <li>Create Your Roster</li>
+                            <li>Choose Your Formation</li>
+                            <li>Drag Players from Roster to their starting position on the field, the Substitute list or the Not Playing list</li>
+                            <li>Share the link with your team.</li>
+                        </ol>
+                        {{/if}}
+                    </div>
+                </div>
+                {{/if}}
             </div>
             <div class="col-sm-2 col-md-2">
             </div>
