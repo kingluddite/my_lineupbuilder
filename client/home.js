@@ -186,12 +186,12 @@ Template.tHome.events({
         //Extract Each Element Value
         for (var i = 0; i < myFormInputs.length; i++) {
 
-            Meteor.call('addPlayer', myForm.elements[i].value, function(error, id) {
+            Meteor.call('addPlayer', myFormInputs[i].value, function(error, id) {
                 if (error) {
                     return alert(error.reason);
                 }
             });
-            myForm.elements[i].value = "";
+            myFormInputs[i].value = "";
         }
     }
 });
