@@ -190,8 +190,11 @@ Template.tHome.events({
                 if (error) {
                     return alert(error.reason);
                 }
+                var elem = document.querySelector('.player-box');
+                elem.remove();
             });
             myFormInputs[i].value = "";
+
         }
     }
 });
