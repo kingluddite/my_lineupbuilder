@@ -8,6 +8,13 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
                     </div>
+                    <div class="panel-footer">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="roster-complete"> Roster Completed
+                            </label>
+                        </div>
+                    </div>
                     <div class="panel-body">
                         <ol>
                             {{#each cPlayers}}
@@ -17,13 +24,7 @@
                             {{/each}}
                         </ol>
                     </div>
-                    <div class="panel-footer">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" class="roster-complete"> Roster Completed
-                            </label>
-                        </div>
-                    </div>
+
                 </div>
             </div>
             {{/if}}
@@ -34,7 +35,6 @@
                         <h3 class="panel-title">Add Players To Roster</h3>
                     </div>
                     <div class="panel-body">
-                        {{#if currentUser}}
                         <div id="addPlayerStatus" class="alert alert-danger" role="alert"></div>
                         <form id="teamRoster">
                             {{#if maxPlayers}}
@@ -44,7 +44,7 @@
                                 <div class="form-group">
                                     <label class="sr-only">Player {{rosterCountPlusOne}}</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Player {{rosterCountPlusOne}}" name="players[]">
+                                        <input type="text" required class="form-control" placeholder="Player {{rosterCountPlusOne}}" name="players[]">
                                         <div class="input-group-addon">
                                             <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                                         </div>
@@ -58,21 +58,83 @@
                             <div class="alert alert-danger" role="alert">You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</div>
                             {{/if}}
                         </form>
-                        {{else}}
-                        <p>How do you create a soccer lineup?</p>
-                        <p>Just follow these steps.</p>
-                        <ol>
-                            <li>Login/Register</li>
-                            <li>Create Your Roster</li>
-                            <li>Choose Your Formation</li>
-                            <li>Drag Players from Roster to their starting position on the field, the Substitute list or the Not Playing list</li>
-                            <li>Share the link with your team.</li>
-                        </ol>
-                        {{/if}}
                     </div>
                 </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Team Info</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <form id="teamInfo">
+                            <p>
+                                <label class="sr-only">Team Name</label>
+                                <input type="text" class="form-control" placeholder="Team Name" name="teamName">
+                            </p>
+                            <p>
+                                <label class="sr-only">Coach Name</label>
+                                <input type="text" class="form-control" placeholder="Coach Name" name="coachName">
+                            </p>
+                            <p>
+                                <label class="sr-only">Coach Email</label>
+                                <input type="email" class="form-control" placeholder="Coach Email" name="coachEmail">
+                            </p>
+                            <p>
+                                <label class="sr-only">League Name</label>
+                                <input type="email" class="form-control" placeholder="League Name" name="leagueName">
+                            </p>
+                            <button type="submit" class="btn btn-large btn-success pull-right">Submit Team Info</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Game Info</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <form id="teamInfo">
+                            <p>
+                                <label class="sr-only">Game Date</label>
+                                <input type="text" class="form-control" placeholder="Game Date" name="gameDate">
+                            </p>
+                            <p>
+                                <label class="sr-only">Game Time</label>
+                                <input type="text" class="form-control" placeholder="Game Time" name="gameTime">
+                            </p>
+                            <p>
+                                <label class="sr-only">Opponent Name</label>
+                                <input type="email" class="form-control" placeholder="Opponent Name" name="opponentName">
+                            </p>
+                            <p>
+                                <label class="sr-only">Field Name</label>
+                                <input type="email" class="form-control" placeholder="Field Name" name="fieldName">
+                            </p>
+                            <p>
+                                <label class="sr-only">Google Maps URL</label>
+                                <input type="email" class="form-control" placeholder="Google Map Link" name="directionLink">
+                            </p>
+                            <button type="submit" class="btn btn-large btn-success pull-right">Submit Game Info</button>
+                        </form>
+                    </div>
+                </div>
+                {{else}}
+                <p>How do you create a soccer lineup?</p>
+                <p>Just follow these steps. It only takes 5 minutes.</p>
+                <ol>
+                    <li>Login/Register</li>
+                    <li>Add your Team Info</li>
+                    <li>Add your Game Details</li>
+                    <li>Create Your Roster</li>
+                    <li>Choose Your Formation</li>
+                    <li>Drag you players to their starting positions on the field</li>
+                    <li>Drag your substitutes to the substitute list</li>
+                    <li>Drag the players not playing to the not playing list</li>
+                    <li>Share the link with your team.</li>
+                </ol>
                 {{/if}}
             </div>
+            {{#if currentUser}}
             <div class="col-sm-3 col-md-3">
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -80,28 +142,21 @@
 
                     </div>
                     <div class="panel-body">
-                        {{#if currentUser}}
                         <h4>Progress</h4>
-                        <p class="roster-created"><span> Roster Created</span></p>
-                        <p class="formation-chosen"><span>Formation Chosen</span></p>
-                        <p class="formation-chosen"><span>Starting Lineup Created</span></p>
-                        <p class="sub-list-created"><span>Substitution List Created</span></p>
-                        <p class="not-playing-list-created"><span>Not Playing List Created</span></p>
-                        <p class="ready-to-share"><span>Lineup Ready to Share</span></p>
-                        {{else}}
-                        <p>How do you create a soccer lineup?</p>
-                        <p>Simple. Just follow these steps.</p>
                         <ol>
-                            <li>Login/Register</li>
-                            <li>Create Your Roster</li>
-                            <li>Choose Your Formation</li>
-                            <li>Drag Players from Roster to their starting position on the field, the Substitute list or the Not Playing list</li>
-                            <li>Share the link with your team.</li>
+                            <li class="team-created"><span> Team Created</span></li>
+                            <li class="game-created"><span> Game Info Added</span></li>
+                            <li class="roster-created"><span> Roster Created</span></li>
+                            <li class="formation-chosen"><span>Formation Chosen</span></li>
+                            <li class="formation-chosen"><span>Starting Lineup Created</span></li>
+                            <li class="sub-list-created"><span>Substitution List Created</span></li>
+                            <li class="not-playing-list-created"><span>Not Playing List Created</span></li>
+                            <li class="ready-to-share"><span>Lineup Ready to Share</span></li>
                         </ol>
-                        {{/if}}
                     </div>
                 </div>
             </div>
+            {{/if}}
         </div>
     </div>
 </template>
