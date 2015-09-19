@@ -36,7 +36,7 @@
                     </div>
                     <div class="panel-body">
                         <div id="addPlayerStatus" class="alert alert-danger" role="alert"></div>
-                        <form id="teamRoster">
+                        <form id="teamRosterForm">
                             {{#if maxPlayers}}
 
                             <label>Add Players To Your Roster</label>
@@ -60,33 +60,8 @@
                         </form>
                     </div>
                 </div>
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Team Info</h3>
-                    </div>
-                    <div class="panel-body">
+                {{> tAddTeam }}
 
-                        <form id="teamInfo">
-                            <p>
-                                <label class="sr-only">Team Name</label>
-                                <input type="text" class="form-control" placeholder="Team Name" name="teamName">
-                            </p>
-                            <p>
-                                <label class="sr-only">Coach Name</label>
-                                <input type="text" class="form-control" placeholder="Coach Name" name="coachName">
-                            </p>
-                            <p>
-                                <label class="sr-only">Coach Email</label>
-                                <input type="email" class="form-control" placeholder="Coach Email" name="coachEmail">
-                            </p>
-                            <p>
-                                <label class="sr-only">League Name</label>
-                                <input type="email" class="form-control" placeholder="League Name" name="leagueName">
-                            </p>
-                            <button type="submit" class="btn btn-large btn-success pull-right">Submit Team Info</button>
-                        </form>
-                    </div>
-                </div>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title">Game Info</h3>
@@ -96,15 +71,15 @@
                         <form id="teamInfo">
                             <p>
                                 <label class="sr-only">Game Date</label>
-                                <input type="text" class="form-control" placeholder="Game Date" name="gameDate">
+                                <input type="text" required class="form-control" placeholder="Game Date" name="gameDate">
                             </p>
                             <p>
                                 <label class="sr-only">Game Time</label>
-                                <input type="text" class="form-control" placeholder="Game Time" name="gameTime">
+                                <input type="text" required class="form-control" placeholder="Game Time" name="gameTime">
                             </p>
                             <p>
                                 <label class="sr-only">Opponent Name</label>
-                                <input type="email" class="form-control" placeholder="Opponent Name" name="opponentName">
+                                <input type="email" required class="form-control" placeholder="Opponent Name" name="opponentName">
                             </p>
                             <p>
                                 <label class="sr-only">Field Name</label>

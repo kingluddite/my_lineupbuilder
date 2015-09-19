@@ -173,7 +173,7 @@ Template.tHome.events({
         }
     },
 
-    'submit form': function(evt) {
+    'submit form#teamRosterForm': function(evt) {
         evt.preventDefault();
         var playerCount = Players.find().count();
         if (playerCount <= 26) {
