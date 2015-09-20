@@ -3,6 +3,8 @@ Template.tAddTeam.rendered = function() {
 }
 
 Template.tAddTeam.helpers({
+    // if there is a team return false
+    // so we can hide the add team form
     checkIfTeamExists: function() {
         if (Meteor.user()) {
             var team = Teams.find({
@@ -19,6 +21,8 @@ Template.tAddTeam.helpers({
 
 Template.tAddTeam.events({
 
+    // when add team form is submitted
+    //  grab the form data and pass it to the server
     'submit form#addTeamForm': function(evt) {
         evt.preventDefault();
 
@@ -36,6 +40,9 @@ Template.tAddTeam.events({
             if (error) {
                 return alert(error.reason);
             }
+            $('.team-created').html('<i class="fa fa-check"></i> <span> Team Created</span>');
+            $('.team-created span').css('text-decoration', 'line-through');
+            $('.team-created').addClass('text-muted');
         });
     }
 });
