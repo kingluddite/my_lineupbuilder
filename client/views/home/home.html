@@ -60,39 +60,11 @@
                         </form>
                     </div>
                 </div>
+                <!-- add form to add teams if no team exists -->
                 {{> tAddTeam }}
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Game Info</h3>
-                    </div>
-                    <div class="panel-body">
-
-                        <form id="teamInfo">
-                            <p>
-                                <label class="sr-only">Game Date</label>
-                                <input type="text" required class="form-control" placeholder="Game Date" name="gameDate">
-                            </p>
-                            <p>
-                                <label class="sr-only">Game Time</label>
-                                <input type="text" required class="form-control" placeholder="Game Time" name="gameTime">
-                            </p>
-                            <p>
-                                <label class="sr-only">Opponent Name</label>
-                                <input type="email" required class="form-control" placeholder="Opponent Name" name="opponentName">
-                            </p>
-                            <p>
-                                <label class="sr-only">Field Name</label>
-                                <input type="email" class="form-control" placeholder="Field Name" name="fieldName">
-                            </p>
-                            <p>
-                                <label class="sr-only">Google Maps URL</label>
-                                <input type="email" class="form-control" placeholder="Google Map Link" name="directionLink">
-                            </p>
-                            <button type="submit" class="btn btn-large btn-success pull-right">Submit Game Info</button>
-                        </form>
-                    </div>
-                </div>
+                <!-- add form to add game if no game exists -->
+                {{> tAddGame }}
+                <!-- if the user isn't logged in explain how the site works -->
                 {{else}}
                 <p>How do you create a soccer lineup?</p>
                 <p>Just follow these steps. It only takes 5 minutes.</p>

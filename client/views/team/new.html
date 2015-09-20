@@ -1,5 +1,11 @@
 <template name="tAddTeam">
-    {{#if currentUser}} {{#if checkIfTeamExists}} Team created {{else}}
+    <!-- check the user is logged in -->
+    {{#if currentUser}}
+    <!-- check that the team exists -->
+    {{#if checkIfTeamExists}}
+    <!-- if it exists show nothing  -->
+    {{else}}
+    <!-- show the add team form -->
     <div class="panel panel-default">
         <div class="panel-heading">
             <h3 class="panel-title">Team Info</h3>
@@ -39,5 +45,8 @@
             </form>
         </div>
     </div>
-    {{/if}} {{/if}}
+    <!-- end check teams if -->
+    {{/if}}
+    <!-- end currentUser if -->
+    {{/if}}
 </template>
