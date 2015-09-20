@@ -12,10 +12,7 @@ Template.tTeamRoster.helpers({
     if (Meteor.user()) {
       // grab all the players the user created (so we know it's their
       //   team)
-
-      return Players.find({
-        createdBy: Meteor.user()._id
-      });
+      return Players.find();
     } else {
       this.ready();
     }

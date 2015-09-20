@@ -9,9 +9,7 @@ Template.tAddPlayer.helpers({
   // show add player box if roster max is not reached
   maxPlayers: function() {
     if (Meteor.user()) {
-      var currentRosterCount = Players.find({
-        createdBy: Meteor.user()._id
-      }).count();
+      var currentRosterCount = Players.find().count();
 
       if (currentRosterCount >= 26) {
         return false;
@@ -22,9 +20,7 @@ Template.tAddPlayer.helpers({
   },
   // for first add player form need to add one to roster count
   rosterCountPlusOne: function() {
-    var currentRosterCount = Players.find({
-      createdBy: Meteor.user()._id
-    }).count();
+    var currentRosterCount = Players.find().count();
     return currentRosterCount + 1;
   }
 });
@@ -89,9 +85,7 @@ Template.tAddPlayer.events({
     elem.remove();
 
     // find out the current roster number
-    var currentRosterCount = Players.find({
-      createdBy: Meteor.user()._id
-    }).count();
+    var currentRosterCount = Players.find().count();
 
     // grab the roster form
     var myForm = document.getElementById("teamRosterForm");
