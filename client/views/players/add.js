@@ -30,9 +30,7 @@ Template.tAddPlayer.events({
   'click .add-player': function(evt, tmpl) {
     evt.preventDefault();
     // find out the current roster number
-    var currentRosterCount = Players.find({
-      createdBy: Meteor.user()._id
-    }).count();
+    var currentRosterCount = Players.find().count();
 
     // grab the roster form
     var myForm = document.getElementById("teamRosterForm");

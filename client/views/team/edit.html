@@ -1,0 +1,46 @@
+<template name="tEditTeam">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">{{cTeam.teamName}}</h3>
+    </div>
+    <div class="panel-body">
+
+      <h4>Update Your Team Info</h4>
+      <form id="editTeamForm">
+        <p>
+          <label class="sr-only">Team Name</label>
+          <input type="text" required class="form-control" placeholder="Team Name" name="teamName" value="{{cTeam.teamName}}">
+        </p>
+        <p>
+          <label class="sr-only">Coach Name</label>
+          <input type="text" class="form-control" placeholder="Coach Name" name="coachName" value="{{cTeam.coachName}}">
+        </p>
+        <p>
+          <label class="sr-only">Coach Email</label>
+          <input type="email" class="form-control" placeholder="Coach Email" name="coachEmail" value="{{cTeam.coachEmail}}">
+        </p>
+        <p>
+          <label class="sr-only">League Name</label>
+          <input type="text" class="form-control" placeholder="League Name" name="leagueName" value="{{cTeam.leagueName}}">
+        </p>
+        <p>
+          <label class="sr-only">Logo URL</label>
+          <input type="url" class="form-control" placeholder="URL to Logo" name="logoUrl" value="{{cTeam.logoUrl}}">
+        </p>
+
+        <p>
+          <label>Home Jersey Color</label>
+          <input type="color" class="form-control" placeholder="Home Color" name="homeJerseyColor" value="{{cTeam.homeJerseyColor}}">
+        </p>
+        <p>
+          <label>Away Jersey Color</label>
+          <input type="color" class="form-control" placeholder="Away Color" name="awayJerseyColor" value="{{cTeam.awayJerseyColor}}">
+        </p>
+        <button type="submit" class="btn btn-large btn-primary pull-right">Update</button>
+      </form>
+    </div>
+  </div>
+
+</template>
+

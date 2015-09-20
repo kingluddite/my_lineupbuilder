@@ -1,4 +1,20 @@
 <template name="tShowTeam">
-  this is the team page
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h3 class="panel-title">{{cTeam.teamName}}</h3>
+    </div>
+    <div class="panel-body">
+      <p>{{cTeam.teamName}}</p>
+      <p>{{cTeam.coachName}}</p>
+      <p>{{cTeam.coachEmail}}</p>
+      <p>{cTeam.leagueName}}</p>
+      <p>{{cTeam.logoUrl}}</p>
+      <p>{{cTeam.homeJerseyColor}}</p>
+      <p>{{cTeam.awayJerseyColor}}</p>
+      <a href="{{pathFor 'tEditTeam'}}">Edit Your Team Info</a>
+    </div>
+  </div>
+
 </template>
 
