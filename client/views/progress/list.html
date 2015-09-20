@@ -9,7 +9,8 @@
       <h4>Progress</h4>
       <ol>
         <li class="team-created">
-          {{#if teamCreatedStatus }} {{ teamCreatedStatus }} {{else}} Team Created {{/if}}
+          <!-- set link to team page by passing session of teamId -->
+          <a href="{{pathFor 'tShowTeam' _id=teamId}}">Team Created</a>
         </li>
         <li class="game-created">
           {{#if gameCreatedStatus }} {{ gameCreatedStatus }} {{else}} Game Created {{/if}}

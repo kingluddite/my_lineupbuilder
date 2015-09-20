@@ -19,6 +19,9 @@ Template.tProgress.helpers({
       $('.team-created').addClass('text-muted');
     }
   },
+  teamId: function() {
+    return Session.get('sTeamId');
+  },
   gameCreatedStatus: function() {
     if (!Session.get('sGameCreated')) {
       $('.game-created').html('<span> game Created</span>');
