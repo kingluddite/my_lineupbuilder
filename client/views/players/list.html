@@ -1,0 +1,25 @@
+<template name="tTeamRoster">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
+    </div>
+    <div class="panel-footer">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" class="roster-complete"> Roster Completed
+        </label>
+      </div>
+    </div>
+    <div class="panel-body">
+      <ol>
+        {{#each cPlayers}}
+        <li>{{> editableText collection="players" field="fullName"}}
+          <a class="remove" href="#"><i class="fa fa-trash fa-2"></i></a>
+        </li>
+        {{/each}}
+      </ol>
+    </div>
+
+  </div>
+</template>
+

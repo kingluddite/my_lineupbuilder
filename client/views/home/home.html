@@ -2,96 +2,40 @@
   <div class="container">
     <div class="row">
 
+      <!-- if user is logged in -->
+      {{#if currentUser }}
       <div class="col-sm-4 col-md-4">
-        {{#if currentUser }}
-
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
-          </div>
-          <div class="panel-footer">
-            <div class="checkbox">
-              <label>
-                <input type="checkbox" class="roster-complete"> Roster Completed
-              </label>
-            </div>
-          </div>
-          <div class="panel-body">
-            <ol>
-              {{#each cPlayers}}
-              <li>{{> editableText collection="players" field="fullName"}}
-                <a class="remove" href="#"><i class="fa fa-trash fa-2"></i></a>
-              </li>
-              {{/each}}
-            </ol>
-          </div>
-
-        </div>
-        {{/if}}
+        <!-- show user team they built with roster creator -->
+        {{> tTeamRoster}}
       </div>
       <div class="col-sm-5 col-md-5">
-        <!-- is user logged in -->
-        {{#if currentUser}}
         <!-- is roster completed -->
         {{#if rosterCompleted}}
         <!-- show nothing if it is completed -->
         {{else}}
         <!-- show the add player to roster form -->
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">Add Players To Roster</h3>
-          </div>
-          <div class="panel-body">
-            <div id="addPlayerStatus" class="alert alert-danger" role="alert"></div>
-            <form id="teamRosterForm">
-              {{#if maxPlayers}}
-
-              <label>Add Players To Your Roster</label>
-              <div class="team-roster">
-                <div class="form-group">
-                  <label class="sr-only">Player {{rosterCountPlusOne}}</label>
-                  <div class="input-group">
-                    <input type="text" required class="form-control" placeholder="Player {{rosterCountPlusOne}}" name="players[]">
-                    <div class="input-group-addon">
-                      <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <a class="add-player btn btn-default" role="button">Add Another Player</a>
-              <button type="submit" class="btn btn-large btn-success pull-right">Submit Players</button>
-
-              {{else}}
-              <div class="alert alert-danger" role="alert">You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</div>
-              {{/if}}
-            </form>
-          </div>
-        </div>{{/if}}
+        {{> tAddPlayer}}
+        <!-- end check for roster completed if -->
+        {{/if}}
         <!-- add form to add teams if no team exists -->
         {{> tAddTeam }}
         <!-- add form to add game if no game exists -->
         {{> tAddGame }}
-        <!-- if the user isn't logged in explain how the site works -->
-        {{else}}
-        <p>How do you create a soccer lineup?</p>
-        <p>Just follow these steps. It only takes 5 minutes.</p>
-        <ol>
-          <li>Login/Register</li>
-          <li>Add your Team Info</li>
-          <li>Add your Game Details</li>
-          <li>Create Your Roster</li>
-          <li>Choose Your Formation</li>
-          <li>Drag you players to their starting positions on the field</li>
-          <li>Drag your substitutes to the substitute list</li>
-          <li>Drag the players not playing to the not playing list</li>
-          <li>Share the link with your team.</li>
-        </ol>
-        {{/if}}
       </div>
       <div class="col-sm-3 col-md-3">
+        <!-- show user progress of their lineup creation -->
         {{> tProgress}}
       </div>
       <!-- END 3 column -->
+      <!-- if the user isn't logged in explain how the site works -->
+      {{else}}
+      <div class="col-sm-12 col-md-12">
+        <!-- show basic site info if user is not logged in -->
+        {{> tNotLoggedIn}}
+        <!-- end if for current user -->
+      </div>
+      <!-- end opening currentUser if -->
+      {{/if}}
     </div>
     <!-- END row -->
   </div>
