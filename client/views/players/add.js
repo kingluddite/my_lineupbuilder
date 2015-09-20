@@ -2,9 +2,10 @@
 var limit = 26;
 
 Template.tAddPlayer.helpers({
-  // rosterCompleted: function() {
-  //   return Session.get('sRosterComplete');
-  // },
+  rosterCompleted: function() {
+    return Session.get('sRosterComplete');
+  },
+
   // show add player box if roster max is not reached
   maxPlayers: function() {
     if (Meteor.user()) {
@@ -27,12 +28,6 @@ Template.tAddPlayer.helpers({
     return currentRosterCount + 1;
   }
 });
-
-// TODO - does not work all the time buggy
-// Template.tHome.rendered = function() {
-//   // when page loads hide the player add message box
-//   $('#addPlayerStatus').css('display', 'none');
-// };
 
 
 Template.tAddPlayer.events({

@@ -1,4 +1,8 @@
 <template name="tAddPlayer">
+  <!-- is roster completed -->
+  {{#if rosterCompleted}}
+  <!-- show nothing if it is completed -->
+  {{else}}
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Add Players To Roster</h3>
@@ -29,5 +33,7 @@
       </form>
     </div>
   </div>
+  <!-- end check for roster completed if -->
+  {{/if}}
 </template>
 

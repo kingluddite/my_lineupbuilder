@@ -9,14 +9,10 @@
         {{> tTeamRoster}}
       </div>
       <div class="col-sm-5 col-md-5">
-        <!-- is roster completed -->
-        {{#if rosterCompleted}}
-        <!-- show nothing if it is completed -->
-        {{else}}
+
         <!-- show the add player to roster form -->
         {{> tAddPlayer}}
-        <!-- end check for roster completed if -->
-        {{/if}}
+
         <!-- add form to add teams if no team exists -->
         {{> tAddTeam }}
         <!-- add form to add game if no game exists -->
