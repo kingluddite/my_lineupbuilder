@@ -7,7 +7,5 @@ Meteor.publish('current-team-roster', function() {
     }
     // limit: 10
   });
-
-  // return Players.find();
-
 });
+
