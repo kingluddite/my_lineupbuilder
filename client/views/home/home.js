@@ -29,6 +29,13 @@ Template.tHome.helpers({
             this.ready();
         }
     },
+    // just checking if sessions are persistent
+    showGameId: function() {
+        return Session.get("sGameId");
+    },
+    showTeamId: function() {
+        return Session.get("sTeamId");
+    },
     // show add player box if roster max is not reached
     maxPlayers: function() {
         if (Meteor.user()) {

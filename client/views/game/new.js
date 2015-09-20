@@ -29,6 +29,7 @@ Template.tAddGame.events({
         evt.preventDefault();
 
         var game = {
+            teamId: Session.get('sTeamId'),
             gameDate: $(evt.target).find('[name=gameDate]').val(),
             gameTime: $(evt.target).find('[name=gameTime]').val(),
             opponentName: $(evt.target).find('[name=opponentName]').val(),
@@ -40,6 +41,7 @@ Template.tAddGame.events({
             if (error) {
                 return alert(error.reason);
             }
+            Session.set('sGameId', id);
             $('.game-created').html('<i class="fa fa-check"></i> <span> Game Created</span>');
             $('.game-created span').css('text-decoration', 'line-through');
             $('.game-created').addClass('text-muted');
