@@ -41,7 +41,7 @@ Template.tAddTeam.events({
                 return alert(error.reason);
             }
             
-            Session.set('sTeamId', id);
+            Session.setPersistent('sTeamId', id);
             $('.team-created').html('<i class="fa fa-check"></i> <span> Team Created</span>');
             $('.team-created span').css('text-decoration', 'line-through');
             $('.team-created').addClass('text-muted');

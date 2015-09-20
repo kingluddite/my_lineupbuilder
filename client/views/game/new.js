@@ -41,7 +41,7 @@ Template.tAddGame.events({
             if (error) {
                 return alert(error.reason);
             }
-            Session.set('sGameId', id);
+            Session.setPersistent('sGameId', id);
             $('.game-created').html('<i class="fa fa-check"></i> <span> Game Created</span>');
             $('.game-created span').css('text-decoration', 'line-through');
             $('.game-created').addClass('text-muted');
