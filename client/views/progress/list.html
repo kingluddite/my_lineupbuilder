@@ -1,0 +1,30 @@
+<template name="tProgress">
+  {{#if currentUser}}
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">My Progress</h3>
+
+    </div>
+    <div class="panel-body">
+      <h4>Progress</h4>
+      <ol>
+        <li class="team-created">
+          {{#if teamCreatedStatus }} {{ teamCreatedStatus }} {{else}} Team Created {{/if}}
+        </li>
+        <li class="game-created">
+          {{#if gameCreatedStatus }} {{ gameCreatedStatus }} {{else}} Game Created {{/if}}
+        </li>
+        <li class="roster-created">
+          {{#if rosterCreatedStatus }} {{ rosterCreatedStatus }} {{else}} Roster Created {{/if}}
+        </li>
+        <li class="formation-chosen"><span>Formation Chosen</span></li>
+        <li class="starting-lineup-created"><span>Starting Lineup Created</span></li>
+        <li class="sub-list-created"><span>Substitution List Created</span></li>
+        <li class="not-playing-list-created"><span>Not Playing List Created</span></li>
+        <li class="ready-to-share"><span>Lineup Ready to Share</span></li>
+      </ol>
+    </div>
+  </div>
+  {{/if}}
+</template>
+
