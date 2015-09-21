@@ -1,3 +1,15 @@
+Template.tEditTeam.helpers({
+  // if there is a team return false
+  // so we can hide the add team form
+  cTeam: function() {
+    if (Meteor.user()) {
+      return Teams.findOne({
+        _id: Session.get('sTeamId')
+      });
+    }
+  }
+});
+
 Template.tEditTeam.events({
 
   'submit form#editTeamForm': function(evt) {
@@ -8,19 +20,22 @@ Template.tEditTeam.events({
     var teamProperties = {
       teamName: $(evt.target).find('[name=teamName]').val(),
       coachName: $(evt.target).find('[name=coachName]').val(),
-      coachEmail: Number($(evt.target).find('[name=coachEmail]').val()),
+      coachEmail: $(evt.target).find('[name=coachEmail]').val(),
       leagueName: $(evt.target).find('[name=leagueName]').val(),
-      logoUrl: Number($(evt.target).find('[name=logoUrl]').val()),
+      logoUrl: $(evt.target).find('[name=logoUrl]').val(),
       homeJerseyColor: $(evt.target).find('[name=homeJerseyColor]').val(),
-      awayJerseyColor: Number($(evt.target).find('[name=awayJerseyColor]').val())
+      awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val()
     };
 
     Teams.update(currentTeamId, {
       $set: teamProperties
-    }, function(error) {
+    }, function(error, id) {
       if (error) {
         return throwError(error.reason);
       }
+      Router.go('team.show', {
+        _id: currentTeamId
+      });
     });
   }
 });

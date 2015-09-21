@@ -1,4 +1,4 @@
-Template.tShowTeam.helpers({
+Template.TeamShow.helpers({
   // if there is a team return false
   // so we can hide the add team form
   cTeam: function() {
@@ -7,5 +7,8 @@ Template.tShowTeam.helpers({
         _id: Session.get('sTeamId')
       });
     }
+  },
+  teamId: function() {
+    return Session.get('sTeamId');
   }
 });

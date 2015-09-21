@@ -1,20 +1,30 @@
-<template name="tShowTeam">
-  <div class="panel panel-default">
-
-    <div class="panel-heading">
-      <h3 class="panel-title">{{cTeam.teamName}}</h3>
-    </div>
-    <div class="panel-body">
-      <p>{{cTeam.teamName}}</p>
-      <p>{{cTeam.coachName}}</p>
-      <p>{{cTeam.coachEmail}}</p>
-      <p>{cTeam.leagueName}}</p>
-      <p>{{cTeam.logoUrl}}</p>
-      <p>{{cTeam.homeJerseyColor}}</p>
-      <p>{{cTeam.awayJerseyColor}}</p>
-      <a href="{{pathFor 'tEditTeam'}}">Edit Your Team Info</a>
+<template name="TeamShow">
+  <div class="col-sm-6 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{cTeam.teamName}}</h3>
+      </div>
+      <div class="panel-body">
+        <p><strong>Team Name:</strong> {{cTeam.teamName}}</p>
+        <p><strong>Coach Name:</strong> {{cTeam.coachName}}</p>
+        <p><strong>Coach Email:</strong> {{cTeam.coachEmail}}</p>
+        <p><strong>League Name:</strong> {{cTeam.leagueName}}</p>
+        <p><img src="{{cTeam.logoUrl}}" alt="{{cTeam.teamName}} Logo"></p>
+        <p>{{cTeam.homeJerseyColor}}</p>
+        <p>{{cTeam.awayJerseyColor}}</p>
+        <a class="btn btn-default" href="{{pathFor 'tEditTeam' _id=teamId}}">Edit Your Team Info</a>
+      </div>
     </div>
   </div>
-
+  <div class="col-sm-6 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">Field Location</h3>
+      </div>
+      <div class="panel-body">
+        {{> Map}}
+      </div>
+    </div>
+  </div>
 </template>
 

@@ -10,7 +10,7 @@
       <ol>
         <li class="team-created">
           <!-- set link to team page by passing session of teamId -->
-          <a href="{{pathFor 'tShowTeam' _id=teamId}}">Team Created</a>
+          <a href="{{pathFor 'tEditTeam' _id=teamId}}">Team Created</a>
         </li>
         <li class="game-created">
           {{#if gameCreatedStatus }} {{ gameCreatedStatus }} {{else}} Game Created {{/if}}
