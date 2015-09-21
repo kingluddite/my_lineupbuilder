@@ -8,13 +8,13 @@
     <div class="panel-body">
       <h4>Progress</h4>
       <ol>
-        <li class="team-created">
-          <!-- set link to team page by passing session of teamId -->
-          <a href="{{pathFor 'TeamEdit' _id=teamId}}">Team Created</a>
-        </li>
-        <li class="game-created">
-          <a href="{{pathFor 'GameEdit' _id=gameId}}">Game Created</a>
-        </li>
+
+        <li>
+          {{#if teamId}}
+          <i class="fa fa-check"></i> <a href="{{pathFor 'TeamEdit' _id=teamId}}">Team Created <i class="fa fa-pencil-square-o"></i></a> {{else}}Team Created{{/if}}</li>
+        <li>
+          {{#if gameId}}
+          <i class="fa fa-check"></i> <a href="{{pathFor 'GameEdit' _id=gameId}}">Game Created <i class="fa fa-pencil-square-o"></i></a> {{else}}Game Created{{/if}}</li>
 
         <li class="roster-created">
           {{#if rosterCreatedStatus }} {{ rosterCreatedStatus }} {{else}} Roster Created {{/if}}
