@@ -42,7 +42,7 @@
         <p><strong>Coach Name:</strong> {{cTeam.coachName}}</p>
         <p><strong>Coach Email:</strong> {{cTeam.coachEmail}}</p>
         <p><strong>League Name:</strong> {{cTeam.leagueName}}</p>
-        <a class="btn btn-default" href="{{pathFor 'tEditTeam' _id=teamId}}">Edit Your Team Info</a>
+        <a class="btn btn-default" href="{{pathFor 'TeamEdit' _id=teamId}}">Edit Your Team Info</a>
       </div>
     </div>
   </div>
@@ -52,7 +52,7 @@
         <h3 class="panel-title">Field Location</h3>
       </div>
       <div class="panel-body">
-        {{> Map}}
+        <p><a class="btn btn-primary" href="{{pathFor 'Home'}}">All Team Info Is Correct</a></p>
       </div>
     </div>
   </div>

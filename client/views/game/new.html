@@ -13,7 +13,7 @@
     </div>
     <div class="panel-body">
 
-      <form id="addGameInfoForm">
+      <form id="addGameForm">
 
         <p class="form-group">
           <div class='input-group date date-picker'>
@@ -41,8 +41,12 @@
         </p>
         <p>
           <label class="sr-only">Google Maps URL</label>
-          <input type="url" class="form-control" placeholder="Google Map Link" name="directionsUrl">
+          <input type="url" class="form-control" placeholder="Google Map Link" name="fieldUrl">
         </p>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="homeTeam"> We are the Home Team</label>
+        </div>
         <button type="submit" class="btn btn-large btn-success pull-right">Submit Game Info</button>
       </form>
     </div>

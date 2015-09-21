@@ -30,10 +30,11 @@ Template.GameAdd.events({
       gameTime: $(evt.target).find('[name=gameTime]').val(),
       opponentName: $(evt.target).find('[name=opponentName]').val(),
       fieldName: $(evt.target).find('[name=fieldName]').val(),
-      directionsUrl: $(evt.target).find('[name=directionsUrl]').val()
+      fieldUrl: $(evt.target).find('[name=fieldUrl]').val(),
+      homeTeam: $(evt.target).find('[name=homeTeam]').val()
     };
 
-    Meteor.call('addGameInfo', game, function(error, id) {
+    Meteor.call('addGame', game, function(error, id) {
       if (error) {
         return alert(error.reason);
       }

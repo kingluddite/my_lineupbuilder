@@ -1,16 +1,16 @@
-<template name="EditGame">
+<template name="GameEdit">
   <div class="panel panel-default">
 
     <div class="panel-heading">
-      <h3 class="panel-title">Game Info</h3>
+      <h3 class="panel-title">Edit Game Info</h3>
     </div>
     <div class="panel-body">
 
-      <form id="editGameInfoForm">
+      <form id="editGameForm">
 
         <p class="form-group">
           <div class='input-group date date-picker'>
-            <input type="text" name="gameDate" required class="form-control" placeholder="01/01/2016" />
+            <input type="text" name="gameDate" required class="form-control" placeholder="01/01/2016" value="{{cGame.gameDate}}" />
             <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
             </span>
@@ -18,7 +18,7 @@
         </p>
         <p class="form-group">
           <div class='input-group date time-picker'>
-            <input type="text" name="gameTime" required class="form-control" placeholder="4:30pm" />
+            <input type="text" name="gameTime" required class="form-control" placeholder="4:30pm" value="{{cGame.gameTime}}" />
             <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
             </span>
@@ -26,17 +26,21 @@
         </p>
         <p>
           <label class="sr-only">Opponent Name</label>
-          <input type="text" required class="form-control" placeholder="Opponent Name" name="opponentName">
+          <input type="text" required class="form-control" placeholder="Opponent Name" name="opponentName" value="{{cGame.opponentName}}">
         </p>
         <p>
           <label class="sr-only">Field Name</label>
-          <input type="text" required class="form-control" placeholder="Field Name" name="fieldName">
+          <input type="text" required class="form-control" placeholder="Field Name" name="fieldName" value="{{cGame.fieldName}}">
         </p>
         <p>
           <label class="sr-only">Google Maps URL</label>
-          <input type="url" class="form-control" placeholder="Google Map Link" name="directionsUrl">
+          <input type="url" class="form-control" placeholder="Google Map Link" name="fieldUrl" value="{{cGame.fieldUrl}}">
         </p>
-        <button type="submit" class="btn btn-large btn-success pull-right">Submit Game Info</button>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="homeTeam" value="{{cGame.homeTeam}}"> We are the Home Team</label>
+        </div>
+        <button type="submit" class="btn btn-large btn-success pull-right">Update</button>
       </form>
     </div>
   </div>

@@ -1,0 +1,49 @@
+<template name="GameShow">
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">{{cGame.gameDate}} @ {{cGame.gameTime}}</h3>
+        </div>
+        <div class="panel-body">
+          VS {{cGame.opponentName}}
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Field Name</h3>
+        </div>
+        <div class="panel-body">
+          <a target="_blank" href="{{cGame.fieldUrl}}">{{cGame.fieldName}}</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Home</h3>
+        </div>
+        <div class="panel-body">
+          <p>We are the Home Team or We are the Away Team</p>
+          <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=gameId}}">Edit Your Team Info</a></p>
+        </div>
+      </div>
+      <p><a class="btn btn-primary" href="{{pathFor 'Home'}}">All Game Info Is Correct</a></p>
+    </div>
+
+    <div class="col-sm-6 col-md-6">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Field Location</h3>
+        </div>
+        <div class="panel-body">
+          {{> Map}}
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
