@@ -1,11 +1,4 @@
-<template name="GameAdd">
-  <!-- check the user is logged in -->
-  {{#if currentUser}}
-  <!-- check that the game info exists -->
-  {{#if checkIfGameExists}}
-  <!-- if game info exists show nothing  -->
-  {{else}}
-  <!-- show the add game info form -->
+<template name="EditGame">
   <div class="panel panel-default">
 
     <div class="panel-heading">
@@ -13,7 +6,7 @@
     </div>
     <div class="panel-body">
 
-      <form id="addGameInfoForm">
+      <form id="editGameInfoForm">
 
         <p class="form-group">
           <div class='input-group date date-picker'>
@@ -47,9 +40,5 @@
       </form>
     </div>
   </div>
-  <!-- end check game info if -->
-  {{/if}}
-  <!-- end currentUser if -->
-  {{/if}}
 </template>
 

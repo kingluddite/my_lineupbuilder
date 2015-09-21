@@ -1,4 +1,4 @@
-Template.tAddGame.rendered = function() {
+Template.GameAdd.rendered = function() {
   // $('#gameDatePicker').datepicker();
   this.$('.date-picker').datetimepicker();
   this.$('.time-picker').datetimepicker({
@@ -6,9 +6,7 @@ Template.tAddGame.rendered = function() {
   });
 };
 
-
-
-Template.tAddGame.helpers({
+Template.GameAdd.helpers({
   checkIfGameExists: function() {
     if (Meteor.user()) {
       var game = Games.find().count();
@@ -21,7 +19,7 @@ Template.tAddGame.helpers({
   }
 });
 
-Template.tAddGame.events({
+Template.GameAdd.events({
 
   'submit form#addGameInfoForm': function(evt) {
     evt.preventDefault();

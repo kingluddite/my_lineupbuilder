@@ -1,4 +1,4 @@
-<template name="tProgress">
+<template name="ProgressList">
   {{#if currentUser}}
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -10,11 +10,12 @@
       <ol>
         <li class="team-created">
           <!-- set link to team page by passing session of teamId -->
-          <a href="{{pathFor 'tEditTeam' _id=teamId}}">Team Created</a>
+          <a href="{{pathFor 'TeamEdit' _id=teamId}}">Team Created</a>
         </li>
         <li class="game-created">
-          {{#if gameCreatedStatus }} {{ gameCreatedStatus }} {{else}} Game Created {{/if}}
+          <a href="{{pathFor 'GameEdit' _id=gameId}}">Game Created</a>
         </li>
+
         <li class="roster-created">
           {{#if rosterCreatedStatus }} {{ rosterCreatedStatus }} {{else}} Roster Created {{/if}}
         </li>

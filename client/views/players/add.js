@@ -1,7 +1,7 @@
 // need to set the max number for a roster
 var limit = 26;
 
-Template.tAddPlayer.helpers({
+Template.PlayerAdd.helpers({
   rosterCompleted: function() {
     return Session.get('sRosterComplete');
   },
@@ -26,7 +26,7 @@ Template.tAddPlayer.helpers({
 });
 
 
-Template.tAddPlayer.events({
+Template.PlayerAdd.events({
   'click .add-player': function(evt, tmpl) {
     evt.preventDefault();
     // find out the current roster number

@@ -5,7 +5,7 @@ var removePlayer = function() {
   });
 };
 
-Template.tTeamRoster.helpers({
+Template.PlayerList.helpers({
   // grab all the players and provide collection for roster template
   cPlayers: function() {
     // only if the user is logged in
@@ -20,7 +20,7 @@ Template.tTeamRoster.helpers({
 });
 // coach completes his roster and lets us know
 //  visually we just add a checkbox, muted text and a line-through
-Template.tHome.events({
+Template.PlayerList.events({
   'click .roster-complete': function(evt, tmpl) {
     if (evt.target.checked) {
       Session.setPersistent("sRosterComplete", true);

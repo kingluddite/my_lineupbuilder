@@ -1,8 +1,4 @@
-Template.tAddTeam.rendered = function() {
-
-}
-
-Template.tAddTeam.helpers({
+Template.TeamAdd.helpers({
   // if there is a team return false
   // so we can hide the add team form
   checkIfTeamExists: function() {
@@ -17,7 +13,7 @@ Template.tAddTeam.helpers({
   }
 });
 
-Template.tAddTeam.events({
+Template.TeamAdd.events({
 
   // when add team form is submitted
   //  grab the form data and pass it to the server

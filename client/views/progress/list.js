@@ -1,12 +1,4 @@
-Template.tHome.rendered = function() {
-  // when page loads hide the player add message box
-  // Session.get('sTeamCreated');
-  // Session.get('sGameCreated');
-  // Session.get('sRosterComplete');
-
-};
-
-Template.tProgress.helpers({
+Template.ProgressList.helpers({
   teamCreatedStatus: function() {
     if (!Session.get('sGameCreated')) {
       $('.team-created').html('<span> Team Created</span>');

@@ -1,4 +1,4 @@
-Template.tEditTeam.helpers({
+Template.TeamEdit.helpers({
   // if there is a team return false
   // so we can hide the add team form
   cTeam: function() {
@@ -10,7 +10,7 @@ Template.tEditTeam.helpers({
   }
 });
 
-Template.tEditTeam.events({
+Template.TeamEdit.events({
 
   'submit form#editTeamForm': function(evt) {
     evt.preventDefault();
