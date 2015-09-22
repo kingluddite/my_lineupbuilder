@@ -1,0 +1,135 @@
+<template name="FormationList">
+  <div class="col-sm-5 col-md-5">
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">4-4-2</h4>
+        <p class="list-group-item-text">The strength you get is balance. You will get both a solid defense and attacks by the offense. The downside is the two center midfielders must be supported by the midfield. This is currently the most popular formation in soccer.</p>
+      </a>
+    </div>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">4-3-3</h4>
+        <p class="list-group-item-text">This formation gained fame by some of the great teams from the 1970s. The Netherlands and West Germany refer to this formation as the <strong>Total Soccer</strong> system.</p>
+      </a>
+    </div>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">3-4-3</h4>
+        <p class="list-group-item-text">This is an offensive formation with little thinking behind defensive. The downside is your team will be susceptible to counter attacks.</p>
+      </a>
+    </div>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">3-6-1</h4>
+        <p class="list-group-item-text">A complex formation that requires a lot of effort. If used improperly, the result could be devastating. If you don't believe me, ask anyone on the 1998 US Men's team. You're only going to have one forward so make sure he is ready to run.</p>
+      </a>
+    </div>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">3-4-2-1</h4>
+        <p class="list-group-item-text">This is a formation if you are in dire need of a goal or you just want to put massive pressure on the other team. The downside is you only have 3 defenders and you are highly vulnerable to counter attacks.</p>
+      </a>
+    </div>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">4-5-1</h4>
+        <p class="list-group-item-text">Highly Defensive. You have the lead and you just want to pack in the defensive and keep the ball out of the net. This is a very boring formation to watch for fans but if a coach needs a result, this is formation that can get the result he needs.</p>
+      </a>
+    </div>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">5-2-2-1</h4>
+        <p class="list-group-item-text">A variation on a highly defensive strategy. It's like putting up an iron curtain on your defense.</p>
+      </a>
+    </div>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">4-3-3</h4>
+        <p class="list-group-item-text">This is the Triangular Midfield popularized by Italy. If you want to give your wingers a workout, this is the formation that will give them the workout of their lives.</p>
+      </a>
+    </div>
+    <div class="list-group">
+      <a href="#" class="list-group-item active">
+        <h4 class="list-group-item-heading">3-5-2</h4>
+        <p class="list-group-item-text">Germany won the 1990 World Cup using this formation. Also known as 'The Modern Formation'.</p>
+      </a>
+    </div>
+  </div>
+  <div class="col-sm-5 col-md-5">
+
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+        <h3 class="panel-title">Formation</h3>
+      </div>
+      <div class="panel-body">
+        <h5>Choose a Formation</h5>
+        <p><em>Descriptions of each formation are on the left.</em></p>
+        <form id="updateFormation">
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="4-4-2" checked> 4-4-2
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios2" value="4-3-3-flat"> 4-3-3
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios3" value="3-4-3"> 3-4-3
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios3" value="3-6-1"> 3-6-1
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios3" value="3-4-2-1"> 3-4-2-1
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios3" value="4-5-1"> 4-5-1
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios3" value="5-2-2-1"> 5-2-2-1
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios3" value="4-3-3-tri"> 4-3-3
+            </label>
+          </div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios3" value="3-5-2"> 3-5-2
+            </label>
+          </div>
+          <button type="submit" class="btn btn-large btn-success pull-right">Update Formation</button>
+        </form>
+      </div>
+    </div>
+    <div class="field frm-4-4-2">
+      <div id="goalie" class="draggable"><img src="/img/goalie_jersey.png" alt="goalie"></div>
+      <div id="player01" class="draggable"></div>
+      <div id="player02" class="draggable"></div>
+      <div id="player03" class="draggable"></div>
+      <div id="player04" class="draggable"></div>
+      <div id="player05" class="draggable"></div>
+      <div id="player06" class="draggable"></div>
+      <div id="player07" class="draggable"></div>
+      <div id="player08" class="draggable"></div>
+      <div id="player09" class="draggable"></div>
+      <div id="player10" class="draggable"></div>
+    </div>
+
+  </div>
+</template>
+
