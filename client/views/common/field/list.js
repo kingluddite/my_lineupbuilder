@@ -1,13 +1,14 @@
 Template.FieldList.rendered = function() {
   $('.draggable').draggable();
   $('.droppable').droppable({
-    // drop: function(event, ui) {
-    //   $(this)
-    //     .addClass('ui-state-highlight')
-    //     .find('p')
-    //     .html('dropped');
-    //   console.log(ui);
-    // }
+    drop: function(event, ui) {
+      $(this)
+        .addClass('ui-state-highlight')
+        .find('p')
+        .html('dropped');
+      console.log(ui);
+    }
+
 
   });
 };

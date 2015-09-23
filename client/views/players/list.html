@@ -24,3 +24,20 @@
   </div>
 </template>
 
+<template name="PlayerPlainList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
+    </div>
+    <div class="panel-body">
+      <ol>
+        {{#each cPlayers}}
+        <li><span class="draggable">{{fullName}}</span></li>
+        {{/each}}
+      </ol>
+    </div>
+
+  </div>
+</template>
+
