@@ -1,3 +1,7 @@
+Template.GameShow.rendered = function() {
+  $("[data-toggle=tooltip]").tooltip();
+}
+
 Template.GameShow.helpers({
   // if there is a team return false
   // so we can hide the add team form
