@@ -19,7 +19,10 @@
         </p>
         <p>
           <label class="sr-only">Coach Email</label>
-          <input type="email" class="form-control" placeholder="Coach Email" name="coachEmail" value="{{cTeam.coachEmail}}">
+          <div class="input-group">
+            <span class="input-group-addon">@</span>
+            <input type="email" class="form-control" placeholder="Coach Email" name="coachEmail" value="{{cTeam.coachEmail}}">
+          </div>
         </p>
         <p>
           <label class="sr-only">League Name</label>
@@ -27,7 +30,10 @@
         </p>
         <p>
           <label class="sr-only">Logo URL</label>
-          <input type="url" class="form-control" placeholder="URL to Logo" name="logoUrl" value="{{cTeam.logoUrl}}">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-link"></i></span>
+            <input type="url" class="form-control" placeholder="URL to Logo" name="logoUrl" value="{{cTeam.logoUrl}}">
+          </div>
         </p>
 
         <p>
