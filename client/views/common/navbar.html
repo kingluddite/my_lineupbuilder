@@ -12,14 +12,18 @@
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
+      {{#if currentUser}}
       <ul class="nav navbar-nav">
         <li><a href="/"><i class="fa fa-home"></i></a></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Progess <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            {{#if teamId}}
             <li><a href="{{pathFor 'TeamEdit' _id=teamId}}">My Team</a></li>
+            {{/if}} {{#if gameId}}
             <li><a href="{{pathFor 'GameEdit' _id=gameId}}">My Game</a></li>
-            <li><a href="#">My Roster</a></li>
+            {{/if}}
+            <li><a href="{{pathFor 'PlayerList'}}">My Roster</a></li>
             <li><a href="{{pathFor 'FormationList'}}">My Formation</a></li>
             <li><a href="#">My Starters</a></li>
             <li><a href="#">My Subs</a></li>
@@ -28,6 +32,7 @@
           </ul>
         </li>
       </ul>
+      {{/if}}
       <ul class="nav navbar-nav navbar-right">
         {{> loginButtons}}
       </ul>
