@@ -1,32 +1,42 @@
 <template name="ProgressList">
-  {{#if currentUser}}
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">My Progress</h3>
-    </div>
-    <div class="panel-body">
-      <h4>Progress</h4>
-      <ol>
+    {{#if currentUser}}{{gameId}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            <h3 class="panel-title">My Progress</h3>
+        </div>
+        <div class="panel-body">
+            <h4>Progress</h4>
+            <ol>
 
-        <li>
-          {{#if teamId}}
-          <i class="fa fa-check"></i> <a href="{{pathFor 'TeamEdit' _id=teamId}}">Team Created <i class="fa fa-pencil-square-o"></i></a> {{else}}Team Created{{/if}}</li>
-        <li>
-          {{#if gameId}}
-          <i class="fa fa-check"></i> <a href="{{pathFor 'GameEdit' _id=gameId}}">Game Created <i class="fa fa-pencil-square-o"></i></a> {{else}}Game Created{{/if}}</li>
+                <li>
+                    <!-- if team has session id show this option -->
+                    {{#if teamId}}
+                    <i class="fa fa-check"></i> <a href="{{pathFor 'TeamEdit' _id=teamId}}">Team Created <i class="fa fa-pencil-square-o"></i></a>
+                    <!-- no id means the team needs to be created -->
+                    {{else}}<a href="{{pathFor 'TeamNew'}}">Create Team</a>
+                    <!-- end if -->
+                    {{/if}}
+                </li>
+                <li>
+                    <!-- if there is a game id session show this link -->
+                    {{#if gameId}}
+                    <i class="fa fa-check"></i> <a href="{{pathFor 'GameEdit' _id=gameId}}">Game Created <i class="fa fa-pencil-square-o"></i></a>
+                    <!-- if there is no id the game needs to be created -->
+                    {{else}}<a href="{{pathFor 'GameNew'}}">Create Game</a>
+                    <!-- end the if -->
+                    {{/if}}</li>
 
-        <li class="roster-created">
-          {{#if rosterCreatedStatus }} {{ rosterCreatedStatus }} {{else}} Roster Created {{/if}}
-        </li>
-        <li class="formation-chosen"><span>Formation Chosen</span></li>
-        <li class="starting-lineup-created"><span>Starting Lineup Created</span></li>
-        <li class="sub-list-created"><span>Substitution List Created</span></li>
-        <li class="not-playing-list-created"><span>Not Playing List Created</span></li>
-        <li class="ready-to-share"><span>Lineup Ready to Share</span></li>
-      </ol>
+                <li class="roster-created">
+                    {{#if rosterCreatedStatus }} {{ rosterCreatedStatus }} {{else}} Roster Created {{/if}}
+                </li>
+                <li class="formation-chosen">{{#if formationChosen}} Formation Chosen {{else}} <a href="{{pathFor 'FormationNew'}}">Choose Formation</a> {{/if}}</li>
+                <li class="starting-lineup-created"><span>Starting Lineup Created</span></li>
+                <li class="sub-list-created"><span>Substitution List Created</span></li>
+                <li class="not-playing-list-created"><span>Not Playing List Created</span></li>
+                <li class="ready-to-share"><span>Lineup Ready to Share</span></li>
+            </ol>
+        </div>
     </div>
-  </div>
-  {{/if}}
+    {{/if}}
 </template>
-

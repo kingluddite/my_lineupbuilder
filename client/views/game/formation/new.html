@@ -1,0 +1,62 @@
+<template name="FormationNew">
+    <div class="panel panel-default">
+
+        <div class="panel-heading">
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            <h3 class="panel-title">Formation</h3>
+        </div>
+        <div class="panel-body">
+            <h5>Choose a Formation</h5>
+            <p><em>Descriptions of each formation are on the left.</em></p>
+            <form id="newFormation">
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="formation_options_radio" value="4-4-2" checked> 4-4-2
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="formation_options_radio" value="4-3-3-flat"> 4-3-3
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="formation_options_radio" value="3-4-3"> 3-4-3
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="formation_options_radio" value="3-6-1"> 3-6-1
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="formation_options_radio" value="3-4-2-1"> 3-4-2-1
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="formation_options_radio" value="4-5-1"> 4-5-1
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="formation_options_radio" value="5-2-2-1"> 5-2-2-1
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="formation_options_radio" value="4-3-3-tri"> 4-3-3
+                    </label>
+                </div>
+                <div class="radio">
+                    <label>
+                        <input type="radio" name="formation_options_radio" value="3-5-2"> 3-5-2
+                    </label>
+                </div>
+                <button type="submit" class="btn btn-large btn-success pull-right">Update Formation</button>
+            </form>
+        </div>
+    </div>
+    {{> FieldList}}
+</template>

@@ -1,43 +1,43 @@
 <template name="PlayerList">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
-    </div>
-    <div class="panel-footer">
-      <div class="checkbox">
-        <label>
-          <input type="checkbox" class="roster-complete"> Roster Completed
-        </label>
-      </div>
-    </div>
-    <div class="panel-body">
-      <ol>
-        {{#each cPlayers}}
-        <li>{{> editableText collection="players" field="fullName"}}
-          <a class="remove" href="#"><i class="fa fa-trash fa-2"></i></a>
-        </li>
-        {{/each}}
-      </ol>
-    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
+        </div>
+        <div class="panel-footer">
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" class="roster-complete"> Roster Completed
+                </label>
+            </div>
+        </div>
+        <div class="panel-body">
+            <ol>
+                {{#each cPlayers}}
+                <li>{{> editableText collection="players" field="fullName"}}
+                    <a class="remove" href="#"><i class="fa fa-trash fa-2"></i></a>
+                </li>
+                {{/each}}
+            </ol>
+        </div>
 
-  </div>
+    </div>
 </template>
 
+<!-- this is just a roster with just player names that we can drag and drop -->
 <template name="PlayerPlainList">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
-    </div>
-    <div class="panel-body">
-      <ol>
-        {{#each cPlayers}}
-        <li><span class="draggable">{{fullName}}</span></li>
-        {{/each}}
-      </ol>
-    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
+        </div>
+        <div class="panel-body">
+            <ol>
+                {{#each cPlayers}}
+                <li><span class="draggable">{{fullName}}</span></li>
+                {{/each}}
+            </ol>
+        </div>
 
-  </div>
+    </div>
 </template>
-

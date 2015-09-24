@@ -1,40 +1,39 @@
 <template name="Home">
-  <div class="container">
-    <div class="row">
-      <!-- if user is logged in -->
-      {{#if currentUser }}
-      <div class="col-sm-4 col-md-4">
-        <!-- show user team they built with roster creator -->
-        {{> PlayerList}}
-      </div>
-      <div class="col-sm-5 col-md-5">
+    <div class="container">
+        <div class="row">
+            <!-- if user is logged in -->
+            {{#if currentUser }}
+            <div class="col-sm-4 col-md-4">
+                <!-- show user team they built with roster creator -->
+                {{> PlayerList}}
+            </div>
+            <div class="col-sm-5 col-md-5">
 
-        <!-- show the add player to roster form -->
-        {{> PlayerAdd}}
+                <!-- show the add player to roster form -->
+                {{#if sRosterComplete}} Roster Complete {{else}} {{> PlayerNew}} {{/if}}
 
-        <!-- add form to add teams if no team exists -->
-        {{> TeamAdd }}
-        <!-- add form to add game if no game exists -->
-        {{> GameAdd }}
-      </div>
-      <div class="col-sm-3 col-md-3">
-        <!-- show user progress of their lineup creation -->
-        {{> ProgressList}}
-      </div>
-      <!-- END 3 column -->
-      <!-- if the user isn't logged in explain how the site works -->
-      {{else}}
-      <div class="col-sm-12 col-md-12">
-        <!-- show basic site info if user is not logged in -->
-        {{> NotLoggedIn}}
-        <!-- end if for current user -->
-      </div>
-      <!-- end opening currentUser if -->
-      {{/if}}
+                <!-- add form to add teams if no team exists -->
+                {{#if sTeamId }} {{> TeamNew }} {{/if}}
+                <!-- add form to add game if no game exists -->
+                {{#if sGameId}} {{> GameNew }} {{/if}}
+            </div>
+            <div class="col-sm-3 col-md-3">
+                <!-- show user progress of their lineup creation -->
+                {{> ProgressList}}
+            </div>
+            <!-- END 3 column -->
+            <!-- if the user isn't logged in explain how the site works -->
+            {{else}}
+            <div class="col-sm-12 col-md-12">
+                <!-- show basic site info if user is not logged in -->
+                {{> NotLoggedIn}}
+                <!-- end if for current user -->
+            </div>
+            <!-- end opening currentUser if -->
+            {{/if}}
+        </div>
+
+        <!-- END row -->
     </div>
-
-    <!-- END row -->
-  </div>
-  <!-- END .container -->
+    <!-- END .container -->
 </template>
-

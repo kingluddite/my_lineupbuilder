@@ -1,57 +1,56 @@
-<template name="TeamAdd">
-  <!-- check the user is logged in -->
-  {{#if currentUser}}
-  <!-- check that the team exists -->
-  {{#if checkIfTeamExists}}
-  <!-- if it exists show nothing  -->
-  {{else}}
-  <!-- show the add team form -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">Team Info</h3>
-    </div>
-    <div class="panel-body">
-      <form id="addTeamForm">
-        <p>
-          <label class="sr-only">Team Name</label>
-          <input type="text" required class="form-control" placeholder="Team Name" name="teamName">
-        </p>
-        <p>
-          <label class="sr-only">Coach Name</label>
-          <input type="text" class="form-control" placeholder="Coach Name" name="coachName">
-        </p>
-        <p>
-          <label class="sr-only">Coach Email</label>
-          <div class="input-group">
-            <span class="input-group-addon">@</span>
-            <input type="email" class="form-control" placeholder="Coach Email" name="coachEmail">
-          </div>
-        </p>
-        <p>
-          <label class="sr-only">League Name</label>
-          <input type="text" class="form-control" placeholder="League Name" name="leagueName">
-        </p>
-        <p>
-          <label class="sr-only">Logo URL</label>
-          <input type="url" class="form-control" placeholder="URL to Logo" name="logoUrl">
-        </p>
+<template name="TeamNew">
+    <!-- check the user is logged in -->
+    {{#if currentUser}}
+    <!-- check that the team exists -->
+    {{#if checkIfTeamExists}}
+    <!-- if it exists show nothing  -->
+    {{else}}
+    <!-- show the add team form -->
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            <h3 class="panel-title">Team Info</h3>
+        </div>
+        <div class="panel-body">
+            <form id="newTeamForm">
+                <p>
+                    <label class="sr-only">Team Name</label>
+                    <input type="text" required class="form-control" placeholder="Team Name" name="teamName">
+                </p>
+                <p>
+                    <label class="sr-only">Coach Name</label>
+                    <input type="text" class="form-control" placeholder="Coach Name" name="coachName">
+                </p>
+                <p>
+                    <label class="sr-only">Coach Email</label>
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        <input type="email" class="form-control" placeholder="Coach Email" name="coachEmail">
+                    </div>
+                </p>
+                <p>
+                    <label class="sr-only">League Name</label>
+                    <input type="text" class="form-control" placeholder="League Name" name="leagueName">
+                </p>
+                <p>
+                    <label class="sr-only">Logo URL</label>
+                    <input type="url" class="form-control" placeholder="URL to Logo" name="logoUrl">
+                </p>
 
-        <p>
-          <label>Home Jersey Color</label>
-          <input type="color" class="form-control" placeholder="Home Color" name="homeJerseyColor" value="white">
-        </p>
-        <p>
-          <label>Away Jersey Color</label>
-          <input type="color" class="form-control" placeholder="Away Color" name="awayJerseyColor">
-        </p>
-        <button type="submit" class="btn btn-large btn-success pull-right">Submit Team Info</button>
-      </form>
+                <p>
+                    <label>Home Jersey Color</label>
+                    <input type="color" class="form-control" placeholder="Home Color" name="homeJerseyColor" value="white">
+                </p>
+                <p>
+                    <label>Away Jersey Color</label>
+                    <input type="color" class="form-control" placeholder="Away Color" name="awayJerseyColor">
+                </p>
+                <button type="submit" class="btn btn-large btn-success pull-right">Submit Team Info</button>
+            </form>
+        </div>
     </div>
-  </div>
-  <!-- end check teams if -->
-  {{/if}}
-  <!-- end currentUser if -->
-  {{/if}}
+    <!-- end check teams if -->
+    {{/if}}
+    <!-- end currentUser if -->
+    {{/if}}
 </template>
-
