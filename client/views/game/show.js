@@ -12,7 +12,7 @@ Template.GameShow.helpers({
       });
     }
   },
-  gameId: function() {
+  sGameId: function() {
     return Session.get('sGameId');
   }
 });

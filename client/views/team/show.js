@@ -8,7 +8,7 @@ Template.TeamShow.helpers({
       });
     }
   },
-  teamId: function() {
+  sTeamId: function() {
     return Session.get('sTeamId');
   }
 });

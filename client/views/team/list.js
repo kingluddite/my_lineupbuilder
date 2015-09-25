@@ -28,7 +28,7 @@ Template.TeamList.events({
 
     if (confirm("Delete this team?")) {
       Session.set('sTeamId', this._id);
-      removePlayer();
+      removeTeam();
       Session.set('sTeamId', null);
     }
   }

@@ -35,8 +35,10 @@ Template.GameNew.events({
   'submit form#newGameForm': function(evt) {
     evt.preventDefault();
 
+    var currentTeamId = Session.get('sTeamId');
+
     var game = {
-      teamId: Session.get('sTeamId'),
+      teamId: currentTeamId,
       gameDate: $(evt.target).find('[name=gameDate]').val(),
       gameTime: $(evt.target).find('[name=gameTime]').val(),
       opponentName: $(evt.target).find('[name=opponentName]').val(),
