@@ -7,11 +7,6 @@ Template.GameEdit.helpers({
         _id: Session.get('sGameId')
       });
     }
-  },
-  isHomeTeam: function() {
-    return Games.findOne({
-      homeTeam: 'on'
-    }) === undefined ? false : 'checked'
   }
 
 

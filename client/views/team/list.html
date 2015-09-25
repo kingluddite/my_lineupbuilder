@@ -1,0 +1,22 @@
+<template name="TeamList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">My Teams <span class="badge">{{cTeams.count}}</span></h3>
+    </div>
+    <div class="panel-footer">
+    </div>
+    <div class="panel-body">
+      <ol>
+        {{#each cTeams}}
+        <li>
+          <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
+          <a class="remove"><i class="fa fa-trash fa-2"></i></a>
+        </li>
+        {{/each}}
+      </ol>
+    </div>
+
+  </div>
+</template>
+

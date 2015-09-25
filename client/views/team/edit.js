@@ -33,7 +33,7 @@ Template.TeamEdit.events({
       if (error) {
         return throwError(error.reason);
       }
-      Router.go('team.show', {
+      Router.go('TeamShow', {
         _id: currentTeamId
       });
     });

@@ -12,26 +12,21 @@ Template.PlayerList.helpers({
     if (Meteor.user()) {
       // grab all the players the user created (so we know it's their
       //   team)
-      return Players.find();
+      return Players.find({}, {
+        // sort them alphabetically
+        sort: {
+          fullName: 1
+        }
+      });
     } else {
       this.ready();
     }
+  },
+  sGameId: function() {
+    return Session.get('sGameId');
   }
 });
 
-Template.PlayerPlainList.helpers({
-  // grab all the players and provide collection for roster template
-  cPlayers: function() {
-    // only if the user is logged in
-    if (Meteor.user()) {
-      // grab all the players the user created (so we know it's their
-      //   team)
-      return Players.find();
-    } else {
-      this.ready();
-    }
-  }
-});
 // coach completes his roster and lets us know
 //  visually we just add a checkbox, muted text and a line-through
 Template.PlayerList.events({
@@ -54,6 +49,20 @@ Template.PlayerList.events({
     }
     if (playerCount <= 26) {
       $("#teamRoster").show();
+    }
+  }
+});
+
+Template.PlayerPlainList.helpers({
+  // grab all the players and provide collection for roster template
+  cPlayers: function() {
+    // only if the user is logged in
+    if (Meteor.user()) {
+      // grab all the players the user created (so we know it's their
+      //   team)
+      return Players.find();
+    } else {
+      this.ready();
     }
   }
 });
