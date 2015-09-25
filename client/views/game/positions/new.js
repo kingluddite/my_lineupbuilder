@@ -44,10 +44,10 @@ Template.PositionNew.events({
       player09: {
         fieldPosition: $(evt.target).find('[name=player09]').val()
       },
-      player09: {
+      player10: {
         fieldPosition: $(evt.target).find('[name=player10]').val()
       },
-      player10: {
+      player11: {
         fieldPosition: $(evt.target).find('[name=player11]').val()
       }
     };

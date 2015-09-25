@@ -54,7 +54,7 @@ Template.GameEdit.events({
       if (error) {
         return throwError(error.reason);
       }
-      Router.go('game.show', {
+      Router.go('GameShow', {
         _id: currentGameId
       });
     });
