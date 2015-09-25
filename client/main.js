@@ -10,24 +10,24 @@ Session.setDefaultPersistent("sGameCreated", false);
 Session.setDefaultPersistent("sRosterComplete", false);
 Session.setDefaultPersistent("sFormationCreated", false);
 Session.setDefaultPersistent("sFormationChosen", false);
-Session.setDefaultPersistent("sPositionsNamed", false);
+Session.setDefaultPersistent("sPositionsSet", false);
 Session.setDefaultPersistent("sStartersChosen", false);
 Session.setDefaultPersistent("sSubsChosen", false);
 Session.setDefaultPersistent("sNotPlayingChosen", false);
 
 Template.body.events({
-    'click .panel-heading span.clickable': function(evt) {
-        // console.log('works');
-        if ($(this).hasClass('panel-collapsed')) {
-            // expand the panel
-            $(this).parents('.panel').find('.panel-body').slideDown();
-            $(this).removeClass('panel-collapsed');
-            $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-        } else {
-            // collapse the panel
-            $(this).parents('.panel').find('.panel-body').slideUp();
-            $(this).addClass('panel-collapsed');
-            $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-        }
+  'click .panel-heading span.clickable': function(evt) {
+    // console.log('works');
+    if ($(this).hasClass('panel-collapsed')) {
+      // expand the panel
+      $(this).parents('.panel').find('.panel-body').slideDown();
+      $(this).removeClass('panel-collapsed');
+      $(this).find('i').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+    } else {
+      // collapse the panel
+      $(this).parents('.panel').find('.panel-body').slideUp();
+      $(this).addClass('panel-collapsed');
+      $(this).find('i').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
     }
+  }
 });

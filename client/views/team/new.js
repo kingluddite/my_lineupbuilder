@@ -20,7 +20,8 @@ Template.TeamNew.events({
   'submit form#newTeamForm': function(evt) {
     evt.preventDefault();
 
-    var team = {
+    var team
+ = {
       teamName: $(evt.target).find('[name=teamName]').val(),
       coachName: $(evt.target).find('[name=coachName]').val(),
       coachEmail: $(evt.target).find('[name=coachEmail]').val(),
