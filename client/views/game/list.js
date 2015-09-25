@@ -37,5 +37,8 @@ Template.GameList.events({
       removeGame();
       Session.set('sGameId', null);
     }
+  },
+  'click .game-list a': function(evt, tmpl) {
+    Session.set('sGameId', this._id);
   }
 });
