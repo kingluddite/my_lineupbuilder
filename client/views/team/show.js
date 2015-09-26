@@ -7,6 +7,7 @@ Template.TeamShow.helpers({
         _id: Session.get('sTeamId')
       });
     }
+
   },
   sTeamId: function() {
     return Session.get('sTeamId');

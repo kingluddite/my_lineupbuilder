@@ -31,5 +31,10 @@ Template.TeamList.events({
       removeTeam();
       Session.set('sTeamId', null);
     }
+  },
+  // when person clicks to enter their team
+  // set that team id as the current session
+  'click .team-list a': function(evt, tmpl) {
+    Session.set('sTeamId', this._id);
   }
 });
