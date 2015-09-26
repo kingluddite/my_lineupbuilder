@@ -79,8 +79,8 @@ Template.PositionEdit.events({
     }
 
     // we update client side
-    Games.update(currentGameId, {, set the position session created
-      //  for better tracking later in the process
+    Games.update(currentGameId, {
+      // pass all our position data to update collection
       $set: allGamePositions
     }, function(error, id) {
       if (error) {
