@@ -8,7 +8,19 @@ Template.PositionEdit.helpers({
       });
     }
   },
-  gameId: function() {
+  cGamePos: function() {
+    if (Meteor.user()) {
+
+      var myPosition = Games.findOne({
+        _id: Session.get('sGameId')
+      });
+      var currPosInfo = myPosition.playerGameInfo[0];
+      return currPosInfo;
+    }
+
+  },
+
+  sGameId: function() {
     return Session.get('sGameId');
   }
 });
