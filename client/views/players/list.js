@@ -53,6 +53,11 @@ Template.PlayerList.events({
   }
 });
 
+Template.PlayerPlainList.rendered = function(evt, template) {
+  // don't think I need this
+};
+
+
 Template.PlayerPlainList.helpers({
   // grab all the players and provide collection for roster template
   cPlayers: function() {

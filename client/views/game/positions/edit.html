@@ -1,41 +1,47 @@
 <template name="PositionEdit">
-  <h3>Update Position Names</h3>
-  <div class="field frm-4-4-2">
-    <form id="editPositionForm">
-      <div id="player01"><img src="/img/goalie_jersey.png" alt="goalie"></div>
-      <div id="player02">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player02" value="{{cGame.playerGameInfo.player02.fieldPosition}}">
-      </div>
-      <div id="player03">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player02" value="{{cGame.playerGameInfo.player03.fieldPosition}}">
-      </div>
-      <div id="player04">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player03" value="{{cGame.playerGameInfo.player04.fieldPosition}}">
-      </div>
-      <div id="player05">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player04" value="{{cGame.playerGameInfo.player05.fieldPosition}}">
-      </div>
-      <div id="player06">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player05" value="{{cGame.playerGameInfo.player06.fieldPosition}}">
-      </div>
-      <div id="player07">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player06" value="{{cGame.playerGameInfo.player07.fieldPosition}}">
-      </div>
-      <div id="player08">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player07" value="{{cGame.playerGameInfo.player08.fieldPosition}}">
-      </div>
-      <div id="player09">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player08" value="{{cGame.playerGameInfo.player09.fieldPosition}}">
-      </div>
-      <div id="player10">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player09" value="{{cGame.playerGameInfo.player10.fieldPosition}}">
-      </div>
-      <div id="player11">
-        <input type="text" required class="form-control" placeholder="Position Name" name="player10" value="{{cGame.playerGameInfo.player11.fieldPosition}}">
-      </div>
-      <button type="submit" class="btn btn-large btn-success pull-right">Update Positions</button>
-    </form>
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <h3>Update Position Names</h3>
+      <form id="editPositionForm">
+        <button type="submit" class="btn btn-large btn-success pull-right">Update Positions</button>
+        <br>
+        <br>
+        <div class="field frm-{{cGame.myFormation}}">
+          <div id="player01"><img src="/img/goalie_jersey.png" alt="goalie"></div>
+          <div id="player02">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player02" value="{{cGame.playerGameInfo.player02.fieldPosition}}">
+          </div>
+          <div id="player03">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player03" value="{{cGame.playerGameInfo.player03.fieldPosition}}">
+          </div>
+          <div id="player04">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player04" value="{{cGame.playerGameInfo.player04.fieldPosition}}">
+          </div>
+          <div id="player05">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player05" value="{{cGame.playerGameInfo.player05.fieldPosition}}">
+          </div>
+          <div id="player06">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player06" value="{{cGame.playerGameInfo.player06.fieldPosition}}">
+          </div>
+          <div id="player07">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player07" value="{{cGame.playerGameInfo.player07.fieldPosition}}">
+          </div>
+          <div id="player08">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player08" value="{{cGame.playerGameInfo.player08.fieldPosition}}">
+          </div>
+          <div id="player09">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player09" value="{{cGame.playerGameInfo.player09.fieldPosition}}">
+          </div>
+          <div id="player10">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player10" value="{{cGame.playerGameInfo.player10.fieldPosition}}">
+          </div>
+          <div id="player11">
+            <input type="text" required class="form-control" placeholder="Position Name" name="player11" value="{{cGame.playerGameInfo.player11.fieldPosition}}">
+          </div>
+        </div>
+      </form>
 
+    </div>
   </div>
 </template>
 

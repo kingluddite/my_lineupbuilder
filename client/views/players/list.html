@@ -38,10 +38,10 @@
       <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
     </div>
     <div class="panel-body">
-      <ol>
-        {{#each cPlayers}}
-        <li><span class="draggable">{{fullName}}</span></li>
-        {{/each}}
+      <ol class="roster">
+        {{#if cPlayers.count}} {{#each cPlayers}} {{> PlayerItem}} {{/each}} {{else}}
+        <li><a href="{{PlayerAdd}}">Add Some Players</a></li>
+        {{/if}}
       </ol>
     </div>
 

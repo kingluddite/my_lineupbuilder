@@ -64,7 +64,7 @@ Template.PositionNew.events({
         return throwError(error.reason);
       }
       Session.setPersistent('sPositionsSet', true);
-      Router.go('game.show', {
+      Router.go('GameShow', {
         _id: currentGameId
       });
     });
