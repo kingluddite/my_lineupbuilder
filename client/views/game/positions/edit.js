@@ -15,18 +15,20 @@ Template.PositionEdit.helpers({
 
 Template.PositionEdit.events({
 
-  // when add team form is submitted
-  //  grab the form data and pass it to the server
+  //  grab the field position data form data 
+  //   also add the playerId because we eventually
+  //   want not just the starting position but also the
+  //   the starting players in those positions
+  //   we grab them all and store them in an object
+  //   so we can easily pass them as one thing to the server
+  //   just chose 'TBD' as a default value
   'submit form#editPositionForm': function(evt) {
     evt.preventDefault();
 
     var currentGameId = Session.get('sGameId');
 
     var playerPositions = {
-      //   "player02": [{
-      //     "fieldPosition": $(evt.target).find('[name=player02]').val()
-      //   }]
-      // }
+
       player02: {
         fieldPosition: $(evt.target).find('[name=player02]').val(),
         playerId: "TBD"
@@ -69,20 +71,23 @@ Template.PositionEdit.events({
       }
     };
 
-
-
+    // we store all the positions in an array of objects
     var allGamePositions = {
       playerGameInfo: [
         playerPositions
       ]
     }
 
-    Games.update(currentGameId, {
+    // we update client side
+    Games.update(currentGameId, {, set the position session created
+      //  for better tracking later in the process
       $set: allGamePositions
     }, function(error, id) {
       if (error) {
         return throwError(error.reason);
       }
+      // we keep track that we set the positions to update
+      //  the global process
       Session.setPersistent('sPositionsSet', true);
       Router.go('GameShow', {
         _id: currentGameId
