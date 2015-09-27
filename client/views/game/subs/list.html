@@ -6,11 +6,11 @@
   <ul class="subs">
 
     <!-- list the subs -->
-    {{#each cSubs}}
+
     <!-- nested sub template with individual players -->
-    {{> SubItem}}
+    {{#each cFullName}} {{> SubItem}} {{/each}}
     <!-- end loop -->
-    {{/each}}
+
     <!-- if no subs let user know where to drag and drop subs -->
 
   </ul>

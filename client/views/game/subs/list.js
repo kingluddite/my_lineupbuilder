@@ -22,7 +22,7 @@ Template.SubList.rendered = function() {
 
 
       Games.update(currentGameId, {
-          $push: {
+          $addToSet: {
             subs: currentPlayerId
           }
         },
@@ -44,5 +44,26 @@ Template.SubList.helpers({
 
     // console.log(currentGame.subs);
     return currentGame.subs;
+  },
+
+  cFullName: function(evt, template) {
+    // console.log(currentGame.subs);
+    var currentGame = Games.findOne({
+      _id: Session.get('sGameId')
+    });
+
+    var mySubs = currentGame.subs;
+    var arrWithPlayerNames = [];
+    for (var i = 0; i < mySubs.length; i++) {
+      var player = Players.findOne({
+        _id: mySubs[i]
+      });
+      var playerFullName = player.fullName;
+      arrWithPlayerNames.push(playerFullName);
+    }
+
+    return arrWithPlayerNames;
+
   }
+
 });

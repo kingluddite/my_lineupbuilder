@@ -5,7 +5,37 @@ Template.SubItem.rendered = function(evt, template) {
     appendTo: "body",
     helper: "clone"
   });
+
+
+
+
+  // console.log(arrWithPlayerNames[0]);
+  // return arrWithPlayerNames;
 };
+
+// Template.SubItem.helpers({
+//   cFullName: function(evt, template) {
+//     // console.log(currentGame.subs);
+//     var currentGame = Games.findOne({
+//       _id: Session.get('sGameId')
+//     });
+
+//     var mySubs = currentGame.subs;
+//     var arrWithPlayerNames = [];
+//     for (var i = 0; i < mySubs.length; i++) {
+//       var player = Players.findOne({
+//         _id: mySubs[i]
+//       });
+//       var playerFullName = player.fullName;
+//       arrWithPlayerNames.push(playerFullName);
+//     }
+//     return playerFullName;
+//     // return arrWithPlayerNames;
+
+//   }
+// });
+
+
 
 // change the status of the player to none
 //  which removes them from the sub list
