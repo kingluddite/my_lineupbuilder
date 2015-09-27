@@ -1,0 +1,18 @@
+<template name="SubList">
+  <h1>Subs</h1>
+  <p><em>Substitutes</em></p>
+  <p class="drop-status"></p>
+
+  <ul class="subs">
+
+    <!-- list the subs -->
+    {{#each cSubs}}
+    <!-- nested sub template with individual players -->
+    {{> SubItem}}
+    <!-- end loop -->
+    {{/each}}
+    <!-- if no subs let user know where to drag and drop subs -->
+
+  </ul>
+</template>
+

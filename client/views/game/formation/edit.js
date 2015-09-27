@@ -1,25 +1,37 @@
-Template.FormationNew.rendered = function() {
-  $('.draggable').draggable();
-  $('.droppable').droppable({
-    // drop: function(event, ui) {
-    //   $(this)
-    //     .addClass('ui-state-highlight')
-    //     .find('p')
-    //     .html('dropped');
-    //   console.log(ui);
-    // }
+Template.FormationEdit.rendered = function() {
+  // as soon as the template loads prefill the radio button
+  if (Meteor.user()) {
+    // we need to search the game and get a document
+    var getFormation = Games.findOne({
+      _id: Session.get('sGameId')
+    });
+    // find the formation for the current game
+    var currFormation = getFormation.myFormation;
+    // grab all the radio buttons
+    var allRadioChoices = $('form input:radio');
+    for (var i = 0; i < allRadioChoices.length; i++) {
+      // as you loop through all the radio buttons
+      // find a radio button that's value matches what is in
+      // our games collection
+      if (allRadioChoices[i].value === currFormation) {
+        // when you find a match set that radio button to true
+        // so it will be selected when the template loads
+        allRadioChoices[i].checked = true;
+      }
 
-  });
+    }
+
+  }
 };
 
-Template.FormationNew.helpers({
+Template.FormationEdit.helpers({
   gameId: function() {
     return Session.get('sGameId');
   }
 });
 
 
-Template.FormationNew.events({
+Template.FormationEdit.events({
 
   'click input': function(evt) {
     // $('.field').addClass()
@@ -34,7 +46,7 @@ Template.FormationNew.events({
     $('.field').removeClass().addClass('field frm-' + myFormation);
   },
 
-  'submit form#newFormationForm': function(evt) {
+  'submit form#editFormationForm': function(evt) {
     evt.preventDefault();
 
     // get all the radio button choices
@@ -50,6 +62,7 @@ Template.FormationNew.events({
     }
 
     var currentTeamId = Session.get('sTeamId');
+    var currentGameId = Session.get('sGameId');
 
     var gameProperties = {
       teamId: currentTeamId,
@@ -62,7 +75,7 @@ Template.FormationNew.events({
       if (error) {
         return throwError(error.reason);
       }
-      Router.go('game.show', {
+      Router.go('GameShow', {
         _id: currentGameId
       });
     });

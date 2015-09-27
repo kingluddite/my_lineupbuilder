@@ -49,6 +49,6 @@ Template.GameList.events({
     }
   },
   'click .game-list a': function(evt, tmpl) {
-    Session.set('sGameId', this._id);
+    Session.setPersistent('sGameId', this._id);
   }
 });
