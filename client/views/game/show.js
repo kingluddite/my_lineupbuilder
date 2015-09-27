@@ -18,6 +18,20 @@ Template.GameShow.helpers({
     // console.log(myPosition.playerGameInfo[0].player02.fieldPosition);
   },
 
+  cGames: function() {
+    if (Meteor.user()) {
+
+      return Games.findOne({
+        _id: Session.get('sGameId')
+      });
+      // var currPosInfo = myPosition.playerGameInfo[0];
+// return currPosInfo;
+
+    }
+    // this is how you get to the data you want
+    // console.log(myPosition.playerGameInfo[0].player02.fieldPosition);
+  },
+
   sGameId: function() {
     return Session.get('sGameId');
   }

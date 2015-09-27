@@ -4,10 +4,10 @@
       <div class="panel panel-default">
         <div class="panel-heading">
           <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">{{cGame.gameDate}} @ {{cGame.gameTime}}</h3>
+          <h3 class="panel-title">{{cGames.gameDate}} @ {{cGames.gameTime}}</h3>
         </div>
         <div class="panel-body">
-          VS {{cGame.opponentName}}
+          VS {{cGames.opponentName}}
         </div>
       </div>
     </div>
@@ -18,7 +18,7 @@
           <h3 class="panel-title">Field Name</h3>
         </div>
         <div class="panel-body">
-          <a target="_blank" href="{{cGame.fieldUrl}}">{{cGame.fieldName}}</a></div>
+          <a target="_blank" href="{{cGames.fieldUrl}}">{{cGames.fieldName}}</a></div>
       </div>
     </div>
   </div>
@@ -30,7 +30,7 @@
           <h3 class="panel-title">My Formation</h3>
         </div>
         <div class="panel-body">
-          <p>We will use the <strong>{{cGame.myFormation}}</strong> formation <a data-toggle="tooltip" title="Click for more information on your options for soccer formations" href="{{pathFor 'FormationShow'}}"><i class="fa fa-info-circle"></i></a> in today's game.</p>
+          <p>We will use the <strong>{{cGames.myFormation}}</strong> formation <a data-toggle="tooltip" title="Click for more information on your options for soccer formations" href="{{pathFor 'FormationShow'}}"><i class="fa fa-info-circle"></i></a> in today's game.</p>
           <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit Formation</a></p>
         </div>
       </div>

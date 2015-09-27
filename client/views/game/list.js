@@ -14,14 +14,24 @@ Template.GameList.helpers({
       // grab all the teams the user created (so we know it's their
       //   team)
       return Games.find({
-        teamId: Session.get('sTeamId')
+        // teamId: Session.get('sTeamId')
       });
+      // var myTest =
+      //   Games.find({
+      //     teamId: Session.get('sTeamId')
+      //   });
+      // console.log(myTest);
     } else {
       this.ready();
     }
+
+
   },
   sGameId: function() {
     return Session.get('sGameId');
+  },
+  sTeamId: function() {
+    return Session.get('sTeamId');
   }
 
 });
