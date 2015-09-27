@@ -20,12 +20,10 @@ Template.TeamNew.events({
   'submit form#newTeamForm': function(evt) {
     evt.preventDefault();
 
-    var team
- = {
+    var team = {
       teamName: $(evt.target).find('[name=teamName]').val(),
       coachName: $(evt.target).find('[name=coachName]').val(),
       coachEmail: $(evt.target).find('[name=coachEmail]').val(),
-      leagueName: $(evt.target).find('[name=leagueName]').val(),
       logoUrl: $(evt.target).find('[name=logoUrl]').val(),
       homeJerseyColor: $(evt.target).find('[name=homeJerseyColor]').val(),
       awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val()

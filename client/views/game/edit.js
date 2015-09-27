@@ -41,6 +41,8 @@ Template.GameEdit.events({
     var gameProperties = {
       gameDate: $(evt.target).find('[name=gameDate]').val(),
       gameTime: $(evt.target).find('[name=gameTime]').val(),
+      leagueName: $(evt.target).find('[name=leagueName]').val(),
+      seasonName: $(evt.target).find('[name=seasonName]').val(),
       opponentName: $(evt.target).find('[name=opponentName]').val(),
       fieldName: $(evt.target).find('[name=fieldName]').val(),
       fieldUrl: $(evt.target).find('[name=fieldUrl]').val(),
