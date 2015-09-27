@@ -8,7 +8,7 @@
     <!-- list the subs -->
 
     <!-- nested sub template with individual players -->
-    {{#each cFullName}} {{> SubItem}} {{/each}}
+    {{#each cFullName}} <span id="{{@index}}">{{> SubItem this }} </span>{{/each}}
     <!-- end loop -->
 
     <!-- if no subs let user know where to drag and drop subs -->
