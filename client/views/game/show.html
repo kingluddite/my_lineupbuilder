@@ -1,159 +1,140 @@
 <template name="GameShow">
-  <div class="row">
-    <div class="col-sm-6 col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">{{cGames.gameDate}} @ {{cGames.gameTime}}</h3>
-        </div>
-        <div class="panel-body">
-          VS {{cGames.opponentName}}
-        </div>
+  <div class="col-sm-6 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+        <h3 class="panel-title"> Game Info </h3>
+      </div>
+      <div class="panel-body">
+        <p><strong>Date: </strong> {{formatDate cGames.gameDate}}</p>
+        <p><strong>Time: </strong> {{cGames.gameTime}}</p>
+        <p>
+          <strong>Opponent: </strong> {{cGames.opponentName}}
+        </p>
+        <p><a class="btn btn-default pull-right" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit Game Info</a></p>
       </div>
     </div>
-    <div class="col-sm-6 col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">Field Name</h3>
-        </div>
-        <div class="panel-body">
-          <a target="_blank" href="{{cGames.fieldUrl}}">{{cGames.fieldName}}</a></div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+        <h3 class="panel-title">Starting Lineup</h3>
+      </div>
+      <div class="panel-body">
+        <p>
+          Position names are correct. <a href="{{pathFor 'StartingList' _id=sGameId}}">Now I want to choose the players on
+
+my starting lineup.</a>
+        </p>
+        <p>
+          <a href="{{pathFor 'PositionEdit' _id=sGameId}}">Something is wrong. I need to edit the position Names</a>
+        </p>
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>#</td>
+              <th>Position Name</th>
+              <th>Player Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Goalie</td>
+              <td>TBD</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>{{cGame.player02.fieldPosition}}</td>
+              <td>{{cGame.player02.playerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>{{cGame.player03.fieldPosition}}</td>
+              <td>{{cGame.player03.playerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">4</th>
+              <td>{{cGame.player04.fieldPosition}}</td>
+              <td>{{cGame.player04.playerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">5</th>
+              <td>{{cGame.player05.fieldPosition}}</td>
+              <td>{{cGame.player05.playerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>{{cGame.player06.fieldPosition}}</td>
+              <td>{{cGame.player06.playerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">7</th>
+              <td>{{cGame.player07.fieldPosition}}</td>
+              <td>{{cGame.player07.playerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">8</th>
+              <td>{{cGame.player08.fieldPosition}}</td>
+              <td>{{cGame.player08.playerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">9</th>
+              <td>{{cGame.player09.fieldPosition}}</td>
+              <td>{{cGame.player09.playerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">10</th>
+              <td>{{cGame.player10.fieldPosition}}</td>
+              <td>{{cGame.player10.playerId}}</td>
+            </tr>
+            <tr>
+              <th scope="row">11</th>
+              <td>{{cGame.player11.fieldPosition}}</td>
+              <td>{{cGame.player11.playerId}}</td>
+            </tr>
+          </tbody>
+        </table>
+
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-sm-6 col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">My Formation</h3>
-        </div>
-        <div class="panel-body">
-          <p>We will use the <strong>{{cGames.myFormation}}</strong> formation <a data-toggle="tooltip" title="Click for more information on your options for soccer formations" href="{{pathFor 'FormationInfo'}}"><i class="fa fa-info-circle"></i></a> in today's game.</p>
-          <p><a class="btn btn-default" href="{{pathFor 'FormationEdit' _id=sGameId}}">Edit Formation</a></p>
-        </div>
+
+  <div class="col-sm-6 col-md-6">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+        <h3 class="panel-title">My Formation</h3>
       </div>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">Team Info</h3>
-        </div>
-        <div class="panel-body">
-          <p>We are the Home Team or We are the Away Team</p>
-          <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit Your Team Info</a></p>
-        </div>
-      </div>
-      <p><a class="btn btn-primary" href="{{pathFor 'GameReminderShow' _id=sGameId}}">Enter Players Who Are Subs and Who Is Not Playing</a></p>
-    </div>
-
-    <div class="col-sm-6 col-md-6">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">Field Location For Game</h3>
-        </div>
-        <div class="panel-body">
-          {{> Map}}
-        </div>
-      </div>
-
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">Starting Lineup</h3>
-        </div>
-        <div class="panel-body">
-          <p>
-            Position names are correct. <a href="{{pathFor 'StartingList' _id=sGameId}}">Now I want to choose the players on
-
-my starting lineup.</a>
-          </p>
-          <p>
-            <a href="{{pathFor 'PositionEdit' _id=sGameId}}">Something is wrong. I need to edit the position Names</a>
-          </p>
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <td>#</td>
-                <th>Field Position</th>
-                <th>Position Name</th>
-                <th>Player Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Goalie</td>
-                <td>Goalie</td>
-                <td>TBD</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Player 2</td>
-                <td>{{cGame.player02.fieldPosition}}</td>
-                <td>{{cGame.player02.playerId}}</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Player 3</td>
-                <td>{{cGame.player03.fieldPosition}}</td>
-                <td>{{cGame.player03.playerId}}</td>
-              </tr>
-              <tr>
-                <th scope="row">4</th>
-                <td>Player 4</td>
-                <td>{{cGame.player04.fieldPosition}}</td>
-                <td>{{cGame.player04.playerId}}</td>
-              </tr>
-              <tr>
-                <th scope="row">5</th>
-                <td>Player 5</td>
-                <td>{{cGame.player05.fieldPosition}}</td>
-                <td>{{cGame.player05.playerId}}</td>
-              </tr>
-              <tr>
-                <th scope="row">6</th>
-                <td>Player 6</td>
-                <td>{{cGame.player06.fieldPosition}}</td>
-                <td>{{cGame.player06.playerId}}</td>
-              </tr>
-              <tr>
-                <th scope="row">7</th>
-                <td>Player 7</td>
-                <td>{{cGame.player07.fieldPosition}}</td>
-                <td>{{cGame.player07.playerId}}</td>
-              </tr>
-              <tr>
-                <th scope="row">8</th>
-                <td>Player 8</td>
-                <td>{{cGame.player08.fieldPosition}}</td>
-                <td>{{cGame.player08.playerId}}</td>
-              </tr>
-              <tr>
-                <th scope="row">9</th>
-                <td>Player 9</td>
-                <td>{{cGame.player09.fieldPosition}}</td>
-                <td>{{cGame.player09.playerId}}</td>
-              </tr>
-              <tr>
-                <th scope="row">10</th>
-                <td>Player 10</td>
-                <td>{{cGame.player10.fieldPosition}}</td>
-                <td>{{cGame.player10.playerId}}</td>
-              </tr>
-              <tr>
-                <th scope="row">11</th>
-                <td>Player 11</td>
-                <td>{{cGame.player11.fieldPosition}}</td>
-                <td>{{cGame.player11.playerId}}</td>
-              </tr>
-            </tbody>
-          </table>
-
-        </div>
+      <div class="panel-body">
+        <p>We will use the <strong>{{cGames.myFormation}}</strong> formation <a data-toggle="tooltip" title="Click for more information on your options for soccer formations" href="{{pathFor 'FormationInfo'}}"><i class="fa fa-info-circle"></i></a> in today's game.</p>
+        <p><a class="btn btn-default" href="{{pathFor 'FormationEdit' _id=sGameId}}">Edit Formation</a></p>
       </div>
     </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+        <h3 class="panel-title">Team Info</h3>
+      </div>
+      <div class="panel-body">
+        {{#if cGames.homeTeam}}
+        <p>We are the HOME team.</p>
+        {{else}}
+        <p>We are the AWAY team.</p>
+        {{/if}}
+        <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit Your Team Info</a></p>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+        <h3 class="panel-title"><a target="_blank" href="{{cGames.fieldUrl}}">{{cGames.fieldName}}</a></h3>
+      </div>
+      <div class="panel-body">
+        {{> Map}}
+      </div>
+    </div>
+    <p><a class="btn btn-primary" href="{{pathFor 'GameReminderShow' _id=sGameId}}">Enter Subs and Who Is Not Playing</a></p>
+
   </div>
 </template>
 

@@ -26,6 +26,9 @@ Template.GameEdit.helpers({
         _id: Session.get('sGameId')
       });
     }
+  },
+  sGameId: function() {
+    return Session.get('sGameId')
   }
 });
 
@@ -53,7 +56,6 @@ Template.GameEdit.events({
     evt.preventDefault();
 
     var currentGameId = Session.get('sGameId');
-    console.log($(evt.target).find('[name=homeTeam]').val())
 
     var gameProperties = {
       gameDate: $(evt.target).find('[name=gameDate]').val(),

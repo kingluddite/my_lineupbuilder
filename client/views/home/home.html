@@ -4,17 +4,13 @@
       <!-- if user is logged in -->
       {{#if currentUser }}
 
-      <div class="col-sm-5 col-md-5">
-        <!-- show the add player to roster form -->
+      <!-- show the add player to roster form -->
+      <div class="row">
         {{> TeamList}}
-        <!-- <p>No Teams Created Yet</p>
-        {{/if}} -->
+        <!-- show user progress of their lineup creation -->
+        {{> TeamNew}}
       </div>
 
-      <!-- show user progress of their lineup creation -->
-      {{> TeamNew}}
-
-      <!-- END 3 column -->
       <!-- if the user isn't logged in explain how the site works -->
       {{else}}
       <div class="col-sm-12 col-md-12">

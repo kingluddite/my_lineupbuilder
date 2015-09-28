@@ -17,6 +17,10 @@ Template.TeamList.helpers({
     } else {
       this.ready();
     }
+  },
+
+  sTeamId: function() {
+    return Session.get('sTeamId');
   }
 });
 

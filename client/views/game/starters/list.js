@@ -8,7 +8,7 @@ Template.StartingList.helpers({
       });
     }
   },
-  gameId: function() {
+  sGameId: function() {
     return Session.get('sGameId');
   }
 });

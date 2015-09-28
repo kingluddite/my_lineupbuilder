@@ -43,43 +43,53 @@ Template.PositionEdit.events({
 
       player02: {
         fieldPosition: $(evt.target).find('[name=player02]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       },
       player03: {
         fieldPosition: $(evt.target).find('[name=player03]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       },
       player04: {
         fieldPosition: $(evt.target).find('[name=player04]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       },
       player05: {
         fieldPosition: $(evt.target).find('[name=player05]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       },
       player06: {
         fieldPosition: $(evt.target).find('[name=player06]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       },
       player07: {
         fieldPosition: $(evt.target).find('[name=player07]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       },
       player08: {
         fieldPosition: $(evt.target).find('[name=player08]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       },
       player09: {
         fieldPosition: $(evt.target).find('[name=player09]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       },
       player10: {
         fieldPosition: $(evt.target).find('[name=player10]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       },
       player11: {
         fieldPosition: $(evt.target).find('[name=player11]').val(),
-        playerId: "TBD"
+        playerId: "TBD",
+        playerFullName: "TBD"
       }
     };
 
