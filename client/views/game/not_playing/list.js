@@ -28,7 +28,7 @@ Template.NotPlayingList.rendered = function(evt, template) {
         },
         function(error) {
           if (error) {
-            alert(error.reason);
+            throwError(error.reason);
           }
         });
     }
@@ -60,7 +60,7 @@ Template.NotPlayingList.rendered = function(evt, template) {
         },
         function(error) {
           if (error) {
-            alert(error.reason);
+            throwError(error.reason);
           }
         });
     }

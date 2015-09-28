@@ -51,7 +51,7 @@ Template.GameNew.events({
 
     Meteor.call('newGame', game, function(error, id) {
       if (error) {
-        return alert(error.reason);
+        throwError(error.reason);
       }
       Session.setPersistent('sGameId', id);
       $('.game-created').html('<i class="fa fa-check"></i> <span> Game Created</span>');

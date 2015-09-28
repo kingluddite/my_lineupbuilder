@@ -1,3 +1,7 @@
+Template.TeamNew.onCreated(function() {
+  Session.set('sTeamSubmitErrors', {});
+});
+
 Template.TeamNew.helpers({
   // if there is a team return false
   // so we can hide the add team form
@@ -10,6 +14,13 @@ Template.TeamNew.helpers({
         return false;
       }
     }
+  },
+  errorMessage: function(field) {
+    return Session.get('sTeamSubmitErrors')[field];
+  },
+  errorClass: function(field) {
+    return !!Session.get('sTeamSubmitErrors')[field] ? 'has-error' : '';
+
   }
 });
 
@@ -29,9 +40,14 @@ Template.TeamNew.events({
       awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val()
     };
 
-    Meteor.call('addTeam', team, function(error, id) {
+    var errors = validateTeam(team);
+    // if (errors.title || errors.url)
+    if (errors.url)
+      return Session.set('sTeamSubmitErrors', errors);
+
+    Meteor.call('newTeam', team, function(error, id) {
       if (error) {
-        return alert(error.reason);
+        return throwError(error.reason);
       }
 
       Session.setPersistent('sTeamId', id);

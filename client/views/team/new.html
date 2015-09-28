@@ -13,33 +13,36 @@
       <div class="panel-body">
         <p>Use the form below to create your team. Required fields are outlined in red.</p>
         <form id="newTeamForm">
-          <p>
+          <div class="form-group">
             <label class="sr-only" for="teamName">Team Name</label>
-            <input id="teamName" type="text" required class="form-control" placeholder="Team Name" name="teamName">
-          </p>
-          <p>
+            <input id="teamName" type="text" class="form-control" placeholder="Team Name" name="teamName">
+          </div>
+          <div class="form-group">
             <label class="sr-only" for="coachName">Coach Name</label>
             <input id="coachName" type="text" class="form-control" placeholder="Coach Name" name="coachName">
-          </p>
-          <p>
+          </div>
+          <div class="form-group">
             <label class="sr-only" for="coachEmail">Coach Email</label>
             <div class="input-group">
               <span class="input-group-addon">@</span>
               <input id="coachName" type="email" class="form-control" placeholder="Coach Email" name="coachEmail">
             </div>
-          </p>
-          <p>
-            <label class="sr-only" for="">Logo URL</label>
-            <input type="url" class="form-control" placeholder="URL to Logo" name="logoUrl">
-          </p>
-          <p>
+          </div>
+          <div class="form-group {{errorClass 'url'}}">
+            <label class="control-label sr-only" for="logoUrl">Logo URL</label>
+            <div class="controls">
+              <input id="logoUrl" type="text" value="" class="form-control" placeholder="http://example.com/logo.jpg" name="logoUrl">
+              <span class="help-block">{{errorMessage 'url'}}</span>
+            </div>
+          </div>
+          <div class="form-group">
             <label>Home Jersey Color</label>
             <input type="color" class="form-control" placeholder="Home Color" name="homeJerseyColor" value="white">
-          </p>
-          <p>
+          </div>
+          <div class="form-group">
             <label>Away Jersey Color</label>
             <input type="color" class="form-control" placeholder="Away Color" name="awayJerseyColor">
-          </p>
+          </div>
           <button type="submit" class="btn btn-large btn-success pull-right">Submit Team Info</button>
         </form>
       </div>

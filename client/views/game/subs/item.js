@@ -49,7 +49,7 @@ Template.SubItem.events({
       },
       function(error) {
         if (error) {
-          alert(error.reason);
+          return throwError(error.reason);
         }
       });
   },

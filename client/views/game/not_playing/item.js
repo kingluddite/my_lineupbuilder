@@ -30,7 +30,7 @@ Template.NotPlayingItem.events({
       },
       function(error) {
         if (error) {
-          alert(error.reason);
+          throwError(error.reason);
         }
       });
   },
