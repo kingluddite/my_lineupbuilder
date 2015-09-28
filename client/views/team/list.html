@@ -8,6 +8,8 @@
       <div class="panel-footer">
       </div>
       <div class="panel-body">
+        <p>Here are all the teams you created:</p>
+        {{#if cTeams}}
         <ol class="team-list">
           {{#each cTeams}}
           <li>
@@ -16,7 +18,9 @@
           </li>
           {{/each}}
         </ol>
-        {{#if sTeamId}}
+        {{else}}
+        <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
+        {{/if}} {{#if sTeamId}}
         <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a> {{/if}}
       </div>
 
