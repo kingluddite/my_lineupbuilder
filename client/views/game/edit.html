@@ -6,7 +6,7 @@
       <h3 class="panel-title">Edit Game Info</h3>
     </div>
     <div class="panel-body">
-
+      <p>Use the form below to edit your game information. Required fields are outlined in red.</p>
       <form id="editGameForm">
 
         <p class="form-group">
@@ -25,14 +25,21 @@
             </span>
           </div>
         </p>
+        {{#if sLeageCreated}}
         <p>
           <label class="sr-only">League Name</label>
-          <input type="text" class="form-control" placeholder="League Name" name="leagueName" value="{{cGame.leagueName}}">
+          <input type="text" required class="form-control" placeholder="League Name" name="leagueName" value="{{cGame.leagueName}}">
         </p>
+        {{else}}
+        <p>You need to <a href="#">create a league</a>.</p>
+        {{/if}} {{#if sSeasonCreated}}
         <p>
           <label class="sr-only">Season Name</label>
-          <input type="text" class="form-control" placeholder="Season Name" name="seasonName" value="{{cGame.seasonName}}">
+          <input type="text" required class="form-control" placeholder="Season Name" name="seasonName" value="{{cGame.seasonName}}">
         </p>
+        {{else}}
+        <p>You need to <a href="#">create a season</a>.</p>
+        {{/if}}
         <p>
           <label class="sr-only">Opponent Name</label>
           <input type="text" required class="form-control" placeholder="Opponent Name" name="opponentName" value="{{cGame.opponentName}}">

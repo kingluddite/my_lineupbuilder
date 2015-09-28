@@ -1,7 +1,9 @@
 # my_lineupbuilder
 Quick way to create soccer lineups for a coach to email his team
 
-## Number System
+## Our Number System
+There are many variations of a number system used today. Here is the
+one we will use for this site:
 /* 1 - goalkeeper
 2 - right wing-back
 3 - left wing-back
@@ -23,3 +25,58 @@ Quick way to create soccer lineups for a coach to email his team
 ----9----11---- 
 
 */
+
+TODO
+For Team give option to create leagues (crud)
+Inside the League give the option to create seasons (crud)
+Inside games the league should populate with the leagues for this team
+Based on the league chosen, the season should populate with seasons from that league
+
+Add these fields for players
+-feePaid (number)
+
+Add these fields for game
+-pregameMessage
+if gameStatus is 'Final', show these text fields in game:
+-postGameMessage
+-homeTeamScore
+-awayTeamScore
+-goalScorers (dropdown with only starters and subs for that game)
+* just push in the players into this array, can have duplicates, add them up for the game totals
+-gameStatus: "To Be Played", "Final", "Cancelled" (and values 'TBP', 'FINAL', and 'CANCELLED' entered into db)
+-result: 3, 1, 0 (win, loss, draw) should be number
+(dropdown win, loss, draw and 3,0,1 values entered into db)
+-forfeit: true or false
+
+add goalie so he can be dragged and dropped like the rest of the players
+
+weather api should connect to game and on game day should weather
+
+season should have season fee field
+season fee
+  * go into each game and find the fees paid by all players and add them up and subtract them from the season fee
+
+  starting lineup
+  drag players off starting lineup and they are removed from field and their code is put back the way it was
+  
+  not allowed to drag existing starters onto starting lineup
+  on
+
+  when you got to starters page
+  existing player on lineup show up with their names
+
+  add sessions for formation created and positions created (start instructions not necessary when both are created)
+
+  make adding positions more user friendly, boxes grown and animate when you click on them and shrink and animate when you blur on 
+
+  be able to remove subs
+  be able to remove not playing
+
+  get not playing drag drop to work
+  populate game show page of players not playing
+
+  populate game show page of sub players
+
+  create publish page
+
+

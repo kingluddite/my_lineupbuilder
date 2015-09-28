@@ -11,35 +11,27 @@
         <h3 class="panel-title">Add Team</h3>
       </div>
       <div class="panel-body">
+        <p>Use the form below to create your team. Required fields are outlined in red.</p>
         <form id="newTeamForm">
           <p>
-            <label class="sr-only">Team Name</label>
-            <input type="text" required class="form-control" placeholder="Team Name" name="teamName">
+            <label class="sr-only" for="teamName">Team Name</label>
+            <input id="teamName" type="text" required class="form-control" placeholder="Team Name" name="teamName">
           </p>
           <p>
-            <label class="sr-only">Coach Name</label>
-            <input type="text" class="form-control" placeholder="Coach Name" name="coachName">
+            <label class="sr-only" for="coachName">Coach Name</label>
+            <input id="coachName" type="text" class="form-control" placeholder="Coach Name" name="coachName">
           </p>
           <p>
-            <label class="sr-only">Coach Email</label>
+            <label class="sr-only" for="coachEmail">Coach Email</label>
             <div class="input-group">
               <span class="input-group-addon">@</span>
-              <input type="email" class="form-control" placeholder="Coach Email" name="coachEmail">
+              <input id="coachName" type="email" class="form-control" placeholder="Coach Email" name="coachEmail">
             </div>
           </p>
           <p>
-            <label class="sr-only">League Name</label>
-            <input type="text" class="form-control" placeholder="League Name" name="leagueName">
-          </p>
-          <p>
-            <label class="sr-only">Season Name</label>
-            <input type="text" class="form-control" placeholder="Season Name" name="seasonName">
-          </p>
-          <p>
-            <label class="sr-only">Logo URL</label>
+            <label class="sr-only" for="">Logo URL</label>
             <input type="url" class="form-control" placeholder="URL to Logo" name="logoUrl">
           </p>
-
           <p>
             <label>Home Jersey Color</label>
             <input type="color" class="form-control" placeholder="Home Color" name="homeJerseyColor" value="white">
