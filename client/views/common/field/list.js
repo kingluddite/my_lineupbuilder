@@ -6,7 +6,6 @@ Template.FieldList.rendered = function() {
         .addClass('ui-state-highlight')
         .find('p')
         .html('dropped');
-      console.log(ui);
     }
 
 
@@ -31,10 +30,18 @@ Template.StartingFieldList.rendered = function(evt, template) {
     activeClass: "active",
     hoverClass: "hover",
     drop: function(event, ui) {
+      console.log('doc');
       // grab the current game id
       var currentGameId = Session.get('sGameId');
       // which player are we about to drop (their id)
       var starterId = Session.get('sPlayerId');
+
+      var playerDoc = Players.findOne({
+        _id: starterId
+      });
+      var playerName = playerDoc.fullName;
+
+
 
       // we need the current position in the div
       //  we are about to drop because on the server
@@ -60,7 +67,9 @@ Template.StartingFieldList.rendered = function(evt, template) {
       var playerInfo = {
         playerDivNum: playerContainer,
         playerId: starterId,
-        oldPlayerId: currPos.playerGameInfo[0][this.id].playerId
+        playerFullName: playerName,
+        oldPlayerId: currPos.playerGameInfo[0][this.id].playerId,
+        oldPlayerFullName: currPos.playerGameInfo[0][this.id].playerFullName
       }
 
       // because we are using the mongo $ (position query)
@@ -72,6 +81,8 @@ Template.StartingFieldList.rendered = function(evt, template) {
         if (error) {
           return alert(error.reason);
         }
+        $('#' + playerContainer).append("<span class='starter'>" + playerName + "</span>");
+
       });
     }
   });

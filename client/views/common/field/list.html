@@ -1,5 +1,5 @@
 <template name="FieldList">
-  <div class="col-sm-6 col-md-6">
+  <div class="col-sm-6 col-md-6 field-parent">
     <div class="field frm-{{cGame.myFormation}}">
       <div id="player01" class="droppable"><img src="/img/goalie_jersey.png" alt="goalie"></div>
       <div id="player02" class="droppable"></div>
@@ -19,19 +19,21 @@
 
 <template name="StartingFieldList">
   <div class="drop-status"></div>
-  <div class="starting-lineup field frm-{{cGame.myFormation}}">
-    <div id="player01"><img src="/img/goalie_jersey.png" alt="goalie"></div>
-    <div id="player02"></div>
-    <div id="player03"></div>
-    <div id="player04"></div>
-    <div id="player05"></div>
-    <div id="player06"></div>
-    <div id="player07"></div>
-    <div id="player08"></div>
-    <div id="player09"></div>
-    <div id="player10"></div>
-    <div id="player11"></div>
+  <div class="field-parent">
+    <div class="starting-lineup field frm-{{cGame.myFormation}}">
+      <div id="player01"><img src="/img/goalie_jersey.png" alt="goalie"></div>
+      <div id="player02"></div>
+      <div id="player03"></div>
+      <div id="player04"></div>
+      <div id="player05"></div>
+      <div id="player06"></div>
+      <div id="player07"></div>
+      <div id="player08"></div>
+      <div id="player09"></div>
+      <div id="player10"></div>
+      <div id="player11"></div>
 
+    </div>
   </div>
 </template>
 
