@@ -25,6 +25,21 @@ Template.FieldList.helpers({
 });
 
 Template.StartingFieldList.rendered = function(evt, template) {
+  // if starting player names exists, show it
+  // var thisGame = Games.findOne({
+      //   _id: Session.get('sGameId')
+      // }, {
+      //   playerGameInfo: 1
+      // });
+
+      // return thisGame;
+
+
+
+  // if (allGames.playerGameInfo[0][this.id].playerFullName) {
+  //   console.log('yes');
+  // }
+
   // what items we want droppable on the field
   $(".starting-lineup div").droppable({
     activeClass: "active",
@@ -96,6 +111,16 @@ Template.StartingFieldList.helpers({
       return Games.findOne({
         _id: Session.get('sGameId')
       });
+    }
+  },
+  cPlayerGameInfo: function() {
+    if (Meteor.user()) {
+      var currentGame = Games.findOne({
+        _id: Session.get('sGameId')
+      });
+
+      var allPlayerGameInfo = currentGame.playerGameInfo[0];
+      return allPlayerGameInfo;
     }
   }
 });
