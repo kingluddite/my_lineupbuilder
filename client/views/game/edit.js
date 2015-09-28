@@ -1,3 +1,11 @@
+Template.GameEdit.rendered = function() {
+  // $('#gameDatePicker').datepicker();
+  this.$('.date-picker').datetimepicker();
+  this.$('.time-picker').datetimepicker({
+    format: 'LT'
+  });
+};
+
 Template.GameEdit.helpers({
   // if there is a team return false
   // so we can hide the add team form
@@ -8,8 +16,6 @@ Template.GameEdit.helpers({
       });
     }
   }
-
-
 });
 
 // values of unchecked boxes do not get posted
