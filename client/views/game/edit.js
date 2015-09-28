@@ -4,6 +4,17 @@ Template.GameEdit.rendered = function() {
   this.$('.time-picker').datetimepicker({
     format: 'LT'
   });
+
+  // when template loads find the boolean value of homeTeam
+  var currentGame = Games.findOne({
+    _id: Session.get('sGameId')
+  });
+  // if true
+  if (currentGame.homeTeam) {
+    // check the box
+    $('.home-team-chkbox').prop('checked', true);
+  }
+
 };
 
 Template.GameEdit.helpers({
