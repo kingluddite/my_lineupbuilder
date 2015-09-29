@@ -7,9 +7,11 @@
     <div class="panel-footer">
     </div>
     <div class="panel-body">
+      <!-- if have teams show them -->
+      {{#if sTeamId}}
       <p>Here are all the teams you created:</p>
-      {{#if cTeams}}
       <ol class="team-list">
+        <!-- loop through your existing teams -->
         {{#each cTeams}}
         <li>
           <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
@@ -18,9 +20,15 @@
         {{/each}}
       </ol>
       {{else}}
+      <!-- no teams - time to create them -->
       <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
-      {{/if}} {{#if sTeamId}}{{sTeamId}}
-      <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a> {{/if}}
+      <!-- end of team session check if -->
+      {{/if}}
+      <!-- if a game exists allow the coach to jump to it -->
+      {{#if sGameId}}
+      <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
+      <!-- end of game session check if -->
+      {{/if}}
     </div>
 
   </div>

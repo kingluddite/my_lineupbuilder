@@ -1,9 +1,4 @@
 <template name="TeamNew">
-  <!-- check the user is logged in -->
-  {{#if currentUser}}
-  <!-- check that the team exists -->
-  <!-- if it exists show nothing  -->
-  <!-- show the add team form -->
 
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -37,7 +32,7 @@
         </div>
         <div class="form-group">
           <label>Home Jersey Color</label>
-          <input type="color" class="form-control" placeholder="Home Color" name="homeJerseyColor" value="white">
+          <input type="color" class="form-control" placeholder="Home Color" name="homeJerseyColor">
         </div>
         <div class="form-group">
           <label>Away Jersey Color</label>
@@ -47,8 +42,5 @@
       </form>
     </div>
   </div>
-
-  <!-- end currentUser if -->
-  {{/if}}
 </template>
 

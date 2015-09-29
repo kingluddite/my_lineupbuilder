@@ -27,12 +27,12 @@ Template.FieldList.helpers({
 Template.StartingFieldList.rendered = function(evt, template) {
   // if starting player names exists, show it
   // var thisGame = Games.findOne({
-      //   _id: Session.get('sGameId')
-      // }, {
-      //   playerGameInfo: 1
-      // });
+  //   _id: Session.get('sGameId')
+  // }, {
+  //   playerGameInfo: 1
+  // });
 
-      // return thisGame;
+  // return thisGame;
 
 
 
@@ -45,7 +45,6 @@ Template.StartingFieldList.rendered = function(evt, template) {
     activeClass: "active",
     hoverClass: "hover",
     drop: function(event, ui) {
-      console.log('doc');
       // grab the current game id
       var currentGameId = Session.get('sGameId');
       // which player are we about to drop (their id)
