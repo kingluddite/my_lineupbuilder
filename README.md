@@ -80,3 +80,14 @@ season fee
   create publish page
 
 
+{
+  "public": {
+    "analytics": "123456789",
+    [...]
+  },
+  "private": {
+    "github": "555333222",
+    [...]
+  }
+}
+http://themeteorchef.com/snippets/making-use-of-settings-json/

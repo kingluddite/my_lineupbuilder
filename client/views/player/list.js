@@ -12,7 +12,9 @@ Template.PlayerList.helpers({
     if (Meteor.user()) {
       // grab all the players the user created (so we know it's their
       //   team)
-      return Players.find({}, {
+      return Players.find({
+        teamId: Session.get('sTeamId')
+      }, {
         // sort them alphabetically
         sort: {
           fullName: 1
@@ -65,7 +67,14 @@ Template.PlayerPlainList.helpers({
     if (Meteor.user()) {
       // grab all the players the user created (so we know it's their
       //   team)
-      return Players.find();
+      return Players.find({
+        teamId: Session.get('sTeamId')
+      }, {
+        // sort them alphabetically
+        sort: {
+          fullName: 1
+        }
+      });
     } else {
       this.ready();
     }

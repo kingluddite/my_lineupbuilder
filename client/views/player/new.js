@@ -14,7 +14,9 @@ Template.PlayerNew.helpers({
   // show add player box if roster max is not reached
   maxPlayers: function() {
     if (Meteor.user()) {
-      var currentRosterCount = Players.find().count();
+      var currentRosterCount = Players.find({
+        teamId: Session.get('sTeamId')
+      }).count();
 
       if (currentRosterCount >= 26) {
         return false;
@@ -25,7 +27,9 @@ Template.PlayerNew.helpers({
   },
   // for first add player form need to add one to roster count
   rosterCountPlusOne: function() {
-    var currentRosterCount = Players.find().count();
+    var currentRosterCount = Players.find({
+      teamId: Session.get('sTeamId')
+    }).count();
     return currentRosterCount + 1;
   }
 });
@@ -34,8 +38,10 @@ Template.PlayerNew.helpers({
 Template.PlayerNew.events({
   'click .new-player': function(evt, tmpl) {
     evt.preventDefault();
-    // find out the current roster number
-    var currentRosterCount = Players.find().count();
+    // find out the current roster number of the team
+    var currentRosterCount = Players.find({
+      teamId: Session.get('sTeamId')
+    }).count();
 
     // grab the roster form
     var myForm = document.getElementById("teamRosterForm");
@@ -127,7 +133,6 @@ Template.PlayerNew.events({
     }
     var myForm = document.getElementById("teamRosterForm");
     myFormInputs = myForm.getElementsByTagName("input");
-
 
     //Extract Each Element Value
     for (var i = 0; i < myFormInputs.length; i++) {
