@@ -80,3 +80,6 @@ season fee
   create publish page
 
 
+todo
+when log in
+show add team and have instructions to add a team.

@@ -1,5 +1,3 @@
-Players = new Meteor.Collection('players');
-
 Meteor.methods({
   newPlayer: function(postAttributes) {
     var user = Meteor.user();

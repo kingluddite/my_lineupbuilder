@@ -1,5 +1,3 @@
-Teams = new Meteor.Collection('teams');
-
 validateTeam = function(team) {
   var errors = {};
   // if (!post.title)

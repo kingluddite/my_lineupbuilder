@@ -1,30 +1,28 @@
 <template name="TeamList">
-  <div class="col-sm-4 col-md-4">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-        <h3 class="panel-title">My Teams <span class="badge">{{cTeams.count}}</span></h3>
-      </div>
-      <div class="panel-footer">
-      </div>
-      <div class="panel-body">
-        <p>Here are all the teams you created:</p>
-        {{#if cTeams}}
-        <ol class="team-list">
-          {{#each cTeams}}
-          <li>
-            <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
-            <a class="remove"><i class="fa fa-trash fa-2"></i></a>
-          </li>
-          {{/each}}
-        </ol>
-        {{else}}
-        <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
-        {{/if}} {{#if sTeamId}}
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a> {{/if}}
-      </div>
-
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">My Teams <span class="badge">{{cTeams.count}}</span></h3>
     </div>
+    <div class="panel-footer">
+    </div>
+    <div class="panel-body">
+      <p>Here are all the teams you created:</p>
+      {{#if cTeams}}
+      <ol class="team-list">
+        {{#each cTeams}}
+        <li>
+          <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
+          <a class="remove"><i class="fa fa-trash fa-2"></i></a>
+        </li>
+        {{/each}}
+      </ol>
+      {{else}}
+      <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
+      {{/if}} {{#if sTeamId}}
+      <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a> {{/if}}
+    </div>
+
   </div>
 </template>
 

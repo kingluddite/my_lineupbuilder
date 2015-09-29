@@ -1,59 +1,48 @@
 <template name="TeamShow">
-  <div class="row">
-    <div class="col-sm-4 col-md-4">
-      <p>
-        <a class="btn btn-default" href="/">Back</a>
-      </p>
-    </div>
-    <div class="col-sm-4 col-md-4">
-      <p>
-        {{#if sTeamId}}
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a> {{/if}}
-      </p>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-sm-4 col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">Home Jersey</h3>
-        </div>
-        <div class="panel-body">
-          <img style="background-color:{{cTeam.homeJerseyColor}}" src="/img/jersey_200x200.png" alt="home jersey">
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4 col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">Away Jersey</h3>
-        </div>
-        <div class="panel-body">
-          <img style="background-color:{{cTeam.awayJerseyColor}}" src="/img/jersey_200x200.png" alt="home jersey">
-        </div>
-      </div>
-    </div>
 
-  </div>
-  <div class="row">
-    <div class="col-sm-8 col-md-8">
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-          <h3 class="panel-title">{{cTeam.teamName}}</h3>
-        </div>
-        <div class="panel-body">
-          <img class="pull-right" src="{{cTeam.logoUrl}}" alt="{{cTeam.teamName}} Logo">
-          <p><strong>Team Name:</strong> {{cTeam.teamName}}</p>
-          <p><strong>Coach Name:</strong> {{cTeam.coachName}}</p>
-          <p><strong>Coach Email:</strong> {{cTeam.coachEmail}}</p>
-          <p><strong>League Name:</strong> {{cTeam.leagueName}}</p>
-          <a class="btn btn-default pull-right" href="{{pathFor 'TeamEdit' _id=sTeamId}}">Edit Your Team Info</a>
-        </div>
-      </div>
+  <p>
+    <a class="btn btn-default" href="/">Back</a>
+  </p>
+
+  <p>
+    {{#if sTeamId}}
+    <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a> {{/if}}
+  </p>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Home Jersey</h3>
+    </div>
+    <div class="panel-body">
+      <img style="background-color:{{cTeam.homeJerseyColor}}" src="/img/jersey_200x200.png" alt="home jersey">
     </div>
   </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Away Jersey</h3>
+    </div>
+    <div class="panel-body">
+      <img style="background-color:{{cTeam.awayJerseyColor}}" src="/img/jersey_200x200.png" alt="home jersey">
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">{{cTeam.teamName}}</h3>
+    </div>
+    <div class="panel-body">
+      <img class="pull-right" src="{{cTeam.logoUrl}}" alt="{{cTeam.teamName}} Logo">
+      <p><strong>Team Name:</strong> {{cTeam.teamName}}</p>
+      <p><strong>Coach Name:</strong> {{cTeam.coachName}}</p>
+      <p><strong>Coach Email:</strong> {{cTeam.coachEmail}}</p>
+      <p><strong>League Name:</strong> {{cTeam.leagueName}}</p>
+      <a class="btn btn-default pull-right" href="{{pathFor 'TeamEdit' _id=sTeamId}}">Edit Your Team Info</a>
+    </div>
+  </div>
+
 </template>
 
