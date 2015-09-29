@@ -14,7 +14,7 @@ Template.GameList.helpers({
       // grab all the teams the user created (so we know it's their
       //   team)
       return Games.find({
-        // teamId: Session.get('sTeamId')
+        teamId: Session.get('sTeamId')
       });
       // var myTest =
       //   Games.find({

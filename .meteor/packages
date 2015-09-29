@@ -32,3 +32,4 @@ random
 ejson
 spacebars
 mrt:moment
+mrt:bootstrap-alerts

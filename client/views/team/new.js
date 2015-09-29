@@ -42,6 +42,7 @@ Template.TeamNew.events({
 
     var errors = validateTeam(team);
     // if (errors.title || errors.url)
+    console.log(errors);
     if (errors.url)
       return Session.set('sTeamSubmitErrors', errors);
 
