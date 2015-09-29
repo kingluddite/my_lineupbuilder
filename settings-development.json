@@ -1,0 +1,18 @@
+{
+  "public": {
+    "analytics": "123456789"
+  },
+  "private": {
+    "kickbox": "9c487da5b3b29a5c6ddcfd48e1283102737350c72d7fc11da57934ef3aaf460f",
+    "fbappid": "704168406352115",
+    "fbsecret": "9bcb2e7e3293843c51608c590bdff520",
+    "ghclientid": "0df0c2c26f62450f62ea",
+    "ghsecret": "cbc6fcd94fdc767154b0bd025c6a765765848957",
+    "googlecid": "389091155473-1q4coc4jils1miop0pe32qmb9542nujh.apps.googleusercontent.com",
+    "googlesecret": "Wy44M-pJ4Of201gk123BuQMx",
+    "twitconsumerkey": "soMs24bawhwAXcBLsYfPZmSVM",
+    "twitsecret": "sVZAlvEW7GX3L0NzEAINWyv74zMTJJP3LqRLYE5gpRhTQPnt68",
+    "mailgunurl": "postmaster@sandboxcae008ae47c34078926740dcf3046605.mailgun.org",
+    "mailgunpwd": "494l9rso5u63"
+  }
+}
