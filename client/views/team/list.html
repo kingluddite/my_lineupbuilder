@@ -19,7 +19,7 @@
       </ol>
       {{else}}
       <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
-      {{/if}} {{#if sTeamId}}
+      {{/if}} {{#if sTeamId}}{{sTeamId}}
       <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a> {{/if}}
     </div>
 
