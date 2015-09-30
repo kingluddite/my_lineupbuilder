@@ -25,7 +25,7 @@ ddp-rate-limiter@1.0.0
 ddp-server@1.2.1
 deps@1.0.9
 diff-sequence@1.0.1
-djedi:sanitize-html@1.10.0
+djedi:sanitize-html@1.10.1
 ecmascript@0.1.5
 ecmascript-collections@0.1.6
 ejson@1.0.7
@@ -64,7 +64,7 @@ mizzao:build-fetcher@0.2.0
 mizzao:jquery-ui@1.11.4
 mobile-experience@1.0.1
 mobile-status-bar@1.0.6
-momentjs:moment@2.8.4
+momentjs:moment@2.10.6
 mongo@1.1.2
 mongo-id@1.0.1
 mongo-livedata@1.0.9
@@ -96,7 +96,7 @@ templating-tools@1.0.0
 tracker@1.0.9
 tsega:bootstrap3-datetimepicker@4.14.30_4
 twbs:bootstrap@3.3.5
-u2622:persistent-session@0.4.1
+u2622:persistent-session@0.4.3
 ui@1.0.8
 underscore@1.0.4
 url@1.0.5
