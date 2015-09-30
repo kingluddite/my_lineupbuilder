@@ -10,3 +10,4 @@ Template.Error.onRendered(function() {
     Errors.remove(error._id);
   }, 3000);
 });
+

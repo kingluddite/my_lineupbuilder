@@ -8,18 +8,23 @@
       <div class="panel-footer">
       </div>
       <div class="panel-body">
-        <ol class="game-list">
-          {{#each cGames}}
-          <li>
-            <a href="{{pathFor 'GameShow'}}">{{gameDate}}</a>
-            <a class="remove"><i class="fa fa-trash fa-2"></i></a>
-          </li>
-          {{/each}}
-        </ol>
+        {{#if sGameId}}
+          <p>Click on a game to view or edit game information.</p>
+          <p>Here are all the games you created:</p>
+          <ol class="game-list">
+            {{#each cGames}}
+              <li>
+                <a href="{{pathFor 'GameShow'}}">{{gameDate}}</a>
+                <a class="remove"><i class="fa fa-trash fa-2"></i></a>
+              </li>
+            {{/each}}
+          </ol>
+        {{else}}
+          <p>You have not created any games yet. Ready?</p>
+          <a class="btn btn-default pull-right new-game">Add Game</a>
+        {{/if}}
       </div>
-
     </div>
   </div>
-  {{> GameNew}}
 </template>
 

@@ -20,7 +20,9 @@ Template.TeamNew.helpers({
   },
   errorClass: function(field) {
     return !!Session.get('sTeamSubmitErrors')[field] ? 'has-error' : '';
-
+  },
+  sTeamNew: function() {
+    return Session.get('sTeamNew');
   }
 });
 
@@ -42,8 +44,8 @@ Template.TeamNew.events({
 
     var errors = validateTeam(team);
     // if (errors.title || errors.url)
-    console.log(errors);
-    if (errors.url)
+
+    if (errors.name)
       return Session.set('sTeamSubmitErrors', errors);
 
     Meteor.call('newTeam', team, function(error, id) {
@@ -52,6 +54,7 @@ Template.TeamNew.events({
       }
 
       Session.setPersistent('sTeamId', id);
+      Session.setPersistent('sTeamNew', false);
       // $('.team-created').html('<i class="fa fa-check"></i> <span> Team Created</span>');
       // $('.team-created span').css('text-decoration', 'line-through');
       // $('.team-created').addClass('text-muted');

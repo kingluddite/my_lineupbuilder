@@ -4,43 +4,28 @@
     <a class="btn btn-default" href="/">Back</a>
   </p>
 
-  <p>
-    {{#if sTeamId}}
-    <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a> {{/if}}
-  </p>
-
   <div class="panel panel-default">
     <div class="panel-heading">
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">Home Jersey</h3>
-    </div>
-    <div class="panel-body">
-      <img style="background-color:{{cTeam.homeJerseyColor}}" src="/img/jersey_200x200.png" alt="home jersey">
-    </div>
-  </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">Away Jersey</h3>
-    </div>
-    <div class="panel-body">
-      <img style="background-color:{{cTeam.awayJerseyColor}}" src="/img/jersey_200x200.png" alt="home jersey">
-    </div>
-  </div>
-
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">{{cTeam.teamName}}</h3>
+      <h3 class="panel-title">{{cTeam.teamName}} Team Info</h3>
     </div>
     <div class="panel-body">
       <img class="pull-right" src="{{cTeam.logoUrl}}" alt="{{cTeam.teamName}} Logo">
-      <p><strong>Team Name:</strong> {{cTeam.teamName}}</p>
-      <p><strong>Coach Name:</strong> {{cTeam.coachName}}</p>
-      <p><strong>Coach Email:</strong> {{cTeam.coachEmail}}</p>
-      <p><strong>League Name:</strong> {{cTeam.leagueName}}</p>
-      <a class="btn btn-default pull-right" href="{{pathFor 'TeamEdit' _id=sTeamId}}">Edit Your Team Info</a>
+      <p><strong>Team Name:</strong> {{> editableText context=cTeam collection="teams" field="teamName"}}</p>
+      <p><strong>Coach Name:</strong> {{> editableText context=cTeam collection="teams" field="coachName"}}</p>
+      <p><strong>Coach Email:</strong> {{> editableText context=cTeam collection="teams" field="coachEmail"}}</p>
+      <p><strong>League Name:</strong> {{> editableText context=cTeam collection="teams" field="leagueName"}}</p>
+      <p><strong>Home Jersey:</strong> <img style="background-color:{{cTeam.homeJerseyColor}}" src="/img/jersey_200x200.png" height="50" width="50" alt="home jersey"></p>
+      <p><strong>Away Jersey:</strong> <img style="background-color:{{cTeam.awayJerseyColor}}" height="50" width="50" src="/img/jersey_200x200.png" alt="home jersey"></p>
+      <hr>
+      <!-- see if a game exists -->
+      {{#if sGameId}}
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create Game</a>
+      {{else}}
+        <!-- no games yet -->
+        <p>No games yet. Let's create one!</p>
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create Game</a>
+      {{/if}}
     </div>
   </div>
 

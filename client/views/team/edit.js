@@ -30,7 +30,7 @@ Template.TeamEdit.events({
       $set: teamProperties
     }, function(error, id) {
       if (error) {
-        return throwError(error.reason);
+        // return throwError(error.reason);
       }
       Router.go('TeamShow', {
         _id: currentTeamId

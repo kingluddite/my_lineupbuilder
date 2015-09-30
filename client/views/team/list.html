@@ -9,6 +9,7 @@
     <div class="panel-body">
       <!-- if have teams show them -->
       {{#if sTeamId}}
+      <p>Click on a team to enter game information for that team.</p>
       <p>Here are all the teams you created:</p>
       <ol class="team-list">
         <!-- loop through your existing teams -->
@@ -22,6 +23,7 @@
       {{else}}
       <!-- no teams - time to create them -->
       <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
+      <a class="btn btn-default pull-right new-team">Add Team</a>
       <!-- end of team session check if -->
       {{/if}}
       <!-- if a game exists allow the coach to jump to it -->
