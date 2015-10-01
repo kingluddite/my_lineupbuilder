@@ -13,6 +13,9 @@ Accounts.ui.config({
 accountsUIBootstrap3.logoutCallback = function(error) {
   if (error) console.log("Error:" + error);
   Session.clearPersistent();
+  // clear these sessions out when use logs out
+  Session.clear('sTeamId');
+  Session.clear('sGameId');
   Router.go('Home');
 }
 

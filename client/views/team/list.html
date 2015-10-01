@@ -8,7 +8,7 @@
     </div>
     <div class="panel-body">
       <!-- if have teams show them -->
-      {{#if sTeamId}}
+      {{#if sTeamId}}{{sTeamId}}
       <p>Click on a team to enter game information for that team.</p>
       <p>Here are all the teams you created:</p>
       <ol class="team-list">
@@ -28,9 +28,11 @@
       {{/if}}
       <!-- if a game exists allow the coach to jump to it -->
       {{#if sGameId}}
-      <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
-      <!-- end of game session check if -->
-      {{/if}}
+  <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
+  <!-- end of game session check if -->
+{{/if}}
+
+
     </div>
 
   </div>

@@ -81,5 +81,4 @@ season fee
 
 
 todo
-when log in
-show add team and have instructions to add a team.
+fix - when log in as new user should ask you to create a team
