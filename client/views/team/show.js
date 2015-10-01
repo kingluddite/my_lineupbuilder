@@ -11,6 +11,9 @@ Template.TeamShow.helpers({
   },
   sTeamId: function() {
     return Session.get('sTeamId');
+  },
+  sGameId: function() {
+    return Session.get('sGameId');
   }
 
 });

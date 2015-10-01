@@ -54,7 +54,7 @@ Template.TeamNew.events({
       }
 
       Session.setPersistent('sTeamId', id);
-      Session.setPersistent('sTeamNew', false);
+      Session.set('sTeamNew', false);
       // $('.team-created').html('<i class="fa fa-check"></i> <span> Team Created</span>');
       // $('.team-created span').css('text-decoration', 'line-through');
       // $('.team-created').addClass('text-muted');

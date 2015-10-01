@@ -1,33 +1,40 @@
 <template name="PlayerList">
-  <div class="col-sm-3 col-md-3">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-        <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
+  <h1>Players </h1>
+
+  <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
+
+  <div class="instructions">
+    <strong>List of players on your team</strong>
+    <p>When you are finished adding all your players <em>(You have a max roster list of 26 players</em>), click the 'Roster Completed' checkbox. Once you do that you will be give the option to create a game.</p>
+  </div>
+  <hr>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
+    </div>
+    <div class="panel-footer">
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" class="roster-complete"> Roster Completed
+        </label>
       </div>
-      <div class="panel-footer">
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" class="roster-complete"> Roster Completed
-          </label>
-        </div>
-      </div>
-      <div class="panel-body">
-        <ol>
-          {{#each cPlayers}}
+    </div>
+    <div class="panel-body">
+
+      <ol>
+        {{#each cPlayers}}
           <li>{{> editableText collection="players" field="fullName"}}
             <a class="remove" href="#"><i class="fa fa-trash fa-2"></i></a>
           </li>
-          {{/each}}
-        </ol>
-      </div>
-
+        {{/each}}
+      </ol>
+      {{#if sRosterComplete}}
+        <hr>
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">View My Games</a>
+      {{/if}}
     </div>
   </div>
-  <div class="col-sm-6 col-md-6">
-    {{> PlayerNew}} {{#if sGameId}} {{> FormationNew}} {{/if}}
-  </div>
-  <!-- END 3/6 col -->
 </template>
 
 <!-- this is just a roster with just player names that we can drag and drop -->
@@ -39,8 +46,9 @@
     </div>
     <div class="panel-body">
       <ol class="roster">
-        {{#if cPlayers.count}} {{#each cPlayers}} {{> PlayerItem}} {{/each}} {{else}}
-        <li><a href="{{PlayerAdd}}">Add Some Players</a></li>
+        {{#if cPlayers.count}}
+          {{#each cPlayers}} {{> PlayerItem}} {{/each}} {{else}}
+          <li><a href="{{pathFor 'PlayerList' _id=sTeamId}}">Add Some Players</a></li>
         {{/if}}
       </ol>
     </div>

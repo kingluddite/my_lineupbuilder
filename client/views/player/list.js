@@ -12,7 +12,9 @@ Template.PlayerList.helpers({
     if (Meteor.user()) {
       // grab all the players the user created (so we know it's their
       //   team)
-      return Players.find({}, {
+      return Players.find({
+        teamId: Session.get('sTeamId')
+      }, {
         // sort them alphabetically
         sort: {
           fullName: 1
@@ -24,6 +26,9 @@ Template.PlayerList.helpers({
   },
   sGameId: function() {
     return Session.get('sGameId');
+  },
+  sRosterComplete: function() {
+    return Session.get('sRosterComplete');
   }
 });
 
@@ -50,6 +55,11 @@ Template.PlayerList.events({
     if (playerCount <= 26) {
       $("#teamRoster").show();
     }
+  },
+
+  'click .help-text': function(evt, tmpl) {
+    $('.instructions').toggle(400);
+    return false;
   }
 });
 
@@ -65,9 +75,14 @@ Template.PlayerPlainList.helpers({
     if (Meteor.user()) {
       // grab all the players the user created (so we know it's their
       //   team)
-      return Players.find();
+      return Players.find({
+        teamId: Session.get('sTeamId')
+      });
     } else {
       this.ready();
     }
+  },
+  sTeamId: function() {
+    return Session.get('sTeamId');
   }
 });

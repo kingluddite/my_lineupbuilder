@@ -1,9 +1,9 @@
 <template name="TeamShow">
 
-  <p>
+  <!-- <p>
     <a class="btn btn-default" href="/">Back</a>
-  </p>
-
+  </p> -->
+  <h1>Team Details</h1>
   <div class="panel panel-default">
     <div class="panel-heading">
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
@@ -19,8 +19,10 @@
       <p><strong>Away Jersey:</strong> <img style="background-color:{{cTeam.awayJerseyColor}}" height="50" width="50" src="/img/jersey_200x200.png" alt="home jersey"></p>
       <hr>
       <!-- see if a game exists -->
+      <a class="btn btn-default pull-left" href="{{pathFor 'PlayerList' _id=sTeamId}}">Create My Roster</a>
       {{#if sGameId}}
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create Game</a>
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">View My Games</a>
+
       {{else}}
         <!-- no games yet -->
         <p>No games yet. Let's create one!</p>

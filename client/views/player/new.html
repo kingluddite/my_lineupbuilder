@@ -1,8 +1,12 @@
 <template name="PlayerNew">
-  <!-- is roster completed -->
-  {{#if rosterCompleted}}
-  <!-- show nothing if it is completed -->
-  {{> GameNew}} {{else}}
+  <h1>Add Players </h1>
+
+  <div class="instructions">
+    <strong>How do I add players to my roster?</strong>
+    <p>Easy. Just enter a name in the textbox below and click the '<em>Add Players</em>' button.</p>
+    <p><strong>Tip:</strong> If you want to add multiple players, click 'Add Another Player' multiple times and fill in the textboxes. When all players are entered into the textboxes, click '<strong>Submit Players</strong>'.</p>
+  </div>
+  <hr>
   <div class="panel panel-default">
     <div class="panel-heading">
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
@@ -13,28 +17,27 @@
       <form id="teamRosterForm">
         {{#if maxPlayers}}
 
-        <label>Add Players To Your Roster</label>
-        <div class="team-roster">
-          <div class="form-group">
-            <label class="sr-only">Player {{rosterCountPlusOne}}</label>
-            <div class="input-group">
-              <input type="text" required class="form-control" placeholder="Player {{rosterCountPlusOne}}" name="players[]">
-              <div class="input-group-addon">
-                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <label>Add Players To Your Roster</label>
+          <div class="team-roster">
+            <div class="form-group">
+              <label class="sr-only">Player {{rosterCountPlusOne}}</label>
+              <div class="input-group">
+                <input type="text" required class="form-control" placeholder="Player {{rosterCountPlusOne}}" name="players[]">
+                <div class="input-group-addon">
+                  <button type="button" class="close" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <a class="new-player btn btn-default" role="button">Add Another Player</a>
-        <button type="submit" class="btn btn-large btn-success pull-right">Submit Players</button>
+          <a class="new-player btn btn-default" role="button">Add Another Player</a>
+          <button type="submit" class="btn btn-large btn-success pull-right">Submit Players</button>
 
         {{else}}
-        <div class="alert alert-danger" role="alert">You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</div>
+          <div class="alert alert-danger" role="alert">You have reached the max of your player limit on your roster (24). If you want to add more players please remove existing players from your roster.</div>
         {{/if}}
       </form>
     </div>
   </div>
-  <!-- end check for roster completed if -->
-  {{/if}}
+
 </template>
 

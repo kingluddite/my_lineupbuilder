@@ -15,7 +15,11 @@ Meteor.methods({
 
 
     // find out if the roster has reached its max value
-    var playerCount = Players.find().count();
+    // make sure to get the teamId session value and
+    //  filter the collection by it
+    var playerCount = Players.find({
+      teamId: postAttributes.teamId
+    }).count();
     // pick out the whitelisted keys
     // Those on the list will be accepted, approved or recognized
     var player = _.extend(_.pick(postAttributes, 'teamId', 'fullName'), {
@@ -25,15 +29,14 @@ Meteor.methods({
       author: user.username,
       submitted: new Date().getTime()
     });
-    // console.log('player count is ' + playerCount);
-    // console.log('server postAtt: ' + postAttributes);
-    // console.log('player: ' + player);
 
+    // as long as our roster doesn't have more than 25 players we insert the
+    // player
     if (playerCount < 26) {
       var playerId = Players.insert(player);
       return playerId;
     } else {
-
+      // we do nothing if > 26 and return to the client
       return;
     }
 

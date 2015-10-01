@@ -1,7 +1,5 @@
 <template name="GameNew">
-  <!-- check the user is logged in -->
-  {{#if currentUser}}
-  <div class="col-sm-6 col-md-6">
+  {{#if sGameNew}}
     <div class="panel panel-default">
 
       <div class="panel-heading">
@@ -29,19 +27,20 @@
             </div>
           </p>
           {{#if sLeageCreated}}
-          <p>
-            <label class="sr-only">League Name</label>
-            <input type="text" required class="form-control" placeholder="League Name" name="leagueName">
-          </p>
+            <p>
+              <label class="sr-only">League Name</label>
+              <input type="text" required class="form-control" placeholder="League Name" name="leagueName">
+            </p>
           {{else}}
-          <p>You need to <a href="#">create a league</a>.</p>
-          {{/if}} {{#if sSeasonCreated}}
-          <p>
-            <label class="sr-only">Season Name</label>
-            <input type="text" required class="form-control" placeholder="Season Name" name="seasonName">
-          </p>
+            <p>You need to <a href="#">create a league</a>.</p>
+          {{/if}}
+          {{#if sSeasonCreated}}
+            <p>
+              <label class="sr-only">Season Name</label>
+              <input type="text" required class="form-control" placeholder="Season Name" name="seasonName">
+            </p>
           {{else}}
-          <p>You need to <a href="#">create a season</a>.</p>
+            <p>You need to <a href="#">create a season</a>.</p>
           {{/if}}
           <p>
             <label class="sr-only">Opponent Name</label>
@@ -85,8 +84,6 @@
         </form>
       </div>
     </div>
-  </div>
-  <!-- end currentUser if -->
   {{/if}}
 </template>
 

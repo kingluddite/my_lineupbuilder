@@ -41,6 +41,7 @@ Template.TeamList.events({
   'click .team-list a': function(evt, tmpl) {
     Session.setPersistent('sTeamId', this._id);
   },
+  // add a new team button
   'click .new-team': function(evt, tmpl) {
     // if coach needs to add a team we set this session to true
     // so he can see that form

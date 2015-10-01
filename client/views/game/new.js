@@ -27,6 +27,9 @@ Template.GameNew.helpers({
         return false;
       }
     }
+  },
+  sGameNew: function() {
+    return Session.get('sGameNew');
   }
 });
 
@@ -54,9 +57,11 @@ Template.GameNew.events({
         throwError(error.reason);
       }
       Session.setPersistent('sGameId', id);
-      $('.game-created').html('<i class="fa fa-check"></i> <span> Game Created</span>');
-      $('.game-created span').css('text-decoration', 'line-through');
-      $('.game-created').addClass('text-muted');
+      Session.set('sGameNew', false);
+      // $('.game-created').html('<i class="fa fa-check"></i> <span> Game Created</span>');
+      // $('.game-created span').css('text-decoration', 'line-through');
+      // $('.game-created').addClass('text-muted');
+
     });
   }
 });

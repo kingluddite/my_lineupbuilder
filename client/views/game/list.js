@@ -5,6 +5,10 @@ var removeGame = function() {
   });
 };
 
+Template.GameList.rendered = function() {
+  $('.instructions').hide();
+};
+
 
 Template.GameList.helpers({
   // grab all the games for this team
@@ -50,5 +54,15 @@ Template.GameList.events({
   },
   'click .game-list a': function(evt, tmpl) {
     Session.setPersistent('sGameId', this._id);
+  },
+  // add a new game button
+  'click .new-game': function(evt, tmpl) {
+    // if coach needs to add a team we set this session to true
+    // so he can see that form
+    Session.setPersistent('sGameNew', true);
+  },
+  'click .help-text': function(evt, tmpl) {
+    $('.instructions').toggle(400);
+    return false;
   }
 });

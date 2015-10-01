@@ -50,6 +50,7 @@ Template.FormationNew.events({
     }
 
     var currentTeamId = Session.get('sTeamId');
+    var currentGameId = Session.get('sGameId');
 
     var gameProperties = {
       teamId: currentTeamId,
@@ -62,7 +63,8 @@ Template.FormationNew.events({
       if (error) {
         return throwError(error.reason);
       }
-      Router.go('game.show', {
+      Session.setPersistent('sFormationChosen', true);
+      Router.go('GameShow', {
         _id: currentGameId
       });
     });

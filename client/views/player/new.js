@@ -1,6 +1,10 @@
 // need to set the max number for a roster
 var limit = 26;
 
+Template.PlayerNew.rendered = function() {
+  $('.instructions').hide();
+}
+
 Template.PlayerNew.helpers({
   rosterCompleted: function() {
     return Session.get('sRosterComplete');
@@ -14,7 +18,10 @@ Template.PlayerNew.helpers({
   // show add player box if roster max is not reached
   maxPlayers: function() {
     if (Meteor.user()) {
-      var currentRosterCount = Players.find().count();
+      // what's the current count of our team's roster?
+      var currentRosterCount = Players.find({
+        teamId: Session.get('sTeamId')
+      }).count();
 
       if (currentRosterCount >= 26) {
         return false;
@@ -25,7 +32,9 @@ Template.PlayerNew.helpers({
   },
   // for first add player form need to add one to roster count
   rosterCountPlusOne: function() {
-    var currentRosterCount = Players.find().count();
+    var currentRosterCount = Players.find({
+      teamId: Session.get('sTeamId')
+    }).count();
     return currentRosterCount + 1;
   }
 });
@@ -35,7 +44,9 @@ Template.PlayerNew.events({
   'click .new-player': function(evt, tmpl) {
     evt.preventDefault();
     // find out the current roster number
-    var currentRosterCount = Players.find().count();
+    var currentRosterCount = Players.find({
+      teamId: Session.get('sTeamId')
+    }).count();
 
     // grab the roster form
     var myForm = document.getElementById("teamRosterForm");
@@ -79,6 +90,11 @@ Template.PlayerNew.events({
     }
   },
 
+  'click .help-text': function(evt, tmpl) {
+    $('.instructions').toggle(400);
+    return false;
+  },
+
   // when people add player boxes give them the option
   //  to remove them
   'click .remove-box': function(evt, tmpl) {
@@ -88,7 +104,9 @@ Template.PlayerNew.events({
     elem.remove();
 
     // find out the current roster number
-    var currentRosterCount = Players.find().count();
+    var currentRosterCount = Players.find({
+      teamId: Session.get('sTeamId')
+    }).count();
 
     // grab the roster form
     var myForm = document.getElementById("teamRosterForm");
@@ -119,7 +137,10 @@ Template.PlayerNew.events({
 
   'submit form#teamRosterForm': function(evt) {
     evt.preventDefault();
-    var playerCount = Players.find().count();
+    // we find the count of the Players roster for this team
+    var playerCount = Players.find({
+      teamId: Session.get('sTeamId')
+    }).count();
     if (playerCount <= 26) {
       $("#teamRoster").show();
     } else {

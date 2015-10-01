@@ -81,4 +81,21 @@ season fee
 
 
 todo
-fix - when log in as new user should ask you to create a team
+FIXED - when log in as new user should ask you to create a team
+fix make entering calendar output a date value
+fix make formation radio buttons fill with correct formation
+put headings and instructions on positions and formations
+and subs and not playing
+get not playing and subs drag drop to work
+get starting lineup drag drop to work and populate starting positions and names
+link from starting lineup back to game info when submit starting lineup
+drag players to trash to remove them
+no duplicate starters allowed
+when click on position they all are updated
+postions should be created before starting lineup
+create subs
+create not playing
+show final page with all the content nicely formatted
+edit or publish buttons
+create video to show how it works
+deploy to meteor.com
