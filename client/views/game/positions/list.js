@@ -13,12 +13,11 @@ Template.PositionList.helpers({
     var myPosition = Games.findOne({
       _id: Session.get('sGameId')
     });
-    // when I used arrays
-    // var currPosInfo = myPosition.playerGameInfo[0];
-    // return currPosInfo;
-    // var currPosInfo = myPosition.playerGameInfo;
-    // return currPosInfo;
-    console.log(myPosition._id);
+
+    var currPosInfo = myPosition.playerGameInfo[0];
+    return currPosInfo;
+
+
     // this is how you get to the data you want
     // console.log(myPosition.playerGameInfo[0].player02.fieldPosition);
     // console.log(Session.get('sGameId'));

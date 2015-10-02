@@ -16,6 +16,7 @@ accountsUIBootstrap3.logoutCallback = function(error) {
   // clear these sessions out when use logs out
   Session.clear('sTeamId');
   Session.clear('sGameId');
+  Session.clear('sFormationChosen');
   Router.go('Home');
 }
 

@@ -28,6 +28,7 @@ Template.FormationEdit.helpers({
   sGameId: function() {
     return Session.get('sGameId');
   }
+
 });
 
 

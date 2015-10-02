@@ -1,21 +1,36 @@
-Template.FormationNew.rendered = function() {
-  $('.draggable').draggable();
-  $('.droppable').droppable({
-    // drop: function(event, ui) {
-    //   $(this)
-    //     .addClass('ui-state-highlight')
-    //     .find('p')
-    //     .html('dropped');
-    //   console.log(ui);
-    // }
+// Template.FormationNew.rendered = function() {
+//   $('.draggable').draggable();
+//   $('.droppable').droppable({
+//     // drop: function(event, ui) {
+//     //   $(this)
+//     //     .addClass('ui-state-highlight')
+//     //     .find('p')
+//     //     .html('dropped');
+//     //   console.log(ui);
+//     // }
 
-  });
-};
+//   });
+// };
+
 
 Template.FormationNew.helpers({
-  gameId: function() {
+  sGameId: function() {
     return Session.get('sGameId');
+  },
+  currentFormation: function() {
+    var currGame = Games.findOne({
+      _id: Session.get('sGameId')
+    });
+    console.log(currGame);
+    currFormation = currGame.myFormation;
+    if (currFormation) {
+      return currFormation;
+    } else {
+      return '4-4-2';
+    }
+
   }
+
 });
 
 
