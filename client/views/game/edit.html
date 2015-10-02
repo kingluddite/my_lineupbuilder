@@ -18,19 +18,20 @@
           </div>
         </p>
         {{#if sLeageCreated}}
-        <p>
-          <label class="sr-only">League Name</label>
-          <input type="text" required class="form-control" placeholder="League Name" name="leagueName" value="{{cGame.leagueName}}">
-        </p>
+          <p>
+            <label class="sr-only">League Name</label>
+            <input type="text" required class="form-control" placeholder="League Name" name="leagueName" value="{{cGame.leagueName}}">
+          </p>
         {{else}}
-        <p>You need to <a href="#">create a league</a>.</p>
-        {{/if}} {{#if sSeasonCreated}}
-        <p>
-          <label class="sr-only">Season Name</label>
-          <input type="text" required class="form-control" placeholder="Season Name" name="seasonName" value="{{cGame.seasonName}}">
-        </p>
+          <p>You need to <a href="{{pathFor 'LeagueList'}}">create a league</a>.</p>
+        {{/if}}
+        {{#if sSeasonCreated}}
+          <p>
+            <label class="sr-only">Season Name</label>
+            <input type="text" required class="form-control" placeholder="Season Name" name="seasonName" value="{{cGame.seasonName}}">
+          </p>
         {{else}}
-        <p>You need to <a href="#">create a season</a>.</p>
+          <p>You need to <a href="#">create a season</a>.</p>
         {{/if}}
         <p>
           <label class="sr-only">Opponent Name</label>
@@ -44,7 +45,7 @@
           <label>My Formation</label>
           <select class="form-control formation-choice-select">
             {{#if cGame.myFormation}}
-            <option value="{{cGame.myFormation}}" selected>{{cGame.myFormation}}</option>
+              <option value="{{cGame.myFormation}}" selected>{{cGame.myFormation}}</option>
             {{/if}}
             <option value="4-4-2" checked>4-4-2</option>
             <option value="4-3-3-flat">4-3-3 Flat</option>

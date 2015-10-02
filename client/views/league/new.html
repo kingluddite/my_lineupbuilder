@@ -1,0 +1,22 @@
+<template name="LeagueNew">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Add League</h3>
+    </div>
+    <div class="panel-body">
+      <p>Use the form below to create your League. Required fields are outlined in red.</p>
+      <form id="newLeagueForm">
+        <div class="form-group {{errorClass 'name'}}">
+          <label class="control-label sr-only" for="leagueName">League Name</label>
+          <div class="controls">
+            <input id="leagueName" type="text" class="form-control" placeholder="League Name" name="leagueName">
+            <span class="help-block">{{errorMessage 'name'}}</span>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-large btn-success pull-right">Create League</button>
+      </form>
+    </div>
+  </div>
+</template>
+

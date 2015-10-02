@@ -32,7 +32,7 @@
               <input type="text" required class="form-control" placeholder="League Name" name="leagueName">
             </p>
           {{else}}
-            <p>You need to <a href="#">create a league</a>.</p>
+            <p>You need to <a href="{{pathFor 'LeagueList'}}">create a league</a>.</p>
           {{/if}}
           {{#if sSeasonCreated}}
             <p>

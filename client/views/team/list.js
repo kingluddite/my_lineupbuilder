@@ -42,7 +42,6 @@ Template.TeamList.events({
   },
   // toggle help text for team list
   'click .help-text': function(evt, tmpl) {
-    console.log('yo');
     $('.instructions').toggle(400);
     return false;
   },
