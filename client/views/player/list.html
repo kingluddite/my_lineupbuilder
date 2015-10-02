@@ -31,7 +31,11 @@
       </ol>
       {{#if sRosterComplete}}
         <hr>
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">View My Games</a>
+        {{#if sGameId}}
+          <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">View My Games</a>
+        {{else}}
+          <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create A Game</a>
+        {{/if}}
       {{/if}}
     </div>
   </div>

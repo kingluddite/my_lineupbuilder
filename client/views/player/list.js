@@ -37,6 +37,8 @@ Template.PlayerList.helpers({
 Template.PlayerList.events({
   'click .roster-complete': function(evt, tmpl) {
     if (evt.target.checked) {
+      // validation here
+      // if roster is not >= 11 alert coach
       Session.setPersistent("sRosterComplete", true);
     } else {
       Session.setPersistent("sRosterComplete", false);
