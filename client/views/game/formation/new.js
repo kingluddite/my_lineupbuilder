@@ -64,7 +64,7 @@ Template.FormationNew.events({
         return throwError(error.reason);
       }
       Session.setPersistent('sFormationChosen', true);
-      Router.go('GameShow', {
+      Router.go('PositionNew', {
         _id: currentGameId
       });
     });

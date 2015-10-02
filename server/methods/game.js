@@ -9,19 +9,15 @@ Meteor.methods({
     }
 
     // ensure the post has a name
-    if (!postAttributes.gameDate) {
-      throw new Meteor.Error(422, "Please provide a Game Date");
-    }
-    if (!postAttributes.gameTime) {
-      throw new Meteor.Error(422, "Please provide a Game Time");
+    if (!postAttributes.gameDateTime) {
+      throw new Meteor.Error(422, "Please provide a Game Date/Time");
     }
 
     // pick out the whitelisted keys
     // Those on the list will be accepted, approved or recognized
     var game = _.extend(_.pick(postAttributes,
       'teamId',
-      'gameDate',
-      'gameTime',
+      'gameDateTime',
       'leagueName',
       'seasonName',
       'opponentName',

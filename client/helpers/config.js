@@ -23,7 +23,7 @@ accountsUIBootstrap3.logoutCallback = function(error) {
 // allows you to easily format JavaScript dates
 UI.registerHelper('formatDate', function(datetime) {
   if (moment) {
-    return moment(datetime).format('MMMM Do YYYY');
+    return moment(datetime).format('MMMM Do YYYY, h:mm a');
   } else {
     return datetime;
   }

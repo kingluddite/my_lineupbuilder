@@ -11,21 +11,21 @@
         <form id="newGameForm">
 
           <p class="form-group">
-            <div class='input-group date date-picker'>
-              <input type="text" name="gameDate" required class="form-control" placeholder="01/01/2016" />
+            <div class='input-group date date-time-picker'>
+              <input type="text" name="gameDateTime" required class="form-control" placeholder="01/01/2016" />
               <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
               </span>
             </div>
           </p>
-          <p class="form-group">
+          <!-- <p class="form-group">
             <div class='input-group date time-picker'>
               <input type="text" name="gameTime" required class="form-control" placeholder="4:30pm" />
               <span class="input-group-addon">
                         <span class="glyphicon glyphicon-time"></span>
               </span>
             </div>
-          </p>
+          </p> -->
           {{#if sLeageCreated}}
             <p>
               <label class="sr-only">League Name</label>

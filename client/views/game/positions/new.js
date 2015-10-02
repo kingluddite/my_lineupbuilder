@@ -3,6 +3,16 @@ Template.PositionNew.events({
     // console.log(evt.target);
     $(evt.target).css('width', '300px');
     $(evt.target).css('border', '1px solid #000');
+    $(evt.target).addClass('my-focus');
+    var myForm = document.getElementById('newPositionForm');
+    var allInputs = myForm.getElementsByTagName('input');
+    for (var i = 0; i < allInputs.length; i++) {
+      if ($(allInputs[i]).hasClass('my-focus')) {
+        $(allInputs[i]).fadeTo("slow", 1);
+      } else {
+        $(allInputs[i]).fadeTo("slow", .4).removeClass('my-focus');
+      }
+    }
   },
   'blur input': function(evt) {
     $(evt.target).css('width', '50px');

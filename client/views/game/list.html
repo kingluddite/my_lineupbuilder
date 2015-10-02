@@ -21,12 +21,15 @@
         <ol class="game-list">
           {{#each cGames}}
             <li>
-              <a href="{{pathFor 'GameShow'}}">{{gameDate}}</a>
+              <a href="{{pathFor 'GameShow'}}">{{formatDate gameDateTime}}</a>
               <a class="remove"><i class="fa fa-trash fa-2"></i></a>
             </li>
           {{/each}}
         </ol>
+        <hr>
+        <a class="btn btn-default pull-right new-game">Add Game</a>
       {{else}}
+        <hr>
         <p>You have not created any games yet. Ready?</p>
         <a class="btn btn-default pull-right new-game">Add Game</a>
       {{/if}}

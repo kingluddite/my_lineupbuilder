@@ -1,9 +1,6 @@
 Template.GameEdit.rendered = function() {
   // $('#gameDatePicker').datepicker();
-  this.$('.date-picker').datetimepicker();
-  this.$('.time-picker').datetimepicker({
-    format: 'LT'
-  });
+  $('.date-time-picker').datetimepicker();
 
   // when template loads find the boolean value of homeTeam
   var currentGame = Games.findOne({
@@ -51,15 +48,23 @@ function isHomeChecked() {
 }
 
 Template.GameEdit.events({
+  // need this event here for when game appears on 'add game' click
+  //  also need it in render when template loads
+  'click .date-time-picker': function(evt) {
+    $('.date-time-picker').datetimepicker();
+  },
 
   'submit form#editGameForm': function(evt) {
     evt.preventDefault();
 
     var currentGameId = Session.get('sGameId');
+    // convert the string date to an ISO String
+    // which is required by moment
+    var frmDateTime = $(evt.target).find('[name=gameDateTime]').val();
+    var convertedDate = new Date(frmDateTime);
 
     var gameProperties = {
-      gameDate: $(evt.target).find('[name=gameDate]').val(),
-      gameTime: $(evt.target).find('[name=gameTime]').val(),
+      gameDateTime: convertedDate,
       leagueName: $(evt.target).find('[name=leagueName]').val(),
       seasonName: $(evt.target).find('[name=seasonName]').val(),
       opponentName: $(evt.target).find('[name=opponentName]').val(),

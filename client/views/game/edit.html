@@ -9,19 +9,11 @@
       <p>Use the form below to edit your game information. Required fields are outlined in red.</p>
       <form id="editGameForm">
 
-        <p class="form-group">
-          <div class='input-group date date-picker'>
-            <input type="text" name="gameDate" required class="form-control" placeholder="01/01/2016" value="{{cGame.gameDate}}" />
+        <p class="form-group">{{formatDate cGame.gameDateTime}}
+          <div class='input-group date date-time-picker'>
+            <input type="text" name="gameDateTime" required class="form-control" placeholder="01/01/2016" value="111" />
             <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
-            </span>
-          </div>
-        </p>
-        <p class="form-group">
-          <div class='input-group date time-picker'>
-            <input type="text" name="gameTime" required class="form-control" placeholder="4:30pm" value="{{cGame.gameTime}}" />
-            <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-time"></span>
             </span>
           </div>
         </p>
