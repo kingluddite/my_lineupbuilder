@@ -1,0 +1,27 @@
+<template name="SeasonShow">
+  <!-- <p>
+    <a class="btn btn-default" href="/">Back</a>
+  </p> -->
+  <h1>Season Details</h1>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">{{cSeason.seasonName}} Season Info</h3>
+    </div>
+    <div class="panel-body">
+      <p><strong>Season Name:</strong> {{> editableText context=cSeason collection="seasons" field="seasonName"}}</p>
+
+      <hr>
+      {{#if sGameId}}
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">View My Games</a>
+
+      {{else}}
+        <!-- no games yet -->
+        <p>No games yet. Let's create one!</p>
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create Game</a>
+      {{/if}}
+    </div>
+  </div>
+
+</template>
+

@@ -1,0 +1,46 @@
+<template name="SeasonList">
+  <h1>Seasons</h1>
+
+  <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
+
+  <div class="instructions">
+    <p>Click on a season to enter game information for that season.</p>
+  </div>
+  <hr>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">My Season <span class="badge">{{cSeasons.count}}</span></h3>
+    </div>
+
+    <div class="panel-body">
+
+      <!-- if have seasons show them -->
+      {{#if sSeasonId}}
+        <p>Here are all your Seasons:</p>
+        <ol class="season-list">
+          <!-- loop through your existing seasons -->
+          {{#each cSeasons}}
+            <li>
+              <a href="{{pathFor 'SeasonShow'}}">{{seasonName}}</a>
+              <a class="remove"><i class="fa fa-trash fa-2"></i></a>
+            </li>
+          {{/each}}
+        </ol>
+      {{else}}
+        <!-- no seasons - time to create them -->
+        <p>You have not created any seasons yet. It's time for you to take the plunge and create a season.</p>
+        <a class="btn btn-default pull-right new-team">Add Season</a>
+        <!-- end of team session check if -->
+      {{/if}}
+      <!-- if a game exists allow the coach to jump to it -->
+      {{#if sGameId}}
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
+        <!-- end of game session check if -->
+      {{/if}}
+
+    </div>
+
+  </div>
+</template>
+

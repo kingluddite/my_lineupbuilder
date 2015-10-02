@@ -1,6 +1,6 @@
 Template.LeagueEdit.helpers({
-  // if there is a team return false
-  // so we can hide the add team form
+
+
   cLeague: function() {
     if (Meteor.user()) {
       return Leagues.findOne({

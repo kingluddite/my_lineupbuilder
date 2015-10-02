@@ -1,23 +1,23 @@
 Meteor.methods({
-  newLeague: function(postAttributes) {
+  newSeason: function(postAttributes) {
 
     var user = Meteor.user();
     //, postWithSameLink = Players.findOne({firstName: postAttributes.firstName});
 
     // ensure the user is logged in
     if (!user) {
-      throw new Meteor.Error(401, "You need to login to add a league");
+      throw new Meteor.Error(401, "You need to login to add a season");
     }
 
     // ensure the post has a name
-    var errors = validateLeague(postAttributes);
+    var errors = validateSeason(postAttributes);
     // if (errors.title || errors.url)
     if (errors.name)
-      throw new Meteor.Error('invalid-league', "You must enter a league name");
+      throw new Meteor.Error('invalid-season', "You must enter a season name");
 
     // pick out the whitelisted keys
     // Those on the list will be accepted, approved or recognized
-    var league = _.extend(_.pick(postAttributes, 'leagueName', 'teamId'), {
+    var season = _.extend(_.pick(postAttributes, 'seasonName', 'teamId', 'leagueId'), {
 
       createdBy: user._id,
       author: user.username,
@@ -25,8 +25,8 @@ Meteor.methods({
     });
 
 
-    var leagueId = Leagues.insert(league);
+    var seasonId = Seasons.insert(season);
 
-    return leagueId;
+    return seasonId;
   }
 });

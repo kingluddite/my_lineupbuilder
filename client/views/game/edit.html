@@ -17,21 +17,31 @@
             </span>
           </div>
         </p>
-        {{#if sLeageCreated}}
-          <p>
-            <label class="sr-only">League Name</label>
-            <input type="text" required class="form-control" placeholder="League Name" name="leagueName" value="{{cGame.leagueName}}">
-          </p>
+        {{#if sLeagueId}}
+          <div class="form-group">
+            <label for="myLeagueName">League</label>
+            <select class="form-control" id="myLeagueName" name="leagueName">
+              {{#each cMyLeagues}}
+                <option value="{{_id}}">{{leagueName}}</option>
+              {{/each}}
+            </select>
+          </div>
         {{else}}
+
           <p>You need to <a href="{{pathFor 'LeagueList'}}">create a league</a>.</p>
         {{/if}}
-        {{#if sSeasonCreated}}
-          <p>
-            <label class="sr-only">Season Name</label>
-            <input type="text" required class="form-control" placeholder="Season Name" name="seasonName" value="{{cGame.seasonName}}">
-          </p>
+        {{#if sSeasonId}}
+          <div class="form-group">
+            <label for="mySeasonName">Season</label>
+            <select class="form-control" id="mySeasonName" name="seasonName">
+              {{#each cMySeasons}}
+                <option value="{{_id}}">{{seasonName}}</option>
+              {{/each}}
+            </select>
+          </div>
         {{else}}
-          <p>You need to <a href="#">create a season</a>.</p>
+
+          <p>You need to <a href="{{pathFor 'SeasonList'}}">create a season</a>.</p>
         {{/if}}
         <p>
           <label class="sr-only">Opponent Name</label>

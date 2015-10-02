@@ -28,6 +28,20 @@ Template.GameNew.helpers({
   },
   sGameNew: function() {
     return Session.get('sGameNew');
+  },
+  sLeagueId: function() {
+    return Session.get('sLeagueId');
+  },
+  cMyLeagues: function() {
+    return Leagues.find();
+  },
+  sSeasonId: function() {
+    return Session.get('sSeasonId');
+  },
+  cMySeasons: function() {
+    return Seasons.find({
+      leagueId: Session.get('sLeagueId')
+    });
   }
 });
 
@@ -50,6 +64,7 @@ Template.GameNew.events({
       teamId: currentTeamId,
       gameDateTime: convertedDate,
       // gameTime: $(evt.target).find('[name=gameTime]').val(),
+      // we grab the ids for both leagueName and seasonName
       leagueName: $(evt.target).find('[name=leagueName]').val(),
       seasonName: $(evt.target).find('[name=seasonName]').val(),
       opponentName: $(evt.target).find('[name=opponentName]').val(),

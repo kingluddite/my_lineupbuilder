@@ -26,6 +26,23 @@ Template.GameEdit.helpers({
   },
   sGameId: function() {
     return Session.get('sGameId')
+  },
+  sGameNew: function() {
+    return Session.get('sGameNew');
+  },
+  sLeagueId: function() {
+    return Session.get('sLeagueId');
+  },
+  cMyLeagues: function() {
+    return Leagues.find();
+  },
+  sSeasonId: function() {
+    return Session.get('sSeasonId');
+  },
+  cMySeasons: function() {
+    return Seasons.find({
+      leagueId: Session.get('sLeagueId')
+    });
   }
 });
 

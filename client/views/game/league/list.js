@@ -30,7 +30,7 @@ Template.LeagueList.events({
     evt.preventDefault();
 
     if (confirm("Delete this league?")) {
-      Session.set('sLeaugeId', this._id);
+      Session.set('sLeagueId', this._id);
       removeLeague();
       Session.set('sLeagueId', null);
     }
