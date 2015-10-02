@@ -17,6 +17,7 @@ accountsUIBootstrap3.logoutCallback = function(error) {
   Session.clear('sTeamId');
   Session.clear('sGameId');
   Session.clear('sFormationChosen');
+  Session.clear('sRosterComplete');
   Router.go('Home');
 }
 
