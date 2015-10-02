@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">Starting Lineup</h3>
+      <h3 class="panel-title">Position Names</h3>
     </div>
     <div class="panel-body">
       <p>
@@ -13,73 +13,64 @@ my starting lineup.</a>
       <p>
         <a href="{{pathFor 'PositionEdit' _id=sGameId}}">Something is wrong. I need to edit the position Names</a>
       </p>
-      <table class="table table-bordered">
-        <thead>
-          <tr>
-            <td>#</td>
-            <th>Position Name</th>
-            <th>Player Name</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Goalie</td>
-            <td>TBD</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>{{cGame.player02.fieldPosition}}</td>
-            <td>{{cGame.player02.playerFullName}}</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>{{cGame.player03.fieldPosition}}</td>
-            <td>{{cGame.player03.playerFullName}}</td>
-          </tr>
-          <tr>
-            <th scope="row">4</th>
-            <td>{{cGame.player04.fieldPosition}}</td>
-            <td>{{cGame.player04.playerFullName}}</td>
-          </tr>
-          <tr>
-            <th scope="row">5</th>
-            <td>{{cGame.player05.fieldPosition}}</td>
-            <td>{{cGame.player05.playerFullName}}</td>
-          </tr>
-          <tr>
-            <th scope="row">6</th>
-            <td>{{cGame.player06.fieldPosition}}</td>
-            <td>{{cGame.player06.playerFullName}}</td>
-          </tr>
-          <tr>
-            <th scope="row">7</th>
-            <td>{{cGame.player07.fieldPosition}}</td>
-            <td>{{cGame.player07.playerFullName}}</td>
-          </tr>
-          <tr>
-            <th scope="row">8</th>
-            <td>{{cGame.player08.fieldPosition}}</td>
-            <td>{{cGame.player08.playerFullName}}</td>
-          </tr>
-          <tr>
-            <th scope="row">9</th>
-            <td>{{cGame.player09.fieldPosition}}</td>
-            <td>{{cGame.player09.playerFullName}}</td>
-          </tr>
-          <tr>
-            <th scope="row">10</th>
-            <td>{{cGame.player10.fieldPosition}}</td>
-            <td>{{cGame.player10.playerFullName}}</td>
-          </tr>
-          <tr>
-            <th scope="row">11</th>
-            <td>{{cGame.player11.fieldPosition}}</td>
-            <td>{{cGame.player11.playerFullName}}</td>
-          </tr>
-        </tbody>
-      </table>
+      {{#if Template.subscriptionsReady}}
+        <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>#</td>
+              <th>Position Name</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Goalie</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>{{cGame.player03.fieldPosition}}</td>
+            </tr>
+            <!-- <tr>
+  <th scope="row">3</th>
+  <td>{{cGame.player03.fieldPosition}}</td>
+</tr>
+<tr>
+  <th scope="row">4</th>
+  <td>{{cGame.player04.fieldPosition}}</td>
+</tr>
+<tr>
+  <th scope="row">5</th>
+  <td>{{cGame.player05.fieldPosition}}</td>
+</tr>
+<tr>
+  <th scope="row">6</th>
+  <td>{{cGame.player06.fieldPosition}}</td>
+</tr>
+<tr>
+  <th scope="row">7</th>
+  <td>{{cGame.player07.fieldPosition}}</td>
+</tr>
+<tr>
+  <th scope="row">8</th>
+  <td>{{cGame.player08.fieldPosition}}</td>
+</tr>
+<tr>
+  <th scope="row">9</th>
+  <td>{{cGame.player09.fieldPosition}}</td>
+</tr>
+<tr>
+  <th scope="row">10</th>
+  <td>{{cGame.player10.fieldPosition}}</td>
+</tr>
+<tr>
+  <th scope="row">11</th>
+  <td>{{cGame.player11.fieldPosition}}</td>
+</tr>
 
+ -->
+          </tbody>
+        </table>
+      {{/if}}
     </div>
   </div>
 </template>
