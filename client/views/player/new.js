@@ -1,6 +1,7 @@
 // need to set the max number for a roster
 var limit = 26;
 
+// initially hide the instructions
 Template.PlayerNew.rendered = function() {
   $('.instructions').hide();
 }
