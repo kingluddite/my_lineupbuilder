@@ -22,9 +22,11 @@ Template.TeamList.helpers({
       this.ready();
     }
   },
-
   sTeamId: function() {
     return Session.get('sTeamId');
+  },
+  sTeamNew: function() {
+    return Session.get('sTeamNew');
   }
 });
 

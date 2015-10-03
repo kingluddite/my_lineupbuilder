@@ -78,7 +78,7 @@ Template.GameNew.events({
         throwError(error.reason);
       }
       Session.setPersistent('sGameId', id);
-      Session.set('sGameNew', false);
+      Session.set('sGameNew', true);
       // $('.game-created').html('<i class="fa fa-check"></i> <span> Game Created</span>');
       // $('.game-created span').css('text-decoration', 'line-through');
       // $('.game-created').addClass('text-muted');

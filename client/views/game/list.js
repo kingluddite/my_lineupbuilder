@@ -33,9 +33,6 @@ Template.GameList.helpers({
   },
   sGameId: function() {
     return Session.get('sGameId');
-  },
-  sTeamId: function() {
-    return Session.get('sTeamId');
   }
 
 });
