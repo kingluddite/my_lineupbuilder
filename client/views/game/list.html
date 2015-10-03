@@ -14,9 +14,12 @@
       <h3 class="panel-title">My Games <span class="badge">{{cGames.count}}</span></h3>
     </div>
     <div class="panel-body">
-      {{#if cGames}}
+      <!-- do we have games yet? -->
+      {{#if cGames.count}}
+        <!-- yes we have games show them -->
         <p>Here are all the games you created:</p>
         <ol class="game-list">
+          <!-- loop through games -->
           {{#each cGames}}
             <li>
               <a href="{{pathFor 'GameShow'}}">{{formatDate gameDateTime}}</a>
@@ -25,14 +28,17 @@
           {{/each}}
         </ol>
         <hr>
-        <a class="btn btn-default pull-right new-game">Add Game</a>
       {{else}}
+        <!-- no teams, let coach create them -->
         <p>You have not created any games yet. Ready? Let's do this!</p>
-        {{#if sAddGame}}
+        <a class="btn btn-default pull-right new-game">Add Game</a>
+      {{/if}}
 
-        {{else}}
-          <a class="btn btn-default pull-right new-game">Add Game</a>
-        {{/if}}
+      <!-- did we create a game? -->
+      {{#if sGameNew}}
+        <a class="btn btn-default pull-right new-game">Add Another Game</a>
+      {{else}}
+
       {{/if}}
     </div>
   </div>
