@@ -15,34 +15,32 @@
 
     <div class="panel-body">
 
-      <!-- use the new team session to show teams -->
-      {{#if sTeamNew}}
+      <!-- do we have teams yet? -->
+      {{#if cTeams.count}}
+        <!-- yes we have teams show them -->
         <p>Here are all your teams:</p>
-        {{#if cTeams}}
-          <ol class="team-list">
-            <!-- loop through your existing teams -->
-            {{#each cTeams}}
-              <li>
-                <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
-                <a class="remove"><i class="fa fa-trash fa-2"></i></a>
-              </li>
-            {{/each}}
-          </ol>
-        {{else}}
-          <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
-          <a class="btn btn-default pull-right new-team">Add Team</a>
-        {{/if}}
-        {{#if sAddTeam}}
-        {{else}}
-          <hr>
-          <a class="btn btn-default pull-right new-team">Add Team</a>
-        {{/if}}
+        <ol class="team-list">
+          <!-- loop through your existing teams -->
+          {{#each cTeams}}
+            <li>
+              <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
+              <a class="remove"><i class="fa fa-trash fa-2"></i></a>
+            </li>
+          {{/each}}
+        </ol>
+        <hr>
+      {{else}}
+        <!-- no teams, let coach create them -->
+        <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
+        <a class="btn btn-default pull-right new-team">Add Team</a>
       {{/if}}
 
-      <!-- if a game exists allow the coach to jump to it -->
-      {{#if sGameId}}
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
-        <!-- end of game session check if -->
+      <!-- did we add a team? -->
+      {{#if sTeamNew}}
+        <a class="btn btn-default pull-left new-team">Add AnotherTeam</a>
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create A Game</a>
+      {{else}}
+
       {{/if}}
 
     </div>

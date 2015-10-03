@@ -17,9 +17,14 @@ Template.SeasonList.helpers({
     //   season)
     return Seasons.find();
   },
-
   sSeasonId: function() {
     return Session.get('sSeasonId');
+  },
+  sAddSeason: function() {
+    return Session.get('sAddSeason');
+  },
+  sSeasonNew: function() {
+    return Session.get('sSeasonNew');
   }
 });
 
@@ -35,11 +40,6 @@ Template.SeasonList.events({
       Session.set('sSeasonId', null);
     }
   },
-  // toggle help text for season list
-  'click .help-text': function(evt, tmpl) {
-    $('.instructions').toggle(400);
-    return false;
-  },
   // when person clicks to enter their season
   // set that season id as the current session
   'click .season-list a': function(evt, tmpl) {
@@ -49,7 +49,12 @@ Template.SeasonList.events({
   'click .new-season': function(evt, tmpl) {
     // if coach needs to add a season we set this session to true
     // so he can see that form
-    Session.setPersistent('sSeasonNew', true);
-  }
+    Session.setPersistent('sAddSeason', true);
+  },
+  // toggle help text for season list
+  'click .help-text': function(evt, tmpl) {
+    $('.instructions').toggle(400);
+    return false;
+  },
 
 });

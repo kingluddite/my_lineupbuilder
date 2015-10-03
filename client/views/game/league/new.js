@@ -23,11 +23,16 @@ Template.LeagueNew.helpers({
   },
   sLeagueNew: function() {
     return Session.get('sLeagueNew');
+  },
+  sAddLeague: function() {
+    return Session.get('sAddLeague');
   }
 });
 
 Template.LeagueNew.events({
-
+  'click .close-panel': function(evt, tmpl) {
+    Session.setPersistent('sAddLeague', false);
+  },
   // when add league form is submitted
   //  grab the form data and pass it to the server
   'submit form#newLeagueForm': function(evt) {
@@ -50,7 +55,8 @@ Template.LeagueNew.events({
       }
 
       Session.setPersistent('sLeagueId', id);
-      Session.set('sLeagueNew', false);
+      Session.set('sLeagueNew', true);
+      Session.set('sAddLeague', false);
     });
   }
 });

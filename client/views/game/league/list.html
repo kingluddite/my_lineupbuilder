@@ -16,7 +16,7 @@
     <div class="panel-body">
 
       <!-- if have teams show them -->
-      {{#if sLeagueId}}
+      {{#if sLeagueNew}}
         <p>Here are all your leagues:</p>
         <ol class="league-list">
           <!-- loop through your existing teams -->
@@ -27,16 +27,17 @@
             </li>
           {{/each}}
         </ol>
+        <hr>
+        <a class="btn btn-default pull-right new-league">Add League</a>
       {{else}}
         <!-- no teams - time to create them -->
         <p>You have not created any leagues yet. It's time for you to take the plunge and create a league.</p>
-        <a class="btn btn-default pull-right new-team">Add League</a>
-        <!-- end of team session check if -->
-      {{/if}}
-      <!-- if a game exists allow the coach to jump to it -->
-      {{#if sGameId}}
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
-        <!-- end of game session check if -->
+
+        {{#if sAddLeague}}
+          <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
+        {{else}}
+          <a class="btn btn-default pull-right new-league">Add League</a>
+        {{/if}}
       {{/if}}
 
     </div>

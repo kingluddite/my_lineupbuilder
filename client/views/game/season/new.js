@@ -23,11 +23,16 @@ Template.SeasonNew.helpers({
   },
   sSeasonNew: function() {
     return Session.get('sSeasonNew');
+  },
+  sAddSeason: function() {
+    return Session.get('sAddSeason');
   }
 });
 
 Template.SeasonNew.events({
-
+  'click .close-panel': function(evt, tmpl) {
+    Session.setPersistent('sAddSeason', false);
+  },
   // when add Season form is submitted
   //  grab the form data and pass it to the server
   'submit form#newSeasonForm': function(evt) {
@@ -52,6 +57,7 @@ Template.SeasonNew.events({
 
       Session.setPersistent('sSeasonId', id);
       Session.set('sSeasonNew', true);
+      Session.set('sAddSeason', false);
     });
   }
 });

@@ -38,6 +38,9 @@ Template.GameNew.helpers({
   sSeasonId: function() {
     return Session.get('sSeasonId');
   },
+  sAddGame: function() {
+    return Session.get('sAddGame');
+  },
   cMySeasons: function() {
     return Seasons.find({
       leagueId: Session.get('sLeagueId')
@@ -46,6 +49,10 @@ Template.GameNew.helpers({
 });
 
 Template.GameNew.events({
+  // close new team panel is 'x' clicked
+  'click .close-panel': function(evt, tmpl) {
+    Session.setPersistent('sAddGame', false);
+  },
   // need this event here for when game appears on 'add game' click
   //  also need it in render when template loads
   'click .date-time-picker': function(evt) {
@@ -79,9 +86,7 @@ Template.GameNew.events({
       }
       Session.setPersistent('sGameId', id);
       Session.set('sGameNew', true);
-      // $('.game-created').html('<i class="fa fa-check"></i> <span> Game Created</span>');
-      // $('.game-created span').css('text-decoration', 'line-through');
-      // $('.game-created').addClass('text-muted');
+      Session.set('sAddGame', false);
 
     });
   }

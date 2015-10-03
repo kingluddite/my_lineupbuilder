@@ -1,3 +1,8 @@
+// initially hide the instructions
+Template.TeamShow.rendered = function() {
+  $('.instructions').hide();
+}
+
 Template.TeamShow.helpers({
   // if there is a team return false
   // so we can hide the add team form
@@ -16,4 +21,12 @@ Template.TeamShow.helpers({
     return Session.get('sGameId');
   }
 
+});
+
+Template.TeamShow.events({
+  // toggle the info at top of page
+  'click .help-text': function(evt, tmpl) {
+    $('.instructions').toggle(400);
+    return false;
+  }
 });

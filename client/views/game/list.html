@@ -13,10 +13,8 @@
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
       <h3 class="panel-title">My Games <span class="badge">{{cGames.count}}</span></h3>
     </div>
-    <div class="panel-footer">
-    </div>
     <div class="panel-body">
-      {{#if sGameId}}
+      {{#if cGames}}
         <p>Here are all the games you created:</p>
         <ol class="game-list">
           {{#each cGames}}
@@ -29,9 +27,12 @@
         <hr>
         <a class="btn btn-default pull-right new-game">Add Game</a>
       {{else}}
-        <hr>
         <p>You have not created any games yet. Ready? Let's do this!</p>
-        <a class="btn btn-default pull-right new-game">Add Game</a>
+        {{#if sAddGame}}
+
+        {{else}}
+          <a class="btn btn-default pull-right new-game">Add Game</a>
+        {{/if}}
       {{/if}}
     </div>
   </div>

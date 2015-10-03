@@ -20,6 +20,12 @@ Template.LeagueList.helpers({
 
   sLeagueId: function() {
     return Session.get('sLeagueId');
+  },
+  sAddLeague: function() {
+    return Session.get('sAddLeague');
+  },
+  sLeagueNew: function() {
+    return Session.get('sLeagueNew');
   }
 });
 
@@ -35,11 +41,6 @@ Template.LeagueList.events({
       Session.set('sLeagueId', null);
     }
   },
-  // toggle help text for league list
-  'click .help-text': function(evt, tmpl) {
-    $('.instructions').toggle(400);
-    return false;
-  },
   // when person clicks to enter their league
   // set that league id as the current session
   'click .league-list a': function(evt, tmpl) {
@@ -49,7 +50,12 @@ Template.LeagueList.events({
   'click .new-league': function(evt, tmpl) {
     // if coach needs to add a league we set this session to true
     // so he can see that form
-    Session.setPersistent('sLeagueNew', true);
-  }
+    Session.setPersistent('sAddLeague', true);
+  },
+  // toggle help text for league list
+  'click .help-text': function(evt, tmpl) {
+    $('.instructions').toggle(400);
+    return false;
+  },
 
 });

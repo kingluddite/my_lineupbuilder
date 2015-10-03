@@ -1,22 +1,31 @@
 <template name="SeasonNew">
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">Add Season</h3>
+  {{#if sAddSeason}}
+    <h1>Add Seasons</h1>
+
+    <div class="instructions">
+      <p>Leagues have many seasons for the different teams they have. Enter your season name below.</p>
     </div>
-    <div class="panel-body">
-      <p>Use the form below to create your Season. Required fields are outlined in red.</p>
-      <form id="newSeasonForm">
-        <div class="form-group {{errorClass 'name'}}">
-          <label class="control-label sr-only" for="seasonName">Season Name</label>
-          <div class="controls">
-            <input id="seasonName" type="text" class="form-control" placeholder="Season Name" name="seasonName">
-            <span class="help-block">{{errorMessage 'name'}}</span>
+    <hr>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+        <h3 class="panel-title">Add Season</h3>
+      </div>
+      <div class="panel-body">
+        <p>Use the form below to create your Season. Required fields are outlined in red.</p>
+        <form id="newSeasonForm">
+          <!-- other fields: season fees, start date, end date, holidays -->
+          <div class="form-group {{errorClass 'name'}}">
+            <label class="control-label sr-only" for="seasonName">Season Name</label>
+            <div class="controls">
+              <input id="seasonName" type="text" class="form-control" placeholder="Season Name" name="seasonName">
+              <span class="help-block">{{errorMessage 'name'}}</span>
+            </div>
           </div>
-        </div>
-        <button type="submit" class="btn btn-large btn-success pull-right">Create Season</button>
-      </form>
+          <button type="submit" class="btn btn-large btn-success pull-right">Create Season</button>
+        </form>
+      </div>
     </div>
-  </div>
+  {{/if}}
 </template>
 

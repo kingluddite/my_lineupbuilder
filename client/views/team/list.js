@@ -18,8 +18,6 @@ Template.TeamList.helpers({
       // grab all the teams the user created (so we know it's their
       //   team)
       return Teams.find();
-    } else {
-      this.ready();
     }
   },
   // this template needs access to the following sessions
@@ -28,6 +26,9 @@ Template.TeamList.helpers({
   },
   sTeamNew: function() {
     return Session.get('sTeamNew');
+  },
+  sAddTeam: function() {
+    return Session.get('sAddTeam');
   }
 });
 

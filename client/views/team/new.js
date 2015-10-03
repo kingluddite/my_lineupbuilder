@@ -64,9 +64,6 @@ Template.TeamNew.events({
       Session.set('sTeamNew', true);
       // hide add team form after submitting form
       Session.set('sAddTeam', false);
-      // $('.team-created').html('<i class="fa fa-check"></i> <span> Team Created</span>');
-      // $('.team-created span').css('text-decoration', 'line-through');
-      // $('.team-created').addClass('text-muted');
     });
   }
 });

@@ -31,8 +31,16 @@ Template.GameList.helpers({
 
 
   },
+  // give template access to these sessions
   sGameId: function() {
     return Session.get('sGameId');
+  },
+
+  sAddGame: function() {
+    return Session.get('sAddGame');
+  },
+  sGameNew: function() {
+    return Session.get('sGameNew');
   }
 
 });
@@ -56,7 +64,7 @@ Template.GameList.events({
   'click .new-game': function(evt, tmpl) {
     // if coach needs to add a team we set this session to true
     // so he can see that form
-    Session.setPersistent('sGameNew', true);
+    Session.setPersistent('sAddGame', true);
   },
   'click .help-text': function(evt, tmpl) {
     $('.instructions').toggle(400);

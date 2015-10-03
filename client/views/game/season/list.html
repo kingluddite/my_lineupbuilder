@@ -16,7 +16,7 @@
     <div class="panel-body">
 
       <!-- if have seasons show them -->
-      {{#if sSeasonId}}
+      {{#if sSeasonNew}}
         <p>Here are all your Seasons:</p>
         <ol class="season-list">
           <!-- loop through your existing seasons -->
@@ -27,18 +27,19 @@
             </li>
           {{/each}}
         </ol>
+        <hr>
+        <a class="btn btn-default pull-right new-season">Add Season</a>
       {{else}}
         <!-- no seasons - time to create them -->
         <p>You have not created any seasons yet. It's time for you to take the plunge and create a season.</p>
-        <a class="btn btn-default pull-right new-team">Add Season</a>
-        <!-- end of team session check if -->
-      {{/if}}
-      <!-- if a game exists allow the coach to jump to it -->
-      {{#if sGameId}}
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
-        <!-- end of game session check if -->
-      {{/if}}
 
+        {{#if sAddSeason}}
+          <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
+        {{else}}
+          <!-- if a game exists allow the coach to jump to it -->
+          <a class="btn btn-default pull-right new-season">Add Season</a>
+        {{/if}}
+      {{/if}}
     </div>
 
   </div>
