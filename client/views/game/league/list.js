@@ -18,6 +18,10 @@ Template.LeagueList.helpers({
     return Leagues.find();
   },
 
+  sGameId: function() {
+    return Session.get('sGameId');
+  },
+
   sLeagueId: function() {
     return Session.get('sLeagueId');
   },

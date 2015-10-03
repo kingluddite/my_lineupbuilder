@@ -14,12 +14,12 @@
     </div>
 
     <div class="panel-body">
-
-      <!-- if have teams show them -->
-      {{#if sLeagueNew}}
+      <!-- do we have leagues yet? -->
+      {{#if cLeagues.count}}
+        <!-- yes? - then show them -->
         <p>Here are all your leagues:</p>
         <ol class="league-list">
-          <!-- loop through your existing teams -->
+          <!-- loop through leagues -->
           {{#each cLeagues}}
             <li>
               <a href="{{pathFor 'LeagueShow'}}">{{leagueName}}</a>
@@ -28,16 +28,18 @@
           {{/each}}
         </ol>
         <hr>
-        <a class="btn btn-default pull-right new-league">Add League</a>
       {{else}}
+        <a class="btn btn-default pull-right new-league">Add League</a>
         <!-- no teams - time to create them -->
         <p>You have not created any leagues yet. It's time for you to take the plunge and create a league.</p>
+      {{/if}}
+      <!-- did we create a league? -->
+      {{#if sLeagueNew}}
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameEdit' _id=sGameId}}">Back To My Game</a>
 
-        {{#if sAddLeague}}
-          <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>
-        {{else}}
-          <a class="btn btn-default pull-right new-league">Add League</a>
-        {{/if}}
+        <a class="btn btn-default pull-left new-league">Add AnotherLeague</a>
+      {{else}}
+
       {{/if}}
 
     </div>

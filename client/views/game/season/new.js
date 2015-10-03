@@ -56,8 +56,8 @@ Template.SeasonNew.events({
       }
 
       Session.setPersistent('sSeasonId', id);
-      Session.set('sSeasonNew', true);
-      Session.set('sAddSeason', false);
+      Session.setPersistent('sSeasonNew', true);
+      Session.setPersistent('sAddSeason', false);
     });
   }
 });

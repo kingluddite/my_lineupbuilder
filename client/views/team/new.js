@@ -61,9 +61,9 @@ Template.TeamNew.events({
 
       Session.setPersistent('sTeamId', id);
       // set sTeamNew to true after form submit so list of teams can be seen
-      Session.set('sTeamNew', true);
+      Session.setPersistent('sTeamNew', true);
       // hide add team form after submitting form
-      Session.set('sAddTeam', false);
+      Session.setPersistent('sAddTeam', false);
     });
   }
 });

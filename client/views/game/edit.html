@@ -27,21 +27,24 @@
             </select>
           </div>
         {{else}}
-
-          <p>You need to <a href="{{pathFor 'LeagueList'}}">create a league</a>.</p>
+          <h2>Is Your Team Part of a League?</h2>
+          <p>If so, create that league by clicking on the link below.</p>
+          <p>You need to <a href="{{pathFor 'LeagueList'}}">Create a league</a>.</p>
         {{/if}}
-        {{#if sSeasonId}}
-          <div class="form-group">
-            <label for="mySeasonName">Season</label>
-            <select class="form-control" id="mySeasonName" name="seasonName">
-              {{#each cMySeasons}}
-                <option value="{{_id}}">{{seasonName}}</option>
-              {{/each}}
-            </select>
-          </div>
-        {{else}}
-
-          <p>You need to <a href="{{pathFor 'SeasonList'}}">create a season</a>.</p>
+        {{#if sLeagueId}}
+          {{#if sSeasonId}}
+            <div class="form-group">
+              <label for="mySeasonName">Season</label>
+              <select class="form-control" id="mySeasonName" name="seasonName">
+                {{#each cMySeasons}}
+                  <option value="{{_id}}">{{seasonName}}</option>
+                {{/each}}
+              </select>
+            </div>
+          {{else}}
+            <p>Now that you have a League. You're league probably has different seasons. An example would be seasons like '<em>Sunday 11v11 Mens</em>' or '<em>Thursday Night Coed 7v7</em>'. By creating a season you can start to keep track of cool stats like which players on my Thursday team paid or who is the top scorer of my Sunday team.</p>
+            <p>You need to <a href="{{pathFor 'SeasonList'}}">Create a season</a>.</p>
+          {{/if}}
         {{/if}}
         <p>
           <label class="sr-only">Opponent Name</label>

@@ -53,10 +53,10 @@ Template.LeagueNew.events({
       if (error) {
         return throwError(error.reason);
       }
-
+      // we need persistent sessions to stop page refresh form erasing them
       Session.setPersistent('sLeagueId', id);
-      Session.set('sLeagueNew', true);
-      Session.set('sAddLeague', false);
+      Session.setPersistent('sLeagueNew', true);
+      Session.setPersistent('sAddLeague', false);
     });
   }
 });
