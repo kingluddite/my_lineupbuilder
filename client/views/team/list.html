@@ -18,21 +18,27 @@
       <!-- use the new team session to show teams -->
       {{#if sTeamNew}}
         <p>Here are all your teams:</p>
-        <ol class="team-list">
-          <!-- loop through your existing teams -->
-          {{#each cTeams}}
-            <li>
-              <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
-              <a class="remove"><i class="fa fa-trash fa-2"></i></a>
-            </li>
-          {{/each}}
-        </ol>
-      {{else}}
-        <!-- no teams - time to create them -->
-        <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
-        <a class="btn btn-default pull-right new-team">Add Team</a>
-        <!-- end of team session check if -->
+        {{#if cTeams}}
+          <ol class="team-list">
+            <!-- loop through your existing teams -->
+            {{#each cTeams}}
+              <li>
+                <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
+                <a class="remove"><i class="fa fa-trash fa-2"></i></a>
+              </li>
+            {{/each}}
+          </ol>
+        {{else}}
+          <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
+          <a class="btn btn-default pull-right new-team">Add Team</a>
+        {{/if}}
+        {{#if sAddTeam}}
+        {{else}}
+          <hr>
+          <a class="btn btn-default pull-right new-team">Add Team</a>
+        {{/if}}
       {{/if}}
+
       <!-- if a game exists allow the coach to jump to it -->
       {{#if sGameId}}
         <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Go To Games</a>

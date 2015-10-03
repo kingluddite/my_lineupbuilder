@@ -9,8 +9,5 @@ Template.Home.rendered = function() {
 Template.Home.helpers({
   sTeamId: function() {
     return Session.get('sTeamId');
-  },
-  sTeamNew: function() {
-    return Session.get('sTeamNew');
   }
 });

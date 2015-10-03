@@ -23,11 +23,17 @@ Template.TeamNew.helpers({
   },
   sTeamNew: function() {
     return Session.get('sTeamNew');
+  },
+  // show add team form when click add team button
+  sAddTeam: function() {
+    return Session.get('sAddTeam');
   }
 });
 
 Template.TeamNew.events({
-
+  'click .close-panel': function(evt, tmpl) {
+    Session.setPersistent('sAddTeam', false);
+  },
   // when add team form is submitted
   //  grab the form data and pass it to the server
   'submit form#newTeamForm': function(evt) {
@@ -54,7 +60,10 @@ Template.TeamNew.events({
       }
 
       Session.setPersistent('sTeamId', id);
+      // set sTeamNew to true after form submit so list of teams can be seen
       Session.set('sTeamNew', true);
+      // hide add team form after submitting form
+      Session.set('sAddTeam', false);
       // $('.team-created').html('<i class="fa fa-check"></i> <span> Team Created</span>');
       // $('.team-created span').css('text-decoration', 'line-through');
       // $('.team-created').addClass('text-muted');

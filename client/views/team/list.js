@@ -22,6 +22,7 @@ Template.TeamList.helpers({
       this.ready();
     }
   },
+  // this template needs access to the following sessions
   sTeamId: function() {
     return Session.get('sTeamId');
   },
@@ -39,6 +40,7 @@ Template.TeamList.events({
     if (confirm("Delete this team?")) {
       Session.set('sTeamId', this._id);
       removeTeam();
+      // remove team id session when team removed from collection
       Session.set('sTeamId', null);
     }
   },
@@ -56,7 +58,8 @@ Template.TeamList.events({
   'click .new-team': function(evt, tmpl) {
     // if coach needs to add a team we set this session to true
     // so he can see that form
-    Session.setPersistent('sTeamNew', true);
+    // show form when add team button is clicked
+    Session.setPersistent('sAddTeam', true);
   }
 
 });

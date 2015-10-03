@@ -21,6 +21,7 @@ accountsUIBootstrap3.logoutCallback = function(error) {
   Session.clear('sSeasonId');
   Session.clear('sLeagueId');
   Session.clear('sGameNew');
+  Session.clear('sAddTeam');
   Router.go('Home');
 }
 
