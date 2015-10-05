@@ -1,5 +1,6 @@
 Template.GameEdit.rendered = function() {
-  // $('#gameDatePicker').datepicker();
+  // adding a date field renders the proper date in this field
+  //  when page loads, without it, the wrong date populates
   $('.date-time-picker').datetimepicker('11/18/2015');
 
   // when template loads find the boolean value of homeTeam

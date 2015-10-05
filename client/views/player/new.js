@@ -163,6 +163,7 @@ Template.PlayerNew.events({
         if (error) {
           return alert(error.reason);
         }
+        Session.setPersistent('sRosterCreated', true);
         if (document.querySelector('.player-box')) {
           var elem = document.querySelector('.player-box');
           elem.remove();

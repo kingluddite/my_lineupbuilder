@@ -15,6 +15,10 @@ Session.setDefaultPersistent("sStartersChosen", false);
 Session.setDefaultPersistent("sSubsChosen", false);
 Session.setDefaultPersistent("sNotPlayingChosen", false);
 
+Template.body.rendered = function() {
+  $('.instructions').hide();
+};
+
 Template.body.events({
   'click .panel-heading span.clickable': function(evt) {
     // console.log('works');

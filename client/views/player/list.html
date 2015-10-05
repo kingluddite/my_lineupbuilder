@@ -51,10 +51,15 @@
     <div class="panel-body">
       <ol class="roster">
         {{#if cPlayers.count}}
-          {{#each cPlayers}} {{> PlayerItem}} {{/each}} {{else}}
+          {{#each cPlayers}}
+            {{> PlayerItem}}
+          {{/each}}
+        {{else}}
           <li><a href="{{pathFor 'PlayerList' _id=sTeamId}}">Add Some Players</a></li>
         {{/if}}
       </ol>
+      <a class="btn btn-default pull-right" href="{{pathFor 'GameReminderShow' _id=sTeamId}}">Add Substitutes</a>
+      <a class="btn btn-default pull-right" href="{{pathFor 'GameReminderShow' _id=sTeamId}}">Add Not Playing</a>
     </div>
 
   </div>

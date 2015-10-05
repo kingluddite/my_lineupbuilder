@@ -2,6 +2,11 @@ Template.LeagueNew.onCreated(function() {
   Session.set('sLeagueSubmitErrors', {});
 });
 
+// initially hide the instructions
+Template.LeagueNew.rendered = function() {
+  $('.instructions').hide();
+}
+
 Template.LeagueNew.helpers({
   // if there is a league return false
   // so we can hide the add league form

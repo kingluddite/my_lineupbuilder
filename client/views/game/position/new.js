@@ -102,7 +102,7 @@ Template.PositionNew.events({
       if (error) {
         return throwError(error.reason);
       }
-      Session.setPersistent('sPositionsSet', true);
+      Session.setPersistent('sPositionsNamed', true);
       Router.go('PositionEdit', {
         _id: currentGameId
       });

@@ -25,6 +25,9 @@ Template.SeasonList.helpers({
   },
   sSeasonNew: function() {
     return Session.get('sSeasonNew');
+  },
+  sGameId: function() {
+    return Session.get('sGameId');
   }
 });
 

@@ -1,8 +1,8 @@
 <template name="FormationShow">
   {{#if sFormationChosen}}
     {{> FieldList}}
-    <p><a class="btn btn-default" href="{{pathFor 'PositionNew' _id=sGameId}}">Name Positions</a></p>
-    <p><a class="btn btn-default" href="{{pathFor 'FormationNew' _id=sGameId}}">Edit Formation</a></p>
+    <p><a class="btn btn-default" href="{{pathFor 'PositionList' _id=sGameId}}">Update Position Names</a></p>
+    <p><a class="btn btn-default" href="{{pathFor 'FormationEdit' _id=sGameId}}">Edit Formation</a></p>
   {{else}}
     <h1>Choose Your Formation </h1>
 

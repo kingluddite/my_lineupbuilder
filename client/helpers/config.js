@@ -19,7 +19,9 @@ accountsUIBootstrap3.logoutCallback = function(error) {
   Session.clear('sSeasonId');
   Session.clear('sLeagueId');
   Session.clear('sFormationChosen');
+  Session.clear('sPositionsNamed');
   Session.clear('sRosterComplete');
+  Session.clear('sRosterCreated');
   Session.clear('sTeamNew');
   Session.clear('sGameNew');
   Session.clear('sLeagueNew');

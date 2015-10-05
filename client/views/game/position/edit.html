@@ -1,9 +1,8 @@
 <template name="PositionEdit">
   <h3>Update Position Names</h3>
   <p>Every coach has their own specific names for positions. Use the boxes below to name the field positions the way you want.</p>
-  <a class="btn btn-default" href="{{pathFor 'GameShow' _id=sGameId}}">Back To Game Info</a>
+  <a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Back To Game Info</a>
   <form id="editPositionForm">
-    <button type="submit" class="btn btn-large btn-success pull-right">Update Positions</button>
 
     <div class="field frm-{{currentFormation}}">
       <div id="player01"><img src="/img/goalie_jersey.png" alt="goalie"></div>
@@ -38,6 +37,7 @@
         <input type="text" required class="form-control" placeholder="Position Name" name="player11" value="{{cGamePos.player11.fieldPosition}}">
       </div>
     </div>
+    <button type="submit" class="btn btn-large btn-success">Update Positions</button>
   </form>
 </template>
 

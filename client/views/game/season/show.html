@@ -13,6 +13,7 @@
 
       <hr>
       {{#if sGameId}}
+        <a class="btn btn-default pull-left" href="{{pathFor 'GameEdit' _id=sGameId}}">Back To My Game</a>
         <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">View My Games</a>
 
       {{else}}

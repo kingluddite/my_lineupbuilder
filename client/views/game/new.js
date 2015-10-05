@@ -85,8 +85,8 @@ Template.GameNew.events({
         throwError(error.reason);
       }
       Session.setPersistent('sGameId', id);
-      Session.set('sGameNew', true);
-      Session.set('sAddGame', false);
+      Session.setPersistent('sGameNew', true);
+      Session.setPersistent('sAddGame', false);
 
     });
   }
