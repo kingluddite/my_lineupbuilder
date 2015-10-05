@@ -1,6 +1,6 @@
 Template.GameEdit.rendered = function() {
   // $('#gameDatePicker').datepicker();
-  $('.date-time-picker').datetimepicker();
+  $('.date-time-picker').datetimepicker('11/18/2015');
 
   // when template loads find the boolean value of homeTeam
   var currentGame = Games.findOne({
@@ -38,6 +38,9 @@ Template.GameEdit.helpers({
   },
   sSeasonId: function() {
     return Session.get('sSeasonId');
+  },
+  sFormationChosen: function() {
+    return Session.get('sFormationChosen');
   },
   cMySeasons: function() {
     return Seasons.find({
@@ -97,7 +100,7 @@ Template.GameEdit.events({
       if (error) {
         return throwError(error.reason);
       }
-      Router.go('GameShow', {
+      Router.go('GameEdit', {
         _id: currentGameId
       });
     });
