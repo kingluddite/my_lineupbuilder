@@ -54,7 +54,12 @@ Template.PositionEdit.events({
     var currentGameId = Session.get('sGameId');
 
     var playerPositions = {
-
+      player01: {
+        fieldPosition: "Goalie",
+        playerId: "TBD",
+        playerFullName: "TBD",
+        lastModified: new Date().getTime()
+      },
       player02: {
         fieldPosition: $(evt.target).find('[name=player02]').val(),
         playerId: "TBD",
