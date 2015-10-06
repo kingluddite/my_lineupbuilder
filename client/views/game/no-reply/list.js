@@ -1,16 +1,17 @@
-Template.NotPlayingList.rendered = function(evt, template) {
-
-  $("ol.not-playing").droppable({
+// when player dropped on 'subs' list
+//  check if they exist in list
+//  and if not, update their status to 'sub'
+Template.NoReplyList.rendered = function() {
+  $("ol.no-reply").droppable({
     activeClass: "active",
     hoverClass: "hover",
     drop: function(event, ui) {
-
       var currentPlayerId = Session.get("sPlayerId");
       var currentGameId = Session.get("sGameId");
 
       Games.update(currentGameId, {
           $addToSet: {
-            notPlaying: currentPlayerId
+            noReplies: currentPlayerId
           }
         },
         function(error) {
@@ -22,26 +23,25 @@ Template.NotPlayingList.rendered = function(evt, template) {
   });
 };
 
-// find all players that have a status of 'sub'
-Template.NotPlayingList.helpers({
+Template.NoReplyList.helpers({
 
-  cNotPlaying: function(evt, template) {
+  cSubs: function(evt, template) {
     // get the doc for this game
     var currentGame = Games.findOne({
       _id: Session.get('sGameId')
     });
 
     // grab all the subs
-    var myNonPlayers = currentGame.notPlaying;
+    var noReplies = currentGame.noReplies;
     // create an empty array
     var arrWithPlayerNames = [];
     // if there are subs
-    if (myNonPlayers) {
+    if (noReplies) {
       // run this for loop through all the subs
-      for (var i = 0; i < myNonPlayers.length; i++) {
+      for (var i = 0; i < noReplies.length; i++) {
         // grab the playerid for each sub
         var player = Players.findOne({
-          _id: myNonPlayers[i]
+          _id: noReplies[i]
         });
         // store the full name inside a variable
         var playerFullName = player.fullName;

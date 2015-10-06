@@ -39,7 +39,7 @@
   <div class="drop-status"></div>
   <div class="field-parent">
     <div class="starting-lineup field frm-{{cGame.myFormation}}">
-      <div id="player01"><img src="/img/goalie_jersey.png" alt="goalie"></div>
+      <div id="player01"></div>
       <div id="player02"></div>
       <div id="player03"></div>
       <div id="player04"></div>
@@ -65,8 +65,8 @@
     <tbody>
       <tr>
         <th scope="row">1</th>
-        <td>GOALIE FIX</td>
-        <td>GOALIE FIX</td>
+        <td>{{cPlayerGameInfo.player01.fieldPosition}}</td>
+        <td>{{cPlayerGameInfo.player01.playerFullName}}</td>
       </tr>
       <tr>
         <th scope="row">2</th>
@@ -120,5 +120,7 @@
       </tr>
     </tbody>
   </table>
+  <a class="btn btn-default pull-right" href="{{pathFor 'GameReminderShow' _id=sGameId}}">Add Substitutes</a>
+  <a class="btn btn-default pull-right" href="{{pathFor 'GameReminderShow' _id=sGameId}}">Add Not Playing</a>
 </template>
 

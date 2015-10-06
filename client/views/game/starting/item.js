@@ -1,16 +1,13 @@
-// Make all subs draggable
-Template.SubItem.rendered = function(evt, template) {
-  $("ol.subs li").draggable({
+Template.StartingItem.rendered = function(evt, template) {
+  $("ul.starting li").draggable({
     revert: true,
     appendTo: "body",
     helper: "clone"
   });
+
 };
 
-
-// change the status of the player to none
-//  which removes them from the sub list
-Template.SubItem.events({
+Template.StartingItem.events({
   'click .trash': function(evt, template) {
     // addAlertClass('Removed', 'sub');
 
@@ -18,16 +15,16 @@ Template.SubItem.events({
       _id: Session.get('sGameId')
     });
     // here are all the subs
-    var mySubs = currentGame.subs;
+    var myStarters = currentGame.starting;
     // console.log(mySubs);
     // use handlebars index to find array item we want to remove
-    var subPlayerId = evt.target.parentNode.id;
+    var startingPlayerId = evt.target.parentNode.id;
 
     // with the current game id update that game
     // and use pull to find the subs array and remove the specific sub
     Games.update(Session.get('sGameId'), {
         $pull: {
-          subs: mySubs[subPlayerId]
+          starting: myStarters[startingPlayerId]
         }
       },
       function(error) {
@@ -37,6 +34,6 @@ Template.SubItem.events({
       });
   },
   'mousedown li': function(evt, template) {
-    Session.set('sPlayerId', this._id);
+    // Session.set('sGameReminderStatus', this.game_reminder);
   }
 });

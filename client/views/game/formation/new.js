@@ -1,18 +1,3 @@
-// Template.FormationNew.rendered = function() {
-//   $('.draggable').draggable();
-//   $('.droppable').droppable({
-//     // drop: function(event, ui) {
-//     //   $(this)
-//     //     .addClass('ui-state-highlight')
-//     //     .find('p')
-//     //     .html('dropped');
-//     //   console.log(ui);
-//     // }
-
-//   });
-// };
-
-
 Template.FormationNew.helpers({
   sGameId: function() {
     return Session.get('sGameId');
@@ -28,11 +13,8 @@ Template.FormationNew.helpers({
     } else {
       return '4-4-2';
     }
-
   }
-
 });
-
 
 Template.FormationNew.events({
 

@@ -1,15 +1,16 @@
 <template name="NotPlayingList">
-  <div class="no-container">
-    <h2>Not Playing</h2>
-    <p><em>{{cGameDayNoRoster.count}} No</em></p>
-    <p class="drop-status"></p>
+  <h1>Not Playing</h1>
+  <p><em>{{cNotPlaying.length}} No</em></p>
+  <p class="drop-status"></p>
 
-    <ul class="game-day-no-roster">
-      {{#if cGameDayNoRoster.count}} {{#each cGameDayNoRoster}} {{> tGameDayRosterItem}} {{/each}} {{else}}
+  <ol class="not-playing">
+    {{#if cNotPlaying}}
+      {{#each cNotPlaying}}
+        <li id="{{@index}}"> {{> NotPlayingItem}} </li>
+      {{/each}}
+    {{else}}
       <li class="ui-droppable">Drop here to add a player not available for game day.</li>
-      {{/if}}
-    </ul>
-  </div>
-  <!-- END .no-container -->
+    {{/if}}
+  </ol>
 </template>
 

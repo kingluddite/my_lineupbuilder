@@ -2,24 +2,12 @@
 //  check if they exist in list
 //  and if not, update their status to 'sub'
 Template.SubList.rendered = function() {
-  $("ul.subs").droppable({
+  $("ol.subs").droppable({
     activeClass: "active",
     hoverClass: "hover",
     drop: function(event, ui) {
-      // get the player id (needed for collection update)
       var currentPlayerId = Session.get("sPlayerId");
       var currentGameId = Session.get("sGameId");
-      // var playerStatus = Session.get('sPlayerStatus');
-      // var reminderStatus = Session.get('sGameReminderStatus');
-      // var listType = 'sub';
-      // var message;
-
-      // message = checkPlayer(playerStatus, reminderStatus, listType);
-
-      // if (message) {
-      //   addAlertClass(message, listType);
-      // }
-
 
       Games.update(currentGameId, {
           $addToSet: {
@@ -37,32 +25,33 @@ Template.SubList.rendered = function() {
 
 // find all players that have a status of 'sub'
 Template.SubList.helpers({
-  cSubs: function() {
+
+  cSubs: function(evt, template) {
+    // get the doc for this game
     var currentGame = Games.findOne({
       _id: Session.get('sGameId')
     });
 
-    // console.log(currentGame.subs);
-    return currentGame.subs;
-  },
-
-  cFullName: function(evt, template) {
-    // console.log(currentGame.subs);
-    var currentGame = Games.findOne({
-      _id: Session.get('sGameId')
-    });
-
+    // grab all the subs
     var mySubs = currentGame.subs;
+    // create an empty array
     var arrWithPlayerNames = [];
-    for (var i = 0; i < mySubs.length; i++) {
-      var player = Players.findOne({
-        _id: mySubs[i]
-      });
-      var playerFullName = player.fullName;
-      arrWithPlayerNames.push(playerFullName);
-    }
+    // if there are subs
+    if (mySubs) {
+      // run this for loop through all the subs
+      for (var i = 0; i < mySubs.length; i++) {
+        // grab the playerid for each sub
+        var player = Players.findOne({
+          _id: mySubs[i]
+        });
+        // store the full name inside a variable
+        var playerFullName = player.fullName;
+        // push each fullName inside the empty array
+        arrWithPlayerNames.push(playerFullName);
+      }
 
-    return arrWithPlayerNames;
+      return arrWithPlayerNames;
+    }
 
   }
 

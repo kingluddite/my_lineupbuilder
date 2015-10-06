@@ -1,40 +1,39 @@
 Template.NotPlayingItem.rendered = function(evt, template) {
-  $("ul.game-day-yes-roster li").draggable({
-    revert: true
-  });
-
-  $("ul.game-day-maybe-roster li").draggable({
-    revert: true
-  });
-
-  $("ul.game-day-no-roster li").draggable({
-    revert: true
+  $("ul.not-playing li").draggable({
+    revert: true,
+    appendTo: "body",
+    helper: "clone"
   });
 
 };
 
 Template.NotPlayingItem.events({
   'click .trash': function(evt, template) {
-    var gameReminderStatus = Session.get('sGameReminderStatus');
-    if (gameReminderStatus == 'yes') {
-      addAlertClass('Removed', 'yes');
-    } else if (gameReminderStatus == 'maybe') {
-      addAlertClass('Removed', 'maybe');
-    } else {
-      addAlertClass('Removed', 'no');
-    }
-    Players.update(this._id, {
-        $set: {
-          game_reminder: "none"
+    // addAlertClass('Removed', 'sub');
+
+    var currentGame = Games.findOne({
+      _id: Session.get('sGameId')
+    });
+    // here are all the subs
+    var myNonPlayers = currentGame.notPlaying;
+    // console.log(mySubs);
+    // use handlebars index to find array item we want to remove
+    var notPlayingPlayerId = evt.target.parentNode.id;
+
+    // with the current game id update that game
+    // and use pull to find the subs array and remove the specific sub
+    Games.update(Session.get('sGameId'), {
+        $pull: {
+          notPlaying: myNonPlayers[notPlayingPlayerId]
         }
       },
       function(error) {
         if (error) {
-          throwError(error.reason);
+          return throwError(error.reason);
         }
       });
   },
   'mousedown li': function(evt, template) {
-    Session.set('sGameReminderStatus', this.game_reminder);
+    // Session.set('sGameReminderStatus', this.game_reminder);
   }
 });

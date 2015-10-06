@@ -1,4 +1,4 @@
-Template.StartingList.helpers({
+Template.StarterList.helpers({
   // if there is a team return false
   // so we can hide the add team form
   cGame: function() {

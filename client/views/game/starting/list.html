@@ -1,0 +1,16 @@
+<template name="StartingList">
+  <h1>Starting</h1>
+  <p><em>{{cStarting.length}} Starters</em></p>
+  <p class="drop-status"></p>
+
+  <ol class="starting">
+    {{#if cStarting}}
+      {{#each cStarting}}
+        <li id="{{@index}}"> {{> StartingItem}} </li>
+      {{/each}}
+    {{else}}
+      <li class="ui-droppable">Drop here to add a starting player for this game.</li>
+    {{/if}}
+  </ol>
+</template>
+

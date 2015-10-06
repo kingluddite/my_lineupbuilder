@@ -1,18 +1,21 @@
 <template name="SubList">
   <h1>Subs</h1>
-  <p><em>Substitutes</em></p>
+  <!-- subs is array so use length -->
+  <p><em>{{cSubs.length}} Substitutes</em></p>
   <p class="drop-status"></p>
 
-  <ul class="subs">
+  <ol class="subs">
 
     <!-- list the subs -->
+    {{#if cSubs}}
+      <!-- nested sub template with individual players -->
+      {{#each cSubs}}
+        <li id="{{@index}}">{{> SubItem this }} </li>
+      {{/each}}
+    {{else}}
+      <li class="ui-droppable">Drop here to add a player not available for game day.</li>
+    {{/if}}
 
-    <!-- nested sub template with individual players -->
-    {{#each cFullName}} <span id="{{@index}}">{{> SubItem this }} </span>{{/each}}
-    <!-- end loop -->
-
-    <!-- if no subs let user know where to drag and drop subs -->
-
-  </ul>
+  </ol>
 </template>
 

@@ -4,7 +4,7 @@ Template.FieldList.rendered = function() {
     drop: function(event, ui) {
       $(this)
         .addClass('ui-state-highlight')
-        .find('p')
+        .find('div')
         .html('dropped');
     }
 
@@ -54,8 +54,6 @@ Template.StartingFieldList.rendered = function(evt, template) {
         _id: starterId
       });
       var playerName = playerDoc.fullName;
-
-
 
       // we need the current position in the div
       //  we are about to drop because on the server
@@ -111,6 +109,9 @@ Template.StartingFieldList.helpers({
         _id: Session.get('sGameId')
       });
     }
+  },
+  sGameId: function() {
+    return Session.get('sGameId');
   },
   cPlayerGameInfo: function() {
     if (Meteor.user()) {

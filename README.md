@@ -99,3 +99,7 @@ show final page with all the content nicely formatted
 edit or publish buttons
 create video to show how it works
 deploy to meteor.com
+
+fix - no dupes on starting lineup
+drag drop goalie
+cursor on mouse over
