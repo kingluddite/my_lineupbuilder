@@ -79,8 +79,12 @@ Template.StartingFieldList.rendered = function(evt, template) {
           if (error) {
             return alert(error.reason);
           }
-          $('#' + playerContainer).append("<span class='starter'>" + playerName + "</span>");
-
+          // if the div has children don't append anything to DOM
+          if ($('#' + playerContainer).children().length > 0) {
+            return false;
+          } else {
+            $('#' + playerContainer).append("<span class='starter'>" + playerName + "</span>");
+          }
         });
       }
     });
