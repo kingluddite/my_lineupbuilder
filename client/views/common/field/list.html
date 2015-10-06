@@ -53,73 +53,75 @@
 
     </div>
   </div>
-  <table class="table">
-    <caption>Optional table caption.</caption>
-    <thead>
-      <tr>
-        <th>#</th>
-        <th>Position</th>
-        <th>Player Name</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <th scope="row">1</th>
-        <td>{{cPlayerGameInfo.player01.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player01.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>{{cPlayerGameInfo.player02.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player02.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>{{cPlayerGameInfo.player03.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player03.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">4</th>
-        <td>{{cPlayerGameInfo.player04.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player04.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">5</th>
-        <td>{{cPlayerGameInfo.player05.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player05.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">6</th>
-        <td>{{cPlayerGameInfo.player06.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player06.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">7</th>
-        <td>{{cPlayerGameInfo.player07.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player07.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">8</th>
-        <td>{{cPlayerGameInfo.player08.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player08.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">9</th>
-        <td>{{cPlayerGameInfo.player09.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player09.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">10</th>
-        <td>{{cPlayerGameInfo.player10.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player10.playerFullName}}</td>
-      </tr>
-      <tr>
-        <th scope="row">11</th>
-        <td>{{cPlayerGameInfo.player11.fieldPosition}}</td>
-        <td>{{cPlayerGameInfo.player11.playerFullName}}</td>
-      </tr>
-    </tbody>
-  </table>
+  {{#if Template.subscriptionsReady}}
+    <table class="table">
+      <caption>Starting Lineup</caption>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Position</th>
+          <th>Player Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>{{cPlayerGameInfo.player01.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player01.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>{{cPlayerGameInfo.player02.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player02.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>{{cPlayerGameInfo.player03.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player03.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">4</th>
+          <td>{{cPlayerGameInfo.player04.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player04.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">5</th>
+          <td>{{cPlayerGameInfo.player05.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player05.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">6</th>
+          <td>{{cPlayerGameInfo.player06.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player06.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">7</th>
+          <td>{{cPlayerGameInfo.player07.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player07.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">8</th>
+          <td>{{cPlayerGameInfo.player08.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player08.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">9</th>
+          <td>{{cPlayerGameInfo.player09.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player09.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">10</th>
+          <td>{{cPlayerGameInfo.player10.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player10.playerFullName}}</td>
+        </tr>
+        <tr>
+          <th scope="row">11</th>
+          <td>{{cPlayerGameInfo.player11.fieldPosition}}</td>
+          <td>{{cPlayerGameInfo.player11.playerFullName}}</td>
+        </tr>
+      </tbody>
+    </table>
+  {{/if}}
   <a class="btn btn-default pull-right" href="{{pathFor 'GameReminderShow' _id=sGameId}}">Add Substitutes</a>
   <a class="btn btn-default pull-right" href="{{pathFor 'GameReminderShow' _id=sGameId}}">Add Not Playing</a>
 </template>
