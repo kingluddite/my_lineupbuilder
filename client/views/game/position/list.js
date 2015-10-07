@@ -14,8 +14,13 @@ Template.PositionList.helpers({
       _id: Session.get('sGameId')
     });
 
-    var currPosInfo = myPosition.playerGameInfo[0];
-    return currPosInfo;
+    // first check if playerGameInfo exists yet (we create it after naming
+    // positions)
+    if (Session.get('sPositionsSet')) {
+      var currPosInfo = myPosition.playerGameInfo[0];
+      return currPosInfo;
+    }
+
 
 
     // this is how you get to the data you want
