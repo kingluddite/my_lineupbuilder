@@ -16,7 +16,7 @@ Template.PositionList.helpers({
 
     // first check if playerGameInfo exists yet (we create it after naming
     // positions)
-    if (Session.get('sPositionsSet')) {
+    if (Session.get('sPositionsNamed')) {
       var currPosInfo = myPosition.playerGameInfo[0];
       return currPosInfo;
     }

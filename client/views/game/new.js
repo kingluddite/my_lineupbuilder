@@ -12,7 +12,6 @@ function isHomeChecked() {
 Template.GameNew.rendered = function() {
   // $('#gameDatePicker').datepicker();
   $('.date-time-picker').datetimepicker();
-  // this.$('.time-picker').datetimepicker({});
 };
 
 Template.GameNew.helpers({

@@ -1,5 +1,5 @@
-Template.NotPlayingItem.rendered = function(evt, template) {
-  $("ul.not-playing li").draggable({
+Template.YesPlayingItem.rendered = function(evt, template) {
+  $("ol.yes-playing li").draggable({
     revert: true,
     appendTo: "body",
     helper: "clone"
@@ -7,7 +7,7 @@ Template.NotPlayingItem.rendered = function(evt, template) {
 
 };
 
-Template.NotPlayingItem.events({
+Template.YesPlayingItem.events({
   'click .trash': function(evt, template) {
     // addAlertClass('Removed', 'sub');
 
@@ -15,16 +15,15 @@ Template.NotPlayingItem.events({
       _id: Session.get('sGameId')
     });
     // here are all the subs
-    var myNonPlayers = currentGame.notPlaying;
-    // console.log(mySubs);
+    var myYesPlayers = currentGame.yesPlaying;
     // use handlebars index to find array item we want to remove
-    var notPlayingPlayerId = evt.target.parentNode.id;
+    var yesPlayingPlayerId = evt.target.parentNode.id;
 
     // with the current game id update that game
     // and use pull to find the subs array and remove the specific sub
     Games.update(Session.get('sGameId'), {
         $pull: {
-          notPlaying: myNonPlayers[notPlayingPlayerId]
+          yesPlaying: myYesPlayers[yesPlayingPlayerId]
         }
       },
       function(error) {
@@ -32,8 +31,5 @@ Template.NotPlayingItem.events({
           return throwError(error.reason);
         }
       });
-  },
-  'mousedown li': function(evt, template) {
-    // Session.set('sGameReminderStatus', this.game_reminder);
   }
 });

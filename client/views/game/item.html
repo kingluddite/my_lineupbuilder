@@ -1,0 +1,66 @@
+<template name="GameItem">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Game Formation</h3>
+    </div>
+    <div class="panel-body">
+
+      <ul class="nav nav-pills">
+        <li role="presentation"><a href="{{pathFor 'PlayerList' _id=sGameId}}">Team Roster</a></li>
+        <li role="presentation"><a href="{{pathFor 'FormationEdit' _id=sGameId}}">My Formation</a></li>
+        <li role="presentation">
+          {{#if sPositionsNamed}}
+            <a href="{{pathFor 'PositionList' _id=sGameId}}">Position Names</a>
+          {{else}}
+            <a href="{{pathFor 'PositionNew' _id=sGameId}}">Position Names</a>
+          {{/if}}
+        </li>
+        <li role="presentation"><a href="{{pathFor 'PlayerPlainList' _id=sGameId}}">Starting Lineup</a></li>
+      </ul>
+
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Lineups</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge">{{cPlayers}}</span> Team Roster
+        </li>
+        <li class="list-group-item">
+          <span class="badge">{{#if cGame}}000{{else}} Not Completed{{/if}}</span> Starting
+        </li>
+        <li class="list-group-item">
+          <span class="badge">{{#if cGame}}000{{else}} Not Completed{{/if}}</span> Subs
+        </li>
+        <li class="list-group-item">
+          <span class="badge">{{#if cGame}}000{{else}} Not Completed{{/if}}</span> Not Playing
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Game Reminder</h3>
+    </div>
+    <div class="panel-body">
+      <ul class="list-group">
+        <li class="list-group-item">
+          <span class="badge">14</span> Yes
+        </li>
+        <li class="list-group-item">
+          <span class="badge">14</span> No
+        </li>
+        <li class="list-group-item">
+          <span class="badge">14</span> No Reply
+        </li>
+      </ul>
+    </div>
+  </div>
+</template>
+

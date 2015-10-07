@@ -1,5 +1,17 @@
 <template name="GameReminderShow">
+  <h1>Game Reminder</h1>
+  <p>This page is the result of the email game reminder you sent out to all your players to find out if they can play the game this week.</p>
   <div class="col-sm-4 col-md-4">
+    {{> PlayerPlainList}}
+  </div>
+  <div class="col-sm-4 col-md-4">
+    {{> YesPlayingList}} {{> NotPlayingList}}
+  </div>
+  <div class="col-sm-4 col-md-4">
+    {{> NoReplyList}}
+  </div>
+
+  <!--   <div class="col-sm-4 col-md-4">
     {{> PlayerPlainList}}
   </div>
   <div class="col-sm-4 col-md-4">
@@ -7,6 +19,6 @@
   </div>
   <div class="col-sm-4 col-md-4">
     {{> NotPlayingList}}
-  </div>
+  </div> -->
 </template>
 

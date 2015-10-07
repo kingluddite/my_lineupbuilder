@@ -24,7 +24,7 @@ Template.PositionEdit.helpers({
     var currGame = Games.findOne({
       _id: Session.get('sGameId')
     });
-    console.log('yo');
+
     currFormation = currGame.myFormation;
     if (currFormation) {
       return currFormation;

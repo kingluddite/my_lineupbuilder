@@ -1,0 +1,16 @@
+<template name="YesPlayingList">
+  <h1>Yes</h1>
+  <p><em>{{cYesPlaying.length}} Yes</em></p>
+  <p class="drop-status"></p>
+
+  <ol class="yes-playing">
+    {{#if cYesPlaying}}
+      {{#each cYesPlaying}}
+        <li id="{{@index}}"> {{> YesPlayingItem}} </li>
+      {{/each}}
+    {{else}}
+      <li class="ui-droppable">Drop here to add a player available for game day.</li>
+    {{/if}}
+  </ol>
+</template>
+
