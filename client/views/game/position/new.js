@@ -6,7 +6,7 @@ Template.PositionNew.helpers({
     var currGame = Games.findOne({
       _id: Session.get('sGameId')
     });
-    console.log('yo');
+
     currFormation = currGame.myFormation;
     if (currFormation) {
       return currFormation;
@@ -19,7 +19,7 @@ Template.PositionNew.helpers({
 
 Template.PositionNew.events({
   'focus input': function(evt) {
-    console.log('yo');
+
     // console.log(evt.target);
     $(evt.target).css('width', '300px');
     $(evt.target).css('border', '1px solid #f00');
@@ -47,6 +47,10 @@ Template.PositionNew.events({
     var currentGameId = Session.get('sGameId');
 
     var playerPositions = {
+      player01: {
+        fieldPosition: $(evt.target).find('[name=player01]').val(),
+        lastModified: new Date().getTime()
+      },
       player02: {
         fieldPosition: $(evt.target).find('[name=player02]').val(),
         lastModified: new Date().getTime()
