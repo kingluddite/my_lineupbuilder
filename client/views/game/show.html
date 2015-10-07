@@ -1,42 +1,42 @@
 <template name="GameShow">
-  <h1>Game </h1>
+    <h1>Game </h1>
 
-  <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
+    <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
 
-  <div class="instructions">
-    <strong>Your game is created!</strong>
-    <p>From this page you will be able to edit your team information, choose a game formation, choose your starting players, substitues and determine who can not play.</p>
-  </div>
-  <hr>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title"> Game Info </h3>
+    <div class="instructions">
+        <strong>Your game is created!</strong>
+        <p>From this page you will be able to edit your team information, choose a game formation, choose your starting players, substitues and determine who can not play.</p>
     </div>
-    <div class="panel-body">
-      <p><strong>Date: </strong> {{formatDate cGames.gameDateTime}}</p>
-      <p><strong>Time: </strong> SHOW GAME TIME</p>
-      <p>
-        <strong>Opponent: </strong> {{cGames.opponentName}}
-      </p>
-      <p><a class="btn btn-default pull-right" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
+    <hr>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            <h3 class="panel-title"> Game Info </h3>
+        </div>
+        <div class="panel-body">
+            <p><strong>Date: </strong> {{formatDate cGames.gameDateTime}}</p>
+            <p><strong>Time: </strong> {{formatTime cGames.gameDateTime}}</p>
+            <p>
+                <strong>Opponent: </strong> {{cGames.opponentName}}
+            </p>
+            <p><a class="btn btn-default pull-right" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
+        </div>
     </div>
-  </div>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">Home or Away Team</h3>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            <h3 class="panel-title">Home or Away Team</h3>
+        </div>
+        <div class="panel-body">
+            {{#if cGames.homeTeam}}
+            <p>We are the HOME team.</p>
+            {{else}}
+            <p>We are the AWAY team.</p>
+            {{/if}}
+            <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
+        </div>
     </div>
-    <div class="panel-body">
-      {{#if cGames.homeTeam}}
-        <p>We are the HOME team.</p>
-      {{else}}
-        <p>We are the AWAY team.</p>
-      {{/if}}
-      <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
-    </div>
-  </div>
-  <!-- <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
   <div class="panel-heading">
     <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
     <h3 class="panel-title">Starting Lineup</h3>
@@ -122,7 +122,7 @@ my starting lineup.</a>
 
  -->
 
-  <!-- <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
   <div class="panel-heading">
     <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
     <h3 class="panel-title">My Formation</h3>
@@ -135,7 +135,7 @@ my starting lineup.</a>
 
  -->
 
-  <!-- <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
     <div class="panel-heading">
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
       <h3 class="panel-title">Substitutes</h3>
@@ -145,7 +145,7 @@ my starting lineup.</a>
       <p><a class="btn btn-default" href="{{pathFor 'GameReminderShow' _id=sGameId}}">Edit</a></p>
     </div>
   </div> -->
- <!-- <div class="panel panel-default">
+    <!-- <div class="panel panel-default">
   <div class="panel-heading">
     <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
     <h3 class="panel-title">Not Playing</h3>
@@ -157,14 +157,13 @@ my starting lineup.</a>
 </div>
 
  -->
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title"><a target="_blank" href="{{cGames.fieldUrl}}">{{cGames.fieldName}}</a></h3>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            <h3 class="panel-title"><a target="_blank" href="{{cGames.fieldUrl}}">{{cGames.fieldName}}</a></h3>
+        </div>
+        <div class="panel-body">
+            {{> Map}}
+        </div>
     </div>
-    <div class="panel-body">
-      {{> Map}}
-    </div>
-  </div>
 </template>
-
