@@ -10,6 +10,7 @@ Template.FieldList.rendered = function() {
 
 
   });
+
 };
 
 Template.FieldList.helpers({
@@ -92,7 +93,27 @@ Template.StartingFieldList.rendered = function(evt, template) {
   // needed to make sure data is loaded (also has if subready in template)
 Template.StartingFieldList.onCreated(function() {
   this.subscribe('current-game');
+
 });
+
+// Template.StartingFieldList.rendered = function() {
+
+    //   // var currGame = Games.findOne({
+    //   //   _id: Session.get('sGameId')
+    //   // }, {
+    //   //   playerGameInfo: 1
+    //   // });
+    //   var currentGame = Games.findOne({
+    //     _id: Session.get('sGameId')
+    //   });
+
+
+
+
+    //   // var myTest = currGame.playerGameInfo[0]["player02"].playerFullName;
+
+    // };
+
 
 Template.StartingFieldList.helpers({
   // if there is a team return false
