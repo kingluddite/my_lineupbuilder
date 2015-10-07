@@ -1,5 +1,5 @@
 <template name="GameShow">
-    <h1>Game </h1>
+    <h1>{{cTeam.teamName}} Game Details</h1>
 
     <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
 
@@ -11,14 +11,11 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-            <h3 class="panel-title"> Game Info </h3>
+            <h3 class="panel-title"> Game Date/Time </h3>
         </div>
         <div class="panel-body">
             <p><strong>Date: </strong> {{formatDate cGames.gameDateTime}}</p>
             <p><strong>Time: </strong> {{formatTime cGames.gameDateTime}}</p>
-            <p>
-                <strong>Opponent: </strong> {{cGames.opponentName}}
-            </p>
             <p><a class="btn btn-default pull-right" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
         </div>
     </div>
@@ -33,6 +30,9 @@
             {{else}}
             <p>We are the AWAY team.</p>
             {{/if}}
+            <p>
+                <strong> Our Opponent: </strong> {{cGames.opponentName}}
+            </p>
             <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
         </div>
     </div>
