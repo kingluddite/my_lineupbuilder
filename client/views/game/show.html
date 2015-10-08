@@ -14,9 +14,13 @@
             <h3 class="panel-title"> Game Date/Time </h3>
         </div>
         <div class="panel-body">
+            {{#if sEditGameTime}}
             <p><strong>Date: </strong> {{formatDate cGames.gameDateTime}}</p>
             <p><strong>Time: </strong> {{formatTime cGames.gameDateTime}}</p>
-            <p><a class="btn btn-default pull-right" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
+            <p><a class="btn btn-default pull-right edit-game-time">Edit</a></p>
+            {{else}}
+            <p><a class="btn btn-default pull-right update-game-time">Edit</a></p>
+            {{/if}}
         </div>
     </div>
     <div class="panel panel-default">

@@ -1,50 +1,44 @@
 <template name="TeamList">
-  <h1>Teams</h1>
+    <h1>Teams</h1>
 
-  <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
+    <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
 
-  <div class="instructions">
-    <p>Click on a team to enter game information for that team.</p>
-  </div>
-  <hr>
-  <div class="panel panel-default">
-    <div class="panel-heading">
-      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">My Teams <span class="badge">{{cTeams.count}}</span></h3>
+    <div class="instructions">
+        <p>Click on a team to enter game information for that team.</p>
     </div>
+    <hr>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+            <h3 class="panel-title">My Teams <span class="badge">{{cTeams.count}}</span></h3>
+        </div>
 
-    <div class="panel-body">
+        <div class="panel-body">
 
-      <!-- do we have teams yet? -->
-      {{#if cTeams.count}}
-        <!-- yes we have teams show them -->
-        <p>Here are all your teams:</p>
-        <ol class="team-list">
-          <!-- loop through your existing teams -->
-          {{#each cTeams}}
-            <li>
-              <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
-              <a class="remove"><i class="fa fa-trash fa-2"></i></a>
-            </li>
-          {{/each}}
-        </ol>
-        <hr>
-      {{else}}
-        <!-- no teams, let coach create them -->
-        <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
-        <a class="btn btn-default pull-right new-team">Add Team</a>
-      {{/if}}
+            <!-- do we have teams yet? -->
+            {{#if cTeams.count}}
+            <!-- yes we have teams show them -->
+            <p>Here are all your teams:</p>
+            <ol class="team-list">
+                <!-- loop through your existing teams -->
+                {{#each cTeams}}
+                <li>
+                    <a href="{{pathFor 'TeamShow'}}">{{teamName}}</a>
+                    <a class="remove"><i class="fa fa-trash fa-2"></i></a>
+                </li>
+                {{/each}}
+            </ol>
+            <hr> {{else}}
+            <!-- no teams, let coach create them -->
+            <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
+            <a class="btn btn-default pull-right new-team">Add Team</a> {{/if}}
 
-      <!-- did we add a team? -->
-      {{#if sTeamNew}}
-        <a class="btn btn-default pull-left new-team">Add Another Team</a>
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create A Game</a>
-      {{else}}
+            <!-- did we add a team? -->
+            {{#if sTeamNew}}
+            <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create A Game</a>
+            <a class="btn btn-default pull-left new-team">Add Another Team</a> {{else}} {{/if}}
 
-      {{/if}}
+        </div>
 
     </div>
-
-  </div>
 </template>
-
