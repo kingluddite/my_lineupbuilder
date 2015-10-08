@@ -12,7 +12,7 @@
     "googlesecret": "Wy44M-pJ4Of201gk123BuQMx",
     "twitconsumerkey": "soMs24bawhwAXcBLsYfPZmSVM",
     "twitsecret": "sVZAlvEW7GX3L0NzEAINWyv74zMTJJP3LqRLYE5gpRhTQPnt68",
-    "mailgunurl": "postmaster@sandboxcae008ae47c34078926740dcf3046605.mailgun.org",
-    "mailgunpwd": "494l9rso5u63"
+    "mailgunurl": "postmaster%40sandboxcae008ae47c34078926740dcf3046605.mailgun.org:494l9rso5u63@smtp.mailgun.org:587",
+    "myemail": "howley.phil@gmail.com"
   }
 }
