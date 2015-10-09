@@ -46,7 +46,7 @@ Template.GameList.helpers({
 Template.GameList.events({
   // when click on remove team is removed after
   // confirmation
-  'click .remove': function(evt, tmpl) {
+  'click .remove': function(evt, template) {
     evt.preventDefault();
 
     if (confirm("Delete this game?")) {
@@ -55,16 +55,16 @@ Template.GameList.events({
       Session.set('sGameId', null);
     }
   },
-  'click .game-list a': function(evt, tmpl) {
+  'click .game-list a': function(evt, template) {
     Session.setPersistent('sGameId', this._id);
   },
   // add a new game button
-  'click .new-game': function(evt, tmpl) {
+  'click .new-game': function(evt, template) {
     // if coach needs to add a team we set this session to true
     // so he can see that form
     Session.setPersistent('sAddGame', true);
   },
-  'click .help-text': function(evt, tmpl) {
+  'click .help-text': function(evt, template) {
     $('.instructions').toggle(400);
     return false;
   }

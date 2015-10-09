@@ -1,15 +1,20 @@
+Template.GameItem.created = function() {
+  this.showRoster = new ReactiveVar(false);
+};
 Template.GameItem.helpers({
+  rvShowRoster: function() {
+    return Template.instance().showRoster.get();
+  },
   // how many players do we have on the roster?
   cPlayers: function() {
     return Players.find({
       teamId: Session.get('sTeamId')
-    }).count();
+    });
   },
   cGame: function() {
     return myGame = Games.findOne({
       _id: Session.get('sGameId')
     });
-    // console.log(myGame);
   },
   // need these sessions for this template
   sTeamId: function() {
@@ -25,7 +30,17 @@ Template.GameItem.helpers({
     var currentGame = Games.findOne({
       _id: Session.get('sGameId')
     });
+  }
+});
 
-    // console.log(currentGame.)
+Template.GameItem.events({
+  // show/hide roster
+  'click .show-roster': function(evt, template) {
+    var showRoster = template.showRoster.get();
+    template.showRoster.set(!showRoster);
+    if (showRoster) {
+      $('.team-roster').toggle(400);
+      return false;
+    }
   }
 });

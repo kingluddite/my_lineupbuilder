@@ -1,6 +1,6 @@
 // Accounts.ui.config({
-      //   passwordSignupFields: 'USERNAME_ONLY'
-      // });
+//   passwordSignupFields: 'USERNAME_ONLY'
+// });
 
 
 
@@ -31,6 +31,7 @@ accountsUIBootstrap3.logoutCallback = function(error) {
   Session.clear('sAddGame');
   Session.clear('sAddLeague');
   Session.clear('sAddSeason');
+  Session.clear('sShowRoster');
   Router.go('TeamList');
 }
 

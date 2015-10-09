@@ -23,6 +23,9 @@ Template.YesPlayingList.rendered = function(evt, template) {
 };
 
 Template.YesPlayingList.helpers({
+  sGameId: function() {
+    return Session.get('sGameId');
+  },
   cYesPlaying: function(evt, template) {
     // get the doc for this game
     var currentGame = Games.findOne({

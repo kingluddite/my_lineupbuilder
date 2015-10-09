@@ -25,6 +25,7 @@ Meteor.methods({
     var player = _.extend(_.pick(postAttributes, 'teamId', 'fullName'), {
       // how many players do we have
 
+      jerseyNumber: "0",
       createdBy: user._id,
       author: user.username,
       submitted: new Date().getTime()
