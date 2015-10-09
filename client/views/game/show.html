@@ -1,46 +1,57 @@
 <template name="GameShow">
-    <h1>{{cTeam.teamName}} Game Details</h1>
+  <h1>{{cTeam.teamName}} Game Details</h1>
 
-    <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
+  <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
 
-    <div class="instructions">
-        <strong>Your game is created!</strong>
-        <p>From this page you will be able to edit your team information, choose a game formation, choose your starting players, substitues and determine who can not play.</p>
+  <div class="instructions">
+    <strong>Your game is created!</strong>
+    <p>From this page you will be able to edit your team information, choose a game formation, choose your starting players, substitues and determine who can not play.</p>
+  </div>
+  <hr>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title"> Game Date/Time </h3>
     </div>
-    <hr>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-            <h3 class="panel-title"> Game Date/Time </h3>
-        </div>
-        <div class="panel-body">
-            {{#if sEditGameTime}}
-            <p><strong>Date: </strong> {{formatDate cGames.gameDateTime}}</p>
-            <p><strong>Time: </strong> {{formatTime cGames.gameDateTime}}</p>
-            <p><a class="btn btn-default pull-right edit-game-time">Edit</a></p>
-            {{else}}
-            <p><a class="btn btn-default pull-right update-game-time">Edit</a></p>
-            {{/if}}
-        </div>
+    <div class="panel-body">
+      {{#if sEditGameTime}}
+        <form id="updateGameTime">
+          <p>Current Game Date/Time: {{formatDate cGames.gameDateTime}}</p>
+          <div class="form-group">
+            <div class='input-group date date-time-picker'>
+              <input type="text" name="gameDateTime" value="{{formatDate cGames.gameDateTime}}" required class="form-control" />
+              <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-default pull-right game-time">Update</button>
+        </form>
+      {{else}}
+        <p><strong>Date: </strong> {{formatDate cGames.gameDateTime}}</p>
+        <p><strong>Time: </strong> {{formatTime cGames.gameDateTime}}</p>
+        <p><a class="btn btn-default pull-right edit-game-time">Edit</a></p>
+      {{/if}}
     </div>
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-            <h3 class="panel-title">Home or Away Team</h3>
-        </div>
-        <div class="panel-body">
-            {{#if cGames.homeTeam}}
-            <p>We are the HOME team.</p>
-            {{else}}
-            <p>We are the AWAY team.</p>
-            {{/if}}
-            <p>
-                <strong> Our Opponent: </strong> {{cGames.opponentName}}
-            </p>
-            <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
-        </div>
+  </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Home or Away Team</h3>
     </div>
-    <!-- <div class="panel panel-default">
+    <div class="panel-body">
+      {{#if cGames.homeTeam}}
+        <p>We are the HOME team.</p>
+      {{else}}
+        <p>We are the AWAY team.</p>
+      {{/if}}
+      <p>
+        <strong> Our Opponent: </strong> {{cGames.opponentName}}
+      </p>
+      <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
+    </div>
+  </div>
+  <!-- <div class="panel panel-default">
   <div class="panel-heading">
     <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
     <h3 class="panel-title">Starting Lineup</h3>
@@ -126,7 +137,7 @@ my starting lineup.</a>
 
  -->
 
-    <!-- <div class="panel panel-default">
+  <!-- <div class="panel panel-default">
   <div class="panel-heading">
     <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
     <h3 class="panel-title">My Formation</h3>
@@ -139,7 +150,7 @@ my starting lineup.</a>
 
  -->
 
-    <!-- <div class="panel panel-default">
+  <!-- <div class="panel panel-default">
     <div class="panel-heading">
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
       <h3 class="panel-title">Substitutes</h3>
@@ -149,7 +160,7 @@ my starting lineup.</a>
       <p><a class="btn btn-default" href="{{pathFor 'GameReminderShow' _id=sGameId}}">Edit</a></p>
     </div>
   </div> -->
-    <!-- <div class="panel panel-default">
+  <!-- <div class="panel panel-default">
   <div class="panel-heading">
     <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
     <h3 class="panel-title">Not Playing</h3>
@@ -161,13 +172,14 @@ my starting lineup.</a>
 </div>
 
  -->
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-            <h3 class="panel-title"><a target="_blank" href="{{cGames.fieldUrl}}">{{cGames.fieldName}}</a></h3>
-        </div>
-        <div class="panel-body">
-            {{> Map}}
-        </div>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title"><a target="_blank" href="{{cGames.fieldUrl}}">{{cGames.fieldName}}</a></h3>
     </div>
+    <div class="panel-body">
+      {{> Map}}
+    </div>
+  </div>
 </template>
+
