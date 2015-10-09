@@ -62,6 +62,9 @@ Template.GameShow.events({
   'click .date-time-picker': function(evt, template) {
     $('.date-time-picker').datetimepicker();
   },
+  'click .cancel-edit': function(evt, template) {
+    Session.set('sEditGameTime', false);
+  },
   // update date time and submit form to update game collection
   'submit form#updateGameTime': function(evt, template) {
     // turn off default form behavior
