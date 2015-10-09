@@ -18,7 +18,7 @@ Template.NotPlayingItem.events({
     var myNonPlayers = currentGame.notPlaying;
     // console.log(mySubs);
     // use handlebars index to find array item we want to remove
-    var notPlayingPlayerId = evt.target.parentNode.id;
+    var notPlayingPlayerId = evt.target.parentNode.parentNode.id;
 
     // with the current game id update that game
     // and use pull to find the subs array and remove the specific sub

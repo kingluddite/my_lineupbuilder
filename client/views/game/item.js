@@ -5,6 +5,12 @@ Template.GameItem.helpers({
       teamId: Session.get('sTeamId')
     }).count();
   },
+  cGame: function() {
+    return myGame = Games.findOne({
+      _id: Session.get('sGameId')
+    });
+    // console.log(myGame);
+  },
   // need these sessions for this template
   sTeamId: function() {
     return Session.get('sTeamId');

@@ -25,8 +25,6 @@ Template.GameList.helpers({
       //     teamId: Session.get('sTeamId')
       //   });
       // console.log(myTest);
-    } else {
-      this.ready();
     }
 
 

@@ -19,9 +19,10 @@ Template.NoReplyItem.events({
     });
     // here are all the subs
     var noReplies = currentGame.noReplies;
-    // console.log(mySubs);
+
     // use handlebars index to find array item we want to remove
-    var noReplyId = evt.target.parentNode.id;
+    // i > a > div id="1"
+    var noReplyId = evt.target.parentNode.parentNode.id;
 
     // with the current game id update that game
     // and use pull to find the subs array and remove the specific sub

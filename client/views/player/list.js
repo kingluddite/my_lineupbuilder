@@ -20,8 +20,6 @@ Template.PlayerList.helpers({
           fullName: 1
         }
       });
-    } else {
-      this.ready();
     }
   },
   sGameId: function() {
@@ -95,9 +93,12 @@ Template.PlayerGameReminderList.helpers({
       //   team)
       return Players.find({
         teamId: Session.get('sTeamId')
+      }, {
+        // sort them alphabetically
+        sort: {
+          fullName: 1
+        }
       });
-    } else {
-      this.ready();
     }
   },
   sTeamId: function() {
