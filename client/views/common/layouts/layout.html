@@ -1,11 +1,50 @@
 <template name="layout">
-    {{> Navbar}}
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-6 col-md-6">
-                {{> Errors }} {{> yield}}
-            </div>
-        </div>
+  {{> Navbar}}
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        {{> Errors }} {{> yield}}
+      </div>
     </div>
-    <!-- END .container -->
+  </div>
+  <!-- END .container -->
 </template>
+
+<template name="TwoColumn">
+  {{> Navbar}}
+  <!-- {{> Error}} -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        {{> yield}}
+      </div>
+      <div class="col-sm-6 col-md-6"> {{> yield region="sidebar"}}
+      </div>
+    </div>
+    <div class="row">
+      {{> yield region="footer"}}
+    </div>
+  </div>
+</template>
+
+<template name="GameReminder">
+  {{> Navbar}}
+  <!-- {{> Error}} -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-md-4">
+        {{> yield}}
+      </div>
+      <div class="col-sm-4 col-md-4">
+        {{> yield region="middle"}}
+      </div>
+      <div class="col-sm-4 col-md-4">
+        {{> yield region="sidebar-top"}} {{> yield region="sidebar-bottom"}}
+      </div>
+    </div>
+    <div class="row">
+      {{> yield region="footer"}}
+    </div>
+  </div>
+</template>
+

@@ -4,18 +4,15 @@
   <p><em>{{cNoReply.length}} No Replies</em></p>
   <p class="drop-status"></p>
 
-  <ol class="no-replies">
-
-    <!-- list the subs -->
+  <ol class="no-reply">
     {{#if cNoReply}}
-      <!-- nested sub template with individual players -->
+
       {{#each cNoReply}}
         <li id="{{@index}}">{{> NoReplyItem this }} </li>
       {{/each}}
     {{else}}
       <li class="ui-droppable">Drop here to add a player that did not reply to game reminder.</li>
     {{/if}}
-
   </ol>
 </template>
 

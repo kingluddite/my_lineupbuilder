@@ -1,6 +1,6 @@
-Template.YesPlayingList.rendered = function(evt, template) {
+Template.NotPlayingList.rendered = function(evt, template) {
 
-  $("ol.yes-playing").droppable({
+  $("ol.not-playing").droppable({
     activeClass: "active",
     hoverClass: "hover",
     drop: function(event, ui) {
@@ -10,7 +10,7 @@ Template.YesPlayingList.rendered = function(evt, template) {
 
       Games.update(currentGameId, {
           $addToSet: {
-            yesPlaying: currentPlayerId
+            notPlaying: currentPlayerId
           }
         },
         function(error) {
@@ -22,25 +22,27 @@ Template.YesPlayingList.rendered = function(evt, template) {
   });
 };
 
-Template.YesPlayingList.helpers({
-  cYesPlaying: function(evt, template) {
+Template.NotPlayingList.helpers({
+  // who can't play game
+  cNotPlaying: function(evt, template) {
     // get the doc for this game
     var currentGame = Games.findOne({
       _id: Session.get('sGameId')
     });
+
     // make sure the doc result exists
     if (currentGame) {
-      // grab all the players who can play
-      var myYesPlayers = currentGame.yesPlaying;
+      // grab all the players who are not playing
+      var myNonPlayers = currentGame.notPlaying;
       // create an empty array
       var arrWithPlayerNames = [];
-      // if there are players who can play
-      if (myYesPlayers) {
-        // run this for loop through all players who can play
-        for (var i = 0; i < myYesPlayers.length; i++) {
-          // grab the playerid for each player who can play
+      // if there are players who can't play
+      if (myNonPlayers) {
+        // run this for loop through all the non players
+        for (var i = 0; i < myNonPlayers.length; i++) {
+          // grab the playerid for each player who can't play
           var player = Players.findOne({
-            _id: myYesPlayers[i]
+            _id: myNonPlayers[i]
           });
           // make sure the doc result exists
           if (player) {
@@ -49,9 +51,7 @@ Template.YesPlayingList.helpers({
             // push each fullName inside the empty array
             arrWithPlayerNames.push(playerFullName);
           }
-
         }
-
         return arrWithPlayerNames;
       }
     }
