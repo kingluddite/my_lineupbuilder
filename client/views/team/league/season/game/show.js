@@ -11,6 +11,9 @@ Template.GameShow.rendered = function() {
 }
 
 Template.GameShow.helpers({
+  sTeamId: function() {
+    return Session.get('sTeamId');
+  },
   rvEditGameTime: function() {
     return Template.instance().editGameTime.get();
   },
