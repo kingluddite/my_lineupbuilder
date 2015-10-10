@@ -1,6 +1,6 @@
 Template.Home.rendered = function() {
-  $(".menu-toggle").click(function(e) {
-    e.preventDefault();
+  $(".menu-toggle").click(function(evt) {
+    evt.preventDefault();
     $(".container").toggleClass("toggled");
   });
 

@@ -25,7 +25,7 @@ Template.TeamShow.helpers({
 
 Template.TeamShow.events({
   // toggle the info at top of page
-  'click .help-text': function(evt, tmpl) {
+  'click .help-text': function(evt, template) {
     $('.instructions').toggle(400);
     return false;
   }

@@ -31,12 +31,12 @@ Template.TeamNew.helpers({
 });
 
 Template.TeamNew.events({
-  'click .close-panel': function(evt, tmpl) {
+  'click .close-panel': function(evt, template) {
     Session.setPersistent('sAddTeam', false);
   },
   // when add team form is submitted
   //  grab the form data and pass it to the server
-  'submit form#newTeamForm': function(evt) {
+  'submit form#newTeamForm': function(evt, template) {
     evt.preventDefault();
 
     var team = {

@@ -12,7 +12,7 @@ Template.TeamEdit.helpers({
 
 Template.TeamEdit.events({
 
-  'submit form#editTeamForm': function(evt) {
+  'submit form#editTeamForm': function(evt, template) {
     evt.preventDefault();
 
     var currentTeamId = Session.get('sTeamId');

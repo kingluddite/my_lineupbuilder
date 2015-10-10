@@ -35,7 +35,7 @@ Template.TeamList.helpers({
 Template.TeamList.events({
   // when click on remove team is removed after
   // confirmation
-  'click .remove': function(evt, tmpl) {
+  'click .remove': function(evt, template) {
     evt.preventDefault();
 
     if (confirm("Delete this team?")) {
@@ -46,17 +46,17 @@ Template.TeamList.events({
     }
   },
   // toggle help text for team list
-  'click .help-text': function(evt, tmpl) {
+  'click .help-text': function(evt, template) {
     $('.instructions').toggle(400);
     return false;
   },
   // when person clicks to enter their team
   // set that team id as the current session
-  'click .team-list a': function(evt, tmpl) {
+  'click .team-list a': function(evt, template) {
     Session.setPersistent('sTeamId', this._id);
   },
   // add a new team button
-  'click .new-team': function(evt, tmpl) {
+  'click .new-team': function(evt, template) {
     // if coach needs to add a team we set this session to true
     // so he can see that form
     // show form when add team button is clicked
