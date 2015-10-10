@@ -16,16 +16,13 @@
               <tr>
                 <th>Jersey Number</th>
                 <th>Name</th>
-                <th colspan="2">&nbsp;</th>
               </tr>
             </thead>
             <tbody>
               {{#each cPlayers}}
                 <tr>
-                  <td>{{jerseyNumber}}</td>
-                  <td>{{fullName}}</td>
-                  <td>Edit</td>
-                  <td>Delete</td>
+                  <td>{{> editableText collection="players" field="fullName"}}</td>
+                  <td><span class="badge">{{> editableText collection="players" field="jerseyNumber"}}</span></td>
                 </tr>
               {{/each}}
             </tbody>
@@ -41,7 +38,7 @@
         <h3 class="panel-title"><a href="{{pathFor 'PlayerGameReminderList' _id=sGameId}}">Game Reminder</a></h3>
       </div>
       <div class="panel-body">
-        {{#if cGame.count}}
+        {{#if cGame}}
           <ul class="list-group">
             <li class="list-group-item">
               <span class="badge">{{cGame.yesPlaying.length}}</span> Yes

@@ -1,3 +1,7 @@
+Template.GameShow.created = function() {
+  this.editGameTime = new ReactiveVar(false);
+};
+
 Template.GameShow.rendered = function() {
   $("[data-toggle=tooltip]").tooltip();
   $('.instructions').hide();
@@ -7,6 +11,9 @@ Template.GameShow.rendered = function() {
 }
 
 Template.GameShow.helpers({
+  rvEditGameTime: function() {
+    return Template.instance().editGameTime.get();
+  },
   // if there is a team return false
   // so we can hide the add team form
   cGame: function() {
@@ -57,13 +64,15 @@ Template.GameShow.events({
   },
   // edit date/time show input field
   'click .edit-game-time': function(evt, template) {
-    Session.set('sEditGameTime', true);
+    var editGameTime = template.editGameTime.get();
+    template.editGameTime.set(!editGameTime);
   },
   'click .date-time-picker': function(evt, template) {
     $('.date-time-picker').datetimepicker();
   },
   'click .cancel-edit': function(evt, template) {
-    Session.set('sEditGameTime', false);
+    var editGameTime = template.editGameTime.get();
+    template.editGameTime.set(!editGameTime);
   },
   // update date time and submit form to update game collection
   'submit form#updateGameTime': function(evt, template) {
@@ -91,7 +100,9 @@ Template.GameShow.events({
       }
     });
 
-    Session.set('sEditGameTime', false);
+    // reactive var to set date/time after update
+    var editGameTime = template.editGameTime.get();
+    template.editGameTime.set(!editGameTime);
   },
 
 

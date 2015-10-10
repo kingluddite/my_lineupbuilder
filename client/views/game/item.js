@@ -1,3 +1,4 @@
+// ref: http://stackoverflow.com/questions/27909787/using-meteor-sessions-to-toggle-templates
 Template.GameItem.created = function() {
   this.showRoster = new ReactiveVar(false);
 };
