@@ -48,3 +48,24 @@
   </div>
 </template>
 
+<template name="StartersAndSubs">
+  {{> Navbar}}
+  <!-- {{> Error}} -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4 col-md-4">
+        {{> yield}}
+      </div>
+      <div class="col-sm-4 col-md-4">
+        {{> yield region="sidebar-top"}} {{> yield region="sidebar-bottom"}}
+      </div>
+      <div class="col-sm-4 col-md-4">
+        {{> yield region="right"}}
+      </div>
+    </div>
+    <div class="row">
+      {{> yield region="footer"}}
+    </div>
+  </div>
+</template>
+

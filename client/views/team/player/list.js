@@ -114,3 +114,25 @@ Template.PlayerGameReminderList.helpers({
     return Session.get('sTeamId');
   }
 });
+
+Template.StarterSubList.helpers({
+  // grab all the players and provide collection for roster template
+  cPlayers: function() {
+    // only if the user is logged in
+    if (Meteor.user()) {
+      // grab all the players the user created (so we know it's their
+      //   team)
+      return Players.find({
+        teamId: Session.get('sTeamId')
+      }, {
+        // sort them alphabetically
+        sort: {
+          fullName: 1
+        }
+      });
+    }
+  },
+  sTeamId: function() {
+    return Session.get('sTeamId');
+  }
+});

@@ -15,8 +15,8 @@
           <table class="table table-bordered table-striped table-condensed team-roster">
             <thead>
               <tr>
-                <th>Jersey Number</th>
                 <th>Name</th>
+                <th>Jersey Number</th>
               </tr>
             </thead>
             <tbody>
@@ -63,39 +63,62 @@
         <h3 class="panel-title">Game Formation</h3>
       </div>
       <div class="panel-body">
-
-        <ul class="nav nav-pills">
-          <li role="presentation"><a href="{{pathFor 'PlayerList' _id=sGameId}}">Team Roster</a></li>
-          <li role="presentation"><a href="{{pathFor 'FormationEdit' _id=sGameId}}">My Formation</a></li>
-          <li role="presentation">
-            {{#if sPositionsNamed}}
-              <a href="{{pathFor 'PositionList' _id=sGameId}}">Position Names</a>
-            {{else}}
-              <a href="{{pathFor 'PositionNew' _id=sGameId}}">Position Names</a>
-            {{/if}}
-          </li>
-          <li role="presentation"><a href="{{pathFor 'PlayerPlainList' _id=sGameId}}">Starting Lineup</a></li>
-        </ul>
+        {{#if cGame.myFormation}}
+          <p>Game Day Formation: {{cGame.myFormation}}</p>
+          <a href="{{pathFor 'FormationEdit' _id=sGameId}}" class="btn btn-default pull-right">Edit</a>
+        {{else}}
+          <a href="{{pathFor 'FormationNew' _id=sGameId}}" class="btn btn-default pull-right">Choose Formation</a>
+        {{/if}}
+        <!-- 
+<li role="presentation"><a href="{{pathFor 'PlayerPlainList' _id=sGameId}}">Starting Lineup</a></li>
+     </ul>
+ -->
 
       </div>
     </div>
     <div class="panel panel-default">
       <div class="panel-heading">
         <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-        <h3 class="panel-title">Lineups</h3>
+        <h3 class="panel-title">Position Names</h3>
+      </div>
+      <div class="panel-body">
+        {{#if cGame.playerGameInfo}}
+          <ul class="list-group">
+            <li class="list-group-item">
+              Position Names <i class="fa fa-eye show-positions"></i></li>
+          </ul>
+          <!-- show/hide when click on eye icon -->
+          {{#if rvShowPositions}}
+            {{> PositionList}}
+            <a href="{{pathFor 'PositionList' _id=sGameId}}" class="btn btn-default pull-right">Edit</a>
+          {{/if}}
+        {{else}}
+          <a href="{{pathFor 'PositionNew' _id=sGameId}}" class="btn btn-default pull-right">Name Positions</a>
+        {{/if}}
+
+        <!-- <li role="presentation"><a href="{{pathFor 'PlayerPlainList' _id=sGameId}}">Starting Lineup</a></li>
+     </ul> -->
+
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+        <h3 class="panel-title">Starting Lineup</h3>
       </div>
       <div class="panel-body">
         <ul class="list-group">
           <li class="list-group-item">
-            <span class="badge">{{#if cGame}}000{{else}} Not Completed{{/if}}</span> Starting
+            <span class="badge">{{#if numStarters}}{{numStarters}}{{else}} Not Completed{{/if}}</span> Starting
           </li>
           <li class="list-group-item">
-            <span class="badge">{{#if cGame}}000{{else}} Not Completed{{/if}}</span> Subs
+            <span class="badge">{{#if cGame.subs}}{{cGame.subs.length}}{{else}} Not Completed{{/if}}</span> Subs
           </li>
           <li class="list-group-item">
-            <span class="badge">{{#if cGame}}000{{else}} Not Completed{{/if}}</span> Not Playing
+            <span class="badge">{{#if totalPlayers}}{{totalPlayers}}{{else}} Not Completed{{/if}}</span> Total Players for Today's Game
           </li>
         </ul>
+        <a class="btn btn-default pull-right" href="{{pathFor 'StarterSubList' _id=sGameId}}">Starting Lineup</a>
       </div>
     </div>
   </div>

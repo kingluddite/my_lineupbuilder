@@ -1,5 +1,5 @@
 <template name="GameShow">
-  <h1><a href="{{pathFor 'TeamShow' _id=sTeamId}}">{{cTeam.teamName}}</a> Game Details</h1>
+  <h1><a href="{{pathFor 'TeamShow' _id=sTeamId}}">{{cTeam.teamName}}</a> <img src="{{cTeam.logoUrl}}" alt="{{cTeam.teamName}} Logo"> Game Details</h1>
 
   <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
 
@@ -65,7 +65,7 @@
         <p>
           <strong> Our Opponent: </strong> {{cGames.opponentName}}
         </p>
-        <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
+        <p><a class="btn btn-default pull-right" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
       </div>
     </div>
   </div>

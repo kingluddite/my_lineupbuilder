@@ -86,3 +86,24 @@
   </div>
 </template>
 
+<template name="StarterSubList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Current Roster <span class="badge">{{cPlayers.count}}</span></h3>
+    </div>
+    <div class="panel-body">
+      <ol class="roster">
+        {{#if cPlayers.count}}
+          {{#each cPlayers}}
+            {{> PlayerItem}}
+          {{/each}}
+        {{else}}
+          <li><a href="{{pathFor 'PlayerList' _id=sTeamId}}">Add Some Players</a></li>
+        {{/if}}
+      </ol>
+    </div>
+
+  </div>
+</template>
+
