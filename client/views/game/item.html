@@ -10,6 +10,7 @@
           <li class="list-group-item">
             <span class="badge">{{cPlayers.count}}</span> Team Roster <i class="fa fa-eye show-roster"></i></li>
         </ul>
+        <!-- show/hide when click on eye icon -->
         {{#if rvShowRoster}}
           <table class="table table-bordered table-striped table-condensed team-roster">
             <thead>
@@ -28,6 +29,7 @@
             </tbody>
           </table>
         {{/if}}
+        <a href="{{pathFor 'PlayerList' _id=sGameId}}" class="btn btn-default pull-right">Edit</a>
       {{else}}
         <a href="{{pathFor 'PlayerList' _id=sGameId}}" class="btn btn-default">Create Team Roster</a>
       {{/if}}

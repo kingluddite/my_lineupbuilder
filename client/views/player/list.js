@@ -5,6 +5,14 @@ var removePlayer = function() {
   });
 };
 
+Template.PlayerList.rendered = function() {
+  // when page loads check box if roster complete
+  if (Session.get('sRosterComplete')) {
+    $('.roster-complete').prop('checked', true);
+  }
+
+};
+
 Template.PlayerList.helpers({
   // grab all the players and provide collection for roster template
   cPlayers: function() {
@@ -33,7 +41,7 @@ Template.PlayerList.helpers({
 // coach completes his roster and lets us know
 //  visually we just add a checkbox, muted text and a line-through
 Template.PlayerList.events({
-  'click .roster-complete': function(evt, tmpl) {
+  'click .roster-complete': function(evt, template) {
     if (evt.target.checked) {
       // validation here
       // if roster is not >= 11 alert coach
@@ -42,7 +50,8 @@ Template.PlayerList.events({
       Session.setPersistent("sRosterComplete", false);
     }
   },
-  'click .remove': function(evt, tmpl) {
+
+  'click .remove': function(evt, template) {
     evt.preventDefault();
 
     var playerCount = Players.find().count();
@@ -57,7 +66,7 @@ Template.PlayerList.events({
     }
   },
 
-  'click .help-text': function(evt, tmpl) {
+  'click .help-text': function(evt, template) {
     $('.instructions').toggle(400);
     return false;
   }

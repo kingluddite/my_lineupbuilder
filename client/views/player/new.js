@@ -7,13 +7,17 @@ Template.PlayerNew.rendered = function() {
 }
 
 Template.PlayerNew.helpers({
-  rosterCompleted: function() {
+  sRosterComplete: function() {
     return Session.get('sRosterComplete');
   },
 
   // you need the sTeamId to insert it into the player collection
   sTeamId: function() {
     return Session.get('sTeamId');
+  },
+
+  sGameId: function() {
+    return Session.get('sGameId');
   },
 
   // show add player box if roster max is not reached
@@ -94,6 +98,11 @@ Template.PlayerNew.events({
   'click .help-text': function(evt, tmpl) {
     $('.instructions').toggle(400);
     return false;
+  },
+  // set roster complete session to false so you can edit roster
+  'click .edit-roster': function(evt, template) {
+    console.log('yo');
+    Session.setPersistent("sRosterComplete", false);
   },
 
   // when people add player boxes give them the option
