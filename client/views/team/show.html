@@ -20,7 +20,7 @@
       <p><strong>League Name:</strong> {{> editableText context=cTeam collection="teams" field="leagueName"}}</p>
       <p><strong>Home Jersey:</strong> <img style="background-color:{{cTeam.homeJerseyColor}}" src="/img/jersey_200x200.png" height="50" width="50" alt="home jersey"></p>
       <p><strong>Away Jersey:</strong> <img style="background-color:{{cTeam.awayJerseyColor}}" height="50" width="50" src="/img/jersey_200x200.png" alt="home jersey"></p>
-      {{#if sRosterCreated}}
+      {{#if sRosterComplete}}
         <hr>
         {{#if sGameId}}
           <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">View My Games</a>
