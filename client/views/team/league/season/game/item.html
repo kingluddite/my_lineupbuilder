@@ -2,13 +2,13 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title"><a href="{{pathFor 'PlayerList' _id=sGameId}}">Team Roster This Season</a></h3>
+      <h3 class="panel-title"><a href="{{pathFor 'PlayerList' _id=sTeamId}}">Team Roster This Season</a></h3>
     </div>
     <div class="panel-body">
       {{#if cPlayers.count}}
         <ul class="list-group">
           <li class="list-group-item">
-            <span class="badge">{{cPlayers.count}}</span> Team Roster <i class="fa fa-eye show-roster"></i></li>
+            <span class="badge">{{cPlayers.count}}</span> Team Roster <i class="fa fa-eye show-roster"></i> <a href="{{pathFor 'PlayerList' _id=sTeamId}}"><i class="fa fa-pencil"></i></a></li>
         </ul>
         <!-- show/hide when click on eye icon -->
         {{#if rvShowRoster}}

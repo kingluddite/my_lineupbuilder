@@ -41,15 +41,32 @@
       <h3 class="panel-title">Home or Away Team</h3>
     </div>
     <div class="panel-body">
-      {{#if cGames.homeTeam}}
-        <p>We are the HOME team.</p>
-      {{else}}
-        <p>We are the AWAY team.</p>
-      {{/if}}
-      <p>
-        <strong> Our Opponent: </strong> {{cGames.opponentName}}
-      </p>
-      <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
+
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        {{#if cGames.homeTeam}}
+          <div class="row">
+            <p>We are the HOME team.</p>
+          </div>
+          <div class="row">
+            <p>We wear this jersey:</p>
+            <img style="background-color:{{cTeam.homeJerseyColor}}" src="/img/jersey_200x200.png" height="50" width="50" alt="home jersey">
+          </div>
+        {{else}}
+          <div class="row">
+            <p>We are the AWAY team.</p>
+          </div>
+          <div class="row"><img style="background-color:{{cTeam.awayJerseyColor}}" src="/img/jersey_200x200.png" height="50" width="50" alt="home jersey"></div>
+
+        {{/if}}
+
+      </div>
+
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <p>
+          <strong> Our Opponent: </strong> {{cGames.opponentName}}
+        </p>
+        <p><a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Edit</a></p>
+      </div>
     </div>
   </div>
   <!-- <div class="panel panel-default">
