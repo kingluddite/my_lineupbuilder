@@ -3,11 +3,11 @@ Meteor.publish('current-team', function() {
     _id: this.userId
   });
   if (user) {
-    if (user.emails[0].verified) {
-      return Teams.find({
-        createdBy: this.userId
-      });
-    }
+    // if (user.emails[0].verified) {
+    return Teams.find({
+      createdBy: this.userId
+    });
+    // }
   }
 
 });

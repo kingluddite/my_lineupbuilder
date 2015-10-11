@@ -4,7 +4,7 @@ Meteor.methods({
 
     Email.send({
       to: Meteor.settings.private.myemail,
-      from: 'no-reply@mysoccerlineupbuilder.meteor.com',
+      from: 'no-reply@soccermatters.com',
       subject: subject,
       text: comments
     })

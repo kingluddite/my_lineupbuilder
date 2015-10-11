@@ -7,9 +7,9 @@ one we will use for this site:
 /* 1 - goalkeeper
 2 - right wing-back
 3 - left wing-back
-4 - central defender 
-5 - central defender (and most important defender) 
-6 - defensive midfielder 
+4 - central defender
+5 - central defender (and most important defender)
+6 - defensive midfielder
 7 - left winger
 8 - right winger
 9 - forward
@@ -22,7 +22,7 @@ one we will use for this site:
 -------6-------
 8-------------7
 ------10-------
-----9----11---- 
+----9----11----
 
 */
 
@@ -58,7 +58,7 @@ season fee
 
   starting lineup
   drag players off starting lineup and they are removed from field and their code is put back the way it was
-  
+
   not allowed to drag existing starters onto starting lineup
   on
 
@@ -67,7 +67,7 @@ season fee
 
   add sessions for formation created and positions created (start instructions not necessary when both are created)
 
-  make adding positions more user friendly, boxes grown and animate when you click on them and shrink and animate when you blur on 
+  make adding positions more user friendly, boxes grown and animate when you click on them and shrink and animate when you blur on
 
   be able to remove subs
   be able to remove not playing
@@ -103,3 +103,5 @@ deploy to meteor.com
 fix - no dupes on starting lineup
 drag drop goalie
 cursor on mouse over
+
+http://www.skysports.com/manchester-united-squad
