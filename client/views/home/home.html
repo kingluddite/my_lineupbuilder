@@ -1,28 +1,22 @@
 <template name="Home">
-    <div class="container">
-        <div class="row">
-            <!-- if user is logged in -->
-            {{#if currentUser }}
-
-            <!-- show the add player to roster form -->
-            <div class="row">
-                {{> TeamList}}
-                <!-- show user progress of their lineup creation -->
-                {{> TeamNew}}
-            </div>
-
-            <!-- if the user isn't logged in explain how the site works -->
-            {{else}}
-            <div class="col-sm-12 col-md-12">
-                <!-- show basic site info if user is not logged in -->
-                {{> NotLoggedIn}}
-                <!-- end if for current user -->
-            </div>
-            <!-- end opening currentUser if -->
-            {{/if}}
+  <div class="container">
+    <div class="row">
+      <!-- if user is logged in -->
+      {{#if currentUser }}
+        You are logged in.
+        <!-- if the user isn't logged in explain how the site works -->
+      {{else}}
+        <div class="col-sm-12 col-md-12">
+          <!-- show basic site info if user is not logged in -->
+          {{> NotLoggedIn}}
+          <!-- end if for current user -->
         </div>
-
-        <!-- END row -->
+        <!-- end opening currentUser if -->
+      {{/if}}
     </div>
-    <!-- END .container -->
+
+    <!-- END row -->
+  </div>
+  <!-- END .container -->
 </template>
+
