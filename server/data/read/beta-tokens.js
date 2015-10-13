@@ -30,7 +30,7 @@ Meteor.methods({
       });
       // set the role to tester
       Roles.addUsersToRoles(id, ['tester']);
-      update the record using our id
+      // update the record using our id
       return Invites.update(testInvite._id, {
         $set: {
           // set the accountCreated to true
