@@ -30,6 +30,23 @@
   </div>
 </template>
 
+<template name="lSingleTeam">
+  {{> Navbar}}
+  <!-- {{> Error}} -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-6 col-md-6">
+        {{> yield}}
+      </div>
+      <div class="col-sm-6 col-md-6"> sidebar here if you want
+      </div>
+    </div>
+    <div class="row">
+      {{> yield region="footer"}}
+    </div>
+  </div>
+</template>
+
 <template name="GameReminder">
   {{> Navbar}}
   <!-- {{> Error}} -->

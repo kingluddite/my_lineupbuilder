@@ -12,6 +12,22 @@ Meteor.publish('current-team', function() {
 
 });
 
-Meteor.publish('singleTeam', function(slug) {
+Meteor.publish('teams', function(){
+  var data = Teams.find({});
 
+  if (data) {
+    return data;
+  }
+  return this.ready();
+});
+
+Meteor.publish('singleTeam', function(slug) {
+  check(slug, String);
+  var data = Teams.find({
+    'slug': slug
+  });
+  if (data) {
+    return data;
+  }
+  this.ready();
 });

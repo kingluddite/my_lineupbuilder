@@ -35,3 +35,5 @@ mrt:bootstrap-alerts
 email
 reactive-var
 check
+themeteorchef:bert
+themeteorchef:jquery-validation

@@ -1,0 +1,12 @@
+<template name="team">
+  <article class="team">
+    <h2 class="team-title"><a href="{{#unless single}}{{pathFor route='team.show' slug=slug}}{{else}}#{{/unless}}">{{teamName}}</a></h2>
+    <h4 class="team-meta">{{epochToString date}} by {{author}}</h4>
+    {{#unless single}}
+      {{{truncateString content 300}}}
+      {{else}}
+        {{{content}}}
+    {{/unless}}
+  </article>
+</template>
+
