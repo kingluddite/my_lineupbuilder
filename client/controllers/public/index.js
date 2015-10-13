@@ -1,7 +1,9 @@
 /* handle two things
 * 1) validate user's email addres
 * 2) when valid, add user to beta list
+Template: client/views/public/index.html
 */
+
 Template.Index.rendered = function() {
   return $('#request-beta-invite').validate({
     rules: {
