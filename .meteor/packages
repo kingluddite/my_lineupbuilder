@@ -42,7 +42,6 @@ mobile-experience
 mongo
 mrt:bootstrap-alerts
 mrt:moment
-npm-container
 random
 reactive-var
 reload
@@ -59,3 +58,6 @@ tsega:bootstrap3-datetimepicker
 twbs:bootstrap
 u2622:persistent-session
 underscore
+
+
+npm-container
