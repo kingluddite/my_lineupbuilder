@@ -1,3 +1,11 @@
+/*
+* using moment library
+* we display a date for each invite
+* date invite requested and date invite approved/sent
+* this helper takes a unix timestamp and splits it out into a human
+*  readable string
+* example: 1415983049 becomes Friday, November 14th, 2014
+*/
 UI.registerHelper('epochToString', function(timestamp) {
   return moment.unix(timestamp / 1000).format("MMMM Do, YYYY");
 });
