@@ -8,7 +8,7 @@ validateTeam = function(team) {
     errors.name = "Please enter a Team Name";
   return errors;
 }
-aaa
+
 /*=============================
 =            Allow            =
 =============================*/
