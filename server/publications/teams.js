@@ -11,3 +11,7 @@ Meteor.publish('current-team', function() {
   }
 
 });
+
+Meteor.publish('singleTeam', function(slug) {
+
+});

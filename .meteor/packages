@@ -34,3 +34,4 @@ mrt:moment
 mrt:bootstrap-alerts
 email
 reactive-var
+check
