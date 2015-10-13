@@ -1,4 +1,4 @@
-Router.route('dashboard', {
+Router.route('Dashboard', {
   path: '/dashboard',
   template: 'Dashboard',
   waitOn: function() {
@@ -10,7 +10,7 @@ Router.route('dashboard', {
   }
 });
 
-Router.route('invites', {
+Router.route('Invites', {
   path: '/invites',
   template: 'Invites',
   waitOn: function() {

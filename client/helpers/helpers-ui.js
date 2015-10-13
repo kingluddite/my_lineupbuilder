@@ -21,6 +21,20 @@ UI.registerHelper('epochToString', function(timestamp) {
   return moment.unix(timestamp / 1000).format("MMMM Do, YYYY");
 });
 
+/* Current Route
+# Return an active class if the currentRoute session variable name
+# (set in the appropriate file in /client/routes/) is equal to the name passed
+# to the helper in the template.
+*/
+
+UI.registerHelper('currentRoute', function(route) {
+  if (Session.equals('currentRoute', route)) {
+    return 'active';
+  } else {
+    return '';
+  }
+});
+
 /*
   Controller: Reset Password
   Template: /client/views/public/reset-password.html

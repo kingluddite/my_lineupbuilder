@@ -56,35 +56,35 @@ userAuthenticatedAdmin = function ( ) {
 
 Router.onBeforeAction( checkUserLoggedIn, {
   except: [
-    'index',
-    'signup',
-    'signup/:token',
-    'login',
-    'recover-password',
-    'reset-password'
+    'Index',
+    'Signup',
+    'Signup/:token',
+    'Login',
+    'Recover-password',
+    'Reset-password'
   ]
 } );
 
 
 Router.onBeforeAction( userAuthenticatedBetaTester, {
   only: [ 
-    'index', 
-    'signup', 
-    'signup/:token', 
-    'login', 
-    'recover-password', 
-    'reset-password', 
-    'invites' 
+    'Index', 
+    'Signup', 
+    'Signup/:token', 
+    'Login', 
+    'Recover-password', 
+    'Reset-password', 
+    'Invites' 
   ]
 } );
 
 Router.onBeforeAction( userAuthenticatedAdmin, {
   only: [ 
-    'index', 
-    'signup', 
-    'signup/:token', 
-    'login', 
-    'recover-password', 
-    'reset-password' 
+    'Index', 
+    'Signup', 
+    'Signup/:token', 
+    'Login', 
+    'Recover-password', 
+    'Reset-password' 
   ]
 } );
