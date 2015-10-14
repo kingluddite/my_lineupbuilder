@@ -19,9 +19,10 @@ Template.Index.rendered = function() {
       }
     },
     submitHandler: function() {
+      console.log($('#request-beta-invite [name="emailAddress"]').val().toLowerCase());
       var invitee;
       invitee = {
-        email: $('[name="emailAddress"]').val().toLowerCase(),
+        email: $('#request-beta-invite [name="emailAddress"]').val().toLowerCase(),
         invited: false,
         requested: (new Date()).getTime()
       };
