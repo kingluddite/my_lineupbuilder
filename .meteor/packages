@@ -30,7 +30,7 @@ insecure
 iron:router
 jquery
 kadira:blaze-layout
-kadira:flow-router
+#kadira:flow-router
 less
 logging
 meteor-base

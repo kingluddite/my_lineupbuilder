@@ -1,5 +1,6 @@
 Meteor.startup(function() {
-  GoogleMaps.load();
+  // error? content security policy error
+  //GoogleMaps.load();
 });
 
 Template.Map.onCreated(function() {

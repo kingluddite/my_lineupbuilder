@@ -15,6 +15,12 @@ Session.setDefaultPersistent("sStartersChosen", false);
 Session.setDefaultPersistent("sSubsChosen", false);
 Session.setDefaultPersistent("sNotPlayingChosen", false);
 
+/*==================================================
+=            Application Wide Templates            =
+==================================================*/
+/* apply to templates globally */
+
+
 Template.body.rendered = function() {
   $('.instructions').hide();
 };

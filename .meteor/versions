@@ -32,7 +32,6 @@ check@1.0.6
 chuangbo:cookie@1.1.0
 cmather:handlebars-server@2.0.0
 coffeescript@1.0.10
-cosmos:browserify@0.5.1
 dburles:google-maps@1.1.5
 dburles:mongo-collection-instances@0.3.4
 ddp@1.2.2
@@ -73,7 +72,6 @@ iron:router@1.0.12
 iron:url@1.0.11
 jquery@1.11.4
 kadira:blaze-layout@2.1.0
-kadira:flow-router@2.7.0
 lai:collection-extensions@0.1.4
 launch-screen@1.0.4
 less@2.5.0_3
