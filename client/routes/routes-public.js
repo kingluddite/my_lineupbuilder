@@ -54,4 +54,11 @@ Router.map(function() {
       return this.next();
     }
   });
+
+  /*====================================
+   =            Contact Form            =
+   ====================================*/
+  this.route('Contact', {
+    path: '/contact'
+  });
 });

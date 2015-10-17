@@ -2,37 +2,41 @@
   {{>SignInWithEmailModal}}
   <div class="row">
     <div class="col-xs-12 col-sm-6">
-
+      image here
     </div>
     <div class="col-xs-12 col-sm-6">
-      <div class="page-header">
-        <h3>Sign In MyLineup Builder</h3>
-        <p>Start Creating Lineups</p>
-      </div>
-      <ul class="btn-list">
-        <li>
-          <button type="button" class="btn btn-social-login btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-social-login btn-github"><i class="fa fa-github"></i> Sign in with GitHub</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-social-login btn-google"><i class="fa fa-google"></i> Sign in with Google</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-social-login btn-twitter"><i class="fa fa-twitter"></i> Sign in with Twitter</button>
-        </li>
-        <li>
-          <button type="button" class="btn btn-social-login btn-success" data-toggle="modal" data-target="#sign-in-with-email-modal"><i class="fa fa-envelope"></i> Sign in with Email</button>
-        </li>
-      </ul>
-      <h3 class="page-header">Request an Invite to Test This</h3>
-      <p>We're launching soon! Type in your email below to get on the beta list.</p>
-      <form id="request-beta-invite" class="email-form">
-        <input type="email" name="emailAddress" class="form-control" placeholder="e.g. georgieb@soccermatters.com">
-        <button type="submit" class="btn btn-success">Request Beta Invite</button>
-      </form>
-      {{>SignupCount}}
+      {{#if currentUser}}
+        <div class="page-header">
+          <h3>Welcome back to Soccermatters.</h3>
+          <p>Let the games begin!</p>
+        </div>
+      {{else}}
+        <div class="page-header">
+          <h3>Soccermatters Sign In</h3>
+          <p>Virtually managing uour team is just a click away.</p>
+        </div>
+        <ul class="btn-list">
+          <li>
+            <button type="button" class="btn btn-social-login btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</button>
+          </li>
+          <li>
+            <button type="button" class="btn btn-social-login btn-google"><i class="fa fa-google"></i> Sign in with Google</button>
+          </li>
+          <li>
+            <button type="button" class="btn btn-social-login btn-twitter"><i class="fa fa-twitter"></i> Sign in with Twitter</button>
+          </li>
+          <li>
+            <button type="button" class="btn btn-social-login btn-success" data-toggle="modal" data-target="#sign-in-with-email-modal"><i class="fa fa-envelope"></i> Sign in with Email</button>
+          </li>
+        </ul>
+        <h3 class="page-header">Request an Invite to Test This</h3>
+        <p>We're launching soon! Type in your email below to get on the beta list.</p>
+        <form id="request-beta-invite" class="email-form">
+          <input type="email" name="emailAddress" class="form-control" placeholder="e.g. georgieb@soccermatters.com">
+          <button type="submit" class="btn btn-success">Request Beta Invite</button>
+        </form>
+        {{>SignupCount}}
+      {{/if}}
     </div>
   </div>
 </template>

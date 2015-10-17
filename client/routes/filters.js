@@ -57,6 +57,7 @@ userAuthenticatedAdmin = function ( ) {
 Router.onBeforeAction( checkUserLoggedIn, {
   except: [
     'Index',
+    'Contact',
     'Signup',
     'Signup/:token',
     'Login',

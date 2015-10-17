@@ -5,8 +5,11 @@ Future = Npm.require('fibers/future');
 Meteor.methods({
   validateEmailAddress: function(address) {
     var validateEmail;
+    // always check our data!
     check(address, String);
     validateEmail = new Future();
+    // use http package and call kickbox
+    // use their verify param and pass an email and our api key
     HTTP.call("GET", "https://api.kickbox.io/v1/verify", {
       params: {
         email: address,

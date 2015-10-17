@@ -60,15 +60,6 @@ Template.Index.events({
       }
     });
   },
-  'click .btn-github': function() {
-    return Meteor.loginWithGithub({
-      requestPermissions: ['email']
-    }, function(error) {
-      if (error) {
-        return console.log(error.reason);
-      }
-    });
-  },
   'click .btn-google': function() {
     return Meteor.loginWithGoogle({
       requestPermissions: ['email']
