@@ -35,11 +35,22 @@ UI.registerHelper('currentRoute', function(route) {
   }
 });
 
-/*
-  Controller: Reset Password
-  Template: /client/views/public/reset-password.html
- */
-Template.ResetPassword.created = function() {};
+// allows you to easily format JavaScript dates
+UI.registerHelper('formatDate', function(datetime) {
+  if (moment) {
+    return moment(datetime).format('MMMM Do YYYY');
+  } else {
+    return datetime;
+  }
+});
+
+UI.registerHelper('formatTime', function(datetime) {
+  if (moment) {
+    return moment(datetime).format('h:mm a');
+  } else {
+    return datetime;
+  }
+});
 
 // Current User Email
 // Return the current user's email address. This method helps us to obtain the
