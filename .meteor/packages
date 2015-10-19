@@ -13,7 +13,7 @@ aldeed:collection2
 audit-argument-checks
 babrahams:editable-text
 blaze-html-templates
-browser-policy
+#browser-policy
 check
 cmather:handlebars-server
 dburles:google-maps
@@ -25,11 +25,9 @@ fortawesome:fontawesome
 fourseven:scss
 http
 ian:accounts-ui-bootstrap-3
-insecure
 iron:router
 jquery
 kadira:blaze-layout
-#kadira:flow-router
 less
 logging
 meteor-base
@@ -57,6 +55,4 @@ tsega:bootstrap3-datetimepicker
 twbs:bootstrap
 u2622:persistent-session
 underscore
-
-
 npm-container

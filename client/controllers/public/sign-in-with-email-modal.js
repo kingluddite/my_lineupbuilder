@@ -11,11 +11,11 @@ Template.SignInWithEmailModal.rendered = function() {
     },
     messages: {
       emailAddress: {
-        required: "Gonna need an email, there, friend!",
-        email: "Is that a real email? What a trickster!"
+        required: "Please provide an email.",
+        email: "Is that a real email?"
       },
       password: {
-        required: "Pop in a passwordarooni for me there, will ya?"
+        required: "Please provide a password."
       }
     },
     submitHandler: function() {
@@ -38,6 +38,8 @@ Template.SignInWithEmailModal.rendered = function() {
                   return alert(error.reason);
                 } else {
                   $('#sign-in-with-email-modal').hide();
+                  
+                 Bert.alert('Account Created', 'success', 'growl-top-right');
                   return $('.modal-backdrop').hide();
                 }
               });
@@ -50,6 +52,7 @@ Template.SignInWithEmailModal.rendered = function() {
             return alert(error.reason);
           } else {
             $('#sign-in-with-email-modal').hide();
+                 Bert.alert('Successfully Signed In', 'success', 'growl-top-right');
             return $('.modal-backdrop').hide();
           }
         });
