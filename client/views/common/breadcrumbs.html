@@ -1,0 +1,11 @@
+<template name="Breadcrumbs">
+  <ol class="breadcrumb">
+    <li><a href="/">Home</a></li>
+    <li><a href="{{pathFor 'LeagueList'}}">My Leagues</a></li>
+    <li><a href="{{pathFor 'SeasonList' _id=sLeagueId}}">My Seasons</a></li>
+    <li><a href="{{pathFor 'TeamNew' _id=sLeagueId}}">My Teams</a></li>
+    <li><a href="{{pathFor 'PlayerList' _id=sTeamId}}">My Roster</a></li>
+    <li><a href="{{pathFor 'GameList' _id=sTeamId}}">My Games</a></li>
+  </ol>
+</template>
+
