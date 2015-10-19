@@ -19,7 +19,6 @@ Template.Index.rendered = function() {
       }
     },
     submitHandler: function() {
-      console.log($('#request-beta-invite [name="emailAddress"]').val().toLowerCase());
       var invitee;
       invitee = {
         email: $('#request-beta-invite [name="emailAddress"]').val().toLowerCase(),
@@ -31,13 +30,17 @@ Template.Index.rendered = function() {
           return alert(error.reason);
         } else {
           if (response.error) {
-            return alert(response.error);
+            //return alert(response.error + 1);
+            //Bert.alert(response.error);
+            return Bert.alert( 'Ernie has finished tubby time.', 'success', 'growl-top-right' ); 
+            //Bert.alert( 'Yes, I do mind!', 'warning', 'growl-bottom-right' );
           } else {
             return Meteor.call('addToInvitesList', invitee, function(error, response) {
               if (error) {
                 return alert(error.reason);
               } else {
-                return alert("Invite requested. We'll be in touch soon. Thanks for your interest in MyLineupBuilder");
+                // return alert("Invite requested. We'll be in touch soon. Thanks for your interest in MyLineupBuilder");
+                return Bert.alert( 'Yes, I do mind!', 'warning', 'growl-bottom-right' );
               }
             });
           }
