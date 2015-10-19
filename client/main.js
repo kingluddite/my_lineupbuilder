@@ -20,6 +20,22 @@ Session.setDefaultPersistent("sNotPlayingChosen", false);
 ==================================================*/
 /* apply to templates globally */
 
+/*=================================================
+=            Global Client Side Alerts            =
+=================================================*/
+
+// Change Bert's time on screen to be two seconds instead of the 
+// default three and a half.
+Bert.defaults.hideDelay = 2000;
+
+// // Change Bert's default type to be a warning instead of default.
+Bert.defaults.type = 'warning';
+// // Default Bert icon
+Bert.defaults.icon = 'fa-bolt';
+
+// // Change Bert's default style to be a growl-top-right 
+// // instead of fixed-top.
+Bert.defaults.style = 'growl-top-right';
 
 Template.body.rendered = function() {
   $('.instructions').hide();
@@ -41,3 +57,22 @@ Template.body.events({
     }
   }
 });
+
+Meteor.startup(function() {
+
+  WebFontConfig = {
+    // google: { families: [ 'Roboto Slab:700,400:latin', 'Oswald:400', 'Mouse Memoirs' ] }
+    google: { families: [ 'Roboto Slab:700,400:latin', 'Open Sans' ] }
+  };
+  (function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+      '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+    console.log("async fonts loaded", WebFontConfig);
+  })();
+
+})
