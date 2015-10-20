@@ -4,6 +4,18 @@
 @import "globals/buttons";
 @import "globals/errors";
 @import "globals/fonts";
+@import "globals/animations";
+@import "globals/notifications";
+@import "globals/headings";
+@import "globals/footer";
 
 /* Views */
+/* Public */
 @import "views/public/login";
+
+/* Authenticated */
+@import "views/authenticated/game/game-reminder/_game-reminder";
+@import "views/authenticated/game/formation/_formation";
+@import "views/authenticated/game/lineup/_lineup";
+@import "views/authenticated/game/position/_position";
+

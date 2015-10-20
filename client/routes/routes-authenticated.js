@@ -65,6 +65,10 @@ Router.route('TeamShow', {
   },
   data: function() {
     return Teams.find(this.params._id);
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'team');
+    return this.next();
   }
 });
 
@@ -86,6 +90,10 @@ Router.route('LeagueList', {
   },
   waitOn: function() {
     return Meteor.subscribe('current-league');
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'leagues');
+    return this.next();
   }
 });
 
@@ -101,9 +109,12 @@ Router.route('LeagueShow', {
       to: 'footer'
     }
   },
-
   data: function() {
     return Leagues.find(this.params._id);
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'league');
+    return this.next();
   }
 });
 
@@ -123,6 +134,10 @@ Router.route('SeasonList', {
     'Footer': {
       to: 'footer'
     }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'seasons');
+    return this.next();
   }
 });
 
@@ -144,6 +159,10 @@ Router.route('SeasonShow', {
 
   data: function() {
     return Seasons.find(this.params._id);
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'season');
+    return this.next();
   }
 });
 
@@ -165,6 +184,10 @@ Router.route('PlayerList', {
   },
   waitOn: function() {
     return Meteor.subscribe('current-team-roster');
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'players');
+    return this.next();
   }
 });
 
@@ -191,6 +214,10 @@ Router.route('GameList', {
   },
   waitOn: function() {
     return Meteor.subscribe('current-game');
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'games');
+    return this.next();
   }
 });
 
@@ -219,6 +246,10 @@ Router.route('GameShow', {
       Meteor.subscribe('current-game'),
       Meteor.subscribe('current-team-roster')
     ]
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'game');
+    return this.next();
   }
 });
 
@@ -248,6 +279,10 @@ Router.route('PlayerGameReminderList', {
     'Footer': {
       to: 'footer'
     }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'game-reminder');
+    return this.next();
   }
 });
 
@@ -266,6 +301,10 @@ Router.route('FormationNew', {
     'Footer': {
       to: 'footer'
     }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'formation-new');
+    return this.next();
   }
 });
 
@@ -280,12 +319,20 @@ Router.route('FormationEdit', {
     'Footer': {
       to: 'footer'
     }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'formation-edit');
+    return this.next();
   }
 });
 
 // formation info page
 Router.route('FormationInfo', {
-  path: '/games/formations/info'
+  path: '/games/formations/info',
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'formation-info');
+    return this.next();
+  }
 });
 
 /*=================================
@@ -303,6 +350,10 @@ Router.route('PositionNew', {
     'Footer': {
       to: 'footer'
     }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'position-new');
+    return this.next();
   }
 });
 
@@ -317,6 +368,10 @@ Router.route('PositionList', {
     'Footer': {
       to: 'footer'
     }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'positions');
+    return this.next();
   }
 });
 
@@ -339,23 +394,31 @@ Router.route('StarterSubList', {
     'Footer': {
       to: 'footer'
     }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'starters');
+    return this.next();
   }
 });
 
-  /*=======================================
-    =            Starting Lineup            =
-    =======================================*/
+/*=======================================
+  =            Starting Lineup            =
+  =======================================*/
 
-  // pick your starting linup
-  Router.route('PlayerPlainList', {
-    path: '/teams/games/lineups/:_id',
-    layoutTemplate: 'TwoColumn',
-    yieldTemplates: {
-      'StartingFieldList': {
-        to: 'sidebar'
-      },
-      'Footer': {
-        to: 'footer'
-      }
+// pick your starting linup
+Router.route('PlayerPlainList', {
+  path: '/teams/games/lineups/:_id',
+  layoutTemplate: 'TwoColumn',
+  yieldTemplates: {
+    'StartingFieldList': {
+      to: 'sidebar'
+    },
+    'Footer': {
+      to: 'footer'
     }
-  });
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'lineup');
+    return this.next();
+  }
+});

@@ -1,0 +1,23 @@
+<template name="SeasonEdit">
+  <h1>Edit Season</h1>
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">{{cSeason.seasonName}}</h3>
+    </div>
+    <div class="panel-body">
+
+      <h4>Update Your Season Info</h4>
+      <form id="edit-season-form">
+        <p>
+          <label class="sr-only">Season Name</label>
+          <input type="text" required class="form-control" placeholder="Season Name" name="seasonName" value="{{cSeason.seasonName}}">
+        </p>
+        <button type="submit" class="btn btn-large btn-primary pull-right">Update Season</button>
+      </form>
+    </div>
+  </div>
+
+</template>
+

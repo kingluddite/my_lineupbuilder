@@ -1,0 +1,45 @@
+<template name="StartingList">
+  <h1>Starting</h1>
+  <p><em>{{cStarting.length}} Starters</em></p>
+  <p class="drop-status"></p>
+
+  <ol class="starting">
+    {{#if cStarting}}
+      {{#each cStarting}}
+        <li id="{{@index}}"> {{> StartingItem}} </li>
+      {{/each}}
+    {{else}}
+      <li class="ui-droppable">Drop here to add a starting player for this game.</li>
+    {{/if}}
+  </ol>
+</template>
+
+<template name="StarterList">
+  <div class="row">
+    <div class="col-sm-6 col-md-6">
+      <p><a href="{{pathFor 'GameShow' _id=sGameId}}" class="btn btn-default">Back To Game Info</a></p>
+      <h3>Choose Your Starting Lineup</h3>
+      <p>Drag and drop the players from your roster to the shirts representing positions on the field</p>.
+      <!-- field module -->
+      {{> PlayerPlainList}}
+      <h4>Which players will start for this game?</h4>
+      {{#if sFormationChosen}}
+        <h5>Choose Your Team Formation</h5>
+        <p>You need to choose your formation. <a class="btn btn-default" href="{{pathFor 'FormationEdit' _id=sGameId}}">Choose Formation</a></p>
+      {{/if}}
+      {{#if sPositionsNamed}}
+        <h5>Name Your Field Positions</h5>
+        <p>You need to name your field positions. <a class="btn btn-default" href="{{pathFor 'PositionEdit' _id=sGameId}}">Name your Field Positions</a></p>
+      {{/if}}
+      <h4>Excellent! You are now ready select your starting team.</h4>
+      <p>How? It's easy, <strong>just drag and drop the players from your roster to the shirts representing positions on the field</strong></p>
+      <p>When you are finished and satisfied with your starting lineup, click on the '<strong>Back To Game Info</strong>' button below. You will be able to change this starting lineup anytime you want.</p>
+      <p><a href="{{pathFor 'GameShow' _id=sGameId}}" class="btn btn-default">Back To Game Info</a></p>
+    </div>
+    <div class="col-sm-6 col-md-6">
+      {{> StartingFieldList}}
+    </div>
+  </div>
+</template>
+
+

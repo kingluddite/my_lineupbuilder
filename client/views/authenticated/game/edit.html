@@ -1,0 +1,102 @@
+<template name="GameEdit">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Edit Game Info</h3>
+    </div>
+    <div class="panel-body">
+      <p>Use the form below to edit your game information. </p>
+      <form id="edit-game-form">
+        <p>Current Game Date/Time: {{formatDate cGame.gameDateTime}}</p>
+        <div class='input-group date date-time-picker'>
+          <input type="text" name="gameDateTime" required class="form-control" placeholder="" value="{{formatDate cGame.gameDateTime}}" />
+          <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+          </span>
+        </div>
+        {{#if sLeagueId}}
+          <div class="form-group">
+            <label for="myLeagueName"><a href="{{pathFor 'LeagueList'}}">League</a></label>
+            <select class="form-control" id="myLeagueName" name="leagueName">
+              {{#each cMyLeagues}}
+                <option value="{{_id}}">{{leagueName}}</option>
+              {{/each}}
+            </select>
+          </div>
+        {{else}}
+          <h4>Is Your Team Part of a League?</h4>
+          <p>If so, create that league by clicking on the link below.</p>
+          <p>You need to <a href="{{pathFor 'LeagueList'}}">Create a league</a>.</p>
+        {{/if}}
+        {{#if sLeagueId}}
+          {{#if sSeasonId}}
+            <div class="form-group">
+              <label for="mySeasonName"><a href="{{pathFor 'SeasonList'}}">Season</a></label>
+              <select class="form-control" id="mySeasonName" name="seasonName">
+                {{#each cMySeasons}}
+                  <option value="{{_id}}">{{seasonName}}</option>
+                {{/each}}
+              </select>
+            </div>
+          {{else}}
+            <h4>Add Your Season</h4>
+            <p>Now that you have a League. You're league probably has different seasons. An example would be '<em>Sunday 11v11 Mens</em>' or '<em>Thursday Night Coed 7v7</em>'. By creating a season you can start to keep track of cool stats like which players on my Thursday team paid or who is the top scorer of my Sunday team. And that's only the beginning!</p>
+            <p>You need to <a href="{{pathFor 'SeasonList'}}">Create a season</a>.</p>
+          {{/if}}
+        {{/if}}
+        <p>
+          <label>Opponent Name</label>
+          <input type="text" required class="form-control" placeholder="Opponent Name" name="opponentName" value="{{cGame.opponentName}}">
+        </p>
+        <p>
+          <label>Field Name</label>
+          <input type="text" required class="form-control" placeholder="Field Name" name="fieldName" value="{{cGame.fieldName}}">
+        </p>
+        {{#if sFormationChosen}}
+          <p>
+            <label><a href="{{pathFor 'PositionEdit' _id=sGameId}}">My Formation</a></label>
+            <select class="form-control formation-choice-select">
+              {{#if cGame.myFormation}}
+                <option value="{{cGame.myFormation}}" selected>{{cGame.myFormation}}</option>
+              {{/if}}
+              <option value="4-4-2" checked>4-4-2</option>
+              <option value="4-3-3-flat">4-3-3 Flat</option>
+              <option value="3-4-3">3-4-3</option>
+              <option value="3-6-1">3-6-1</option>
+              <option value="3-4-2-1">3-4-2-1</option>
+              <option value="4-5-1">4-5-1</option>
+              <option value="5-2-2-1">5-2-2-1</option>
+              <option value="4-3-3-tri">4-3-3 Triangle</option>
+              <option value="3-5-2">3-5-2</option>
+            </select>
+          </p>
+        {{else}}
+          <h4>What formation are you going to use for this game?</h4>
+          <p>Are you planning a 4-4-2 or 4-5-1? Not sure? <a href="{{pathFor 'FormationInfo'}}">Read this</a>.</p>
+          <p>Once you decide, it's time to <a href="{{pathFor 'FormationNew' _id=sGameId}}">Choose Your Formation</a>.</p>
+        {{/if}}
+
+        {{#if sLineupChosen}}
+        {{else}}
+          <h4>Which players are going to start this game?</h4>
+          <p>When you're ready, it's time to <a href="{{pathFor 'PlayerPlainList' _id=sGameId}}">Choose Your Starting Lineup</a>.</p>
+        {{/if}}
+        <p>
+          <label class="sr-only">Google Maps URL</label>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="fa fa-link"></i></span>
+            <input type="url" class="form-control" placeholder="Google Map Link" name="fieldUrl" value="{{cGame.fieldUrl}}">
+          </div>
+        </p>
+        <div class="checkbox">
+          <label>
+            <input class="home-team-chkbox" type="checkbox" name="homeTeam"> We are the Home Team</label>
+        </div>
+        <a href="{{pathFor 'GameShow' _id=sGameId}}" class="btn btn-large btn-default pull-left">Back To Game Info</a>
+        <button type="submit" class="btn btn-large btn-success pull-right">Update</button>
+      </form>
+    </div>
+  </div>
+</template>
+

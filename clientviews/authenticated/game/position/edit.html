@@ -1,0 +1,45 @@
+<template name="PositionEdit">
+  <h3>Update Position Names</h3>
+  <p>Every coach has their own specific names for positions. Use the boxes below to name the field positions the way you want.</p>
+  <a class="btn btn-default" href="{{pathFor 'GameEdit' _id=sGameId}}">Back To Game Info</a>
+  <form id="edit-position-form">
+
+    <div class="field frm-{{currentFormation}}">
+      <div id="player01">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player02" value="{{cGamePos.player02.fieldPosition}}">
+      </div>
+      <div id="player02">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player02" value="{{cGamePos.player02.fieldPosition}}">
+      </div>
+      <div id="player03">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player03" value="{{cGamePos.player03.fieldPosition}}">
+      </div>
+      <div id="player04">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player04" value="{{cGamePos.player04.fieldPosition}}">
+      </div>
+      <div id="player05">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player05" value="{{cGamePos.player05.fieldPosition}}">
+      </div>
+      <div id="player06">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player06" value="{{cGamePos.player06.fieldPosition}}">
+      </div>
+      <div id="player07">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player07" value="{{cGamePos.player07.fieldPosition}}">
+      </div>
+      <div id="player08">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player08" value="{{cGamePos.player08.fieldPosition}}">
+      </div>
+      <div id="player09">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player09" value="{{cGamePos.player09.fieldPosition}}">
+      </div>
+      <div id="player10">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player10" value="{{cGamePos.player10.fieldPosition}}">
+      </div>
+      <div id="player11">
+        <input type="text" required class="form-control" placeholder="Position Name" name="player11" value="{{cGamePos.player11.fieldPosition}}">
+      </div>
+    </div>
+    <button type="submit" class="btn btn-large btn-success">Update Positions</button>
+  </form>
+</template>
+

@@ -105,3 +105,23 @@ drag drop goalie
 cursor on mouse over
 
 http://www.skysports.com/manchester-united-squad
+
+/*=================================================
+=            Soccermatters Style Guide            =
+=================================================*/
+
+Style Guide
+TemplateNames (All Words Capitalized)
+all-css-names-spelled-like-this (whether class or id)
+all css colors defined in global sass color file as variables
+folder-names
+file-names.txt
+sass files in stylesheets
+_my-sass-files.scss (and included in application scss file)
+js controllers in controllers folder
+html views in views folder
+
+break routes, controllers, views, styles into public and authenticated
+images inside public folder
+all session variables begin with 's' (sExampleSessionName)
+include file names begin with underscore (_example-include-file.js)

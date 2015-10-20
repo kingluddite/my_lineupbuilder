@@ -1,0 +1,21 @@
+#editPositionForm {
+  position: absolute;
+  button {
+    position: relative;
+    top: 300px;
+  }
+}
+
+// animate text fields to grow when clicked on
+.field input {
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.add-position-btn {
+  position: absolute;
+  top: 320px;
+  left: 0;
+}

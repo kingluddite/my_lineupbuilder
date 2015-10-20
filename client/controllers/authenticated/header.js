@@ -3,7 +3,7 @@
 ==========================================*/
 // Template:  /client/includes/_header.html
 
-Template.header.events({
+Template.Header.events({
   'click .logout': function(evt, template) {
     return Meteor.logout(function(error) {
       if (error) {
