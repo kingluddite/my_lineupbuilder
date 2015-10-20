@@ -3,18 +3,23 @@
     <li class="{{currentRoute 'home'}}">
       <a href="/">Home</a>
     </li>
-    <li class="{{currentRoute 'leagues'}}">
-      <a href="{{pathFor 'LeagueList'}}">My Leagues</a>
-    </li>
-    <li class="{{currentRoute 'seasons'}}">
-      <a href="{{pathFor 'SeasonList' _id=sLeagueId}}">My Seasons</a>
-    </li>
+    {{#if sTeamId}}we have team id{{else}} no team id homee{{/if}}
     <li class="{{currentRoute 'teams'}}">
       <a href="{{pathFor 'TeamNew' _id=sLeagueId}}">My Teams</a>
     </li>
+    {{#if sLeagueId}}we have league id{{else}} no league id homee{{/if}}
+    <li class="{{currentRoute 'leagues'}}">
+      <a href="{{pathFor 'LeagueList'}}">My Leagues</a>
+    </li>
+    {{#if sSeasonId}}we have season id{{else}} no season id homee{{/if}}
+    <li class="{{currentRoute 'seasons'}}">
+      <a href="{{pathFor 'SeasonList' _id=sLeagueId}}">My Seasons</a>
+    </li>
+    {{#if sPlayerId}}we have player id{{else}} no player id homee{{/if}}
     <li class="{{currentRoute 'players'}}">
       <a href="{{pathFor 'PlayerList' _id=sTeamId}}">My Roster</a>
     </li>
+    {{#if sGameId}}we have game id{{else}} no game id homee{{/if}}
     <li class="{{currentRoute 'games'}}">
       <a href="{{pathFor 'GameList' _id=sTeamId}}">My Games</a>
     </li>
