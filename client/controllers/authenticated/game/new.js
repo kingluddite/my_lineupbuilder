@@ -88,5 +88,6 @@ Template.GameNew.events({
       Session.setPersistent('sAddGame', false);
 
     });
+    Bert.alert('Game Created', 'success', 'growl-top-right');
   }
 });

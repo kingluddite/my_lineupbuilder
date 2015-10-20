@@ -9,6 +9,12 @@ Meteor.methods({
       throw new Meteor.Error(401, "You need to login to add a season");
     }
 
+     check(postAttributes, {
+      seasonName: String,
+      teamId:     String,
+      leagueId:   String
+    });
+
     // ensure the post has a name
     var errors = validateSeason(postAttributes);
     // if (errors.title || errors.url)

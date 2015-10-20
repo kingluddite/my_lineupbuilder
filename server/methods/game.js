@@ -8,6 +8,17 @@ Meteor.methods({
       throw new Meteor.Error(401, "You need to login to add a team");
     }
 
+     check(postAttributes, {
+      teamId:       String,
+      gameDateTime: Date,
+      leagueName:   String,
+      seasonName:   String,
+      opponentName: String,
+      fieldName:    String,
+      fieldUrl:     String,
+      homeTeam:     String
+    });
+
     // ensure the post has a name
     if (!postAttributes.gameDateTime) {
       throw new Meteor.Error(422, "Please provide a Game Date/Time");

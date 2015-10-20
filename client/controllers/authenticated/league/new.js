@@ -63,5 +63,6 @@ Template.LeagueNew.events({
       Session.setPersistent('sLeagueNew', true);
       Session.setPersistent('sAddLeague', false);
     });
+    Bert.alert('League Created', 'success', 'growl-top-right');
   }
 });

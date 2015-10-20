@@ -1,6 +1,7 @@
 /* Globals */
 @import "globals/extends";
 @import "globals/colors";
+@import "globals/general";
 @import "globals/buttons";
 @import "globals/errors";
 @import "globals/fonts";
@@ -16,6 +17,7 @@
 /* Authenticated */
 @import "views/authenticated/game/game-reminder/_game-reminder";
 @import "views/authenticated/game/formation/_formation";
+@import "views/authenticated/game/_game.scss";
 @import "views/authenticated/game/lineup/_lineup";
 @import "views/authenticated/game/position/_position";
 

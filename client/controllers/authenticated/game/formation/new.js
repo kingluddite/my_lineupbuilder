@@ -64,5 +64,6 @@ Template.FormationNew.events({
         _id: currentGameId
       });
     });
+    Bert.alert('Formation Created', 'success', 'growl-top-right');
   }
 });

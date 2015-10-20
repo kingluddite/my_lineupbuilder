@@ -9,6 +9,11 @@ Meteor.methods({
       throw new Meteor.Error(401, "You need to login to add a league");
     }
 
+    check(postAttributes, {
+      leagueName: String,
+      teamId: String
+    });
+
     // ensure the post has a name
     var errors = validateLeague(postAttributes);
     // if (errors.title || errors.url)

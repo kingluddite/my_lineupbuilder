@@ -59,5 +59,6 @@ Template.SeasonNew.events({
       Session.setPersistent('sSeasonNew', true);
       Session.setPersistent('sAddSeason', false);
     });
+    Bert.alert('Season Created', 'success', 'growl-top-right');
   }
 });

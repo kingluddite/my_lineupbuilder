@@ -12,7 +12,10 @@ Meteor.methods({
     // if (!postAttributes.fullName) {
     //   throw new Meteor.Error(422, "Please provide a player name");
     // }
-
+    check(postAttributes, {
+      teamId:   String,
+      fullName: String
+    });
 
     // find out if the roster has reached its max value
     // make sure to get the teamId session value and
@@ -24,8 +27,8 @@ Meteor.methods({
     // Those on the list will be accepted, approved or recognized
     var player = _.extend(_.pick(postAttributes, 'teamId', 'fullName'), {
       // how many players do we have
-
-      jerseyNumber: "0",
+ 
+      jerseyNumber: "0", // add default 0 so we can update later
       createdBy: user._id,
       author: user.username,
       submitted: new Date().getTime()

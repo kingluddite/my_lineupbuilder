@@ -176,6 +176,7 @@ Template.PlayerNew.events({
           elem.remove();
         }
       });
+      Bert.alert('Players Added', 'success', 'growl-top-right');
       myFormInputs[i].value = '';
 
     }

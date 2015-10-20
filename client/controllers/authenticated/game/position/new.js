@@ -111,5 +111,6 @@ Template.PositionNew.events({
         _id: currentGameId
       });
     });
+    Bert.alert('Positions Named', 'success', 'growl-top-right');
   }
 });
