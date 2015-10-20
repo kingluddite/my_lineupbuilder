@@ -1,10 +1,3 @@
-// when the trashcan icon is clicked, the player is deleted
-var removeTeam = function() {
-  Teams.remove({
-    _id: Session.get('sTeamId')
-  });
-};
-
 // initially hide the instructions
 Template.TeamList.rendered = function() {
   $('.instructions').hide();
@@ -39,8 +32,6 @@ Template.TeamList.events({
     evt.preventDefault();
 
     if (confirm("Delete this team?")) {
-      Session.set('sTeamId', this._id);
-      //removeTeam();
       Meteor.call('removeTeam', this._id, function(error, id) {
         if (error) {
           return throwError(error.reason);
