@@ -40,7 +40,13 @@ Template.TeamList.events({
 
     if (confirm("Delete this team?")) {
       Session.set('sTeamId', this._id);
-      removeTeam();
+      //removeTeam();
+      Meteor.call('removeTeam', this._id, function(error, id) {
+        if (error) {
+          return throwError(error.reason);
+        }
+      });
+      Bert.alert('Team Deleted', 'danger', 'growl-top-right');
       // remove team id session when team removed from collection
       Session.set('sTeamId', null);
     }

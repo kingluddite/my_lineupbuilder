@@ -40,10 +40,10 @@ Template.TeamNew.events({
     evt.preventDefault();
 
     var team = {
-      teamName: $(evt.target).find('[name=teamName]').val(),
-      coachName: $(evt.target).find('[name=coachName]').val(),
-      coachEmail: $(evt.target).find('[name=coachEmail]').val(),
-      logoUrl: $(evt.target).find('[name=logoUrl]').val(),
+      teamName:        $(evt.target).find('[name=teamName]').val(),
+      coachName:       $(evt.target).find('[name=coachName]').val(),
+      coachEmail:      $(evt.target).find('[name=coachEmail]').val(),
+      logoUrl:         $(evt.target).find('[name=logoUrl]').val(),
       homeJerseyColor: $(evt.target).find('[name=homeJerseyColor]').val(),
       awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val()
     };
@@ -58,12 +58,13 @@ Template.TeamNew.events({
       if (error) {
         return throwError(error.reason);
       }
-
+      // let the user know the team has been created
       Session.setPersistent('sTeamId', id);
       // set sTeamNew to true after form submit so list of teams can be seen
       Session.setPersistent('sTeamNew', true);
       // hide add team form after submitting form
       Session.setPersistent('sAddTeam', false);
     });
+    Bert.alert('Team Created', 'success', 'growl-top-right');
   }
 });

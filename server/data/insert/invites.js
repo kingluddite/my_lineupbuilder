@@ -4,7 +4,6 @@
  */
 Meteor.methods({
   addToInvitesList: function(invitee) {
-    console.log('yo');
     var emailExists, inviteCount;
     // data check, make sure it's what we want
     check(invitee, {
