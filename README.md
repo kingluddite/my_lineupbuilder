@@ -125,3 +125,5 @@ break routes, controllers, views, styles into public and authenticated
 images inside public folder
 all session variables begin with 's' (sExampleSessionName)
 include file names begin with underscore (_example-include-file.js)
+hex values all uppercase letters and 6 characters
+colors definded in sass colors file

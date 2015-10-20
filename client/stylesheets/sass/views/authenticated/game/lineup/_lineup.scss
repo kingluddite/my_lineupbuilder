@@ -9,13 +9,13 @@
 //   color: #000;
 // }
 ol.hover.starting {
-  background-color: green;
-  border: 3px dashed #000;
-  color: #fff;
+  background-color: $green;
+  border: 3px dashed $black;
+  color: $white;
 }
 
 ol.hover.subs {
-  background-color: yellow;
-  border: 3px dashed #000;
-  color: #000;
+  background-color: $yellow;
+  border: 3px dashed $black;
+  color: $black;
 }
