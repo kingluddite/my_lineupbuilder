@@ -3,7 +3,7 @@ Router.map(function() {
     path: '/',
     template: 'Index',
     onBeforeAction: function() {
-      Session.set('currentRoute', 'index');
+      Session.set('currentRoute', 'home');
       return this.next();
     }
   });

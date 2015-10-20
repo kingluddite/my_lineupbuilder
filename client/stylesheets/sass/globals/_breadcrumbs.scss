@@ -1,0 +1,5 @@
+/* show current page by highlighting active tab */
+.breadcrumb > .active a {
+  border: 1px solid $black;
+  padding: 5px;
+}
