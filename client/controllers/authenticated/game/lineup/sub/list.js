@@ -30,28 +30,30 @@ Template.SubList.helpers({
     var currentGame = Games.findOne({
       _id: Session.get('sGameId')
     });
-
-    // grab all the subs
-    var mySubs = currentGame.subs;
-    // create an empty array
-    var arrWithPlayerNames = [];
-    // if there are subs
-    if (mySubs) {
-      // run this for loop through all the subs
-      for (var i = 0; i < mySubs.length; i++) {
-        // grab the playerid for each sub
-        var player = Players.findOne({
-          _id: mySubs[i]
-        });
-        // store the full name inside a variable
-        var playerFullName = player.fullName;
-        // push each fullName inside the empty array
-        arrWithPlayerNames.push(playerFullName);
+    // check if current game exists
+    if (currentGame) {
+      // grab all the subs
+      var mySubs = currentGame.subs;
+      // create an empty array
+      var arrWithPlayerNames = [];
+      // if there are subs
+      if (mySubs) {
+        // run this for loop through all the subs
+        for (var i = 0; i < mySubs.length; i++) {
+          // grab the playerid for each sub
+          var player = Players.findOne({
+            _id: mySubs[i]
+          });
+          // store the full name inside a variable
+          var playerFullName = player.fullName;
+          // push each fullName inside the empty array
+          arrWithPlayerNames.push(playerFullName);
+        }
+        return arrWithPlayerNames;
       }
-
-      return arrWithPlayerNames;
+    } else {
+      return false;
     }
-
   }
 
 });

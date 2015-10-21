@@ -48,9 +48,11 @@ Template.YesPlayingList.helpers({
           // make sure the doc result exists
           if (player) {
             // store the full name inside a variable
-            var playerFullName = player.fullName;
+            //var playerFullName = player.fullName;
             // push each fullName inside the empty array
-            arrWithPlayerNames.push(playerFullName);
+            //[original]
+            // arrWithPlayerNames.push(playerFullName);
+            arrWithPlayerNames.push(player);
           }
 
         }
@@ -60,4 +62,12 @@ Template.YesPlayingList.helpers({
     }
   }
 
+});
+
+Template.YesPlayingList.events({
+  'mousedown li ': function(evt, template) {
+    Session.set('sPlayerId', this._id);
+    // Session.set('sPlayerStatus', this.status);
+    // Session.set('sGameReminderStatus', this.game_reminder);
+  }
 });

@@ -1,6 +1,6 @@
 // Make all subs draggable
 Template.NoReplyItem.rendered = function(evt, template) {
-  $('ol.no-replies li').draggable({
+  $('ol.no-reply li').draggable({
     revert: true,
     appendTo: 'body',
     helper: 'clone'

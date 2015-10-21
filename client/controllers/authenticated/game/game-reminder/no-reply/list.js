@@ -59,3 +59,9 @@ Template.NoReplyList.helpers({
   }
 
 });
+
+Template.NoReplyList.events({
+  'mousedown li ': function(evt, template) {
+    Session.set('sPlayerId', this._id);
+  }
+});

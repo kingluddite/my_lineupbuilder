@@ -1,5 +1,4 @@
 Template.NotPlayingList.rendered = function(evt, template) {
-
   $('ol.not-playing')
     .droppable({
       activeClass: 'active',
@@ -58,4 +57,12 @@ Template.NotPlayingList.helpers({
     }
   }
 
+});
+
+Template.NotPlayingList.events({
+  'mousedown li ': function(evt, template) {
+    Session.set('sPlayerId', this._id);
+    // Session.set('sPlayerStatus', this.status);
+    // Session.set('sGameReminderStatus', this.game_reminder);
+  }
 });

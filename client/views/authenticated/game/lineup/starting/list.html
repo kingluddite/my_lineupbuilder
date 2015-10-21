@@ -6,7 +6,7 @@
   <ol class="starting">
     {{#if cStarting}}
       {{#each cStarting}}
-        <li id="{{@index}}"> {{> StartingItem}} </li>
+        <li id="{{@index}}" data-id="{{_id}}"> {{> StartingItem}}</li>
       {{/each}}
     {{else}}
       <li class="ui-droppable">Drop here to add a starting player for this game.</li>
@@ -37,8 +37,30 @@
       <p><a href="{{pathFor 'GameShow' _id=sGameId}}" class="btn btn-default">Back To Game Info</a></p>
     </div>
     <div class="col-sm-6 col-md-6">
-      {{> StartingFieldList}}
+     {{> StartingFieldList}}
     </div>
+  </div>
+</template>
+
+<template name="StartingLineupList">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">Available Players for this Game<span class="badge">{{cPlayers.count}}</span></h3>
+    </div>
+    <div class="panel-body">
+    {{> YesPlayingList}}
+      <!-- <ol class="roster">
+        {{#if cPlayers.count}}
+          {{#each cPlayers}}
+            {{> PlayerItem}}
+          {{/each}}
+        {{else}}
+          <li><a href="{{pathFor 'PlayerList' _id=sTeamId}}">Add Some Players</a></li>
+        {{/if}}
+      </ol> -->
+    </div>
+
   </div>
 </template>
 

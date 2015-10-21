@@ -18,7 +18,7 @@ Template.YesPlayingItem.events({
         yesPlaying: 1
       }
     });
-    // here are all the subs
+    // here are all players who responded yes to the game reminder
     var myYesPlayers = currentGame.yesPlaying;
 
     // use handlebars index to find array item we want to remove
@@ -41,3 +41,5 @@ Template.YesPlayingItem.events({
 
   }
 });
+
+

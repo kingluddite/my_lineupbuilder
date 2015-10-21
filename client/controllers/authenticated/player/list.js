@@ -77,6 +77,7 @@ Template.PlayerPlainList.helpers({
   // grab all the players and provide collection for roster template
   cPlayers: function() {
     // only if the user is logged in
+    
     if (Meteor.user()) {
       // grab all the players the user created (so we know it's their
       //   team)
@@ -97,7 +98,9 @@ Template.PlayerGameReminderList.helpers({
   // grab all the players and provide collection for roster template
   cPlayers: function() {
     // only if the user is logged in
+    
     if (Meteor.user()) {
+     
       // grab all the players the user created (so we know it's their
       //   team)
       return Players.find({
@@ -119,6 +122,7 @@ Template.StarterSubList.helpers({
   // grab all the players and provide collection for roster template
   cPlayers: function() {
     // only if the user is logged in
+     
     if (Meteor.user()) {
       // grab all the players the user created (so we know it's their
       //   team)

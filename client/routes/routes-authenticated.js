@@ -135,8 +135,12 @@ Router.route('SeasonList', {
       to: 'footer'
     }
   },
+  waitOn: function() {
+    return Meteor.subscribe('current-season');
+  },
   onBeforeAction: function() {
     Session.set('currentRoute', 'seasons');
+    Session.setPersistent('sSeasonId', true);
     return this.next();
   }
 });
@@ -378,15 +382,40 @@ Router.route('PositionList', {
 /*=========================================
 =            Starting and Subs            =
 =========================================*/
-Router.route('StarterSubList', {
-  path: '/teams/games/starter_subs/:_id',
+// Router.route('StarterSubList', {
+//   path: '/teams/games/starter_subs/:_id',
+//   layoutTemplate: 'StartersAndSubs',
+//   yieldTemplates: {
+//     'StartingList': {
+//       to: 'sidebar-top'
+//     },
+//     'SubList': {
+//       to: 'sidebar-bottom'
+//     },
+//     'StartingFieldList': {
+//       to: 'right'
+//     },
+//     'Footer': {
+//       to: 'footer'
+//     }
+//   },
+//   onBeforeAction: function() {
+//     Session.set('currentRoute', 'starters');
+//     return this.next();
+//   },
+//   waitOn: function() {
+//     return [
+//       Meteor.subscribe('current-game'),
+//       Meteor.subscribe('current-team-roster')
+//     ]
+//   }
+// });
+Router.route('StartingLineupList', {
+  path: '/teams/games/lineup_starters/:_id',
   layoutTemplate: 'StartersAndSubs',
   yieldTemplates: {
     'StartingList': {
       to: 'sidebar-top'
-    },
-    'SubList': {
-      to: 'sidebar-bottom'
     },
     'StartingFieldList': {
       to: 'right'
@@ -398,9 +427,14 @@ Router.route('StarterSubList', {
   onBeforeAction: function() {
     Session.set('currentRoute', 'starters');
     return this.next();
+  },
+  waitOn: function() {
+    return [
+      Meteor.subscribe('current-game'),
+      Meteor.subscribe('current-team-roster')
+    ]
   }
 });
-
 /*=======================================
   =            Starting Lineup            =
   =======================================*/
@@ -420,5 +454,11 @@ Router.route('PlayerPlainList', {
   onBeforeAction: function() {
     Session.set('currentRoute', 'lineup');
     return this.next();
+  },
+  waitOn: function() {
+    return [
+      Meteor.subscribe('current-game'),
+      Meteor.subscribe('current-team-roster')
+    ]
   }
 });

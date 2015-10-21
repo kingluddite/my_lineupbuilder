@@ -37,13 +37,18 @@ Template.GameItem.helpers({
     });
     // make sure myStarters exists
     if (myStarters) {
+
       // use global function to count objects
       var numStarters = objectLength(myStarters.playerGameInfo[0]);
       // what is the length of the subs array?
-      var numSubs = myStarters.subs.length;
+      if (myStarters.subs) {
+        var numSubs = myStarters.subs.length;
+      }
       // add both to get total players for game
       var totalPlayers = numStarters + numSubs;
       return totalPlayers;
+    } else {
+      return false;
     }
   },
   // need these sessions for this template
