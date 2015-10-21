@@ -7,8 +7,6 @@ Template.FieldList.rendered = function() {
         .find('div')
         .html('dropped');
     }
-
-
   });
 
 };
@@ -96,25 +94,6 @@ Template.StartingFieldList.onCreated(function() {
 
 });
 
-// Template.StartingFieldList.rendered = function() {
-
-    //   // var currGame = Games.findOne({
-    //   //   _id: Session.get('sGameId')
-    //   // }, {
-    //   //   playerGameInfo: 1
-    //   // });
-    //   var currentGame = Games.findOne({
-    //     _id: Session.get('sGameId')
-    //   });
-
-
-
-
-    //   // var myTest = currGame.playerGameInfo[0]["player02"].playerFullName;
-
-    // };
-
-
 Template.StartingFieldList.helpers({
   // if there is a team return false
   // so we can hide the add team form
@@ -131,10 +110,13 @@ Template.StartingFieldList.helpers({
     var currentGame = Games.findOne({
       _id: Session.get('sGameId')
     });
-
-    if (currentGame.playerGameInfo[0]) {
-      var allPlayerGameInfo = currentGame.playerGameInfo[0];
-      return allPlayerGameInfo;
+    if (currentGame.playerGameInfo[0]) {  
+      if (currentGame.playerGameInfo[0]) {
+        var allPlayerGameInfo = currentGame.playerGameInfo[0];
+        return allPlayerGameInfo;
+      }
+    } else {
+      return false;
     }
 
   }
