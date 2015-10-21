@@ -11,12 +11,10 @@ Meteor.methods({
      check(postAttributes, {
       teamId:       String,
       gameDateTime: Date,
-      leagueName:   String,
-      seasonName:   String,
       opponentName: String,
       fieldName:    String,
       fieldUrl:     String,
-      homeTeam:     String
+      homeTeam:     Boolean
     });
 
     // ensure the post has a name
@@ -29,19 +27,18 @@ Meteor.methods({
     var game = _.extend(_.pick(postAttributes,
       'teamId',
       'gameDateTime',
-      'leagueName',
-      'seasonName',
       'opponentName',
       'fieldName',
       'fieldUrl',
       'homeTeam'), {
 
+      leagueName: "NA",
+      seasonName: "NA",
       createdBy: user._id,
       author: user.username,
       gameCreated: true,
       submitted: new Date().getTime()
     });
-
 
     var gameId = Games.insert(game);
 
@@ -69,8 +66,13 @@ Meteor.methods({
     if (!user) {
       throw new Meteor.Error(401, "You need to login to add a team");
     }
-
-    console.log(postAttributes.playerFullName);
+    //console.log(postAttributes);
+    check(gameId, String);
+    check(postAttributes, {
+      playerDivNum: String,
+      playerId: String,
+      playerFullName: String
+    });
 
     /*=================================================
     =            dynamic object properties            =
