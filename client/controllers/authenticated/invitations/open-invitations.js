@@ -6,7 +6,7 @@
 /* these are open invitations: invitations that have been requested
 *   but not sent/approved
 */
-Template.OpenInvitations.helpers({
+Template.openInvitations.helpers({
   hasInvites: function() {
     var getInvites;
     // grab all invites that have a false value
@@ -49,7 +49,7 @@ Template.OpenInvitations.helpers({
   }
 });
 
-Template.OpenInvitations.events({
+Template.openInvitations.events({
   'click .send-invite': function() {
     // when someone clicks the invite button
     var confirmInvite, invitee, url;

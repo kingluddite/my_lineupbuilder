@@ -16,6 +16,7 @@
           {{#if isInRole 'admin'}}
             <li class="{{currentRoute 'invites'}}"><a href="{{pathFor 'Invites'}}">Invites</a></li>
             <li class="{{currentRoute 'dashboard'}}"><a href="{{pathFor 'Dashboard'}}">Dashboard</a></li>
+            {{else}}
           {{/if}}
           {{#if isInRole 'tester'}}
             <li class="{{currentRoute 'dashboard'}}"><a href="{{pathFor 'Dashboard'}}">Dashboard</a></li>

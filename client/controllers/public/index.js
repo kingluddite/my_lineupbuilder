@@ -40,7 +40,7 @@ Template.Index.rendered = function() {
                 return alert(error.reason);
               } else {
                 // return alert("Invite requested. We'll be in touch soon. Thanks for your interest in MyLineupBuilder");
-                return Bert.alert( 'Yes, I do mind!', 'warning', 'growl-bottom-right' );
+                return Bert.alert( 'Invite requested. We\'ll be in touch soon. Thanks for your interest in Soccermatters', 'success', 'growl-bottom-right' );
               }
             });
           }

@@ -86,6 +86,6 @@ Router.onBeforeAction( userAuthenticatedAdmin, {
     'Signup/:token', 
     'Login', 
     'Recover-password', 
-    'Reset-password' 
+    'Reset-password'
   ]
 } );

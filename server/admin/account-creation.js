@@ -75,8 +75,8 @@ Meteor.methods({
     // Send off our email to the user.
     return Email.send({
       to: userData.email,
-      from: "The Meteor Chef - Demo <demo@themeteorchef.com>",
-      subject: "Welcome aboard, team matey!",
+      from: "Soccermatters - Beta <noreply@soccermatters.com>",
+      subject: "Welcome to the team!",
       html: emailTemplate
     });
   }
