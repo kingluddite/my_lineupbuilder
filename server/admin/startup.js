@@ -37,39 +37,6 @@ createServiceConfiguration('facebook', 'Meteor.settings.private.fbappid', 'Meteo
 createServiceConfiguration('google', '506132420307-52ho56h58mk7kvkvb29sm6b82m26g4u9.apps.googleusercontent.com', 'pBe1cGgMh8vkreuIAeHW48uI');
 createServiceConfiguration('twitter', Meteor.settings.private.twitconsumerkey, Meteor.settings.private.twitsecret);
 });
-
-/*
-    Generate Test Accounts
-    Creates a collection of test accounts automatically on startup.
- */ 
-
-  var users;
-
-users = [
-  {
-    name: "Admin",
-    email: "admin@admin.com",
-    password: "password"
-  }
-];
-
-var checkUser, i, id, len, user;
-
-for (i = 0, len = users.length; i < len; i++) {
-  user = users[i];
-  checkUser = Meteor.users.findOne({
-    "emails.address": user.email
-  });
-  if (!checkUser) {
-    id = Accounts.createUser({
-      email: user.email,
-      password: user.password,
-      profile: {
-        name: user.name
-      }
-    });
-  }
-}
   /*
     Define environment variables.
    */
@@ -97,7 +64,7 @@ for (i = 0, len = users.length; i < len; i++) {
     name: "Beatrix Beta",
     email: "beatrix@beta.com",
     password: "password",
-    roles: ['tester']
+    roles: ['coach']
   }];
   results = [];
   for (i = 0, len = users.length; i < len; i++) {

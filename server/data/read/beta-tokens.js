@@ -29,7 +29,7 @@ Meteor.methods({
         password: user.password
       });
       // set the role to tester
-      Roles.addUsersToRoles(id, ['tester']);
+      Roles.addUsersToRoles(id, ['coach']);
       // update the record using our id
       return Invites.update(testInvite._id, {
         $set: {
