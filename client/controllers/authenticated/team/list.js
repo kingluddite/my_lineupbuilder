@@ -1,8 +1,3 @@
-// initially hide the instructions
-Template.TeamList.rendered = function() {
-  $('.instructions').hide();
-}
-
 Template.TeamList.helpers({
   // grab all the teams and provide collection for roster template
   cTeams: function() {
@@ -41,11 +36,6 @@ Template.TeamList.events({
       // remove team id session when team removed from collection
       Session.set('sTeamId', null);
     }
-  },
-  // toggle help text for team list
-  'click .help-text': function(evt, template) {
-    $('.instructions').toggle(400);
-    return false;
   },
   // when person clicks to enter their team
   // set that team id as the current session

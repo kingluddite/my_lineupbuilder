@@ -1,10 +1,3 @@
-// when the trashcan icon is clicked, the player is deleted
-var removePlayer = function() {
-  Players.remove({
-    _id: Session.get('sPlayerId')
-  });
-};
-
 Template.PlayerList.rendered = function() {
   // when page loads check box if roster complete
   if (Session.get('sRosterComplete')) {
@@ -57,21 +50,19 @@ Template.PlayerList.events({
     var playerCount = Players.find().count();
 
     if (confirm("Delete this player?")) {
-      Session.set('sPlayerId', this._id);
-      removePlayer();
+      Meteor.call('removePlayer', this._id, function(error, id) {
+        if (error) {
+          return throwError(error.reason);
+        }
+      })
+      Bert.alert('Player Deleted', 'danger', 'growl-top-right');
       Session.set('sPlayerId', null);
     }
     if (playerCount <= 26) {
       $(".team-roster").show();
     }
-  },
-
-  'click .help-text': function(evt, template) {
-    $('.instructions').toggle(400);
-    return false;
   }
 });
-
 
 Template.PlayerPlainList.helpers({
   // grab all the players and provide collection for roster template

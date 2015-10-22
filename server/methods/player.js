@@ -44,5 +44,16 @@ Meteor.methods({
       return;
     }
 
+  },
+
+  removePlayer: function(playerId) {
+    var user = Meteor.user();
+    if (!user) {
+      throw new Meteor.Error(401, "You need to login to remove a team");
+    }
+    // check data is what we expect
+    check(playerId, String);
+
+    Players.remove(playerId);
   }
 });
