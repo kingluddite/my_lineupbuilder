@@ -31,14 +31,31 @@ Template.PlayerList.helpers({
   }
 });
 
-// coach completes his roster and lets us know
-//  visually we just add a checkbox, muted text and a line-through
 Template.PlayerList.events({
   'click .roster-complete': function(evt, template) {
     if (evt.target.checked) {
-      // validation here
-      // if roster is not >= 11 alert coach
-      Session.setPersistent("sRosterComplete", true);
+      // the coach is ready to submit their roster and checks
+      //  roster complete checkbox
+      //  how many players?
+      var rosterCount = $('.player-roster-list li').length;
+      if (rosterCount > 10) {
+       // if at least 11 players, we are ready to procede  
+       Bert.alert( 'Roster Completed. Now Create Your Game.', 'success', 'fixed-top', 'fa fa-users' );
+       Session.setPersistent("sRosterComplete", true);
+      } else {
+        // not ready, uncheck box and inform coach to add at least a roster 
+        //  total of 11 players
+        Bert.alert({
+          message: 'You only have ' + rosterCount + ' players and you need a minium of 11 players. Please add more players.',
+          title: 'Roster Incomplete!',
+          hideDelay: 3000,
+          type: 'danger',
+          style: 'fixed-top',
+          icon: 'fa fa-users'
+        });
+        // uncheck box
+        $('.roster-complete').attr('checked', false);
+      }
     } else {
       Session.setPersistent("sRosterComplete", false);
     }
