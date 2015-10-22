@@ -187,7 +187,10 @@ Router.route('PlayerList', {
     }
   },
   waitOn: function() {
-    return Meteor.subscribe('current-team-roster');
+    return [
+      Meteor.subscribe('current-team'),
+      Meteor.subscribe('current-team-roster')
+    ]
   },
   onBeforeAction: function() {
     Session.set('currentRoute', 'players');
@@ -217,7 +220,10 @@ Router.route('GameList', {
     }
   },
   waitOn: function() {
-    return Meteor.subscribe('current-game');
+    return [
+      Meteor.subscribe('current-game'),
+      Meteor.subscribe('current-team')
+    ]
   },
   onBeforeAction: function() {
     Session.set('currentRoute', 'games');

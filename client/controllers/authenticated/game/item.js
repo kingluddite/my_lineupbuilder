@@ -28,7 +28,14 @@ Template.GameItem.helpers({
     // make sure myStarters exists
     if (myStarters) {
       // use global function to count objects
-      return objectLength(myStarters.playerGameInfo[0]);
+      if (myStarters.playerGameInfo) {
+        // check if playerGameInfo array exists
+       return objectLength(myStarters.playerGameInfo[0]);
+      } else {
+        return false;
+      }
+    } else {
+      return false;
     }
   },
   totalPlayers: function() {
@@ -37,16 +44,24 @@ Template.GameItem.helpers({
     });
     // make sure myStarters exists
     if (myStarters) {
-
+      // check if playerGameInfo array exists
+      if (myStarters.playerGameInfo) {
+        var numStarters = objectLength(myStarters.playerGameInfo[0]);
+      } else {
+        return false;
+      }
       // use global function to count objects
-      var numStarters = objectLength(myStarters.playerGameInfo[0]);
       // what is the length of the subs array?
       if (myStarters.subs) {
         var numSubs = myStarters.subs.length;
       }
       // add both to get total players for game
       var totalPlayers = numStarters + numSubs;
-      return totalPlayers;
+      if (totalPlayers) {
+        return totalPlayers;
+      } else {
+        return false;
+      }
     } else {
       return false;
     }

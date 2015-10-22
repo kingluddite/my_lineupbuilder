@@ -7,28 +7,69 @@
     <li class="{{currentRoute 'teams'}}">
       <a href="{{pathFor 'TeamList'}}">My Teams</a>
     </li>
-    <li>{{#if sTeamId}}{{teamName}}{{else}}{{/if}}</li>
-    {{#if sLeagueId}}
-    <li class="{{currentRoute 'leagues'}}">
-      <a href="{{pathFor 'LeagueList'}}">My Leagues</a>
-    </li>
-    {{/if}}
-    {{#if sSeasonId}}
-    <li class="{{currentRoute 'seasons'}}">
-      <a href="{{pathFor 'SeasonList' _id=sLeagueId}}">My Seasons</a>
-    </li>
-    {{/if}}
-    {{#if sRosterComplete}}
-    <li class="{{currentRoute 'players'}}">
-      <a href="{{pathFor 'PlayerList' _id=sTeamId}}">My Roster</a>
-    </li>
-    {{/if}}
-    {{#if sGameId}}
-    <li class="{{currentRoute 'games'}}">
-      <a href="{{pathFor 'GameList' _id=sTeamId}}">My Games</a>
-    </li>
+    {{#if currentRoute 'home'}}
+    {{else}}
+      {{#if sTeamId}}
+      <li> <a href="{{pathFor 'TeamShow' _id=sTeamId}}">{{teamName}}</a></li>
+      {{/if}}
+      {{#if sLeagueId}}
+      <li class="{{currentRoute 'leagues'}}">
+        <a href="{{pathFor 'LeagueList'}}">My Leagues</a>
+      </li>
+      {{/if}}
+      {{#if sSeasonId}}
+      <li class="{{currentRoute 'seasons'}}">
+        <a href="{{pathFor 'SeasonList' _id=sLeagueId}}">My Seasons</a>
+      </li>
+      {{/if}}
+      {{#if sRosterComplete}}
+      <li class="{{currentRoute 'players'}}">
+        <a href="{{pathFor 'PlayerList' _id=sTeamId}}">My Roster</a>
+      </li>
+      {{/if}}
+      {{#if sGameId}}
+      <li class="{{currentRoute 'games'}}">
+        <a href="{{pathFor 'GameList' _id=sTeamId}}">My Games</a>
+      </li>
+      {{/if}}
     {{/if}}
   </ol>
   {{/if}}
+</template>
+
+<template name="NestedBreadcrumbs">
+{{#if sGameId}}
+  {{#if currentRoute 'games'}}
+  <ol class="breadcrumb">
+    <li class="{{currentRoute 'home'}}">
+      <a href="/">Game Date/Time</a>
+    </li>
+    <li class="{{currentRoute 'home'}}">
+      <a href="/">Opponent</a>
+    </li>
+    <li class="{{currentRoute 'teams'}}">
+      <a href="{{pathFor 'TeamList'}}">Game Reminder</a>
+    </li>
+    <li class="{{currentRoute 'teams'}}">
+      <a href="{{pathFor 'TeamList'}}">Pregame Team Message</a>
+    </li>
+    <li class="{{currentRoute 'leagues'}}">
+      <a href="{{pathFor 'LeagueList'}}">Formation</a>
+    </li>
+    <li class="{{currentRoute 'leagues'}}">
+      <a href="{{pathFor 'LeagueList'}}">Positions</a>
+    </li>
+    <li class="{{currentRoute 'players'}}">
+      <a href="{{pathFor 'PlayerList' _id=sTeamId}}">Starters</a>
+    </li>
+    <li class="{{currentRoute 'games'}}">
+      <a href="{{pathFor 'GameList' _id=sTeamId}}">Subs</a>
+    </li>
+    <li class="#">
+      <a href="#">Field</a>
+    </li>
+  </ol>
+  {{/if}}
+{{/if}}
 </template>
 

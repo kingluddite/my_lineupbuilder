@@ -26,6 +26,9 @@ Template.PlayerList.helpers({
   sGameId: function() {
     return Session.get('sGameId');
   },
+  sTeamId: function() {
+    return Session.get('sTeamId');
+  },
   sRosterComplete: function() {
     return Session.get('sRosterComplete');
   }

@@ -27,3 +27,9 @@ Template.Breadcrumbs.helpers({
     return Session.get('sGameId');
   }
 });
+
+Template.NestedBreadcrumbs.helpers({
+  sGameId: function () {
+    return Session.get('sGameId');
+  }
+});

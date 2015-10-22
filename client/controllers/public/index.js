@@ -50,6 +50,7 @@ Template.Index.rendered = function() {
   });
 };
 
+
 Template.Index.events({
   'submit form': function(evt) {
     return evt.preventDefault();
