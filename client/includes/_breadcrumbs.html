@@ -7,6 +7,7 @@
     <li class="{{currentRoute 'teams'}}">
       <a href="{{pathFor 'TeamList'}}">My Teams</a>
     </li>
+    <li>{{#if sTeamId}}{{teamName}}{{else}}{{/if}}</li>
     {{#if sLeagueId}}
     <li class="{{currentRoute 'leagues'}}">
       <a href="{{pathFor 'LeagueList'}}">My Leagues</a>

@@ -1,4 +1,16 @@
 Template.Breadcrumbs.helpers({
+  teamName: function() {
+    var myTeam = Teams.findOne({
+      _id: Session.get('sTeamId')
+    }, {
+      teamName: 1
+    });
+    if (myTeam) {
+      return myTeam.teamName;
+    } else {
+      return false;
+    }
+  },
   sTeamId: function () {
     return Session.get('sTeamId');
   },
