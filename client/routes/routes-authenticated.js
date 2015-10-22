@@ -27,15 +27,15 @@ Router.route('Invites', {
     ============================*/
 // new team
 
-Router.route('TeamNew', {
+Router.route('TeamList', {
   path: '/teams/new',
-  template: 'TeamNew',
+  template: 'TeamList',
   waitOn: function() {
     return Meteor.subscribe('current-team');
   },
   layoutTemplate: 'TwoColumn',
   yieldTemplates: {
-    'TeamList': {
+    'TeamNew': {
       to: 'sidebar'
     },
     'Footer': {
@@ -361,7 +361,7 @@ Router.route('PositionNew', {
   }
 });
 
-// edit position and list positions 
+// edit position and list positions
 Router.route('PositionList', {
   path: '/teams/games/positions/:_id/edit',
   layoutTemplate: 'TwoColumn',
