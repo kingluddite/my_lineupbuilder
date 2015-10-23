@@ -38,6 +38,7 @@ mobile-experience
 mongo
 mrt:bootstrap-alerts
 mrt:moment
+pfafman:filesaver
 random
 reactive-var
 reload
