@@ -263,6 +263,9 @@ Router.route('GameShow', {
   }
 });
 
+// Single Game Modular Attributes
+
+
 /*=====================================
   =            Game Reminder            =
   =====================================*/

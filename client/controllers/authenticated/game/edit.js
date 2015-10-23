@@ -50,24 +50,6 @@ Template.GameEdit.helpers({
   }
 });
 
-// values of unchecked boxes do not get posted
-// to get a true or false value entered into db
-// we create the myFormationChoice variable
-// and populate it with true or false if checked or unchecked
-// then call this function when updating game db
-// and true is entered for myFormation if checked
-// and false is entered for myFormation if not checked
-function isHomeChecked() {
-  var myFormationChoice;
-
-  if ($('.home-team-chkbox').prop('checked')) {
-    myFormationChoice = true;
-  } else {
-    myFormationChoice = false;
-  }
-  return myFormationChoice;
-}
-
 Template.GameEdit.events({
   // need this event here for when game appears on 'add game' click
   //  also need it in render when template loads

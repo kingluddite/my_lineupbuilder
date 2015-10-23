@@ -39,34 +39,64 @@
 
 <template name="NestedBreadcrumbs">
 {{#if sGameId}}
-  {{#if currentRoute 'games'}}
+  {{#if currentRoute 'game'}}
   <ol class="breadcrumb">
-    <li class="{{currentRoute 'home'}}">
-      <a href="/">Game Date/Time</a>
+    <li class="{{currentSubRoute 'game-date-time'}}">
+      <a href="{{pathFor 'GameDateTime'}}">Game Date/Time</a>
     </li>
-    <li class="{{currentRoute 'home'}}">
-      <a href="/">Opponent</a>
+    <li class="{{currentSubRoute 'opponent'}}">
+      <a href="{{pathFor 'Opponent'}}">Opponent</a>
     </li>
-    <li class="{{currentRoute 'teams'}}">
+    <li class="{{currentSubRoute 'game-reminder'}}">
       <a href="{{pathFor 'TeamList'}}">Game Reminder</a>
     </li>
-    <li class="{{currentRoute 'teams'}}">
+    <li class="{{currentSubRoute 'pre-game-message'}}">
       <a href="{{pathFor 'TeamList'}}">Pregame Team Message</a>
     </li>
-    <li class="{{currentRoute 'leagues'}}">
+    <li class="{{currentSubRoute 'formation'}}">
       <a href="{{pathFor 'LeagueList'}}">Formation</a>
     </li>
-    <li class="{{currentRoute 'leagues'}}">
+    <li class="{{currentSubRoute 'positions'}}">
       <a href="{{pathFor 'LeagueList'}}">Positions</a>
     </li>
-    <li class="{{currentRoute 'players'}}">
+    <li class="{{currentSubRoute 'starters'}}">
       <a href="{{pathFor 'PlayerList' _id=sTeamId}}">Starters</a>
     </li>
-    <li class="{{currentRoute 'games'}}">
+    <li class="{{currentSubRoute 'subs'}}">
       <a href="{{pathFor 'GameList' _id=sTeamId}}">Subs</a>
     </li>
-    <li class="#">
-      <a href="#">Field</a>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Field</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Status</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Weather</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Results</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Postgame Summary</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Cards</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Player Payment</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Goal Scorers</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">No Shows</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Injuries</a>
+    </li>
+    <li class="{{currentSubRoute 'field'}}">
+      <a href="{{pathFor 'Field'}}">Clean Sheet Goalie</a>
     </li>
   </ol>
   {{/if}}

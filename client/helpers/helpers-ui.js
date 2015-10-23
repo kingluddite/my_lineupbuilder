@@ -35,6 +35,15 @@ UI.registerHelper('currentRoute', function(route) {
   }
 });
 
+// for nested breadcrumb
+UI.registerHelper('currentSubRoute', function(route) {
+  if (Session.equals('currentSubRoute', route)) {
+    return 'active';
+  } else {
+    return '';
+  }
+});
+
 // allows you to easily format JavaScript dates
 UI.registerHelper('formatDate', function(datetime) {
   if (moment) {
