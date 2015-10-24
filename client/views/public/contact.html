@@ -1,7 +1,9 @@
 <template name="Contact">
   {{#if sContactFormSent}}
+    <h3 class="page-header">Email Sent</h3>
     <p>Your email has been sent. We usually respond within 48 hours.</p>
   {{else}}
+  <h3 class="page-header">Contact Us</h3>
     <form role="form" id="email-form">
       <div class="form-group">
         <label for="inputSubject">Subject</label>

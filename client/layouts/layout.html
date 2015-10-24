@@ -20,6 +20,7 @@
   <div class="container">
     {{> Breadcrumbs}}
     {{> NestedBreadcrumbs}}
+    {{> GameReminderBreadcrumbs}}
     <div class="row">
       <div class="col-sm-6 col-md-6">
         {{> yield}}
@@ -32,6 +33,27 @@
     </div>
   </div>
 </template>
+
+<template name="TwoColumnGameReminder">
+  {{> Header}}
+  <!-- {{> Error}} -->
+  <div class="container">
+    {{> Breadcrumbs}}
+    {{> NestedBreadcrumbs}}
+    {{> GameReminderBreadcrumbs}}
+    <div class="row">
+      <div class="col-sm-6 col-md-6"> {{> yield region="sidebar"}}
+      </div>
+      <div class="col-sm-6 col-md-6">
+        {{> yield}}
+      </div>
+    </div>
+    <div class="row">
+      {{> yield region="footer"}}
+    </div>
+  </div>
+</template>
+
 
 <template name="GameReminder">
   {{> Header}}

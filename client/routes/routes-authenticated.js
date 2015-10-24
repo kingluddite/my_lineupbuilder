@@ -3,6 +3,7 @@ Router.route('Dashboard', {
   template: 'Dashboard',
   waitOn: function() {
     return Meteor.subscribe('userData');
+    return Meteor.subscribe('current-team');
   },
   onBeforeAction: function() {
     Session.set('currentRoute', 'dashboard');
@@ -15,6 +16,7 @@ Router.route('Invites', {
   template: 'Invites',
   waitOn: function() {
     return Meteor.subscribe('/invites');
+    return Meteor.subscribe('current-team');
   },
   onBeforeAction: function() {
     Session.set('currentRoute', 'invites');
@@ -254,7 +256,8 @@ Router.route('GameShow', {
   waitOn: function() {
     return [
       Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster')
+      Meteor.subscribe('current-team-roster'),
+      Meteor.subscribe('current-team')
     ]
   },
   onBeforeAction: function() {
