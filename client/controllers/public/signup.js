@@ -9,35 +9,37 @@ Template.Signup.rendered = function() {
     rules: {
       emailAddress: {
         required: true,
-        email: true
+        email:    true
       },
       password: {
-        required: true,
+        required:  true,
         minlength: 6
       },
       betaToken: {
-        required: true
+        required:  true
       }
     },
     messages: {
       emailAddress: {
-        required: "Please enter your email address to sign up.",
-        email: "Please enter a valid email address."
+        required:  "Please enter your email address to sign up.",
+        email:     "Please enter a valid email address."
       },
       password: {
-        required: "Please enter a password to sign up.",
+        required:  "Please enter a password to sign up.",
         minlength: "Please use at least six characters."
       },
       betaToken: {
-        required: "A valid beta token is required to sign up."
+        required:  "A valid beta token is required to sign up."
       }
     },
+
     submitHandler: function() {
       var user;
+
       // create a user object and stuff it with the email/pw and token?
       user = {
-        email: $('[name="emailAddress"]').val().toLowerCase(),
-        password: $('[name="password"]').val(),
+        email:     $('[name="emailAddress"]').val().toLowerCase(),
+        password:  $('[name="password"]').val(),
         betaToken: $('[name="betaToken"]').val()
       };
       // call a server method and pass the object we just created
@@ -71,7 +73,8 @@ Template.Signup.helpers({
 });
 
 Template.Signup.events({
-  'submit form': function(evt) {
+  
+  'submit form': function(evt, template) {
     return evt.preventDefault();
   }
 });

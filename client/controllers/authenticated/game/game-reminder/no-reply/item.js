@@ -12,17 +12,19 @@ Template.NoReplyItem.rendered = function(evt, template) {
 //  which removes them from the sub list
 Template.NoReplyItem.events({
   'click .trash': function(evt, template) {
-    // addAlertClass('Removed', 'sub');
+    var currentGame,
+        noReplies,
+        noReplyId;
 
-    var currentGame = Games.findOne({
+    currentGame = Games.findOne({
       _id: Session.get('sGameId')
     });
     // here are all the subs
-    var noReplies = currentGame.noReplies;
+    noReplies = currentGame.noReplies;
 
     // use handlebars index to find array item we want to remove
     // i > a > div id="1"
-    var noReplyId = evt.target.parentNode.parentNode.id;
+    noReplyId = evt.target.parentNode.parentNode.id;
 
     // with the current game id update that game
     // and use pull to find the subs array and remove the specific sub
@@ -37,6 +39,7 @@ Template.NoReplyItem.events({
         }
       });
   },
+  
   'mousedown li': function(evt, template) {
     Session.set('sPlayerId', this._id);
   }

@@ -9,7 +9,5 @@ Template.PlayerItem.rendered = function(evt, template) {
 Template.PlayerItem.events({
   'mousedown li ': function(evt, template) {
     Session.set('sPlayerId', this._id);
-    Session.set('sPlayerStatus', this.status);
-    Session.set('sGameReminderStatus', this.game_reminder);
   }
 });

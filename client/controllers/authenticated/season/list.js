@@ -1,14 +1,9 @@
-// when the trashcan icon is clicked, the player is deleted
+// TODO MAKE THIS SERVER SIDE REMOVE Method
 var removeSeason = function() {
   Seasons.remove({
     _id: Session.get('sSeasonId')
   });
 };
-
-// initially hide the instructions
-Template.SeasonList.rendered = function() {
-  $('.instructions').hide();
-}
 
 Template.SeasonList.helpers({
   // grab all the leagues and provide collection for roster template
@@ -17,15 +12,19 @@ Template.SeasonList.helpers({
     //   season)
     return Seasons.find();
   },
+
   sSeasonId: function() {
     return Session.get('sSeasonId');
   },
+
   sAddSeason: function() {
     return Session.get('sAddSeason');
   },
+
   sSeasonNew: function() {
     return Session.get('sSeasonNew');
   },
+
   sGameId: function() {
     return Session.get('sGameId');
   }
@@ -39,6 +38,7 @@ Template.SeasonList.events({
 
     if (confirm('Delete this season?')) {
       Session.set('sSeasonId', this._id);
+      // TODO MAKE THIS REMOVE SERVER SIDE METHOD
       removeSeason();
       Session.set('sSeasonId', null);
     }
@@ -53,11 +53,6 @@ Template.SeasonList.events({
     // if coach needs to add a season we set this session to true
     // so he can see that form
     Session.setPersistent('sAddSeason', true);
-  },
-  // toggle help text for season list
-  'click .help-text': function(evt, template) {
-    $('.instructions').toggle(400);
-    return false;
-  },
+  }
 
 });

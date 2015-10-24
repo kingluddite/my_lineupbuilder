@@ -1,11 +1,11 @@
 Template.Opponent.created = function() {
   this.editOpponent = new ReactiveVar(false);
-
 };
 
 Template.Opponent.rendered = function() {
+  var currentGame;
   // when template loads find the boolean value of homeTeam
-  var currentGame = Games.findOne({
+  currentGame = Games.findOne({
     _id: Session.get('sGameId')
   });
 
@@ -36,24 +36,32 @@ Template.Opponent.helpers({
 
 Template.Opponent.events({
   'click .edit-opponent': function(evt, template) {
-    var editOpponent = template.editOpponent.get();
-    template.editOpponent.set(!editOpponent);
-    // when template loads find the boolean value of homeTeam
-  var currentGame = Games.findOne({
-    _id: Session.get('sGameId')
-  });
+    var editOpponent, 
+        currentGame;
 
+    editOpponent = template.editOpponent.get();
+    template.editOpponent.set(!editOpponent);
+    
+    // when template loads find the boolean value of homeTeam
+    currentGame = Games.findOne({
+      _id: Session.get('sGameId')
+    });
   },
   'click .cancel-edit': function(evt, template) {
-    var editOpponent = template.editOpponent.get();
+    var editOpponent;
+    editOpponent = template.editOpponent.get();
     template.editOpponent.set(!editOpponent);
   },
   'submit form#edit-game-form': function(evt, template) {
+    var currentGameId, 
+        gameProperties,
+        editOpponent;
+
     evt.preventDefault();
 
-    var currentGameId = Session.get('sGameId');
+    currentGameId = Session.get('sGameId');
 
-    var gameProperties = {
+    gameProperties = {
       opponentName: $(evt.target).find('[name=opponentName]').val(),
       homeTeam: isHomeChecked()
     };
@@ -67,7 +75,7 @@ Template.Opponent.events({
     });
 
     // reactive var to set opponent after update
-    var editOpponent = template.editOpponent.get();
+    editOpponent = template.editOpponent.get();
     template.editOpponent.set(!editOpponent);
   }
 });

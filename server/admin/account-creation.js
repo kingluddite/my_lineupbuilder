@@ -4,7 +4,9 @@
  */
 
 determineEmail = function(user) {
-  var emailAddress, services;
+  var emailAddress, 
+      services;
+      
   if (user.emails) {
     return emailAddress = user.emails[0].address;
   } else if (user.services) {
@@ -34,6 +36,7 @@ Accounts.onCreateUser(function(options, user) {
   // find an address to send our "welcome email" to. We also call up the profile
   // object to see if it exists and pull in a name if it's available.
   var userData;
+
   userData = {
     email: determineEmail(user),
     name: options.profile ? options.profile.name : ""
@@ -62,6 +65,7 @@ Meteor.methods({
   sendWelcomeEmail: function(userData) {
     // Check our userData argument against our expected pattern.
     var emailTemplate;
+
     check(userData, {
       email: String,
       name: String

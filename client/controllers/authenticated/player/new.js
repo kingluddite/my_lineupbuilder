@@ -1,11 +1,3 @@
-// need to set the max number for a roster
-var limit = 26;
-
-// initially hide the instructions
-Template.PlayerNew.rendered = function() {
-  $('.instructions').hide();
-}
-
 Template.PlayerNew.helpers({
   sRosterComplete: function() {
     return Session.get('sRosterComplete');
@@ -23,8 +15,10 @@ Template.PlayerNew.helpers({
   // show add player box if roster max is not reached
   maxPlayers: function() {
     if (Meteor.user()) {
+      var currentRosterCount;
+
       // what's the current count of our team's roster?
-      var currentRosterCount = Players.find({
+      currentRosterCount = Players.find({
         teamId: Session.get('sTeamId')
       }).count();
 
@@ -35,9 +29,12 @@ Template.PlayerNew.helpers({
       }
     }
   },
+
   // for first add player form need to add one to roster count
   rosterCountPlusOne: function() {
-    var currentRosterCount = Players.find({
+    var currentRosterCount;
+
+    currentRosterCount = Players.find({
       teamId: Session.get('sTeamId')
     }).count();
     return currentRosterCount + 1;
@@ -47,19 +44,25 @@ Template.PlayerNew.helpers({
 
 Template.PlayerNew.events({
   'click .new-player': function(evt, template) {
+    var currentRosterCount,
+        myForm,
+        myFormInputsCount,
+        totalRosterCount,
+        newDiv;
+
     evt.preventDefault();
     // find out the current roster number
-    var currentRosterCount = Players.find({
+    currentRosterCount = Players.find({
       teamId: Session.get('sTeamId')
     }).count();
 
     // grab the roster form
-    var myForm = document.getElementById('team-roster-form');
+    myForm = document.getElementById('team-roster-form');
     // grab just the inputs from that form
     myFormInputsCount = myForm.getElementsByTagName('input').length;
     // add the number of players the coach wants to add
     //   and add that to the current roster count
-    var totalRosterCount = currentRosterCount + myFormInputsCount;
+    totalRosterCount = currentRosterCount + myFormInputsCount;
     // if the total roster count is exceeded, alert the coach
     if (totalRosterCount >= 26) {
       // diable the add player button if 26 players are on roster
@@ -74,7 +77,7 @@ Template.PlayerNew.events({
       // make the add player button clickable again
       $('.new-player').removeAttr('disabled');
       // we need to make a new div
-      var newDiv = document.createElement('div');
+      newDiv = document.createElement('div');
       // give it a class name so we can grab it later when
       //  we want to remove it
       newDiv.className = 'player-box';
@@ -95,10 +98,6 @@ Template.PlayerNew.events({
     }
   },
 
-  'click .help-text': function(evt, template) {
-    $('.instructions').toggle(400);
-    return false;
-  },
   // set roster complete session to false so you can edit roster
   'click .edit-roster': function(evt, template) {
     Session.setPersistent("sRosterComplete", false);
@@ -107,31 +106,40 @@ Template.PlayerNew.events({
   // when people add player boxes give them the option
   //  to remove them
   'click .remove-box': function(evt, template) {
+    var elem,
+        currentRosterCount,
+        myForm,
+        myFormInputs,
+        myFormInputsCount,
+        curRosterPlusOne,
+        i,
+        totalRosterCount;
+
     evt.preventDefault();
 
-    var elem = document.querySelector('.player-box');
+    elem = document.querySelector('.player-box');
     elem.remove();
 
     // find out the current roster number
-    var currentRosterCount = Players.find({
+    currentRosterCount = Players.find({
       teamId: Session.get('sTeamId')
     }).count();
 
     // grab the roster form
-    var myForm = document.getElementById('team-roster-form');
+    myForm = document.getElementById('team-roster-form');
     // grab just the inputs
-    var myFormInputs = myForm.getElementsByTagName('input');
+    myFormInputs = myForm.getElementsByTagName('input');
     // grab just the inputs from that form and find their lenght
-    var myFormInputsCount = myForm.getElementsByTagName('input').length;
+    myFormInputsCount = myForm.getElementsByTagName('input').length;
     // loop through the inputs and update their placeholder value
-    var curRosterPlusOne = currentRosterCount + 1;
-    for (var i = 0; i < myFormInputsCount; i++) {
+    curRosterPlusOne = currentRosterCount + 1;
+    for (i = 0; i < myFormInputsCount; i++) {
       myFormInputs[i].setAttribute('placeholder', 'Player ' +
         (curRosterPlusOne++));
     }
     // add the number of players the coach wants to add
     //   and add that to the current roster count
-    var totalRosterCount = currentRosterCount + myFormInputsCount;
+    totalRosterCount = currentRosterCount + myFormInputsCount;
 
     // if the total roster count is exceeded, alert the coach
     if (totalRosterCount < 26) {
@@ -144,25 +152,35 @@ Template.PlayerNew.events({
     }
   },
 
-  'submit form#team-roster-form': function(evt) {
+  'submit form#team-roster-form': function(evt, template) {
+    var playerCount,
+        myForm,
+        myFormInputs,
+        i,
+        player,
+        elem;
+
     evt.preventDefault();
+
     // we find the count of the Players roster for this team
-    var playerCount = Players.find({
+    playerCount = Players.find({
       teamId: Session.get('sTeamId')
     }).count();
+
     if (playerCount <= 26) {
       $('.team-roster').show();
     } else {
       $('.team-roster').hide();
     }
-    var myForm = document.getElementById('team-roster-form');
+
+    myForm       = document.getElementById('team-roster-form');
     myFormInputs = myForm.getElementsByTagName('input');
 
     //Extract Each Element Value
-    for (var i = 0; i < myFormInputs.length; i++) {
+    for (i = 0; i < myFormInputs.length; i++) {
 
-      var player = {
-        teamId: Session.get('sTeamId'),
+      player = {
+        teamId:   Session.get('sTeamId'),
         fullName: myFormInputs[i].value
       };
 
@@ -171,12 +189,15 @@ Template.PlayerNew.events({
           return alert(error.reason);
         }
         Session.setPersistent('sRosterCreated', true);
+        
         if (document.querySelector('.player-box')) {
-          var elem = document.querySelector('.player-box');
+          elem = document.querySelector('.player-box');
           elem.remove();
         }
       });
+      // client side alert
       Bert.alert('Players Added', 'success', 'growl-top-right');
+      // clear all form inputs
       myFormInputs[i].value = '';
 
     }

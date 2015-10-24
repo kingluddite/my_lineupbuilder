@@ -13,15 +13,18 @@ Template.TeamEdit.helpers({
 Template.TeamEdit.events({
 
   'submit form#edit-team-form': function(evt, template) {
+    var currentTeamId,
+        teamProperties;
+
     evt.preventDefault();
 
-    var currentTeamId = Session.get('sTeamId');
+    currentTeamId  = Session.get('sTeamId');
 
-    var teamProperties = {
-      teamName: $(evt.target).find('[name=teamName]').val(),
-      coachName: $(evt.target).find('[name=coachName]').val(),
-      coachEmail: $(evt.target).find('[name=coachEmail]').val(),
-      logoUrl: $(evt.target).find('[name=logoUrl]').val(),
+    teamProperties = {
+      teamName:        $(evt.target).find('[name=teamName]').val(),
+      coachName:       $(evt.target).find('[name=coachName]').val(),
+      coachEmail:      $(evt.target).find('[name=coachEmail]').val(),
+      logoUrl:         $(evt.target).find('[name=logoUrl]').val(),
       homeJerseyColor: $(evt.target).find('[name=homeJerseyColor]').val(),
       awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val()
     };

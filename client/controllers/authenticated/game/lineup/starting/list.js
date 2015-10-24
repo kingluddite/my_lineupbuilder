@@ -1,11 +1,15 @@
 Template.StartingList.rendered = function(evt, template) {
+  var currentPlayerId,
+      currentGameId;
+
   $('ol.starting').droppable({
     activeClass: 'active',
     hoverClass: 'hover',
+    
     drop: function(event, ui) {
 
-      var currentPlayerId = Session.get('sPlayerId');
-      var currentGameId = Session.get('sGameId');
+      currentPlayerId = Session.get('sPlayerId');
+      currentGameId = Session.get('sGameId');
 
       Games.update(currentGameId, {
           $addToSet: {
@@ -25,45 +29,46 @@ Template.StartingList.rendered = function(evt, template) {
 Template.StartingList.helpers({
 
   cStarting: function(evt, template) {
+    var currentGame,
+        myStarters,
+        arrWithPlayerNames,
+        i,
+        player;
+
     // get the doc for this game
-    var currentGame = Games.findOne({
+    currentGame = Games.findOne({
       _id: Session.get('sGameId')
     });
     // check if current game exists
     if (currentGame) {
       // grab all the subs
-      var myStarters = currentGame.starting;
+      myStarters = currentGame.starting;
       // create an empty array
-      var arrWithPlayerNames = [];
+      arrWithPlayerNames = [];
       // if there are subs
       if (myStarters) {
         // run this for loop through all the subs
-        for (var i = 0; i < myStarters.length; i++) {
+        for (i = 0; i < myStarters.length; i++) {
           // grab the playerid for each sub
-          var player = Players.findOne({
+          player = Players.findOne({
             _id: myStarters[i]
           });
           // store the full name inside a variable
-          //var playerFullName = player.fullName;
+          // var playerFullName = player.fullName;
           // push each fullName inside the empty array
           arrWithPlayerNames.push(player);
         }
-
         return arrWithPlayerNames;
       }
     } else {
       return false;
     }
 }
-
-
 });
 
 Template.StartingList.events({
   'mousedown li ': function(evt, template) {
     Session.set('sPlayerId', this._id);
-    // Session.set('sPlayerStatus', this.status);
-    // Session.set('sGameReminderStatus', this.game_reminder);
   }
 });
 
@@ -77,6 +82,7 @@ Template.StarterList.helpers({
       });
     }
   },
+
   sGameId: function() {
     return Session.get('sGameId');
   }

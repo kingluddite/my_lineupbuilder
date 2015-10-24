@@ -1,10 +1,11 @@
 Template.GameEdit.rendered = function() {
+  var currentGame;
   // adding a date field renders the proper date in this field
   //  when page loads, without it, the wrong date populates
   $('.date-time-picker').datetimepicker('11/18/2015');
 
   // when template loads find the boolean value of homeTeam
-  var currentGame = Games.findOne({
+  currentGame = Games.findOne({
     _id: Session.get('sGameId')
   });
   // if true
@@ -58,15 +59,20 @@ Template.GameEdit.events({
   },
 
   'submit form#edit-game-form': function(evt, template) {
+    var currentGameId,
+        frmDateTime,
+        convertedDate,
+        gameProperties;
+
     evt.preventDefault();
 
-    var currentGameId = Session.get('sGameId');
+    currentGameId = Session.get('sGameId');
     // convert the string date to an ISO String
     // which is required by moment
-    var frmDateTime = $(evt.target).find('[name=gameDateTime]').val();
-    var convertedDate = new Date(frmDateTime);
+    frmDateTime = $(evt.target).find('[name=gameDateTime]').val();
+    convertedDate = new Date(frmDateTime);
 
-    var gameProperties = {
+    gameProperties = {
       gameDateTime: convertedDate,
       leagueName: $(evt.target).find('[name=leagueName]').val(),
       seasonName: $(evt.target).find('[name=seasonName]').val(),

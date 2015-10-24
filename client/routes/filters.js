@@ -27,7 +27,9 @@ checkUserLoggedIn = function ( ) {
  */
 
 userAuthenticatedBetaTester = function ( ) {
-  var isBetaTester, loggedInUser;
+  var isBetaTester, 
+      loggedInUser;
+
   loggedInUser = Meteor.user( );
   isBetaTester = Roles.userIsInRole( loggedInUser, [ 'tester' ] );
   if ( !Meteor.loggingIn( ) && isBetaTester ) {
@@ -44,7 +46,9 @@ userAuthenticatedBetaTester = function ( ) {
  */
 
 userAuthenticatedAdmin = function ( ) {
-  var isAdmin, loggedInUser;
+  var isAdmin,
+      loggedInUser;
+      
   loggedInUser = Meteor.user( );
   isAdmin      = Roles.userIsInRole( loggedInUser, [ 'admin' ] );
   if ( !Meteor.loggingIn( ) && isAdmin ) {

@@ -1,4 +1,5 @@
 Template.LeagueEdit.helpers({
+
   cLeague: function() {
     if (Meteor.user()) {
       return Leagues.findOne({
@@ -11,12 +12,17 @@ Template.LeagueEdit.helpers({
 Template.LeagueEdit.events({
 
   'submit form#edit-league-form': function(evt, template) {
+    var currentLeagueId,
+        leagueProperties;
+
     evt.preventDefault();
 
-    var currentLeagueId = Session.get('sLeagueId');
+    currentLeagueId = Session.get('sLeagueId');
 
-    var leagueProperties = {
-      leagueName: $(evt.target).find('[name=teamName]').val()
+    leagueProperties = {
+      leagueName: $(evt.target)
+        .find('[name=teamName]')
+        .val()
     };
 
     Leagues.update(currentLeagueId, {
@@ -29,5 +35,7 @@ Template.LeagueEdit.events({
         _id: currentLeagueId
       });
     });
+
   }
 });
+

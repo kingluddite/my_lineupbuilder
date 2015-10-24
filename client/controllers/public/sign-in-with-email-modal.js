@@ -18,8 +18,11 @@ Template.SignInWithEmailModal.rendered = function() {
         required: "Please provide a password."
       }
     },
+
     submitHandler: function() {
-      var createOrSignIn, user;
+      var createOrSignIn, 
+          user;
+
       createOrSignIn = Session.get('sCreateOrSignIn');
       user = {
         email: $('[name="emailAddress"]').val(),
@@ -62,13 +65,16 @@ Template.SignInWithEmailModal.rendered = function() {
 };
 
 Template.SignInWithEmailModal.events({
-  'click .btn-create-account': function() {
+
+  'click .btn-create-account': function(evt, template) {
     return Session.set('sCreateOrSignIn', 'create');
   },
-  'click .btn-sign-in': function() {
+
+  'click .btn-sign-in': function(evt, template) {
     return Session.set('sCreateOrSignIn', 'signin');
   },
-  'submit form': function(evt) {
+
+  'submit form': function(evt, template) {
     return evt.preventDefault();
   }
 });

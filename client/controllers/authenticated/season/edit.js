@@ -12,11 +12,14 @@ Template.SeasonEdit.helpers({
 Template.SeasonEdit.events({
 
   'submit form#edit-season-form': function(evt, template) {
+    var currentSeasonId,
+        seasonProperties;
+
     evt.preventDefault();
 
-    var currentSeasonId = Session.get('sSeasonId');
+    currentSeasonId = Session.get('sSeasonId');
 
-    var seasonProperties = {
+    seasonProperties = {
       seasonName: $(evt.target).find('[name=seasonName]').val()
     };
 

@@ -1,10 +1,12 @@
 Meteor.methods({
   validateBetaToken: function(user) {
-    var id, testInvite;
+    var id, 
+        testInvite;
+
     // check out data!
     check(user, {
-      email: String,
-      password: String,
+      email:     String,
+      password:  String,
       betaToken: String
     });
     // make sure our email and token exist
@@ -14,7 +16,7 @@ Meteor.methods({
     }, {
       // we only want these fields
       fields: {
-        "_id": 1,
+        "_id":   1,
         "email": 1,
         "token": 1
       }

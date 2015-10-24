@@ -22,7 +22,9 @@ Template.GameItem.helpers({
     });
   },
   numStarters: function() {
-    var myStarters = Games.findOne({
+    var myStarters;
+
+    myStarters = Games.findOne({
       _id: Session.get('sGameId')
     });
     // make sure myStarters exists
@@ -39,24 +41,29 @@ Template.GameItem.helpers({
     }
   },
   totalPlayers: function() {
-    var myStarters = Games.findOne({
+    var myStarters,
+        numStarters,
+        numSubs,
+        totalPlayers;
+
+    myStarters = Games.findOne({
       _id: Session.get('sGameId')
     });
     // make sure myStarters exists
     if (myStarters) {
       // check if playerGameInfo array exists
       if (myStarters.playerGameInfo) {
-        var numStarters = objectLength(myStarters.playerGameInfo[0]);
+        numStarters = objectLength(myStarters.playerGameInfo[0]);
       } else {
         return false;
       }
       // use global function to count objects
       // what is the length of the subs array?
       if (myStarters.subs) {
-        var numSubs = myStarters.subs.length;
+        numSubs = myStarters.subs.length;
       }
       // add both to get total players for game
-      var totalPlayers = numStarters + numSubs;
+      totalPlayers = numStarters + numSubs;
       if (totalPlayers) {
         return totalPlayers;
       } else {
@@ -81,7 +88,8 @@ Template.GameItem.helpers({
 Template.GameItem.events({
   // show/hide roster
   'click .show-roster': function(evt, template) {
-    var showRoster = template.showRoster.get();
+    var showRoster;
+    showRoster = template.showRoster.get();
     template.showRoster.set(!showRoster);
     if (showRoster) {
       $('.team-roster').toggle(400);
@@ -89,7 +97,9 @@ Template.GameItem.events({
     }
   },
   'click .show-positions': function(evt, template) {
-    var showPositions = template.showPositions.get();
+    var showPositions;
+    
+    showPositions = template.showPositions.get();
     template.showPositions.set(!showPositions);
     if (showPositions) {
       $('.team-roster').toggle(400);

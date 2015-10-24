@@ -2,7 +2,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
-      <h3 class="panel-title">Home or Away Team</h3>
+      <h3 class="panel-title">Our Opponent</h3>
     </div>
     <div class="panel-body">
       {{#if rvEditOpponent}} 
@@ -19,30 +19,35 @@
          <button type="submit" class="btn btn-default pull-right">Update</button></p>
       </form>
       {{else}}
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        {{#if cGames.homeTeam}}
-          <div class="row">
-            <p>We are the HOME team.</p>
-          </div>
-          <div class="row">
-            <p>We wear this jersey:</p>
-            <img style="background-color:{{cTeam.homeJerseyColor}}" src="/img/jersey_200x200.png" height="50" width="50" alt="home jersey">
+        {{#if cGame.homeTeam}}
+           <div class="container">
+            <div class="row">
+              <p>We are the <strong>HOME</strong> team.</p>
+            </div>
+            <div class="row">
+              <p>We wear this jersey:</p>
+              <img style="background-color:{{cTeam.homeJerseyColor}}" src="/img/jersey_200x200.png" height="50" width="50" alt="home jersey">
+            </div>
           </div>
         {{else}}
+          <div class="container">
           <div class="row">
-            <p>We are the AWAY team.</p>
+            <p>We are the <strong>AWAY</strong> team.</p>
           </div>
-          <div class="row"><img style="background-color:{{cTeam.awayJerseyColor}}" src="/img/jersey_200x200.png" height="50" width="50" alt="home jersey"></div>
+          <div class="row">
+           <p>We wear this jersey:</p>
+           <img style="background-color:{{cTeam.awayJerseyColor}}" src="/img/jersey_200x200.png" height="50" width="50" alt="home jersey">
+          </div>
+         </div>
         {{/if}}
-      </div>
-
-      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <p>
-          <strong> Our Opponent: </strong> {{cGames.opponentName}}
-        </p>
-        <p><a class="btn btn-default pull-right edit-opponent">Edit</a></p>
-      </div>
-      {{/if}}
+        
+        <hr>
+          <p>
+            <strong>This is our Opponent: </strong> {{cGame.opponentName}}
+          </p>
+          <p><a class="btn btn-default pull-right edit-opponent">Edit</a></p>
+          
+    {{/if}}
     </div>
   </div>
 </template>

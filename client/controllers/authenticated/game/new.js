@@ -10,14 +10,15 @@ function isHomeChecked() {
 }
 
 Template.GameNew.rendered = function() {
-  // $('#gameDatePicker').datepicker();
   $('.date-time-picker').datetimepicker();
 };
 
 Template.GameNew.helpers({
   checkIfGameExists: function() {
+    var game;
+
     if (Meteor.user()) {
-      var game = Games.find().count();
+      game = Games.find().count();
       if (game > 0) {
         return true;
       } else {
@@ -58,36 +59,41 @@ Template.GameNew.events({
     $('.date-time-picker').datetimepicker();
   },
   'submit form#new-game-form': function(evt) {
+    var currentTeamId,
+        frmDateTime,
+        convertedDate,
+        game;
+
     evt.preventDefault();
 
-    var currentTeamId = Session.get('sTeamId');
+    currentTeamId = Session.get('sTeamId');
     // convert the string date to an ISO String
     // which is required by moment
-    var frmDateTime = $(evt.target).find('[name=gameDateTime]').val();
-    var convertedDate = new Date(frmDateTime);
+    frmDateTime   = $(evt.target).find('[name=gameDateTime]').val();
+    convertedDate = new Date(frmDateTime);
 
-    var game = {
-      teamId: currentTeamId,
+    game = {
+      teamId:       currentTeamId,
       gameDateTime: convertedDate,
-      // gameTime: $(evt.target).find('[name=gameTime]').val(),
       // we grab the ids for both leagueName and seasonName
-      leagueName: $(evt.target).find('[name=leagueName]').val(),
-      seasonName: $(evt.target).find('[name=seasonName]').val(),
+      // RENAME TO leagueId and seasonId TODO!!!
+      leagueName:   $(evt.target).find('[name=leagueName]').val(),
+      seasonName:   $(evt.target).find('[name=seasonName]').val(),
       opponentName: $(evt.target).find('[name=opponentName]').val(),
-      fieldName: $(evt.target).find('[name=fieldName]').val(),
-      fieldUrl: $(evt.target).find('[name=fieldUrl]').val(),
-      homeTeam: isHomeChecked()
+      fieldName:    $(evt.target).find('[name=fieldName]').val(),
+      fieldUrl:     $(evt.target).find('[name=fieldUrl]').val(),
+      homeTeam:     isHomeChecked()
     };
 
     Meteor.call('newGame', game, function(error, id) {
       if (error) {
         throwError(error.reason);
       }
-      Session.setPersistent('sGameId', id);
+      Session.setPersistent('sGameId',  id);
       Session.setPersistent('sGameNew', true);
       Session.setPersistent('sAddGame', false);
-
     });
+    // client side alert
     Bert.alert('Game Created', 'success', 'growl-top-right');
   }
 });

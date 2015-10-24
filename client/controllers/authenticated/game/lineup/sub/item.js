@@ -7,21 +7,22 @@ Template.SubItem.rendered = function(evt, template) {
   });
 };
 
-
 // change the status of the player to none
 //  which removes them from the sub list
 Template.SubItem.events({
   'click .trash': function(evt, template) {
-    // addAlertClass('Removed', 'sub');
+    var currentGame,
+        mySubs,
+        subPlayerId;
 
-    var currentGame = Games.findOne({
+    currentGame = Games.findOne({
       _id: Session.get('sGameId')
     });
     // here are all the subs
-    var mySubs = currentGame.subs;
+    mySubs = currentGame.subs;
     // console.log(mySubs);
     // use handlebars index to find array item we want to remove
-    var subPlayerId = evt.target.parentNode.id;
+    subPlayerId = evt.target.parentNode.id;
 
     // with the current game id update that game
     // and use pull to find the subs array and remove the specific sub
@@ -36,6 +37,7 @@ Template.SubItem.events({
         }
       });
   },
+  
   'mousedown li': function(evt, template) {
     Session.set('sPlayerId', this._id);
   }

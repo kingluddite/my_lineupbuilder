@@ -1,7 +1,11 @@
 Meteor.methods({
   newSeason: function(postAttributes) {
+    var user,
+        errors,
+        season,
+        seasonId;
 
-    var user = Meteor.user();
+    user = Meteor.user();
     //, postWithSameLink = Players.findOne({firstName: postAttributes.firstName});
 
     // ensure the user is logged in
@@ -16,14 +20,14 @@ Meteor.methods({
     });
 
     // ensure the post has a name
-    var errors = validateSeason(postAttributes);
+    errors = validateSeason(postAttributes);
     // if (errors.title || errors.url)
     if (errors.name)
       throw new Meteor.Error('invalid-season', "You must enter a season name");
 
     // pick out the whitelisted keys
     // Those on the list will be accepted, approved or recognized
-    var season = _.extend(_.pick(postAttributes, 'seasonName', 'teamId', 'leagueId'), {
+    season = _.extend(_.pick(postAttributes, 'seasonName', 'teamId', 'leagueId'), {
 
       createdBy: user._id,
       author: user.username,
@@ -31,7 +35,7 @@ Meteor.methods({
     });
 
 
-    var seasonId = Seasons.insert(season);
+    seasonId = Seasons.insert(season);
 
     return seasonId;
   }

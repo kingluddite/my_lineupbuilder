@@ -1,7 +1,11 @@
 Meteor.methods({
   newTeam: function(postAttributes) {
+    var user,
+        errors,
+        team,
+        teamId;
 
-    var user = Meteor.user();
+    user = Meteor.user();
     //, postWithSameLink = Players.findOne({firstName: postAttributes.firstName});
 
     // ensure the user is logged in
@@ -10,7 +14,7 @@ Meteor.methods({
     }
 
     // ensure the post has a name
-    var errors = validateTeam(postAttributes);
+    errors = validateTeam(postAttributes);
     // if (errors.title || errors.url)
     if (errors.name)
       throw new Meteor.Error('invalid-team', "You must enter a team name");
@@ -26,7 +30,7 @@ Meteor.methods({
 
     // pick out the whitelisted keys
     // Those on the list will be accepted, approved or recognized
-    var team = _.extend(_.pick(postAttributes, 'teamName', 'coachName', 'coachEmail', 'logoUrl', 'homeJerseyColor', 'awayJerseyColor'), {
+    team = _.extend(_.pick(postAttributes, 'teamName', 'coachName', 'coachEmail', 'logoUrl', 'homeJerseyColor', 'awayJerseyColor'), {
 
       createdBy: user._id,
       author: user.username,
@@ -35,13 +39,15 @@ Meteor.methods({
     });
 
 
-    var teamId = Teams.insert(team);
+    teamId = Teams.insert(team);
 
     return teamId;
   },
 
   removeTeam: function(teamId) {
-    var user = Meteor.user();
+    var user;
+
+    user = Meteor.user();
     if (!user) {
       throw new Meteor.Error(401, "You need to login to remove a team");
     }

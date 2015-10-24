@@ -9,6 +9,7 @@
 Template.openInvitations.helpers({
   hasInvites: function() {
     var getInvites;
+    
     // grab all invites that have a false value
     getInvites = Invites.find({
       invited: false

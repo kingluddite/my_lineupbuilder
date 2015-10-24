@@ -1,7 +1,9 @@
 Teams = new Meteor.Collection('teams');
 
 validateTeam = function(team) {
-  var errors = {};
+  var errors;
+
+  errors = {};
   // if (!post.title)
   //   errors.title = "Please fill in a headline";
   if (!team.teamName)

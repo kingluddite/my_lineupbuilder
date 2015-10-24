@@ -8,20 +8,24 @@ Template.PositionEdit.helpers({
       });
     }
   },
+
   cGamePos: function() {
     if (Meteor.user()) {
+      var myPosition,
+          currPosInfo;
 
-      var myPosition = Games.findOne({
+      myPosition = Games.findOne({
         _id: Session.get('sGameId')
       });
-      var currPosInfo = myPosition.playerGameInfo[0];
+      currPosInfo = myPosition.playerGameInfo[0];
       return currPosInfo;
     }
-
   },
 
   currentFormation: function() {
-    var currGame = Games.findOne({
+    var currGame;
+
+    currGame = Games.findOne({
       _id: Session.get('sGameId')
     });
 
@@ -31,7 +35,6 @@ Template.PositionEdit.helpers({
     } else {
       return '4-4-2';
     }
-
   },
 
   sGameId: function() {
@@ -49,11 +52,15 @@ Template.PositionEdit.events({
   //   so we can easily pass them as one thing to the server
   //   just chose 'TBD' as a default value
   'submit form#edit-position-form': function(evt, template) {
+    var currentGameId,
+        playerPositions,
+        allGamePositions;
+
     evt.preventDefault();
 
-    var currentGameId = Session.get('sGameId');
+    currentGameId = Session.get('sGameId');
 
-    var playerPositions = {
+    playerPositions = {
       player01: {
         fieldPosition: "Goalie",
         playerId: "TBD",
@@ -123,7 +130,7 @@ Template.PositionEdit.events({
     };
 
     // we store all the positions in an array of objects
-    var allGamePositions = {
+    allGamePositions = {
       playerGameInfo: [
         playerPositions
       ]

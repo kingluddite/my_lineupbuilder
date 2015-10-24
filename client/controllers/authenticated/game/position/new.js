@@ -2,8 +2,12 @@ Template.PositionNew.helpers({
   sGameId: function() {
     return Session.get('sGameId');
   },
+
   currentFormation: function() {
-    var currGame = Games.findOne({
+    var currGame,
+        currFormation;
+
+    currGame = Games.findOne({
       _id: Session.get('sGameId')
     });
 
@@ -19,14 +23,17 @@ Template.PositionNew.helpers({
 
 Template.PositionNew.events({
   'focus input': function(evt, template) {
+    var myForm,
+        allInputs,
+        i;
 
     // console.log(evt.target);
     $(evt.target).css('width', '300px');
     $(evt.target).css('border', '1px solid #f00');
     $(evt.target).addClass('my-focus');
-    var myForm = document.getElementById('new-position-form');
-    var allInputs = myForm.getElementsByTagName('input');
-    for (var i = 0; i < allInputs.length; i++) {
+    myForm = document.getElementById('new-position-form');
+    allInputs = myForm.getElementsByTagName('input');
+    for (i = 0; i < allInputs.length; i++) {
       if ($(allInputs[i]).hasClass('my-focus')) {
         $(allInputs[i]).fadeTo('slow', 1);
       } else {
@@ -42,11 +49,15 @@ Template.PositionNew.events({
   // when add team form is submitted
   //  grab the form data and pass it to the server
   'submit form#new-position-form': function(evt, template) {
+    var currentGameId,
+        playerPositions,
+        allGamePositions;
+
     evt.preventDefault();
 
-    var currentGameId = Session.get('sGameId');
+    currentGameId = Session.get('sGameId');
 
-    var playerPositions = {
+    playerPositions = {
       player01: {
         fieldPosition: $(evt.target).find('[name=player01]').val(),
         lastModified: new Date().getTime()
@@ -94,7 +105,7 @@ Template.PositionNew.events({
     };
 
     // we store all the positions in an array of objects
-    var allGamePositions = {
+    allGamePositions = {
       playerGameInfo: [
         playerPositions
       ]
@@ -111,6 +122,8 @@ Template.PositionNew.events({
         _id: currentGameId
       });
     });
+    
+    // client side alert
     Bert.alert('Positions Named', 'success', 'growl-top-right');
   }
 });

@@ -7,7 +7,9 @@ Template.TeamNew.helpers({
   // so we can hide the add team form
   checkIfTeamExists: function() {
     if (Meteor.user()) {
-      var team = Teams.find().count();
+      var team;
+
+      team = Teams.find().count();
       if (team > 0) {
         return true;
       } else {
@@ -15,15 +17,19 @@ Template.TeamNew.helpers({
       }
     }
   },
+
   errorMessage: function(field) {
     return Session.get('sTeamSubmitErrors')[field];
   },
+
   errorClass: function(field) {
     return !!Session.get('sTeamSubmitErrors')[field] ? 'has-error' : '';
   },
+
   sTeamNew: function() {
     return Session.get('sTeamNew');
   },
+
   // show add team form when click add team button
   sAddTeam: function() {
     return Session.get('sAddTeam');
@@ -31,15 +37,20 @@ Template.TeamNew.helpers({
 });
 
 Template.TeamNew.events({
+
   'click .close-panel': function(evt, template) {
     Session.setPersistent('sAddTeam', false);
   },
+
   // when add team form is submitted
   //  grab the form data and pass it to the server
   'submit form#new-team-form': function(evt, template) {
+    var team,
+        errors;
+
     evt.preventDefault();
 
-    var team = {
+    team = {
       teamName:        $(evt.target).find('[name=teamName]').val(),
       coachName:       $(evt.target).find('[name=coachName]').val(),
       coachEmail:      $(evt.target).find('[name=coachEmail]').val(),
@@ -48,7 +59,7 @@ Template.TeamNew.events({
       awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val()
     };
 
-    var errors = validateTeam(team);
+    errors = validateTeam(team);
     // if (errors.title || errors.url)
 
     if (errors.name)
@@ -65,6 +76,8 @@ Template.TeamNew.events({
       // hide add team form after submitting form
       Session.setPersistent('sAddTeam', false);
     });
+
+    // client side alert
     Bert.alert('Team Created', 'success', 'growl-top-right');
   }
 });

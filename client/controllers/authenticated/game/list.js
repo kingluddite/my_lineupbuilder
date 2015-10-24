@@ -1,14 +1,9 @@
-// when the trashcan icon is clicked, the player is deleted
+// REPAIR THIS BY MOVING IT SERVER SIDE
 var removeGame = function() {
   Games.remove({
     _id: Session.get('sGameId')
   });
 };
-
-Template.GameList.rendered = function() {
-  $('.instructions').hide();
-};
-
 
 Template.GameList.helpers({
   // grab all the games for this team
@@ -20,14 +15,7 @@ Template.GameList.helpers({
       return Games.find({
         teamId: Session.get('sTeamId')
       });
-      // var myTest =
-      //   Games.find({
-      //     teamId: Session.get('sTeamId')
-      //   });
-      // console.log(myTest);
     }
-
-
   },
   // give template access to these sessions
   sGameId: function() {
@@ -40,7 +28,6 @@ Template.GameList.helpers({
   sGameNew: function() {
     return Session.get('sGameNew');
   }
-
 });
 
 Template.GameList.events({
@@ -51,6 +38,7 @@ Template.GameList.events({
 
     if (confirm("Delete this game?")) {
       Session.set('sGameId', this._id);
+      // MAKE THIS SERVER SIDE
       removeGame();
       Session.set('sGameId', null);
     }
@@ -63,9 +51,5 @@ Template.GameList.events({
     // if coach needs to add a team we set this session to true
     // so he can see that form
     Session.setPersistent('sAddGame', true);
-  },
-  'click .help-text': function(evt, template) {
-    $('.instructions').toggle(400);
-    return false;
   }
 });

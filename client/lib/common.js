@@ -11,8 +11,11 @@ checkPlayer = function(gameStatus, reminderStatus, listType) {
 };
 
 objectLength = function(obj) {
-  var result = 0;
-  for (var prop in obj) {
+  var result,
+      prop;
+
+  result = 0;
+  for (prop in obj) {
     if (obj.hasOwnProperty(prop)) {
       // or Object.prototype.hasOwnProperty.call(obj, prop)
       result++;

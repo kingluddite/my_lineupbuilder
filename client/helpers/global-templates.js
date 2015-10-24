@@ -3,10 +3,6 @@
 ==================================================*/
 /* apply to templates globally */
 
-Template.body.rendered = function() {
-  $('.instructions').hide();
-};
-
 Template.body.events({
   'click .panel-heading span.clickable': function(evt) {
     // console.log('works');

@@ -15,15 +15,19 @@ Template.SeasonNew.helpers({
       }
     }
   },
+
   errorMessage: function(field) {
     return Session.get('sSeasonSubmitErrors')[field];
   },
+
   errorClass: function(field) {
     return !!Session.get('sSeasonSubmitErrors')[field] ? 'has-error' : '';
   },
+
   sSeasonNew: function() {
     return Session.get('sSeasonNew');
   },
+
   sAddSeason: function() {
     return Session.get('sAddSeason');
   }
@@ -36,19 +40,23 @@ Template.SeasonNew.events({
   // when add Season form is submitted
   //  grab the form data and pass it to the server
   'submit form#new-season-form': function(evt, template) {
+    var season,
+        errors;
+
     evt.preventDefault();
 
-    var season = {
+    season = {
       seasonName: $(evt.target).find('[name=seasonName]').val(),
       teamId: Session.get('sTeamId'),
       leagueId: Session.get('sLeagueId')
     };
 
-    var errors = validateSeason(season);
+    errors = validateSeason(season);
     // if (errors.title || errors.url)
 
-    if (errors.name)
+    if (errors.name) {
       return Session.set('sSeasonSubmitErrors', errors);
+    }
 
     Meteor.call('newSeason', season, function(error, id) {
       if (error) {
@@ -59,6 +67,8 @@ Template.SeasonNew.events({
       Session.setPersistent('sSeasonNew', true);
       Session.setPersistent('sAddSeason', false);
     });
+
+    // client side alert
     Bert.alert('Season Created', 'success', 'growl-top-right');
   }
 });

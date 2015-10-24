@@ -1,6 +1,7 @@
 Template.closedInvitations.helpers({
   hasInvites: function() {
     var getInvites;
+
     getInvites = Invites.find({
       invited: true
     }, {
@@ -15,6 +16,7 @@ Template.closedInvitations.helpers({
       return false;
     }
   },
+  
   invites: function() {
     return Invites.find({
       invited: true

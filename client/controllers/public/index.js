@@ -20,6 +20,7 @@ Template.Index.rendered = function() {
     },
     submitHandler: function() {
       var invitee;
+
       invitee = {
         email: $('#request-beta-invite [name="emailAddress"]').val().toLowerCase(),
         invited: false,
@@ -55,6 +56,7 @@ Template.Index.events({
   'submit form': function(evt) {
     return evt.preventDefault();
   },
+
   'click .btn-facebook': function() {
     return Meteor.loginWithFacebook({
       requestPermissions: ['email']
@@ -64,6 +66,7 @@ Template.Index.events({
       }
     });
   },
+
   'click .btn-google': function() {
     return Meteor.loginWithGoogle({
       requestPermissions: ['email']
@@ -73,6 +76,7 @@ Template.Index.events({
       }
     });
   },
+
   'click .btn-twitter': function() {
     return Meteor.loginWithTwitter(function(error) {
       if (error) {
@@ -80,6 +84,4 @@ Template.Index.events({
       }
     });
   }
-
-
 });

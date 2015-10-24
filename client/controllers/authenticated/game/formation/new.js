@@ -3,10 +3,12 @@ Template.FormationNew.helpers({
     return Session.get('sGameId');
   },
   currentFormation: function() {
-    var currGame = Games.findOne({
+    var currGame;
+
+    currGame = Games.findOne({
       _id: Session.get('sGameId')
     });
-    console.log(currGame);
+
     currFormation = currGame.myFormation;
     if (currFormation) {
       return currFormation;
@@ -18,8 +20,9 @@ Template.FormationNew.helpers({
 
 Template.FormationNew.events({
   'click input': function(evt, template) {
-    // $('.field').addClass()
-    var myFormation = evt.target.value;
+    var myFormation;
+    
+    myFormation = evt.target.value;
     // when user clicks on formation choice
     //  grab the value from that radio button choice
     //  remove all existing classes
@@ -31,13 +34,20 @@ Template.FormationNew.events({
   },
 
   'submit form#new-formation-form': function(evt, template) {
+    var i,
+        addRadioChoices,
+        choiceFormation,
+        currentTeamId,
+        currentGameId,
+        gameProperties;
+
     evt.preventDefault();
 
     // get all the radio button choices
-    var allRadioChoices = document.forms[0].elements;
-    var choiceFormation;
+    allRadioChoices = document.forms[0].elements;
+    choiceFormation;
     // loop through them
-    for (var i = 0; i < allRadioChoices.length; i++) {
+    for (i = 0; i < allRadioChoices.length; i++) {
       // grab the only button that is selected
       if (allRadioChoices[i].checked) {
         // return it's value so we can enter it into the db
@@ -45,10 +55,10 @@ Template.FormationNew.events({
       }
     }
 
-    var currentTeamId = Session.get('sTeamId');
-    var currentGameId = Session.get('sGameId');
+    currentTeamId = Session.get('sTeamId');
+    currentGameId = Session.get('sGameId');
 
-    var gameProperties = {
+    gameProperties = {
       teamId: currentTeamId,
       myFormation: choiceFormation
     };

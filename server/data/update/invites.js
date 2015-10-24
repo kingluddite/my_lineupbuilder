@@ -9,8 +9,8 @@ Meteor.methods({
     // 2 checks for 2 separate items
     //  invite has id and email and url has url :)
     check(invitee, {
-      id: String,
-      email: String
+      id:      String,
+      email:   String
     });
     check(url, String);
     // create a random 10 character token using random package

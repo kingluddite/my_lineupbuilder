@@ -1,6 +1,10 @@
 Meteor.methods({
   newGame: function(postAttributes) {
-    var user = Meteor.user();
+    var user
+        game,
+        gameId;
+
+    user = Meteor.user();
     //, postWithSameLink = Players.findOne({firstName: postAttributes.firstName});
 
     // ensure the user is logged in
@@ -24,7 +28,7 @@ Meteor.methods({
 
     // pick out the whitelisted keys
     // Those on the list will be accepted, approved or recognized
-    var game = _.extend(_.pick(postAttributes,
+    game = _.extend(_.pick(postAttributes,
       'teamId',
       'gameDateTime',
       'opponentName',
@@ -40,37 +44,47 @@ Meteor.methods({
       submitted: new Date().getTime()
     });
 
-    var gameId = Games.insert(game);
+    gameId = Games.insert(game);
 
     return gameId;
   },
+
   newPlayerInfo: function(postAttributes) {
-    var user = Meteor.user();
+    var user,
+        allGamePositions;
+
+    user = Meteor.user();
 
     // ensure the user is logged in
     if (!user) {
       throw new Meteor.Error(401, "You need to login to add a team");
     }
 
-    var allGamePositions = {
+    allGamePositions = {
       playerGameInfo: postAttributes,
       lastModified: new Date().getTime()
     }
 
     Games.insert(allGamePositions);
   },
+
   updateStarter: function(gameId, postAttributes) {
-    var user = Meteor.user();
+    var user,
+        playerMatchObj,
+        setPlayerObj;
+
+    user = Meteor.user();
 
     // ensure the user is logged in
     if (!user) {
       throw new Meteor.Error(401, "You need to login to add a team");
     }
-    //console.log(postAttributes);
-    check(gameId, String);
+    // check date to make sure it's what you expect
+    check(gameId,     String);
+
     check(postAttributes, {
-      playerDivNum: String,
-      playerId: String,
+      playerDivNum:   String,
+      playerId:       String,
       playerFullName: String
     });
 
@@ -82,12 +96,12 @@ Meteor.methods({
     // you need to create and object and use this syntax 
     // myObj["string" + variable + "string"] = something
     //  I do that for two keys below
-    var playerMatchObj = {};
+    playerMatchObj = {};
     playerMatchObj._id = gameId;
     playerMatchObj['playerGameInfo.' + postAttributes.playerDivNum + '.playerId'] = postAttributes.oldPlayerId;
     playerMatchObj['playerGameInfo.' + postAttributes.playerDivNum + '.playerFullName'] = postAttributes.oldPlayerFullName;
 
-    var setPlayerObj = {};
+    setPlayerObj = {};
     setPlayerObj['playerGameInfo.$.' + postAttributes.playerDivNum + '.playerId'] = postAttributes.playerId;
     setPlayerObj['playerGameInfo.$.' + postAttributes.playerDivNum + '.playerFullName'] = postAttributes.playerFullName;
 

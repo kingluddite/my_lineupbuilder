@@ -4,12 +4,13 @@
  */
 Meteor.methods({
   addToInvitesList: function(invitee) {
-    var emailExists, inviteCount;
+    var emailExists, 
+        inviteCount;
     // data check, make sure it's what we want
     check(invitee, {
-      email: String,
+      email:     String,
       requested: Number,
-      invited: Boolean
+      invited:   Boolean
     });
     // grab the email and check if it exists in our collection
     emailExists = Invites.findOne({

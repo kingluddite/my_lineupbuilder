@@ -9,21 +9,19 @@ Template.PositionList.helpers({
   // if there is a team return false
   // so we can hide the add team form
   cGame: function() {
+    var myPosition,
+        currPosInfo;
 
-    var myPosition = Games.findOne({
+    myPosition = Games.findOne({
       _id: Session.get('sGameId')
     });
 
-    // first check if playerGameInfo exists yet (we create it after naming
-    // positions)
+    // first check if playerGameInfo exists 
+    //  (we create it after naming positions)
     if (Session.get('sPositionsNamed')) {
-      var currPosInfo = myPosition.playerGameInfo[0];
+      currPosInfo = myPosition.playerGameInfo[0];
       return currPosInfo;
     }
-
-    // this is how you get to the data you want
-    // console.log(myPosition.playerGameInfo[0].player02.fieldPosition);
-    // console.log(Session.get('sGameId'));
   },
   sGameId: function() {
     return Session.get('sGameId');

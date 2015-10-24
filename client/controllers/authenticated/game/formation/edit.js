@@ -1,14 +1,18 @@
 Template.FormationEdit.rendered = function() {
   // as soon as the template loads prefill the radio button
   if (Meteor.user()) {
+    var getFormation,
+        currFormation,
+        allRadioChoices;
+
     // we need to search the game and get a document
-    var getFormation = Games.findOne({
+    getFormation = Games.findOne({
       _id: Session.get('sGameId')
     });
     // find the formation for the current game
-    var currFormation = getFormation.myFormation;
+    currFormation = getFormation.myFormation;
     // grab all the radio buttons
-    var allRadioChoices = $('form input:radio');
+    allRadioChoices = $('form input:radio');
     for (var i = 0; i < allRadioChoices.length; i++) {
       // as you loop through all the radio buttons
       // find a radio button that's value matches what is in
@@ -30,8 +34,9 @@ Template.FormationEdit.helpers({
 
 Template.FormationEdit.events({
   'click input': function(evt, template) {
-    // $('.field').addClass()
-    var myFormation = evt.target.value;
+    var myFormation;
+    
+    myFormation = evt.target.value;
     // when user clicks on formation choice
     //  grab the value from that radio button choice
     //  remove all existing classes
@@ -43,11 +48,17 @@ Template.FormationEdit.events({
   },
 
   'submit form#edit-formation-form': function(evt, template) {
+    var allRadioChoices,
+        choiceFormation,
+        currentGameId,
+        currentTeamId,
+        gameProperties;
+
     evt.preventDefault();
 
     // get all the radio button choices
-    var allRadioChoices = document.forms[0].elements;
-    var choiceFormation;
+    allRadioChoices = document.forms[0].elements;
+    choiceFormation;
     // loop through them
     for (var i = 0; i < allRadioChoices.length; i++) {
       // grab the only button that is selected
@@ -57,10 +68,10 @@ Template.FormationEdit.events({
       }
     }
 
-    var currentTeamId = Session.get('sTeamId');
-    var currentGameId = Session.get('sGameId');
+    currentTeamId = Session.get('sTeamId');
+    currentGameId = Session.get('sGameId');
 
-    var gameProperties = {
+    gameProperties = {
       teamId: currentTeamId,
       myFormation: choiceFormation
     };

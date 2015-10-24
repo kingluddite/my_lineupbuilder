@@ -20,15 +20,15 @@ Template.GameShow.helpers({
   // so we can hide the add team form
   cGame: function() {
     if (Meteor.user()) {
+      var myPosition,
+          currPosInfo;
 
-      var myPosition = Games.findOne({
+      myPosition = Games.findOne({
         _id: Session.get('sGameId')
       });
-      var currPosInfo = myPosition.playerGameInfo[0];
+      currPosInfo = myPosition.playerGameInfo[0];
       return currPosInfo;
     }
-    // this is how you get to the data you want
-    // console.log(myPosition.playerGameInfo[0].player02.fieldPosition);
   },
 
   cTeam: function() {
@@ -43,12 +43,7 @@ Template.GameShow.helpers({
       return Games.findOne({
         _id: Session.get('sGameId')
       });
-      // var currPosInfo = myPosition.playerGameInfo[0];
-      // return currPosInfo;
-
     }
-    // this is how you get to the data you want
-    // console.log(myPosition.playerGameInfo[0].player02.fieldPosition);
   },
 
   sGameId: function() {
@@ -62,30 +57,40 @@ Template.GameShow.helpers({
 Template.GameShow.events({
   // edit date/time show input field
   'click .edit-game-time': function(evt, template) {
-    var editGameTime = template.editGameTime.get();
+    var editGameTime;
+
+    editGameTime = template.editGameTime.get();
     template.editGameTime.set(!editGameTime);
   },
   'click .date-time-picker': function(evt, template) {
     $('.date-time-picker').datetimepicker();
   },
   'click .cancel-edit': function(evt, template) {
-    var editGameTime = template.editGameTime.get();
+    var editGameTime;
+
+    editGameTime = template.editGameTime.get();
     template.editGameTime.set(!editGameTime);
   },
   // update date time and submit form to update game collection
   'submit form#update-game-time': function(evt, template) {
+    var currentGameId,
+        frmDateTime,
+        convertedDate,
+        gameTimeProperties,
+        editGameTime;
+
     // turn off default form behavior
     evt.preventDefault();
 
     // what game are we dealing with?
-    var currentGameId = Session.get('sGameId');
+    currentGameId = Session.get('sGameId');
     // convert the string date to an ISO String
     // which is required by moment
-    var frmDateTime = $(evt.target).find('[name=gameDateTime]').val();
-    var convertedDate = new Date(frmDateTime);
+    frmDateTime = $(evt.target).find('[name=gameDateTime]').val();
+    convertedDate = new Date(frmDateTime);
 
     // store game time info in an object 
-    var gameTimeProperties = {
+    gameTimeProperties = {
       gameDateTime: convertedDate
     };
 
@@ -99,11 +104,9 @@ Template.GameShow.events({
     });
 
     // reactive var to set date/time after update
-    var editGameTime = template.editGameTime.get();
+    editGameTime = template.editGameTime.get();
     template.editGameTime.set(!editGameTime);
   },
-
-
 });
 
 

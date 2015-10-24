@@ -4,10 +4,14 @@ Template.Contact.helpers({
   }
 });
 Template.Contact.events({
-  'submit #emailForm': function(evt, template) {
+  'submit #email-form': function(evt, template) {
+    var subject,
+        body;
+
     evt.preventDefault();
-    var subject = template.find('#inputSubject').value;
-    var body = template.find('#inputComments').value;
+    subject = template.find('#inputSubject').value;
+    body = template.find('#inputComments').value;
+    
     Meteor.call('sendEmail', subject, body, function(error, id) {
       if (error) {
         return throwError(error.reason);

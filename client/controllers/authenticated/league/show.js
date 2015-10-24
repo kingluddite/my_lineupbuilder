@@ -8,14 +8,16 @@ Template.LeagueShow.helpers({
 
       });
     }
-
   },
+
   sLeagueId: function() {
     return Session.get('sLeagueId');
   },
+
   sTeamId: function() {
     return Session.get('sTeamId');
   },
+
   sGameId: function() {
     return Session.get('sGameId');
   }

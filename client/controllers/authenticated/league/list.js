@@ -5,11 +5,6 @@ var removeLeague = function() {
   });
 };
 
-// initially hide the instructions
-Template.LeagueList.rendered = function() {
-  $('.instructions').hide();
-}
-
 Template.LeagueList.helpers({
   // grab all the leagues and provide collection for roster template
   cLeagues: function() {
@@ -25,14 +20,17 @@ Template.LeagueList.helpers({
   sLeagueId: function() {
     return Session.get('sLeagueId');
   },
+
   sAddLeague: function() {
     return Session.get('sAddLeague');
   },
+
   sLeagueNew: function() {
     return Session.get('sLeagueNew');
   }
 });
 
+// TODO make remove league server side only
 Template.LeagueList.events({
   // when click on remove league is removed after
   // confirmation
@@ -41,6 +39,7 @@ Template.LeagueList.events({
 
     if (confirm("Delete this league?")) {
       Session.set('sLeagueId', this._id);
+      // MAKE THIS A SERVER SIDE CALL
       removeLeague();
       Session.set('sLeagueId', null);
     }
@@ -55,11 +54,5 @@ Template.LeagueList.events({
     // if coach needs to add a league we set this session to true
     // so he can see that form
     Session.setPersistent('sAddLeague', true);
-  },
-  // toggle help text for league list
-  'click .help-text': function(evt, template) {
-    $('.instructions').toggle(400);
-    return false;
-  },
-
+  }
 });
