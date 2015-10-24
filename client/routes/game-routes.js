@@ -31,7 +31,8 @@ Router.route('Opponent', {
   waitOn: function() {
     return [
       Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster')
+      Meteor.subscribe('current-team-roster'),
+      Meteor.subscribe('current-team')
     ]
   },
   onBeforeAction: function() {

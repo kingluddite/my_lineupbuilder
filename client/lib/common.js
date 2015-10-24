@@ -28,7 +28,7 @@ objectLength = function(obj) {
 // then call this function when updating game db
 // and true is entered for myFormation if checked
 // and false is entered for myFormation if not checked
-function isHomeChecked() {
+isHomeChecked = function() {
   var myFormationChoice;
 
   if ($('.home-team-chkbox').prop('checked')) {

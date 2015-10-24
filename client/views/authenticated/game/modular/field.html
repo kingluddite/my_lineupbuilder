@@ -1,0 +1,15 @@
+<template name="Field">
+  <form id="edit-game-form">
+    <div>
+      <label>Field Name</label>
+      <input type="text" required class="form-control" placeholder="Field Name" name="fieldName" value="{{cGame.fieldName}}">
+    </div>
+    <div>
+      <label class="sr-only">Google Maps URL</label>
+      <div class="input-group">
+        <span class="input-group-addon"><i class="fa fa-link"></i></span>
+        <input type="url" class="form-control" placeholder="Google Map Link" name="fieldUrl" value="{{cGame.fieldUrl}}">
+      </div>
+    </div>
+  </form>
+</template>

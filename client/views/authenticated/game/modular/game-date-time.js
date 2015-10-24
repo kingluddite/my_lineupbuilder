@@ -1,15 +1,15 @@
-Template.GameShow.created = function() {
+Template.GameDateTime.created = function() {
   this.editGameTime = new ReactiveVar(false);
 };
 
-Template.GameShow.rendered = function() {
+Template.GameDateTime.rendered = function() {
   $("[data-toggle=tooltip]").tooltip();
   // adding a date field renders the proper date in this field
   //  when page loads, without it, the wrong date populates
   $('.date-time-picker').datetimepicker();
-}
+};
 
-Template.GameShow.helpers({
+Template.GameDateTime.helpers({
   sTeamId: function() {
     return Session.get('sTeamId');
   },
@@ -59,7 +59,7 @@ Template.GameShow.helpers({
   }
 });
 
-Template.GameShow.events({
+Template.GameDateTime.events({
   // edit date/time show input field
   'click .edit-game-time': function(evt, template) {
     var editGameTime = template.editGameTime.get();
@@ -101,9 +101,7 @@ Template.GameShow.events({
     // reactive var to set date/time after update
     var editGameTime = template.editGameTime.get();
     template.editGameTime.set(!editGameTime);
-  },
+  }
 
 
 });
-
-
