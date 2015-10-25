@@ -26,6 +26,7 @@ fourseven:scss
 http
 iron:router
 jquery
+jquery-ui-touch-punch
 kadira:blaze-layout
 less
 logging
