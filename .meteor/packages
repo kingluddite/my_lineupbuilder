@@ -18,6 +18,7 @@ check
 cmather:handlebars-server
 dburles:google-maps
 digilord:faker
+dsyko:jquery-ui-touch-punch
 ecmascript
 ejson
 email
@@ -26,7 +27,6 @@ fourseven:scss
 http
 iron:router
 jquery
-jquery-ui-touch-punch
 kadira:blaze-layout
 less
 logging
