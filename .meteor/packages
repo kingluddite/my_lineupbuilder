@@ -18,7 +18,7 @@ check
 cmather:handlebars-server
 dburles:google-maps
 digilord:faker
-dsyko:jquery-ui-touch-punch
+#dsyko:jquery-ui-touch-punch
 ecmascript
 ejson
 email
