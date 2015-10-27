@@ -9,13 +9,13 @@ Template.GameList.helpers({
   // grab all the games for this team
   cGames: function() {
     // only if the user is logged in
-    if (Meteor.user()) {
+
       // grab all the teams the user created (so we know it's their
       //   team)
       return Games.find({
         teamId: Session.get('sTeamId')
       });
-    }
+      
   },
   // give template access to these sessions
   sGameId: function() {

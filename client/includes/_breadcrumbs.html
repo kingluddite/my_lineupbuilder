@@ -10,7 +10,7 @@
     {{#if currentRoute 'home'}}
     {{else}}
       {{#if sTeamId}}
-      <li> <a href="{{pathFor 'TeamShow' _id=sTeamId}}">{{teamName}}</a></li>
+      <li> <a href="{{pathFor 'TeamEdit' _id=sTeamId}}">{{teamName}}</a></li>
       {{/if}}
       {{#if sLeagueId}}
       <li class="{{currentRoute 'leagues'}}">

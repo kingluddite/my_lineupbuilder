@@ -50,14 +50,14 @@ Router.route('TeamList', {
   }
 });
 
-// team details page
-Router.route('TeamShow', {
-  path: '/teams/:_id',
-  layoutTemplate: 'TwoColumn',
+/*============================
+=            TEAM            =
+============================*/
+
+Router.route('TeamEdit', {
+  path: '/teams/:_id/edit',
+  layoutTemplate: 'OneColumnLayout',
   yieldTemplates: {
-    'TeamEdit': {
-      to: 'sidebar'
-    },
     'Footer': {
       to: 'footer'
     }
@@ -74,9 +74,54 @@ Router.route('TeamShow', {
   }
 });
 
+Router.route('TeamShow', {
+  path: '/teams/:_id',
+  layoutTemplate: 'OneColumnLayout',
+  yieldTemplates: {
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  data: function() {
+    return Teams.find(this.params._id);
+  },
+  waitOn: function() {
+    return Meteor.subscribe('current-team');
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'team');
+    return this.next();
+  }
+});
+
+
+// // team details page
+// Router.route('TeamShow', {
+//   path: '/teams/:_id',
+//   layoutTemplate: 'TwoColumn',
+//   yieldTemplates: {
+//     'TeamEdit': {
+//       to: 'sidebar'
+//     },
+//     'Footer': {
+//       to: 'footer'
+//     }
+//   },
+//   waitOn: function() {
+//     return Meteor.subscribe('current-team');
+//   },
+//   data: function() {
+//     return Teams.find(this.params._id);
+//   },
+//   onBeforeAction: function() {
+//     Session.set('currentRoute', 'team');
+//     return this.next();
+//   }
+// });
+
 /*==============================
 =            League            =
-==============================*/
+==============================
 // league list
 Router.route('LeagueList', {
   path: '/leagues',

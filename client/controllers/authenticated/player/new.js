@@ -188,7 +188,9 @@ Template.PlayerNew.events({
         if (error) {
           return alert(error.reason);
         }
-        Session.setPersistent('sRosterCreated', true);
+        // test then remove this, roster only created when
+        // checkbox selected
+        //Session.setPersistent('sRosterCreated', true);
         
         if (document.querySelector('.player-box')) {
           elem = document.querySelector('.player-box');

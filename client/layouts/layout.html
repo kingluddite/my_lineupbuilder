@@ -14,6 +14,22 @@
   <!-- END .container -->
 </template>
 
+<template name="OneColumnLayout">
+  {{> Header}}
+  <div class="container">
+    {{> Breadcrumbs}}
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-6">
+        {{> Errors }} {{> yield}}
+      </div>
+    </div>
+   <div class="col-xs-12 col-sm-12 col-md-6">
+      {{> yield region="footer"}}
+    </div>
+  </div>
+  <!-- END .container -->
+</template>
+
 <template name="TwoColumn">
   {{> Header}}
   <!-- {{> Error}} -->

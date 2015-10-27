@@ -1,6 +1,6 @@
 Meteor.methods({
   newGame: function(postAttributes) {
-    var user
+    var user,
         game,
         gameId;
 

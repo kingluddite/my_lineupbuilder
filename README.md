@@ -27,6 +27,9 @@ one we will use for this site:
 */
 
 TODO
+come to team in edit mode, Update Team and Create Roster, and cancel and create roster on one page
+
+
 For Team give option to create leagues (crud)
 Inside the League give the option to create seasons (crud)
 Inside games the league should populate with the leagues for this team

@@ -18,9 +18,9 @@ Template.TeamEdit.events({
 
     evt.preventDefault();
 
-    currentTeamId  = Session.get('sTeamId');
 
     teamProperties = {
+      currentTeamId:   Session.get('sTeamId'),
       teamName:        $(evt.target).find('[name=teamName]').val(),
       coachName:       $(evt.target).find('[name=coachName]').val(),
       coachEmail:      $(evt.target).find('[name=coachEmail]').val(),
@@ -29,14 +29,13 @@ Template.TeamEdit.events({
       awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val()
     };
 
-    Teams.update(currentTeamId, {
-      $set: teamProperties
-    }, function(error, id) {
+    Meteor.call('updateTeam', teamProperties, function(error, id) {
       if (error) {
         return throwError(error.reason);
       }
+      Bert.alert('Team Updated', 'success', 'growl-top-right');
       Router.go('TeamShow', {
-        _id: currentTeamId
+        _id: teamProperties.currentTeamId
       });
     });
   }

@@ -55,5 +55,29 @@ Meteor.methods({
     check(teamId, String);
 
     Teams.remove(teamId);
+  },
+
+  updateTeam: function(teamProperties) {
+    var user;
+
+    user = Meteor.user();
+
+    if (!user) {
+      throw new Meteor.Error(401, "You need to login to remove a team");
+    }
+
+    check(teamProperties, {
+      currentTeamId:   String,
+      teamName:        String,
+      coachName:       String,
+      coachEmail:      String,
+      logoUrl:         String,
+      homeJerseyColor: String,
+      awayJerseyColor: String
+    });
+
+    Teams.update(teamProperties.currentTeamId, {
+      $set: teamProperties
+    });
   }
 });
