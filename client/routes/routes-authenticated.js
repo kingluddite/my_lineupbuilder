@@ -1,10 +1,10 @@
 Router.route('Dashboard', {
   path: '/dashboard',
   template: 'Dashboard',
-  waitOn: function() {
-    return Meteor.subscribe('userData');
-    return Meteor.subscribe('current-team');
-  },
+  // waitOn: function() {
+  //   return Meteor.subscribe('userData');
+  //   return Meteor.subscribe('current-team');
+  // },
   onBeforeAction: function() {
     Session.set('currentRoute', 'dashboard');
     return this.next();
@@ -14,10 +14,10 @@ Router.route('Dashboard', {
 Router.route('Invites', {
   path: '/invites',
   template: 'Invites',
-  waitOn: function() {
-    return Meteor.subscribe('/invites');
-    return Meteor.subscribe('current-team');
-  },
+  // waitOn: function() {
+  //   return Meteor.subscribe('/invites');
+  //   return Meteor.subscribe('current-team');
+  // },
   onBeforeAction: function() {
     Session.set('currentRoute', 'invites');
     return this.next();
@@ -32,9 +32,9 @@ Router.route('Invites', {
 Router.route('TeamList', {
   path: '/teams/new',
   template: 'TeamList',
-  waitOn: function() {
-    return Meteor.subscribe('current-team');
-  },
+  // waitOn: function() {
+  //   return Meteor.subscribe('current-team');
+  // },
   layoutTemplate: 'TwoColumn',
   yieldTemplates: {
     'TeamNew': {
@@ -62,9 +62,9 @@ Router.route('TeamEdit', {
       to: 'footer'
     }
   },
-  waitOn: function() {
-    return Meteor.subscribe('current-team');
-  },
+  // waitOn: function() {
+  //   return Meteor.subscribe('current-team');
+  // },
   data: function() {
     return Teams.find(this.params._id);
   },
@@ -85,9 +85,9 @@ Router.route('TeamShow', {
   data: function() {
     return Teams.find(this.params._id);
   },
-  waitOn: function() {
-    return Meteor.subscribe('current-team');
-  },
+  // waitOn: function() {
+  //   return Meteor.subscribe('current-team');
+  // },
   onBeforeAction: function() {
     Session.set('currentRoute', 'team');
     return this.next();
@@ -182,9 +182,9 @@ Router.route('SeasonList', {
       to: 'footer'
     }
   },
-  waitOn: function() {
-    return Meteor.subscribe('current-season');
-  },
+  // waitOn: function() {
+  //   return Meteor.subscribe('current-season');
+  // },
   onBeforeAction: function() {
     Session.set('currentRoute', 'seasons');
     Session.setPersistent('sSeasonId', true);
@@ -204,9 +204,9 @@ Router.route('SeasonShow', {
       to: 'footer'
     }
   },
-  waitOn: function() {
-    return Meteor.subscribe('current-season');
-  },
+  // waitOn: function() {
+  //   return Meteor.subscribe('current-season');
+  // },
 
   data: function() {
     return Seasons.find(this.params._id);
@@ -233,12 +233,12 @@ Router.route('PlayerList', {
       to: 'footer'
     }
   },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-team'),
-      Meteor.subscribe('current-team-roster')
-    ]
-  },
+  // waitOn: function() {
+  //   return [
+  //     Meteor.subscribe('current-team'),
+  //     Meteor.subscribe('current-team-roster')
+  //   ]
+  // },
   onBeforeAction: function() {
     Session.set('currentRoute', 'players');
     return this.next();
@@ -266,12 +266,12 @@ Router.route('GameList', {
       to: 'footer'
     }
   },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team')
-    ]
-  },
+  // waitOn: function() {
+  //   return [
+  //     Meteor.subscribe('current-game'),
+  //     Meteor.subscribe('current-team')
+  //   ]
+  // },
   onBeforeAction: function() {
     Session.set('currentRoute', 'games');
     return this.next();
@@ -298,13 +298,13 @@ Router.route('GameShow', {
       to: 'footer'
     }
   },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster'),
-      Meteor.subscribe('current-team')
-    ]
-  },
+  // waitOn: function() {
+  //   return [
+  //     Meteor.subscribe('current-game'),
+  //     Meteor.subscribe('current-team-roster'),
+  //     Meteor.subscribe('current-team')
+  //   ]
+  // },
   onBeforeAction: function() {
     Session.set('currentRoute', 'game');
     return this.next();
@@ -321,12 +321,12 @@ Router.route('GameShow', {
 Router.route('PlayerGameReminderList', {
   path: '/teams/games/game_reminder/:_id',
   layoutTemplate: 'GameReminder',
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster')
-    ]
-  },
+  // waitOn: function() {
+  //   return [
+  //     Meteor.subscribe('current-game'),
+  //     Meteor.subscribe('current-team-roster')
+  //   ]
+  // },
   yieldTemplates: {
     'YesPlayingList': {
       to: 'middle'
@@ -342,7 +342,8 @@ Router.route('PlayerGameReminderList', {
     }
   },
   onBeforeAction: function() {
-    Session.set('currentRoute', 'game-reminder');
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'game-reminder');
     return this.next();
   }
 });
@@ -484,13 +485,13 @@ Router.route('StartingLineupList', {
   onBeforeAction: function() {
     Session.set('currentRoute', 'starters');
     return this.next();
-  },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster')
-    ]
   }
+  // waitOn: function() {
+  //   return [
+  //     Meteor.subscribe('current-game'),
+  //     Meteor.subscribe('current-team-roster')
+  //   ]
+  // }
 });
 /*=======================================
   =            Starting Lineup            =
@@ -511,11 +512,11 @@ Router.route('PlayerPlainList', {
   onBeforeAction: function() {
     Session.set('currentRoute', 'lineup');
     return this.next();
-  },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster')
-    ]
   }
+  // waitOn: function() {
+  //   return [
+  //     Meteor.subscribe('current-game'),
+  //     Meteor.subscribe('current-team-roster')
+  //   ]
+  // }
 });

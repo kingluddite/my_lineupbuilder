@@ -27,7 +27,8 @@ one we will use for this site:
 */
 
 TODO
-come to team in edit mode, Update Team and Create Roster, and cancel and create roster on one page
+current completed - should be checked if session is true (when you come back to the page)
+COMPLETED - come to team in edit mode, Update Team and Create Roster, and cancel and create roster on one page
 
 
 For Team give option to create leagues (crud)

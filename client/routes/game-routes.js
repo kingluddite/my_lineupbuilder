@@ -7,12 +7,7 @@ Router.route('GameDateTime', {
       to: 'footer'
     }
   },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster')
-    ]
-  },
+ 
   onBeforeAction: function() {
     Session.set('currentSubRoute', 'game-date-time');
     return this.next();
@@ -28,13 +23,6 @@ Router.route('Opponent', {
       to: 'footer'
     }
   },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster'),
-      Meteor.subscribe('current-team')
-    ]
-  },
   onBeforeAction: function() {
     Session.set('currentSubRoute', 'opponent');
     return this.next();
@@ -44,31 +32,6 @@ Router.route('Opponent', {
 /*=======================================
   =            Game Reminder         =
   =======================================*/
-
-// pick your starting linup
-Router.route('CompleteRoster', {
-  path: '/teams/games/game_reminder',
-  layoutTemplate: 'TwoColumn',
-  yieldTemplates: {
-    'YesPlayingList': {
-      to: 'sidebar'
-    },
-    'Footer': {
-      to: 'footer'
-    }
-  },
-  onBeforeAction: function() {
-    Session.set('currentRoute', 'lineup');
-    return this.next();
-  },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster'),
-      Meteor.subscribe('current-team')
-    ]
-  }
-});
 
 // yes list
 Router.route('YesPlayingList', {
@@ -83,16 +46,11 @@ Router.route('YesPlayingList', {
     }
   },
   onBeforeAction: function() {
-    Session.set('currentRoute', 'yes-playing');
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'yes-playing');
     return this.next();
-  },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster'),
-      Meteor.subscribe('current-team')
-    ]
   }
+  
 });
 // no list
 Router.route('NotPlayingList', {
@@ -107,16 +65,11 @@ Router.route('NotPlayingList', {
     }
   },
   onBeforeAction: function() {
-    Session.set('currentRoute', 'no-playing');
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'not-playing');
     return this.next();
-  },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster'),
-      Meteor.subscribe('current-team')
-    ]
   }
+ 
 });
 // not playing list
 Router.route('NoReplyList', {
@@ -131,16 +84,11 @@ Router.route('NoReplyList', {
     }
   },
   onBeforeAction: function() {
-    Session.set('currentRoute', 'no-reply');
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'no-reply');
     return this.next();
-  },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster'),
-      Meteor.subscribe('current-team')
-    ]
   }
+  
 });
 
 // game details
@@ -152,12 +100,7 @@ Router.route('Field', {
       to: 'footer'
     }
   },
-  waitOn: function() {
-    return [
-      Meteor.subscribe('current-game'),
-      Meteor.subscribe('current-team-roster')
-    ]
-  },
+  
   onBeforeAction: function() {
     Session.set('currentSubRoute', 'field');
     return this.next();
