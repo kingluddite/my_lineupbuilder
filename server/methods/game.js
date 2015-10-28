@@ -70,7 +70,6 @@ Meteor.methods({
 
   updatePregameMessage: function(gameProperties) {
     var user;
-console.log('yo');
     user = Meteor.user();
 
     if (!user) {
@@ -80,6 +79,25 @@ console.log('yo');
     check(gameProperties, {
       currentGameId:   String,
       pregameMessage:  String
+    });
+
+    Games.update(gameProperties.currentGameId, {
+      $set: gameProperties
+    });
+  },
+
+  updatePostgameSummary: function(gameProperties) {
+    var user;
+
+    user = Meteor.user();
+
+    if (!user) {
+      throw new Meteor.Error(401, "You need to login to add a postgame summary");
+    }
+
+    check(gameProperties, {
+      currentGameId:   String,
+      postgameSummary:  String
     });
 
     Games.update(gameProperties.currentGameId, {

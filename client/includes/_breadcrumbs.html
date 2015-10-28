@@ -60,16 +60,13 @@
       <a href="{{pathFor 'LeagueList'}}">Positions</a>
     </li>
     <li class="{{currentSubRoute 'starters'}}">
-      <a href="{{pathFor 'PlayerList' _id=sTeamId}}">Starters</a>
-    </li>
-    <li class="{{currentSubRoute 'subs'}}">
-      <a href="{{pathFor 'GameList' _id=sTeamId}}">Subs</a>
+      <a href="{{pathFor 'PlayerList' _id=sTeamId}}">Lineup</a>
     </li>
     <li class="{{currentSubRoute 'field'}}">
       <a href="{{pathFor 'Field'}}">Field</a>
     </li>
-    <li class="{{currentSubRoute 'field'}}">
-      <a href="{{pathFor 'Field'}}">Status</a>
+    <li class="{{currentSubRoute 'game-status'}}">
+      <a href="{{pathFor 'GameStatusEdit'}}">Status</a>
     </li>
     <li class="{{currentSubRoute 'field'}}">
       <a href="{{pathFor 'Field'}}">Weather</a>
@@ -77,8 +74,8 @@
     <li class="{{currentSubRoute 'field'}}">
       <a href="{{pathFor 'Field'}}">Results</a>
     </li>
-    <li class="{{currentSubRoute 'field'}}">
-      <a href="{{pathFor 'Field'}}">Postgame Summary</a>
+    <li class="{{currentSubRoute 'postgame-summary'}}">
+      <a href="{{pathFor 'PostgameSummaryEdit'}}">Postgame Summary</a>
     </li>
     <li class="{{currentSubRoute 'field'}}">
       <a href="{{pathFor 'Field'}}">Cards</a>

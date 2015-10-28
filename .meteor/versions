@@ -88,6 +88,7 @@ mongo@1.1.2
 mongo-id@1.0.1
 mongo-livedata@1.0.9
 mrt:bootstrap-alerts@0.0.5
+mrt:bootstrap-select@1.5.4
 mrt:moment@2.8.1
 npm-bcrypt@0.7.8_2
 npm-container@1.2.0

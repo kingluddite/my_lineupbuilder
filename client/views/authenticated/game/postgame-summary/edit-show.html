@@ -1,0 +1,20 @@
+<template name="PostgameSummaryEdit">
+<h3 class="page-header">Postgame Summary</h3>
+    <p>Write below your message to your team <strong>after</strong> the big game</p>
+    <p>You may want to include the positives of the game and other words of encouragement. Or if it was a bad game, you may have ideas for what the team needs to work on in practice for the next game.</p>
+  <form id="postgame-summary-form">
+          <div class="form-group">
+            <label class="sr-only" for="postgame-summary">Postgame Summary</label>
+            <textarea name="postgameSummary" id="postgame-summary" class="form-control" rows="3">{{#if cGame.postgameSummary}}{{cGame.postgameSummary}}{{/if}}</textarea>
+          </div>
+          <button type="submit" class="btn btn-large btn-success pull-right">Save Message</button>
+        </form>
+</template>
+
+<template name="PostgameSummaryShow">
+<h3 class="page-header">Postgame Summary</h3>
+<p>This is your current postgame summary to your team.</p>
+<h4>Message to Team</h4>
+<p>{{cGame.postgameSummary}}</p>
+<a class="btn btn-default pull-right" href="{{pathFor 'PostgameSummaryEdit' _id=sGameId}}">Edit Postgame Summary</a>
+</template>

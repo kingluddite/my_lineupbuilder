@@ -12,6 +12,7 @@ Template.PregameMessageEdit.events({
   //  grab the form data and pass it to the server
   'submit #pregame-message-form': function(evt, template) {
     var gameProperties;
+    
     evt.preventDefault();
 
     gameProperties = {
@@ -19,13 +20,6 @@ Template.PregameMessageEdit.events({
       pregameMessage:  $(evt.target).find('[name=pregameMessage]').val(),
 
     };
-
-    //errors = validateTeam(game);
-    // if (errors.title || errors.url)
-
-    // if (errors.name) {
-    //   return Session.set('sTeamSubmitErrors', errors);
-    // }
 
     Meteor.call('updatePregameMessage', gameProperties, function(error, id) {
       if (error) {
@@ -35,7 +29,6 @@ Template.PregameMessageEdit.events({
         _id: Session.get('sGameId')
       });
     });
-
 
     // client side alert
     Bert.alert('Pregame Message Updated', 'success', 'growl-top-right');

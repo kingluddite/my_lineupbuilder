@@ -104,6 +104,70 @@ Router.route('PregameMessageShow', {
  
 });
 
+Router.route('PostgameSummaryEdit', {
+  path: '/games/postgame_summary/edit',
+  layoutTemplate: 'OneColumnLayout',
+  yieldTemplates: {
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'postgame-summary');
+    return this.next();
+  }
+ 
+});
+
+Router.route('PostgameSummaryShow', {
+  path: '/games/postgame_summary/show',
+  layoutTemplate: 'OneColumnLayout',
+  yieldTemplates: {
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'postgame-summary');
+    return this.next();
+  }
+ 
+});
+
+Router.route('GameStatusEdit', {
+  path: '/games/game_status/edit',
+  layoutTemplate: 'OneColumnLayout',
+  yieldTemplates: {
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'game-status');
+    return this.next();
+  }
+ 
+});
+
+Router.route('GameStatusShow', {
+  path: '/games/game_status/show',
+  layoutTemplate: 'OneColumnLayout',
+  yieldTemplates: {
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'game-status');
+    return this.next();
+  }
+ 
+});
+
 // not playing list
 Router.route('NoReplyList', {
   path: '/games/game_reminder/no_reply',

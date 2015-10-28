@@ -38,6 +38,7 @@ mizzao:jquery-ui
 mobile-experience
 mongo
 mrt:bootstrap-alerts
+mrt:bootstrap-select
 mrt:moment
 pfafman:filesaver
 random

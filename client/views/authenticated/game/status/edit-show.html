@@ -1,0 +1,29 @@
+<template name="GameStatusEdit">
+<h3 class="page-header">Game Status</h3>
+    <p>Choose from the dropdown the current status of your game.</p>
+  <form id="game-status-form">
+          <div class="form-group">
+            <label class="sr-only" for="game-status">Game Status</label>
+            <select id="game-status-select" class="selectpicker">
+              <option>To Be Played</option>
+              <option>Played</option>
+              <option>Cancelled</option>
+              <option>Forfeit</option>
+              <option>Rescheduled</option>
+            </select>
+            <br />
+  <label for="gameStatusReason">Game Status Reason</label>
+            <textarea name="gameStatusReason" id="game-status-reason" class="form-control" rows="3">{{#if cGame.gameStatusReason}}{{cGame.gameStatusReason}}{{/if}}</textarea>
+          </div>
+          <button type="submit" class="btn btn-large btn-success pull-right">Save Game Status</button>
+        </form>
+</template>
+
+<template name="GameStatusShow">
+<h3 class="page-header">Game Status</h3>
+<p>This is the current status of your game.</p>
+<h4>Game Status</h4>
+<p>{{cGame.gameStatus}}</p>
+<p><strong>{{#if cGame.gameStatusReason}}{{cGame.gameStatusReason}}{{/if}}</strong></p>
+<a class="btn btn-default pull-right" href="{{pathFor 'PregameMessageEdit' _id=sGameId}}">Edit Pregame Message</a>
+</template>
