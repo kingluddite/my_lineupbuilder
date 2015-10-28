@@ -1,4 +1,12 @@
-Template.PregameMessage.events({
+Template.PregameMessageEdit.helpers({
+  cGame: function () {
+    return Games.findOne({
+      _id: Session.get('sGameId')
+    });
+  }
+});
+
+Template.PregameMessageEdit.events({
 
   // when add team form is submitted
   //  grab the form data and pass it to the server
@@ -23,9 +31,29 @@ Template.PregameMessage.events({
       if (error) {
         return throwError(error.reason);
       }
+      Router.go('PregameMessageShow', {
+        _id: Session.get('sGameId')
+      });
     });
 
+
     // client side alert
-    Bert.alert('Pregame Message Created', 'success', 'growl-top-right');
+    Bert.alert('Pregame Message Updated', 'success', 'growl-top-right');
+  }
+});
+
+Template.PregameMessageShow.helpers({
+  cGame: function () {
+    return Games.findOne({
+      _id: Session.get('sGameId')
+    });
+  }
+});
+
+Template.PregameMessageShow.events({
+  'click .edit-message': function (evt, template) {
+    Router.go('PregameMessageEdit', {
+        _id: Session.get('sGameId')
+    });
   }
 });

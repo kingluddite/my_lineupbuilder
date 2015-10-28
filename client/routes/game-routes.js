@@ -72,8 +72,24 @@ Router.route('NotPlayingList', {
  
 });
 
-Router.route('PregameMessage', {
-  path: '/games/pregame_message',
+Router.route('PregameMessageEdit', {
+  path: '/games/pregame_message/edit',
+  layoutTemplate: 'OneColumnLayout',
+  yieldTemplates: {
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'pregame-message');
+    return this.next();
+  }
+ 
+});
+
+Router.route('PregameMessageShow', {
+  path: '/games/pregame_message/show',
   layoutTemplate: 'OneColumnLayout',
   yieldTemplates: {
     'Footer': {

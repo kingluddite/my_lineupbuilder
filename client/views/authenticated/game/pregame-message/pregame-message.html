@@ -1,11 +1,21 @@
-<template name="PregameMessage">
+<template name="PregameMessageEdit">
 <h3 class="page-header">Pregame Message</h3>
-    <p>Write below your message to your team before the big game:</p>
+    <p>Write below your message to your team before the big game</p>
+    <p>You may want to include the record of the team you are playing and
+    some strategies and tips on achieving success in the game.</p>
   <form id="pregame-message-form">
           <div class="form-group">
-            <label for="pregame-message">Pregame Message</label>
-            <textarea name="pregameMessage" id="pregame-message" class="form-control" rows="3"></textarea>
+            <label class="sr-only" for="pregame-message">Pregame Message</label>
+            <textarea name="pregameMessage" id="pregame-message" class="form-control" rows="3">{{#if cGame.pregameMessage}}{{cGame.pregameMessage}}{{/if}}</textarea>
           </div>
           <button type="submit" class="btn btn-large btn-success pull-right">Save Message</button>
         </form>
+</template>
+
+<template name="PregameMessageShow">
+<h3 class="page-header">Pregame Message</h3>
+<p>This is your current pregame message to your team.</p>
+<h4>Message to Team</h4>
+<p>{{cGame.pregameMessage}}</p>
+<a class="btn btn-default pull-right" href="{{pathFor 'PregameMessageEdit' _id=sGameId}}">Edit Pregame Message</a>
 </template>
