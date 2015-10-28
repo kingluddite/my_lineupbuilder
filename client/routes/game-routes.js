@@ -71,6 +71,23 @@ Router.route('NotPlayingList', {
   }
  
 });
+
+Router.route('PregameMessage', {
+  path: '/games/pregame_message',
+  layoutTemplate: 'OneColumnLayout',
+  yieldTemplates: {
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'game');
+    Session.set('currentSubRoute', 'pregame-message');
+    return this.next();
+  }
+ 
+});
+
 // not playing list
 Router.route('NoReplyList', {
   path: '/games/game_reminder/no_reply',

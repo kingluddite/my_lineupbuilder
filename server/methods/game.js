@@ -68,6 +68,25 @@ Meteor.methods({
     Games.insert(allGamePositions);
   },
 
+  updatePregameMessage: function(gameProperties) {
+    var user;
+console.log('yo');
+    user = Meteor.user();
+
+    if (!user) {
+      throw new Meteor.Error(401, "You need to login to add a pregame message");
+    }
+
+    check(gameProperties, {
+      currentGameId:   String,
+      pregameMessage:  String
+    });
+
+    Games.update(gameProperties.currentGameId, {
+      $set: gameProperties
+    });
+  },
+
   updateStarter: function(gameId, postAttributes) {
     var user,
         playerMatchObj,

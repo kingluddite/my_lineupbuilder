@@ -13,8 +13,7 @@ Template.TeamEdit.helpers({
 Template.TeamEdit.events({
 
   'submit form#edit-team-form': function(evt, template) {
-    var currentTeamId,
-        teamProperties;
+    var teamProperties;
 
     evt.preventDefault();
 
