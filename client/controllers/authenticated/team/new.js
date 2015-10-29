@@ -1,6 +1,22 @@
+var renderTimeout = false;
+
 Template.TeamNew.onCreated(function() {
   Session.set('sTeamSubmitErrors', {});
 });
+
+Template.TeamNew.rendered = function () {
+  if (renderTimeout !== false) {
+    Meteor.clearTimeout(renderTimeout);
+  }
+  renderTimeout = Meteor.setTimeout(function() {
+    $('.league-selection').selectpicker("refresh");
+    $('.season-selection').selectpicker("refresh");
+  }, 10);
+  $('.league-selection').selectpicker();
+  $('.season-selection').selectpicker();
+
+  
+};
 
 Template.TeamNew.helpers({
   // if there is a team return false
@@ -16,6 +32,16 @@ Template.TeamNew.helpers({
         return false;
       }
     }
+  },
+
+  // grab all the leagues
+  cLeagues: function() {
+    return Leagues.find();
+  },
+
+  // grab all the seasons
+  cSeasons: function() {
+    return Seasons.find();
   },
 
   errorMessage: function(field) {
@@ -56,7 +82,10 @@ Template.TeamNew.events({
       coachEmail:      $(evt.target).find('[name=coachEmail]').val(),
       logoUrl:         $(evt.target).find('[name=logoUrl]').val(),
       homeJerseyColor: $(evt.target).find('[name=homeJerseyColor]').val(),
-      awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val()
+      awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val(),
+      leagueId:        $(evt.target).find('[name=leagueName]').val(),
+      seasonId:        $(evt.target).find('[name=seasonName]').val()
+
     };
 
     errors = validateTeam(team);

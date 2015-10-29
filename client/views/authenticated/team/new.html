@@ -41,11 +41,60 @@
             <label>Away Jersey Color</label>
             <input type="color" class="form-control" placeholder="Away Color" name="awayJerseyColor">
           </div>
+          {{#if cLeagues.count}}
+          <div class="form-group">
+            <label for="league-name">League Name</label>
+            <select name="leagueName" class="selectpicker league-selection">
+              {{#each cLeagues}}
+                {{> LeagueItem}}
+              {{/each}}
+            </select>
+          </div>
+          {{else}}
+           <div class="form-group">
+            <label class="control-label sr-only" for="league-name">League Name</label>
+            <input id="league-name" type="text" value="" class="form-control" placeholder="League Name" name="leagueName">
+          </div>
+          {{/if}}
+          {{#if cSeasons.count}}
+          <div class="form-group">
+            <label for="season-name">Season Name</label>
+            <select name="seasonName" class="selectpicker season-selection">
+              {{#each cSeasons}}
+                {{> SeasonItem}}
+              {{/each}}
+            </select>
+          </div>
+          {{else}}
+          <div class="form-group">
+            <label class="control-label sr-only" for="season-name">Season Name</label>
+            <input id="season-name" type="text" value="" class="form-control" placeholder="Season Name" name="seasonName">
+          </div>
+          {{/if}}
           <button type="submit" class="btn btn-large btn-success pull-right">Create Team</button>
+          <a class="btn btn-default pull-left close-panel">Cancel</a>
         </form>
       </div>
     </div>
   {{/if}}
   <!-- end sAddTeam check -->
+</template>
+
+<template name="LeagueItem">
+  <option>Choose a League</option>
+  {{#if currentLeague}}
+   <option value="{{currentLeague._id}}" selected="selected">{{currentLeague.leagueName}}</option>
+  {{else}}
+   <option value="{{_id}}" selected="{{currentLeague}}">{{leagueName}}</option>
+  {{/if}}
+</template>
+
+<template name="SeasonItem">
+  <option>Choose a Season</option>
+  {{#if currentSeason}}
+   <option value="{{currentSeason._id}}" selected="selected">{{currentSeason.seasonName}}</option>
+  {{else}}
+   <option value="{{_id}}" selected="{{currentLeague}}">{{leagueName}}</option>
+  {{/if}}
 </template>
 

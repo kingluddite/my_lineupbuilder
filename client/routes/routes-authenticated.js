@@ -17,9 +17,8 @@ Router.route('Invites', {
 });
 
 /*============================
-    =            Team            =
-    ============================*/
-// new team
+=            TEAM            =
+============================*/
 
 Router.route('TeamList', {
   path: '/teams/new',
@@ -39,10 +38,6 @@ Router.route('TeamList', {
   }
 });
 
-/*============================
-=            TEAM            =
-============================*/
-
 Router.route('TeamEdit', {
   path: '/teams/:_id/edit',
   layoutTemplate: 'OneColumnLayout',
@@ -60,8 +55,30 @@ Router.route('TeamEdit', {
   }
 });
 
-Router.route('TeamShow', {
-  path: '/teams/:_id',
+/*============================
+=            League            =
+============================*/
+
+Router.route('LeagueList', {
+  path: '/leagues/new',
+  template: 'LeagueList',
+  layoutTemplate: 'TwoColumn',
+  yieldTemplates: {
+    'LeagueNew': {
+      to: 'sidebar'
+    },
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'leagues');
+    return this.next();
+  }
+});
+
+Router.route('LeagueEdit', {
+  path: '/leagues/:_id/edit',
   layoutTemplate: 'OneColumnLayout',
   yieldTemplates: {
     'Footer': {
@@ -69,11 +86,28 @@ Router.route('TeamShow', {
     }
   },
   data: function() {
-    return Teams.find(this.params._id);
+    return Leagues.find(this.params._id);
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'league');
+    return this.next();
+  }
+});
+
+Router.route('LeagueShow', {
+  path: '/leagues/:_id',
+  layoutTemplate: 'OneColumnLayout',
+  yieldTemplates: {
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  data: function() {
+    return Leagues.find(this.params._id);
   },
 
   onBeforeAction: function() {
-    Session.set('currentRoute', 'team');
+    Session.set('currentRoute', 'league');
     return this.next();
   }
 });

@@ -24,15 +24,15 @@
               </li>
             {{/each}}
           </ol>
-          <hr> {{else}}
+          <a class="btn btn-default pull-left new-team">Add Another Team</a>
+           {{else}}
           <!-- no teams, let coach create them -->
           <p>You have not created any teams yet. It's time for you to take the plunge and create a team.</p>
-          <a class="btn btn-default pull-right new-team">Add Team</a> {{/if}}
+          <a class="btn btn-default pull-left new-team">Add Team</a> {{/if}}
 
         <!-- did we add a team? -->
         {{#if sTeamNew}}
           <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create A Game</a>
-          <a class="btn btn-default pull-left new-team">Add Another Team</a> {{else}}
         {{/if}}
 
       </div>

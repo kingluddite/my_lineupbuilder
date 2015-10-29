@@ -25,12 +25,14 @@ Meteor.methods({
       coachEmail:      String,
       logoUrl:         String,
       homeJerseyColor: String,
-      awayJerseyColor: String
+      awayJerseyColor: String,
+      leagueId:        String,
+      seasonId:        String
     });
 
     // pick out the whitelisted keys
     // Those on the list will be accepted, approved or recognized
-    team = _.extend(_.pick(postAttributes, 'teamName', 'coachName', 'coachEmail', 'logoUrl', 'homeJerseyColor', 'awayJerseyColor'), {
+    team = _.extend(_.pick(postAttributes, 'teamName', 'coachName', 'coachEmail', 'logoUrl', 'homeJerseyColor', 'awayJerseyColor', 'leagueId', 'seasonId'), {
 
       createdBy: user._id,
       author: user.username,
@@ -73,7 +75,9 @@ Meteor.methods({
       coachEmail:      String,
       logoUrl:         String,
       homeJerseyColor: String,
-      awayJerseyColor: String
+      awayJerseyColor: String,
+      leagueId:        String,
+      seasonId:        String
     });
 
     Teams.update(teamProperties.currentTeamId, {

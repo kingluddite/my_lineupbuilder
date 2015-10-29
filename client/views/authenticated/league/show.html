@@ -9,15 +9,9 @@
       <p><strong>League Name:</strong> {{> editableText context=cLeague collection="leagues" field="leagueName"}}</p>
 
       <hr>
-      {{#if sGameId}}
         <a class="btn btn-default pull-left" href="{{pathFor 'GameEdit' _id=sGameId}}">Back To My Game</a>
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">View My Games</a>
+        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Edit League</a>
 
-      {{else}}
-        <!-- no games yet -->
-        <p>No games yet. Let's create one!</p>
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">Create Game</a>
-      {{/if}}
     </div>
   </div>
 

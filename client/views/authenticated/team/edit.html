@@ -12,37 +12,66 @@
 
       <h4>Update Your Team Info</h4>
       <form id="edit-team-form">
-        <p>
+        <div class="form-group">
           <label class="sr-only">Team Name</label>
           <input type="text" required class="form-control" placeholder="Team Name" name="teamName" value="{{cTeam.teamName}}">
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <label class="sr-only">Coach Name</label>
           <input type="text" class="form-control" placeholder="Coach Name" name="coachName" value="{{cTeam.coachName}}">
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <label class="sr-only">Coach Email</label>
           <div class="input-group">
             <span class="input-group-addon">@</span>
             <input type="email" class="form-control" placeholder="Coach Email" name="coachEmail" value="{{cTeam.coachEmail}}">
           </div>
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <label class="sr-only">Logo URL</label>
           <div class="input-group">
             <span class="input-group-addon"><i class="fa fa-link"></i></span>
             <input type="url" class="form-control" placeholder="URL to Logo" name="logoUrl" value="{{cTeam.logoUrl}}">
           </div>
-        </p>
-
-        <p>
+        </div>
+        <div class="form-group">
           <label>Home Jersey Color</label>
           <input type="color" class="form-control" placeholder="Home Color" name="homeJerseyColor" value="{{cTeam.homeJerseyColor}}">
-        </p>
-        <p>
+        </div>
+        <div class="form-group">
           <label>Away Jersey Color</label>
           <input type="color" class="form-control" placeholder="Away Color" name="awayJerseyColor" value="{{cTeam.awayJerseyColor}}">
-        </p>
+        </div>
+        {{#if cLeagues.count}}
+          <div class="form-group">
+            <label for="league-name">League Name</label>
+            <select id="league-name" class="selectpicker league-selection">
+              {{#each cLeagues}}
+                {{> LeagueItem}}
+              {{/each}}
+            </select>
+          </div>
+          {{else}}
+           <div class="form-group">
+            <label class="control-label sr-only" for="league-name">League Name</label>
+            <input id="league-name" type="text" value="{{cTeam.leagueId}}" class="form-control" placeholder="League Name" name="leagueName">
+          </div>
+          {{/if}}
+          {{#if cSeasons.count}}
+          <div class="form-group">
+            <label for="season-name">Season Name</label>
+            <select id="league-name" class="selectpicker league-selection">
+              {{#each cSeasons}}
+                {{> SeasonItem}}
+              {{/each}}
+            </select>
+          </div>
+          {{else}}
+          <div class="form-group">
+            <label class="control-label sr-only" for="league-name">Season Name</label>
+            <input id="season-name" type="text" value="" class="form-control" placeholder="Season Name" name="seasonName">
+          </div>
+          {{/if}}
         <button type="submit" class="btn btn-large btn-primary pull-right">Update Team</button>
         <a class="btn btn-default pull-left" href="{{pathFor 'TeamList' _id=sTeamId}}">Cancel</a>
       </form>

@@ -1,3 +1,8 @@
+Template.TeamEdit.rendered = function () {
+  $('.league-selection').selectpicker();
+  $('.season-selection').selectpicker();
+};
+
 Template.TeamEdit.helpers({
   // if there is a team return false
   // so we can hide the add team form
@@ -7,6 +12,15 @@ Template.TeamEdit.helpers({
         _id: Session.get('sTeamId')
       });
     }
+  },
+  // grab all the leagues
+  cLeagues: function() {
+    return Leagues.find();
+  },
+
+  // grab all the seasons
+  cSeasons: function() {
+    return Seasons.find();
   }
 });
 
@@ -25,7 +39,9 @@ Template.TeamEdit.events({
       coachEmail:      $(evt.target).find('[name=coachEmail]').val(),
       logoUrl:         $(evt.target).find('[name=logoUrl]').val(),
       homeJerseyColor: $(evt.target).find('[name=homeJerseyColor]').val(),
-      awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val()
+      awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val(),
+      leagueId:        $(evt.target).find('[name=leagueName').val(),
+      seasonId:        $(evt.target).find('[name=seasonName').val()
     };
 
     Meteor.call('updateTeam', teamProperties, function(error, id) {

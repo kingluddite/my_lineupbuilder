@@ -14,9 +14,14 @@ Meteor.methods({
     }
 
      check(postAttributes, {
-      seasonName: String,
-      teamId:     String,
-      leagueId:   String
+      seasonName:       String,
+      teamId:           String,
+      leagueId:         String,
+      seasonStartDate:  Date,
+      seasonEndDate:    Date,
+      playoffStartDate: Date,
+      playoffEndDate:   Date,
+      seasonFee:        Number
     });
 
     // ensure the post has a name
@@ -27,7 +32,15 @@ Meteor.methods({
 
     // pick out the whitelisted keys
     // Those on the list will be accepted, approved or recognized
-    season = _.extend(_.pick(postAttributes, 'seasonName', 'teamId', 'leagueId'), {
+    season = _.extend(_.pick(postAttributes, 
+                  'seasonName', 
+                  'teamId', 
+                  'leagueId',
+                  'seasonStartDate', 
+                  'seasonEndDate', 
+                  'playoffStartDate', 
+                  'playoffEndDate', 
+                  'seasonFee'), {
 
       createdBy: user._id,
       author: user.username,
