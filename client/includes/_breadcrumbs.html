@@ -101,7 +101,7 @@
 </template>
 
 <template name="GameReminderBreadcrumbs">
-{{#if currentUser}}
+{{#if currentSubRoute 'game-reminder'}}
   <ol class="breadcrumb">
     <li class="{{gameReminderSubRoute 'can-play'}}">
       <a href="{{pathFor 'YesPlayingList'}}">Yes</a>

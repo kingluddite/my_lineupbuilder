@@ -13,9 +13,14 @@ Template.GameList.helpers({
       // grab all the teams the user created (so we know it's their
       //   team)
       return Games.find({
-        teamId: Session.get('sTeamId')
+          teamId: Session.get('sTeamId')
+      }, {
+          sort: {
+              gameDateTime: 1
+          }
       });
-      
+
+
   },
   // give template access to these sessions
   sGameId: function() {
