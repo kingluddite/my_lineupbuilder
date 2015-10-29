@@ -5,6 +5,8 @@ Template: client/views/public/index.html
 */
 
 Template.Index.rendered = function() {
+
+  console.log(reverseString("phonenumber"));
   return $('#request-beta-invite').validate({
     rules: {
       emailAddress: {
@@ -33,7 +35,7 @@ Template.Index.rendered = function() {
           if (response.error) {
             //return alert(response.error + 1);
             //Bert.alert(response.error);
-            return Bert.alert( 'Ernie has finished tubby time.', 'success', 'growl-top-right' ); 
+            return Bert.alert( 'Ernie has finished tubby time.', 'success', 'growl-top-right' );
             //Bert.alert( 'Yes, I do mind!', 'warning', 'growl-bottom-right' );
           } else {
             return Meteor.call('addToInvitesList', invitee, function(error, response) {
