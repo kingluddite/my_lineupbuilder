@@ -38,5 +38,18 @@ Meteor.methods({
     leagueId = Leagues.insert(league);
 
     return leagueId;
+  },
+
+  removeLeague: function(leagueId) {
+    var user;
+    console.log(leagueId);
+    user = Meteor.user();
+    if (!user) {
+      throw new Meteor.Error(401, "You need to login to remove a league");
+    }
+    // check data is what we expect
+    check(leagueId, String);
+
+    Leagues.remove(leagueId);
   }
 });

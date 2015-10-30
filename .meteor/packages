@@ -34,6 +34,7 @@ meteor-base
 meteorhacks:fast-render
 meteorhacks:npm
 meteorhacks:ssr
+mizzao:bootboxjs
 mizzao:jquery-ui
 mobile-experience
 mongo

@@ -1,10 +1,3 @@
-// when the trashcan icon is clicked, the player is deleted
-var removeLeague = function() {
-  Leagues.remove({
-    _id: Session.get('sLeagueId')
-  });
-};
-
 Template.LeagueList.helpers({
   // grab all the leagues and provide collection for roster template
   cLeagues: function() {
@@ -35,14 +28,24 @@ Template.LeagueList.events({
   // when click on remove league is removed after
   // confirmation
   'click .remove': function(evt, template) {
+    var currentLeague;
     evt.preventDefault();
-
-    if (confirm("Delete this league?")) {
-      Session.set('sLeagueId', this._id);
-      // MAKE THIS A SERVER SIDE CALL
-      removeLeague();
+     
+    // we need to store the id of the league using this here
+    //  so that when we lose scope inside bootbox, we can keep track
+    //  of the current league we want to delete 
+    currentLeague = this._id;
+    //if (confirm("Delete this league?")) {
+     bootbox.confirm("Are you sure?", function(result) {
+      
+      Meteor.call('removeLeague', currentLeague, function(error, id) {
+        if (error) {
+          return throwError(error.reason);
+        }
+      });
       Session.set('sLeagueId', null);
-    }
+     });
+    //}
   },
   // when person clicks to enter their league
   // set that league id as the current session

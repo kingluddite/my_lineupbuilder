@@ -79,6 +79,7 @@ meteorhacks:picker@1.0.3
 meteorhacks:ssr@2.2.0
 minifiers@1.1.7
 minimongo@1.0.10
+mizzao:bootboxjs@4.4.0
 mizzao:build-fetcher@0.3.0
 mizzao:jquery-ui@1.11.4
 mobile-experience@1.0.1
