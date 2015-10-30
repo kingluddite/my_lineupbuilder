@@ -42,6 +42,12 @@ Template.SeasonNew.helpers({
 });
 
 Template.SeasonNew.events({
+  'click .date-time-picker': function () {
+    // show datepicker
+    $('.date-time-picker').datetimepicker({
+      format: 'MM/DD/YYYY'
+    });  
+  },
   'click .close-panel': function(evt, template) {
     Session.setPersistent('sAddSeason', false);
   },

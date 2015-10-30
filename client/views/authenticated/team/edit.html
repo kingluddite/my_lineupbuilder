@@ -45,7 +45,7 @@
         {{#if cLeagues.count}}
           <div class="form-group">
             <label for="league-name">League Name</label>
-            <select id="league-name" class="selectpicker league-selection">
+            <select id="league-name" name="leagueName" class="selectpicker league-selection">
               {{#each cLeagues}}
                 {{> LeagueItem}}
               {{/each}}
@@ -60,7 +60,7 @@
           {{#if cSeasons.count}}
           <div class="form-group">
             <label for="season-name">Season Name</label>
-            <select id="league-name" class="selectpicker league-selection">
+            <select id="season-name" name="seasonName" class="selectpicker league-selection">
               {{#each cSeasons}}
                 {{> SeasonItem}}
               {{/each}}

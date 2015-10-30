@@ -31,17 +31,16 @@ Template.TeamEdit.events({
 
     evt.preventDefault();
 
-
     teamProperties = {
-      currentTeamId:   Session.get('sTeamId'),
+      _id:   Session.get('sTeamId'),
       teamName:        $(evt.target).find('[name=teamName]').val(),
       coachName:       $(evt.target).find('[name=coachName]').val(),
       coachEmail:      $(evt.target).find('[name=coachEmail]').val(),
       logoUrl:         $(evt.target).find('[name=logoUrl]').val(),
       homeJerseyColor: $(evt.target).find('[name=homeJerseyColor]').val(),
       awayJerseyColor: $(evt.target).find('[name=awayJerseyColor]').val(),
-      leagueId:        $(evt.target).find('[name=leagueName').val(),
-      seasonId:        $(evt.target).find('[name=seasonName').val()
+      leagueId:        $(evt.target).find('[name=leagueName]').val(),
+      seasonId:        $(evt.target).find('[name=seasonName]').val()
     };
 
     Meteor.call('updateTeam', teamProperties, function(error, id) {
@@ -50,7 +49,7 @@ Template.TeamEdit.events({
       }
       Bert.alert('Team Updated', 'success', 'growl-top-right');
       Router.go('TeamShow', {
-        _id: teamProperties.currentTeamId
+        _id: teamProperties._id
       });
     });
   }

@@ -59,7 +59,7 @@
           {{#if cSeasons.count}}
           <div class="form-group">
             <label for="season-name">Season Name</label>
-            <select name="seasonName" class="selectpicker season-selection">
+            <select id="season-name" name="seasonName" class="selectpicker season-selection">
               {{#each cSeasons}}
                 {{> SeasonItem}}
               {{/each}}
@@ -94,7 +94,7 @@
   {{#if currentSeason}}
    <option value="{{currentSeason._id}}" selected="selected">{{currentSeason.seasonName}}</option>
   {{else}}
-   <option value="{{_id}}" selected="{{currentLeague}}">{{leagueName}}</option>
+   <option value="{{_id}}" selected="{{currentSeason}}">{{seasonName}}</option>
   {{/if}}
 </template>
 

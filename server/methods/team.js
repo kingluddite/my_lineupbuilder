@@ -69,7 +69,7 @@ Meteor.methods({
     }
 
     check(teamProperties, {
-      currentTeamId:   String,
+      _id:   String,
       teamName:        String,
       coachName:       String,
       coachEmail:      String,
@@ -80,7 +80,7 @@ Meteor.methods({
       seasonId:        String
     });
 
-    Teams.update(teamProperties.currentTeamId, {
+    Teams.update(teamProperties._id, {
       $set: teamProperties
     });
   }
