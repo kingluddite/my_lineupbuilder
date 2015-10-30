@@ -11,9 +11,11 @@ Template.LeagueItem.helpers({
     // if the leagueId in the current iteration matches the actual leagueId
     //  of the team, we have a match
     if (this._id == team.leagueId) {
-      // this will populate the html option with 'selected' so that value is chosen
+      // this will populate the html select option with 'selected' 
+      //  attribute so that the value is chosen when template loads
       return 'selected';
+    } else {
+      return false;
     }
-    
   }
 });

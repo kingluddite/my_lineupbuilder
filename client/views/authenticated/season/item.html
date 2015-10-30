@@ -1,8 +1,3 @@
 <template name="SeasonItem">
-  <option>Choose a Season</option>
-  {{#if currentSeason}}
-   <option value="{{currentSeason._id}}" selected="selected">{{currentSeason.seasonName}}</option>
-  {{else}}
-   <option value="{{_id}}" selected="{{currentSeason}}">{{seasonName}}</option>
-  {{/if}}
+   <option value="{{_id}}" {{isSelected}}>{{seasonName}}</option>
 </template>
