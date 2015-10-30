@@ -55,6 +55,23 @@ Router.route('TeamEdit', {
   }
 });
 
+Router.route('TeamShow', {
+  path: '/teams/:_id/show',
+  layoutTemplate: 'OneColumnLayout',
+  yieldTemplates: {
+    'Footer': {
+      to: 'footer'
+    }
+  },
+  data: function() {
+    return Teams.find(this.params._id);
+  },
+  onBeforeAction: function() {
+    Session.set('currentRoute', 'team');
+    return this.next();
+  }
+});
+
 /*============================
 =            League            =
 ============================*/

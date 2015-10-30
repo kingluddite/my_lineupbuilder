@@ -46,6 +46,7 @@
           <div class="form-group">
             <label for="league-name">League Name</label>
             <select id="league-name" name="leagueName" class="selectpicker league-selection">
+            <option>Choose a League</option>
               {{#each cLeagues}}
                 {{> LeagueItem}}
               {{/each}}
