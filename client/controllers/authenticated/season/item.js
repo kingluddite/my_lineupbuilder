@@ -1,5 +1,5 @@
 Template.SeasonItem.helpers({
-  isSelected: function (evt, template) {
+  isOptionSelected: function (evt, template) {
     var team, season;
     
     // which team are we dealing with?

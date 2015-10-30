@@ -1,5 +1,5 @@
 Template.LeagueItem.helpers({
-  isSelected: function (evt, template) {
+  isOptionSelected: function (evt, template) {
     var team, league;
     
     // which team are we dealing with?
