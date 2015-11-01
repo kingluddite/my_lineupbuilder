@@ -47,9 +47,21 @@ Meteor.methods({
       submitted: new Date().getTime()
     });
 
-
     seasonId = Seasons.insert(season);
 
     return seasonId;
-  }
+  },
+
+  removeSeason: function(seasonId) {
+    var user;
+
+    user = Meteor.user();
+    if (!user) {
+      throw new Meteor.Error(401, "You need to login to delete a season");
+    }
+    // check data is what we expect
+    check(seasonId, String);
+
+    Seasons.remove(seasonId);
+  },
 });

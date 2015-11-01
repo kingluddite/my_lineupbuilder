@@ -1,10 +1,3 @@
-// TODO MAKE THIS SERVER SIDE REMOVE Method
-var removeSeason = function() {
-  Seasons.remove({
-    _id: Session.get('sSeasonId')
-  });
-};
-
 Template.SeasonList.helpers({
   // grab all the leagues and provide collection for roster template
   cSeasons: function() {
@@ -34,14 +27,23 @@ Template.SeasonList.events({
   // when click on remove season is removed after
   // confirmation
   'click .remove': function(evt, template) {
+    var currentSeason;
+
     evt.preventDefault();
 
-    if (confirm('Delete this season?')) {
-      Session.set('sSeasonId', this._id);
-      // TODO MAKE THIS REMOVE SERVER SIDE METHOD
-      removeSeason();
+    currentSeason = this._id;
+    bootbox.confirm("Are you sure?", function(result) {
+      Meteor.call('removeSeason', currentSeason, function(error, id) {
+        if (error) {
+          return throwError(error.reason);
+        }
       Session.set('sSeasonId', null);
-    }
+      // client side alert
+      Bert.alert('Season Deleted', 'danger', 'growl-top-right');
+      });
+      
+    });
+
   },
   // when person clicks to enter their season
   // set that season id as the current session

@@ -43,6 +43,8 @@ Template.LeagueList.events({
           return throwError(error.reason);
         }
       });
+      // client side alert
+      Bert.alert('League Deleted', 'danger', 'growl-top-right');
       Session.set('sLeagueId', null);
      });
     //}
