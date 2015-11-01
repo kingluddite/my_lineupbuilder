@@ -1,11 +1,7 @@
 <template name="LeagueList">
   <h3 class="page-header">Leagues</h3>
 
-  <a class="help-text pull-right" alt="help text"><i class="fa fa-info"></i></a>
-
-  <div class="instructions">
     <p>Click on a league to enter game information for that league.</p>
-  </div>
   <hr>
   <div class="panel panel-default">
     <div class="panel-heading">
@@ -22,7 +18,7 @@
           <!-- loop through leagues -->
           {{#each cLeagues}}
             <li>
-              <a href="{{pathFor 'LeagueShow'}}">{{leagueName}}</a>
+              <a href="{{pathFor 'SeasonList'}}">{{leagueName}}</a>
               <a class="remove"><i class="fa fa-trash fa-2"></i></a>
             </li>
           {{/each}}
@@ -34,13 +30,9 @@
         <p>You have not created any leagues yet. It's time for you to take the plunge and create a league.</p>
       {{/if}}
       <!-- did we create a league? -->
-      {{#if sLeagueNew}}
         <a class="btn btn-default pull-left new-league">Add Another League</a>
-        <a class="btn btn-default pull-right" href="{{pathFor 'GameEdit' _id=sGameId}}">Back To My Game</a>
+        <a class="btn btn-default pull-right" href="{{pathFor 'TeamEdit' _id=sTeamId}}">Back To My Team</a>
 
-      {{else}}
-
-      {{/if}}
 
     </div>
 

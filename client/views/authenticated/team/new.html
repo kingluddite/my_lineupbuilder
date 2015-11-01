@@ -9,7 +9,6 @@
         <h3 class="panel-title">Add Team</h3>
       </div>
       <div class="panel-body">
-        <p>Use the form below to create your team. Required fields are outlined in red.</p>
         <form id="new-team-form">
           <div class="form-group {{errorClass 'name'}}">
             <label class="control-label sr-only" for="teamName">Team Name</label>
@@ -41,7 +40,41 @@
             <label>Away Jersey Color</label>
             <input type="color" class="form-control" placeholder="Away Color" name="awayJerseyColor">
           </div>
+          {{#if cLeagues.count}}
+          <div class="form-group">
+            <label for="league-name">League Name</label>
+            <select name="leagueName" class="selectpicker league-selection">
+            <option>Choose a League</option>
+              {{#each cLeagues}}
+                {{> LeagueItem}}
+              {{/each}}
+            </select>
+            <a href="{{pathFor 'LeagueList'}}">Create A New League</a>
+          </div>
+          {{else}}
+           <div class="form-group">
+            <label class="control-label sr-only" for="league-name">League Name</label>
+            <input id="league-name" type="text" value="" class="form-control" placeholder="League Name" name="leagueName">
+            <a href="{{pathFor 'LeagueNew'}}">Create A New League</a>
+          </div>
+          {{/if}}
+          {{#if cSeasons.count}}
+          <div class="form-group">
+            <label for="season-name">Season Name</label>
+            <select id="season-name" name="seasonName" class="selectpicker season-selection">
+              {{#each cSeasons}}
+                {{> SeasonItem}}
+              {{/each}}
+            </select>
+          </div>
+          {{else}}
+          <div class="form-group">
+            <label class="control-label sr-only" for="season-name">Season Name</label>
+            <input id="season-name" type="text" value="" class="form-control" placeholder="Season Name" name="seasonName">
+          </div>
+          {{/if}}
           <button type="submit" class="btn btn-large btn-success pull-right">Create Team</button>
+          <a class="btn btn-default pull-left close-panel">Cancel</a>
         </form>
       </div>
     </div>

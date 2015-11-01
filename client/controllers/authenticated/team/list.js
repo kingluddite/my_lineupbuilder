@@ -27,10 +27,15 @@ Template.TeamList.events({
   // when click on remove team is removed after
   // confirmation
   'click .remove': function(evt, template) {
+    var currentTeam;
+
     evt.preventDefault();
 
-    if (confirm("Delete this team?")) {
-      Meteor.call('removeTeam', this._id, function(error, id) {
+    // to deal with losing scope inside bootbox
+    currentTeam = this._id;
+    
+    bootbox.confirm("Are you sure?", function(result) {
+      Meteor.call('removeTeam', currentTeam, function(error, id) {
         if (error) {
           return throwError(error.reason);
         }
@@ -40,7 +45,7 @@ Template.TeamList.events({
       Bert.alert('Team Deleted', 'danger', 'growl-top-right');
       // remove team id session when team removed from collection
       Session.set('sTeamId', null);
-    }
+    });
   },
   
   // when person clicks to enter their team

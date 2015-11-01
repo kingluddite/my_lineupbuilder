@@ -11,13 +11,10 @@
     {{else}}
       {{#if sTeamId}}
       <li> <a href="{{pathFor 'TeamEdit' _id=sTeamId}}">{{teamName}}</a></li>
-      {{/if}}
-      {{#if sLeagueId}}
+      
       <li class="{{currentRoute 'leagues'}}">
         <a href="{{pathFor 'LeagueList'}}">My Leagues</a>
       </li>
-      {{/if}}
-      {{#if sSeasonId}}
       <li class="{{currentRoute 'seasons'}}">
         <a href="{{pathFor 'SeasonList' _id=sLeagueId}}">My Seasons</a>
       </li>

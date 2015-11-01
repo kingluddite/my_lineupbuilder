@@ -5,8 +5,6 @@ Template: client/views/public/index.html
 */
 
 Template.Index.rendered = function() {
-
-  console.log(reverseString("phonenumber"));
   return $('#request-beta-invite').validate({
     rules: {
       emailAddress: {

@@ -2,6 +2,14 @@ Template.SeasonNew.onCreated(function() {
   Session.set('sSeasonSubmitErrors', {});
 });
 
+Template.SeasonNew.rendered = function() {
+  // just show month/day/year... no time
+  $('.date-time-picker').datetimepicker(
+    {
+      format: 'MM/DD/YYYY'
+    });
+};
+
 Template.SeasonNew.helpers({
   // if there is a Season return false
   // so we can hide the add Season form
@@ -34,6 +42,12 @@ Template.SeasonNew.helpers({
 });
 
 Template.SeasonNew.events({
+  'click .date-time-picker': function () {
+    // show datepicker
+    $('.date-time-picker').datetimepicker({
+      format: 'MM/DD/YYYY'
+    });  
+  },
   'click .close-panel': function(evt, template) {
     Session.setPersistent('sAddSeason', false);
   },
@@ -41,14 +55,36 @@ Template.SeasonNew.events({
   //  grab the form data and pass it to the server
   'submit form#new-season-form': function(evt, template) {
     var season,
+        frmSeasonStartDate,
+        frmSeasonEndDate,
+        frmPlayoffStartDate,
+        frmPlayoffEndDate,
+        convertedSeasonStartDate,
+        convertedSeasonEndDate,
+        convertedPlayoffStartDate,
+        convertedPlayoffEndDate,
         errors;
 
     evt.preventDefault();
+    
+    frmSeasonStartDate        = $(evt.target).find('[name=seasonStartDate]').val();
+    convertedSeasonStartDate  = new Date(frmSeasonStartDate);
+    frmSeasonEndDate          = $(evt.target).find('[name=seasonEndDate]').val();
+    convertedSeasonEndDate    = new Date(frmSeasonEndDate);
+    frmPlayoffStartDate       = $(evt.target).find('[name=playoffStartDate]').val();
+    convertedPlayoffStartDate = new Date(frmPlayoffStartDate);
+    frmPlayoffEndDate         = $(evt.target).find('[name=playoffEndDate]').val();
+    convertedPlayoffEndDate   = new Date(frmPlayoffEndDate);
 
     season = {
-      seasonName: $(evt.target).find('[name=seasonName]').val(),
-      teamId: Session.get('sTeamId'),
-      leagueId: Session.get('sLeagueId')
+      seasonName:       $(evt.target).find('[name=seasonName]').val(),
+      teamId:           Session.get('sTeamId'),
+      leagueId:         Session.get('sLeagueId'),
+      seasonStartDate:  convertedSeasonStartDate,
+      seasonEndDate:    convertedSeasonEndDate,
+      playoffStartDate: convertedPlayoffStartDate,
+      playoffEndDate:   convertedPlayoffEndDate,
+      seasonFee:        Number($(evt.target).find('[name=seasonFee]').val()),
     };
 
     errors = validateSeason(season);
