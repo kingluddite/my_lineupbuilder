@@ -28,7 +28,7 @@ http
 iron:router
 jquery
 kadira:blaze-layout
-less
+#less
 logging
 meteor-base
 meteorhacks:fast-render
