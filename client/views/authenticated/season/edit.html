@@ -2,21 +2,80 @@
   <h3 class="page-header">Edit Season</h3>
   <div class="panel panel-default">
 
+    {{#if rvEditSeason}}
     <div class="panel-heading">
       <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
       <h3 class="panel-title">{{cSeason.seasonName}}</h3>
     </div>
     <div class="panel-body">
 
-      <h4>Update Your Season Info</h4>
+      <h4>Update Your Season Info</h4>aaa
       <form id="edit-season-form">
-        <p>
+        <div class="form-group">
           <label class="sr-only">Season Name</label>
           <input type="text" required class="form-control" placeholder="Season Name" name="seasonName" value="{{cSeason.seasonName}}">
-        </p>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="season-start-date">Regular Season Starts</label>
+            <div class="input-group date date-time-picker-season-start">
+              <input id="season-start-date" type="text" name="seasonStartDate" required class="form-control" value="{{cSeason.seasonStartDate}}" />
+              <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+          <label class="control-label" for="season-end-date">Regular Season Ends</label>
+            <div class='input-group date date-time-picker-season-end'>
+              <input id="season-end-date" type="text" name="seasonEndDate" required class="form-control" value="{{cSeason.seasonEndDate}}" />
+              <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+          <label class="control-label" for="playoff-start-date">Playoffs Begin</label>
+            <div class='input-group date date-time-picker-playoff-start'>
+              <input id="playoff-start-date" type="text" name="playoffStartDate" class="form-control" value="{{cSeason.playoffStartDate}}" />
+              <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+           <div class="form-group">
+          <label class="control-label" for="playoff-end-date">Playoffs End</label>
+            <div class='input-group date date-time-picker-playoff-end'>
+              <input id="playoff-end-date" type="text" name="playoffEndDate" class="form-control" value="{{cSeason.playoffEndDate}}" />
+              <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="input-group">
+              <span class="input-group-addon">$</span>
+              <input type="text" name="seasonFee" class="form-control" value="{{cSeason.seasonFee}}"/>
+            </div>
+          </div>
         <button type="submit" class="btn btn-large btn-primary pull-right">Update Season</button>
       </form>
+      <a class="btn btn-default pull-left cancel-edit">Cancel</a>
     </div>
+    {{else}}
+    <div class="panel-heading">
+      <span class="pull-right clickable"><i class="glyphicon glyphicon-chevron-up"></i></span>
+      <h3 class="panel-title">{{cSeason.seasonName}}</h3>
+    </div>
+    <div class="panel-body">
+    <p><strong>Season Name:</strong> {{cSeason.seasonName}}</p>
+    <p><strong>Start Date:</strong> {{formatDate cSeason.seasonStartDate}}</p>
+    <p><strong>End Date:</strong> {{formatDate cSeason.seasonEndDate}}</p>
+    <p><strong>Playoff Start Date:</strong> {{formatDate cSeason.playoffStartDate}}</p>
+    <p><strong>Playoff End Date:</strong> {{formatDate cSeason.playoffEndDate}}</p>
+    <p><strong>Season Fee:</strong> $ {{cSeason.seasonFee}}</p>
+    <a class="btn btn-default pull-right edit-season">Edit Season</a>
+    </div>
+    {{/if}}
   </div>
 
 </template>

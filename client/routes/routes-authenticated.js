@@ -155,13 +155,10 @@ Router.route('SeasonList', {
 });
 
 // league details page
-Router.route('SeasonShow', {
+Router.route('SeasonEdit', {
   path: '/seasons/:_id',
-  layoutTemplate: 'TwoColumn',
+  layoutTemplate: 'OneColumnLayout',
   yieldTemplates: {
-    'SeasonEdit': {
-      to: 'sidebar'
-    },
     'Footer': {
       to: 'footer'
     }

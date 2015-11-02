@@ -32,7 +32,7 @@ Template.TeamEdit.events({
     evt.preventDefault();
 
     teamProperties = {
-      _id:   Session.get('sTeamId'),
+      _id:             Session.get('sTeamId'),
       teamName:        $(evt.target).find('[name=teamName]').val(),
       coachName:       $(evt.target).find('[name=coachName]').val(),
       coachEmail:      $(evt.target).find('[name=coachEmail]').val(),
