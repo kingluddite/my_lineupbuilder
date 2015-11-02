@@ -16,6 +16,7 @@ Meteor.methods({
     // always check data to make sure its what you expect
     check(postAttributes, {
       leagueName: String,
+      leagueZip:  String,
       teamId:     String
     });
 
@@ -27,10 +28,9 @@ Meteor.methods({
 
     // pick out the whitelisted keys
     // Those on the list will be accepted, approved or recognized
-    league = _.extend(_.pick(postAttributes, 'leagueName', 'teamId'), {
+    league = _.extend(_.pick(postAttributes, 'leagueName', 'leagueZip', 'teamId'), {
 
       createdBy: user._id,
-      author: user.username,
       submitted: new Date().getTime()
     });
 
