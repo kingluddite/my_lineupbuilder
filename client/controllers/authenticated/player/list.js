@@ -70,14 +70,16 @@ Template.PlayerList.events({
   },
 
   'click .remove': function(evt, template) {
-    var playerCount;
+    var playerCount,
+        currentPlayer;
 
     evt.preventDefault();
 
     playerCount = Players.find().count();
+    currentPlayer = this._id;
 
-    if (confirm("Delete this player?")) {
-      Meteor.call('removePlayer', this._id, function(error, id) {
+    bootbox.confirm("Are you sure?", function(result) {
+      Meteor.call('removePlayer', currentPlayer, function(error, id) {
         if (error) {
           return throwError(error.reason);
         }
@@ -85,7 +87,7 @@ Template.PlayerList.events({
 
       Bert.alert('Player Deleted', 'danger', 'growl-top-right');
       Session.set('sPlayerId', null);
-    }
+    });
     if (playerCount <= 26) {
       $(".team-roster").show();
     }

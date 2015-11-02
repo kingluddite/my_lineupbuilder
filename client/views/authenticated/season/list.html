@@ -18,7 +18,7 @@
           <!-- loop through seasons -->
           {{#each cSeasons}}
             <li>
-              <a href="{{pathFor 'SeasonShow'}}">{{seasonName}}</a>
+              <a href="{{pathFor 'SeasonEdit'}}">{{seasonName}}</a>
               <a class="remove"><i class="fa fa-trash fa-2"></i></a>
             </li>
           {{/each}}
@@ -30,12 +30,11 @@
         <p>You have not created any seasons yet. It's time for you to take the plunge and create a season.</p>
       {{/if}}
 
-      {{#if sSeasonNew}}
-        <a class="btn btn-default pull-left" href="{{pathFor 'GameEdit' _id=sGameId}}">Back To My Game</a>
+      
+        <a class="btn btn-default pull-left" href="{{pathFor 'GameShow' _id=sGameId}}">Back To My Game</a>
 
         <a class="btn btn-default pull-right new-season">Add Another Season</a>
-      {{else}}
-      {{/if}}
+      
     </div>
 
   </div>

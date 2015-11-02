@@ -69,7 +69,7 @@ Meteor.methods({
     }
 
     check(teamProperties, {
-      _id:   String,
+      _id:             String,
       teamName:        String,
       coachName:       String,
       coachEmail:      String,

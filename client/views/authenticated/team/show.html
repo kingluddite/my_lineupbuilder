@@ -19,8 +19,8 @@
       {{#if sRosterComplete}}
         <hr>
         {{#if sGameId}}
+          <a class="btn btn-default pull-left" href="{{pathFor 'TeamEdit' _id=sTeamId}}">Edit Team</a>
           <a class="btn btn-default pull-right" href="{{pathFor 'GameList' _id=sTeamId}}">View My Games</a>
-
         {{else}}
           <!-- no games yet -->
           <p>No games yet. Let's create one!</p>

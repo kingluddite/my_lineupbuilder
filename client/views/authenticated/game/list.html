@@ -28,12 +28,10 @@
         <a class="btn btn-default pull-right new-game">Add Game</a>
       {{/if}}
 
-      <!-- did we create a game? -->
-      {{#if sGameNew}}
+      
+      <a href="{{pathFor 'TeamEdit' _id=sTeamId}}" class="btn btn-default pull-left">Back To Team</a>
         <a class="btn btn-default pull-right new-game">Add Another Game</a>
-      {{else}}
-
-      {{/if}}
+      
     </div>
   </div>
 </template>
