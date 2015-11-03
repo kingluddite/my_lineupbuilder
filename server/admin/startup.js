@@ -12,11 +12,6 @@ createServiceConfiguration = function(service, clientId, secret) {
       clientId: clientId,
       secret: secret
     },
-    facebook: {
-      service: service,
-      appId: clientId,
-      secret: secret
-    },
     twitter: {
       service: service,
       consumerKey: clientId,
@@ -24,8 +19,6 @@ createServiceConfiguration = function(service, clientId, secret) {
     }
   };
   switch (service) {
-    case 'facebook':
-      return ServiceConfiguration.configurations.insert(config.facebook);
     case 'twitter':
       return ServiceConfiguration.configurations.insert(config.twitter);
     default:
@@ -33,8 +26,7 @@ createServiceConfiguration = function(service, clientId, secret) {
   }
 };
 
-createServiceConfiguration('facebook', 'Meteor.settings.private.fbappid', 'Meteor.settings.private.fbsecret');
-createServiceConfiguration('google', '506132420307-52ho56h58mk7kvkvb29sm6b82m26g4u9.apps.googleusercontent.com', 'pBe1cGgMh8vkreuIAeHW48uI');
+createServiceConfiguration('google', Meteor.settings.private.googlecid, Meteor.settings.private.googlesecret);
 createServiceConfiguration('twitter', Meteor.settings.private.twitconsumerkey, Meteor.settings.private.twitsecret);
 });
   /*

@@ -1,36 +1,35 @@
 <template name="Index">
     {{>SignInWithEmailModal}}
-    <div class="row">
-        <div class="col-xs-12 col-sm-6">
+    <div class="row well well-lg">
+        <div class="col-xs-4 col-xs-offset-4 col-sm-4 col-sm-offset-4 col-md-12 col-md-offset-4">
             <img src="/img/sm_logo_rev.png" width="371" height="370" alt="SoccerMatters Logo">
         </div>
-        <div class="col-xs-12 col-sm-6">
-            {{#if currentUser}}
-            <div class="page-header">
-                <h1>About</h1>
-                <p>Our goal is simple: Make amateur soccer enthusiasts feel like they are professionals. We use modern web tools to share team data to help coaches organize their teams while keeping their players informed so they can elevate their game.</p>
-                <p>We provide a one-stop shop for amateur soccer. Anything teams need to enjoy this game we all love, we strive to achieve.</p>
-                <h2>Team Rosters</h2>
-                <p>Create a team roster so you know and your team know all the players on a team.</p>
-                <h2>Game Reminders</h2>
-                <p>Email your upcoming game information (time, opponent, home/away, directions and yes, even weather). Share a pregame conversation with your team so you can let your team know who your opponent is and maybe some strategic tips for performing
-                    at a higher level.</p>
-                <h2>Game Formations</h2>
-                <p>If you are playing a good team and need to play more defensive choose a formation with more fullbacks. If you need to protect the middle of the field choose a formation with 5 midfielders. Or if you think you will dominate and you want
-                    to play with 4 forwards choose the 3-3-4 offensive formation. All popular formations are supported by Soccermatters. Heck, we even let you name your positions because these days, every coach names the positions differently. Soccermatters
-                    doesn't want to change how you coach, we want you to adapt the application to your needs.</p>
-                <h2>Starting Lineups</h2>
-                <p>Everyone loves their name in lights and here's a way to highlight your key players that have earned a starting spot.</p>
-            </div>
-            <a href="{{pathFor 'TeamList'}}" class="btn btn-success btn-large">Start</a> {{else}}
+    </div><!-- END .row -->
+    <div class="row">
+       <div class="col-xs-12 col-sm-12 col-md-12">
+        <h1 class="text-center">Have Fun Managing Your Soccer Team</h1>
+       </div> 
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <h2>Rosters</h2>
+            <p>Keep track of who's on your team every season. Everything from their jersey number to who didn't pay their season fee can be documented.</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <h2>Games</h2>
+            <p>Document all your game information. Everything important detail from your game can be easily saved.</p>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            <h2>Lineups</h2>
+            <p>Who's coming to the game, what's the starting lineup and how many substitutes do you have? What format will you choose for the game?</p>
+        </div>
+    </div>
+            
             <div class="page-header">
                 <h3>Soccermatters Sign In</h3>
                 <p>Virtually managing your team is just a click away.</p>
             </div>
             <ul class="btn-list">
-                <li>
-                    <button type="button" class="btn btn-social-login btn-facebook"><i class="fa fa-facebook"></i> Sign in with Facebook</button>
-                </li>
                 <li>
                     <button type="button" class="btn btn-social-login btn-google"><i class="fa fa-google"></i> Sign in with Google</button>
                 </li>
@@ -47,7 +46,5 @@
                 <input type="email" name="emailAddress" class="form-control" placeholder="e.g. georgieb@soccermatters.com">
                 <button type="submit" class="btn btn-success">Request Beta Invite</button>
             </form>
-            {{>SignupCount}} {{/if}}
-        </div>
-    </div>
+            {{>SignupCount}} 
 </template>

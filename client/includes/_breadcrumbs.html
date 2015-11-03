@@ -37,7 +37,7 @@
 <template name="NestedBreadcrumbs">
 {{#if sGameId}}
   {{#if currentRoute 'game'}}
-  <ol class="breadcrumb">
+  <ul class="nav nav-pills">
     <li class="{{currentSubRoute 'game-date-time'}}">
       <a href="{{pathFor 'GameDateTime'}}">Game Date/Time</a>
     </li>
@@ -92,7 +92,7 @@
     <li class="{{currentSubRoute 'field'}}">
       <a href="{{pathFor 'Field'}}">Clean Sheet Goalie</a>
     </li>
-  </ol>
+  </ul>
   {{/if}}
 {{/if}}
 </template>

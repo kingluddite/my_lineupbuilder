@@ -2,7 +2,7 @@
   {{> Header}}
   <div class="container">
     {{> Breadcrumbs}}
-    <div class="row">
+    <div class="row well well-lg">
       <div class="col-xs-12 col-sm-12 col-md-12">
         {{> Errors }} {{> yield}}
       </div>
@@ -21,14 +21,15 @@
   <div class="container">
     {{> Breadcrumbs}}
     {{> NestedBreadcrumbs}}
-    <div class="row">
+    <div class="row well well-lg">
       <div class="col-xs-12 col-sm-12 col-md-6">
         {{> Errors }} {{> yield}}
       </div>
     </div>
+   <div class="row well well-lg">
    <div class="col-xs-12 col-sm-12 col-md-6">
-      {{> yield region="footer"}}
-    </div>
+         {{> yield region="footer"}}
+       </div></div>
   </div>
   <!-- END .container -->
 </template>
@@ -40,7 +41,7 @@
     {{> Breadcrumbs}}
     {{> NestedBreadcrumbs}}
     {{> GameReminderBreadcrumbs}}
-    <div class="row">
+    <div class="row well well-lg">
       <div class="col-md-6">
         {{> yield}}
       </div>
@@ -60,7 +61,7 @@
     {{> Breadcrumbs}}
     {{> NestedBreadcrumbs}}
     {{> GameReminderBreadcrumbs}}
-    <div class="row">
+    <div class="row well well-lg">
       <div class="col-md-6"> {{> yield region="sidebar"}}
       </div>
       <div class="col-md-6">
@@ -79,7 +80,7 @@
   <!-- {{> Error}} -->
   <div class="container">
     {{> Breadcrumbs}}
-    <div class="row">
+    <div class="row well well-lg">
       <div class="col-md-4">
         {{> yield}}
       </div>
@@ -102,7 +103,7 @@
   <!-- {{> Error}} -->
   <div class="container">
     {{> Breadcrumbs}}
-    <div class="row">
+    <div class="row well well-lg">
       <div class="col-md-4">
         {{> yield}}
       </div>

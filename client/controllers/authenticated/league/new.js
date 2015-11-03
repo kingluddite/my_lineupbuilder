@@ -49,6 +49,7 @@ Template.LeagueNew.events({
 
     league = {
       leagueName: $(evt.target).find('[name=leagueName]').val(),
+      leagueZip: $(evt.target).find('[name=leagueZip]').val(),
       teamId: Session.get('sTeamId')
     };
 
@@ -65,8 +66,6 @@ Template.LeagueNew.events({
       }
       // we need persistent sessions to stop page refresh form erasing them
       Session.setPersistent('sLeagueId', id);
-      Session.setPersistent('sLeagueNew', true);
-      Session.setPersistent('sAddLeague', false);
     });
 
     // client side alert
