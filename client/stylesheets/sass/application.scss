@@ -1,5 +1,6 @@
 /* Globals */
 @import "globals/extends";
+@import "globals/mixins";
 @import "globals/colors";
 @import "globals/breadcrumbs";
 @import "globals/general";
@@ -21,4 +22,6 @@
 @import "views/authenticated/game/_game.scss";
 @import "views/authenticated/game/lineup/_lineup";
 @import "views/authenticated/game/position/_position";
+
+@import "views/public/santa-tracker";
 

@@ -18,8 +18,11 @@
             <li class="{{currentRoute 'dashboard'}}"><a href="{{pathFor 'Dashboard'}}">Dashboard</a></li>
             {{else}}
           {{/if}}
-          {{#if isInRole 'coachmup'}}
+          {{#if isInRole 'coach'}}
             <li class="{{currentRoute 'dashboard'}}"><a href="{{pathFor 'Dashboard'}}">Dashboard</a></li>
+            <li class="{{currentRoute 'teams'}}"><a href="{{pathFor 'TeamList'}}">Teams</a></li>
+            <li class="{{currentRoute 'seasons'}}"><a href="{{pathFor 'SeasonList'}}">Seasons</a></li>
+            <li class="{{currentRoute 'leagues'}}"><a href="{{pathFor 'LeagueList'}}">Leagues</a></li>
           {{/if}}
         </ul>
         <ul class="nav navbar-nav navbar-right">

@@ -41,6 +41,7 @@ mongo
 mrt:bootstrap-alerts
 mrt:bootstrap-select
 mrt:moment
+percolate:synced-cron
 pfafman:filesaver
 random
 reactive-var
@@ -53,6 +54,7 @@ standard-minifiers
 stevezhu:lodash
 themeteorchef:bert
 themeteorchef:jquery-validation
+trepafi:mapbox
 tracker
 tsega:bootstrap3-datetimepicker
 twbs:bootstrap
