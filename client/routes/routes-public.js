@@ -7,6 +7,14 @@ Router.map(function() {
             return this.next();
         }
     });
+    this.route('santa', {
+        path: '/santa',
+        template: 'santaTracker',
+        waitOn: function() {
+          Meteor.subscribe('santaStops');
+        }
+    });
+    
     this.route('Signup', {
         path: '/signup',
         template: 'Signup',
