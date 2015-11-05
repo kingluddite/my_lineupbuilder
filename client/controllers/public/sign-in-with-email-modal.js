@@ -20,8 +20,9 @@ Template.SignInWithEmailModal.rendered = function() {
     },
 
     submitHandler: function() {
-      var createOrSignIn, 
-          user;
+      var createOrSignIn,
+          user,
+          userId;
 
       createOrSignIn = Session.get('sCreateOrSignIn');
       user = {
@@ -31,19 +32,23 @@ Template.SignInWithEmailModal.rendered = function() {
       if (createOrSignIn === "create") {
         return Meteor.call('validateEmailAddress', user.email, function(error, response) {
           if (error) {
-            return alert(error.reason);
+            Bert.alert(error.reason, 'danger');
           } else {
             if (response.error) {
-              return alert(response.error);
+              //return alert(response.error);
+              Bert.alert(response.error, 'danger');
             } else {
               return Accounts.createUser(user, function(error) {
                 if (error) {
-                  return alert(error.reason);
+                  //return alert(error.reason);
+                  Bert.alert(error.reason, 'danger');
                 } else {
+                  // all good, let's create an account
                   $('#sign-in-with-email-modal').hide();
-                  
-                 Bert.alert('Account Created', 'success', 'growl-top-right');
+                  userId = Meteor.userId;
+                  Bert.alert('Account Created', 'success', 'growl-top-right');
                   return $('.modal-backdrop').hide();
+                  Meteor.call("initApiKey", userId);
                 }
               });
             }
