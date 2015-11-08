@@ -64,17 +64,27 @@ Accounts.onCreateUser(function(options, user) {
 Meteor.methods({
   sendWelcomeEmail: function(userData) {
     // Check our userData argument against our expected pattern.
-    var emailTemplate;
+    var emailTemplate,
+        myGame;
 
     check(userData, {
       email: String,
       name: String
     });
+
+    
+
+      myGame = Games.findOne({
+        _id: "AyrcnxZsJB85CRGvi"
+      });
+
+
     // Compile and render our email template using meteorhacks:ssr.
     SSR.compileTemplate('welcomeEmail', Assets.getText('email/welcome-email.html'));
     emailTemplate = SSR.render('welcomeEmail', {
       name: userData.name !== "" ? userData.name : null,
-      url: "http://localhost:3000"
+      url: "http://soccermatters.com",
+      myOpponent: myGame.opponentName
     });
     // Send off our email to the user.
     return Email.send({

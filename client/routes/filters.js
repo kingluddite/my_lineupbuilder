@@ -65,8 +65,8 @@ Router.onBeforeAction( checkUserLoggedIn, {
     'Signup',
     'Signup/:token',
     'Login',
-    'Recover-password',
-    'Reset-password'
+    'RecoverPassword',
+    'ResetPassword/#/:token'
   ]
 } );
 

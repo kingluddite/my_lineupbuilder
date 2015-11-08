@@ -1,4 +1,8 @@
 Meteor.startup(function() {
+
+// Generate Test Accounts
+  generateTestAccounts();
+
 createServiceConfiguration = function(service, clientId, secret) {
   var config;
   
